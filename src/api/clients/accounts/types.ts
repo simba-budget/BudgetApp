@@ -7,3 +7,7 @@ export interface Account extends BaseModel {
 export interface SaveAccountRequest {
   name: string;
 }
+
+export interface AccountsFilter {
+  keyword?: string | null;
+}

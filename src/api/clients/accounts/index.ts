@@ -1,12 +1,13 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListResponse } from '@api/types';
+import { DataResponse, ListRequest, ListResponse } from '@api/types';
 
-import { Account, SaveAccountRequest } from './types';
+import { Account, AccountsFilter, SaveAccountRequest } from './types';
 
 const url = '/accounts';
 
-export const getAccounts = () => {
-  return httpClient.get<void, ListResponse<Account>>(url);
+export const getAccounts = (request: ListRequest<AccountsFilter>) => {
+  const params = { ...request.filter };
+  return httpClient.get<void, ListResponse<Account>>(url, { params });
 };
 
 export const getAccount = (id: number) => {
@@ -14,13 +15,13 @@ export const getAccount = (id: number) => {
 };
 
 export const addAccount = (request: SaveAccountRequest) => {
-  return httpClient.post<SaveAccountRequest, DataResponse<Account>>(url, request);
+  return httpClient.post<void, DataResponse<Account>>(url, request);
+};
+
+export const editAccount = (id: number, request: SaveAccountRequest) => {
+  return httpClient.put<void, DataResponse<Account>>(`${url}/${id}`, request);
 };
 
 export const deleteAccount = (id: number) => {
   return httpClient.delete(`${url}/${id}`);
-};
-
-export const editAccount = (id: number, request: SaveAccountRequest) => {
-  return httpClient.put<SaveAccountRequest, DataResponse<Account>>(`${url}/${id}`, request);
 };

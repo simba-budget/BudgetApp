@@ -24,13 +24,8 @@ export interface Sort<T = string> {
 
 export interface BaseModel {
   id: number;
-  updated: string | null;
-  created: string;
-}
-
-export interface Total {
-  currency: string;
-  total: number;
+  updatedAt: string | null;
+  createdAt: string;
 }
 
 export interface Translation {

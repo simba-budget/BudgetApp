@@ -1,0 +1,27 @@
+import httpClient from '@api/httpClient';
+import { DataResponse, ListRequest, ListResponse } from '@api/types';
+
+import { SaveTransactionRequest, Transaction, TransactionsFilter } from './types';
+
+const url = '/transactions';
+
+export const getTransactions = (request: ListRequest<TransactionsFilter>) => {
+  const params = { ...request.filter, ...request.paging };
+  return httpClient.get<void, ListResponse<Transaction>>(url, { params });
+};
+
+export const getTransaction = (id: number) => {
+  return httpClient.get<void, DataResponse<Transaction>>(`${url}/${id}`);
+};
+
+export const addTransaction = (request: SaveTransactionRequest) => {
+  return httpClient.post<void, DataResponse<Transaction>>(url, request);
+};
+
+export const editTransaction = (id: number, request: SaveTransactionRequest) => {
+  return httpClient.put<void, DataResponse<Transaction>>(`${url}/${id}`, request);
+};
+
+export const deleteTransaction = (id: number) => {
+  return httpClient.delete(`${url}/${id}`);
+};

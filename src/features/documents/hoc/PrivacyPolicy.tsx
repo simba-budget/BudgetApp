@@ -6,7 +6,6 @@ import { usePrivacyPolicy } from '../hooks';
 const PrivacyPolicy: FC = () => {
   const { isLoading, privacyPolicy } = usePrivacyPolicy();
   if (!privacyPolicy || isLoading) return <></>;
-
   return <Document document={privacyPolicy} />;
 };
 
