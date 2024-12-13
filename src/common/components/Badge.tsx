@@ -1,6 +1,5 @@
 import { colors, padding } from '@styles/lightTheme';
 import { Colors, FontSizes, ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
@@ -53,8 +52,8 @@ const Badge: FC<BadgeProps> = (props) => {
 const containerSizeMap: Record<BadgeSize, ViewStyle> = {
   small: {
     ...padding('horizontal')('m'),
-    height: scale(24),
-    borderRadius: scale(12),
+    height: 24,
+    borderRadius: 12,
   },
 };
 

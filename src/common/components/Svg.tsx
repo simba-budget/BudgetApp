@@ -49,7 +49,6 @@ import Work from '@assets/svg/v2/work.svg';
 import { IconName } from '@icons';
 import { colors, themeTextColors } from '@styles/lightTheme';
 import { ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import { SvgProps } from 'react-native-svg';
 
@@ -117,14 +116,7 @@ const Svg: FC<SvgIconProps> = (props) => {
   const Icon = useMemo<FC<SvgProps>>(() => icons[name], [name]);
   const color = useMemo<string>(() => colors[themeTextColors[colorKey]], [colorKey]);
 
-  const normalizedSize = useMemo<number | undefined>(
-    () => (size ? scale(size) : size),
-    [size],
-  );
-
-  return (
-    <Icon disabled width={normalizedSize} height={normalizedSize} color={color} {...rest} />
-  );
+  return <Icon disabled width={size} height={size} color={color} {...rest} />;
 };
 
 export default Svg;

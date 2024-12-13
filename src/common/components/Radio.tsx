@@ -1,6 +1,5 @@
 import { center, flex1, rowCenter } from '@styles/common';
 import { colors, margin } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import React, { FC, ReactNode } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
@@ -34,9 +33,9 @@ const Radio: FC<RadioProps> = (props) => {
 const styles = StyleSheet.create({
   radio: {
     ...center,
-    width: scale(20),
-    height: scale(20),
-    borderRadius: scale(10),
+    width: 20,
+    height: 20,
+    borderRadius: 10,
     borderWidth: 1,
     backgroundColor: colors.white,
     borderColor: colors.grey500,
@@ -46,9 +45,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary500,
   },
   selectedRadio: {
-    width: scale(6),
-    height: scale(6),
-    borderRadius: scale(3),
+    width: 6,
+    height: 6,
+    borderRadius: 3,
     backgroundColor: colors.white,
   },
 });

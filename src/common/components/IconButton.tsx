@@ -3,7 +3,6 @@ import { IconName } from '@icons';
 import { center } from '@styles/common';
 import { colors, sizes } from '@styles/lightTheme';
 import { Colors, ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import {
   ActivityIndicator,
@@ -91,14 +90,14 @@ const IconButton: FC<ButtonProps> = (props) => {
 
 const containerSizeMap: Record<IconButtonSize, ViewStyle> = {
   small: {
-    width: scale(40),
-    height: scale(40),
-    borderRadius: scale(20),
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
   medium: {
-    width: scale(46),
-    height: scale(46),
-    borderRadius: scale(23),
+    width: 46,
+    height: 46,
+    borderRadius: 23,
   },
 };
 
@@ -118,8 +117,8 @@ const containerVariantMap: Record<IconButtonVariant, ViewStyle> = {
 };
 
 const iconSizeMap: Record<IconButtonSize, number> = {
-  small: scale(18),
-  medium: scale(20),
+  small: 18,
+  medium: 20,
 };
 
 const indicatorSizeMap: Record<IconButtonSize, ViewStyle> = {
@@ -152,9 +151,9 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   indicator: {
-    width: scale(8),
-    height: scale(8),
-    borderRadius: scale(4),
+    width: 8,
+    height: 8,
+    borderRadius: 4,
     position: 'absolute',
   },
   disabledContainer: {

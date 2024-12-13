@@ -62,7 +62,7 @@ const SendOtpForm: FC<SignInFormProps> = (props) => {
           style={margin('bottom')('s')}
           variant="primary"
           size="medium"
-          title={t('Verify')}
+          title={t('Sign in')}
         />
         <SocialLogins
           label="Don’t have an account? Sign Up"

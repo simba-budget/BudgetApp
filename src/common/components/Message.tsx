@@ -1,7 +1,6 @@
 import Svg from '@common/components/Svg';
 import { IconName } from '@icons';
 import { Colors, ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
@@ -54,7 +53,7 @@ const iconMap: Record<MessageVariant, IconName> = {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: scale(12),
+    borderRadius: 12,
   },
 });
 

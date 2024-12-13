@@ -53,8 +53,8 @@ export const handleHeight = 24;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    borderTopRightRadius: scale(24),
-    borderTopLeftRadius: scale(24),
+    borderTopRightRadius: 24,
+    borderTopLeftRadius: 24,
   },
 });
 

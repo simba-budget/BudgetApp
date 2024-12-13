@@ -1,7 +1,6 @@
 import { Svg, View } from '@common/components';
 import { alignCenter } from '@styles/common';
 import { colors, fonts, fontSizes, gap, padding, sizes } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { BaseToast } from 'react-native-toast-message';
@@ -33,8 +32,8 @@ const styles = StyleSheet.create({
     ...padding('horizontal')('m'),
     ...alignCenter,
     backgroundColor: colors.black500,
-    height: scale(40),
-    borderRadius: scale(20),
+    height: 40,
+    borderRadius: 20,
     elevation: 0,
     shadowRadius: 0,
     shadowOpacity: 0,
@@ -51,9 +50,9 @@ const styles = StyleSheet.create({
   },
   successIcon: {
     borderWidth: 1,
-    height: scale(20),
-    width: scale(20),
-    borderRadius: scale(10),
+    height: 20,
+    width: 20,
+    borderRadius: 10,
     borderColor: colors.white,
   },
   description: {

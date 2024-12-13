@@ -1,6 +1,5 @@
 import { colors, sizes } from '@styles/lightTheme';
 import { Colors, Sizes } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import { View as RNView, ViewProps as RNViewProps, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -58,7 +57,7 @@ const View: FC<ViewProps> = (props) => {
       ...(isBottomSafe && { marginBottom: bottom }),
       ...(isTopSafe && { marginTop: top }),
       ...(flex1 && { flex: 1 }),
-      ...(br && { borderRadius: scale(br) }),
+      ...(br && { borderRadius: br }),
       ...(direction && { flexDirection: direction }),
       ...(align && { alignItems: align }),
       ...(justify && { justifyContent: justify }),

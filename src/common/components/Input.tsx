@@ -2,7 +2,6 @@ import { IconName } from '@icons';
 import { flex1, rowCenter } from '@styles/common';
 import { colors, fonts, fontSizes, gap, padding } from '@styles/lightTheme';
 import { Colors, ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo, useState } from 'react';
 import {
   TextInputProps as RNTextInputProps,
@@ -103,8 +102,8 @@ const styles = StyleSheet.create({
     ...padding('horizontal')('s'),
     ...rowCenter,
     ...gap('column')('xs'),
-    borderRadius: scale(12),
-    height: scale(48),
+    borderRadius: 12,
+    height: 48,
     borderWidth: 1,
   },
   input: {
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     height: '100%',
     padding: 0,
     fontSize: fontSizes.s.fontSize,
-    lineHeight: scale(18),
+    lineHeight: 18,
     color: colors.black500,
   },
 });

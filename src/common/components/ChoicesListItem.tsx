@@ -1,6 +1,5 @@
 import { flex1, rowCenter } from '@styles/common';
 import { colors, gap, padding } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import React from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
@@ -49,8 +48,8 @@ const styles = StyleSheet.create({
     ...padding('vertical')('s'),
     ...padding('horizontal')('m'),
     ...rowCenter,
-    minHeight: scale(52),
-    borderRadius: scale(14),
+    minHeight: 52,
+    borderRadius: 14,
     borderWidth: 1,
     borderColor: colors.grey100,
   },

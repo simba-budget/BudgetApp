@@ -2,7 +2,6 @@ import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { IconName } from '@icons';
 import { gap, padding, sizes } from '@styles/lightTheme';
 import { ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { useCallback, useMemo } from 'react';
 import { ListRenderItemInfo, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -77,7 +76,7 @@ const Picker = <TKey extends string>(props: PickerProps<TKey>) => {
 };
 
 const getSnapPoint = (count: number, paddingBottom: number) => {
-  return count * scale(46) + (count - 1) * sizes.m + handleHeight + sizes.xs + paddingBottom;
+  return count * 46 + (count - 1) * sizes.m + handleHeight + sizes.xs + paddingBottom;
 };
 
 const styles = StyleSheet.create({

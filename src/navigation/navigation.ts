@@ -9,7 +9,7 @@ import {
   WelcomeScreen,
 } from '@screens';
 
-import { headerHiddenOptions } from './options';
+import { headerHiddenOptions, stackOptions } from './options';
 import {
   authRoute,
   privacyPolicyRoute,
@@ -35,6 +35,7 @@ export type RootParamsList = {
 
 const AuthStack = createStackNavigator<AuthParamsList>({
   initialRouteName: sendOtpRoute,
+  screenOptions: stackOptions,
   screens: {
     [sendOtpRoute]: SendOtpScreen,
     [verifyOtpRoute]: VerifyOtpScreen,

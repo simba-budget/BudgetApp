@@ -1,7 +1,6 @@
 import { center } from '@styles/common';
 import { colors, padding } from '@styles/lightTheme';
 import { FontSizes } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 
@@ -40,13 +39,13 @@ const HorizontalFilterItem: FC<HorizontalFilterItemProps> = (props) => {
 const containerSizeMap: Record<HorizontalFilterItemSize, ViewStyle> = {
   medium: {
     ...padding('horizontal')('m'),
-    height: scale(34),
-    borderRadius: scale(17),
+    height: 34,
+    borderRadius: 17,
   },
   large: {
     ...padding('horizontal')('l'),
-    height: scale(38),
-    borderRadius: scale(19),
+    height: 38,
+    borderRadius: 19,
   },
 };
 

@@ -1,5 +1,4 @@
 import { colors, fonts, fontSizes, sizes } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import { formatDate } from '@utils/date';
 import dayjs from 'dayjs';
 import React, { FC, useCallback, useMemo, useState } from 'react';
@@ -27,7 +26,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const { onChange, value, onFocus, onBlur, ...rest } = props;
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const { bottom } = useSafeAreaInsets();
-  const snapPoints = useMemo<number[]>(() => [scale(390) + bottom], [bottom]);
+  const snapPoints = useMemo<number[]>(() => [390 + bottom], [bottom]);
 
   const handleOnBlur = useCallback(() => {
     setIsFocused(false);
@@ -65,7 +64,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       <BottomSheet snapPoints={snapPoints} onClose={handleOnBlur} isOpen={isFocused}>
         <View bgColor="white" pb="l" ph="l">
           <DateTimePicker
-            height={scale(280)}
+            height={280}
             calendarTextStyle={styles.calendarTextStyle}
             selectedTextStyle={styles.selectedTextStyle}
             selectedItemColor={colors.primary300}
@@ -109,9 +108,9 @@ const styles = StyleSheet.create({
   dayContainerStyle: {
     flex: undefined,
     alignSelf: 'center',
-    width: scale(40),
-    height: scale(40),
-    borderRadius: scale(20),
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: colors.white,
   },
@@ -145,12 +144,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: colors.lightGrey500,
     borderColor: colors.lightGrey500,
-    width: scale(40),
-    height: scale(40),
-    borderRadius: scale(20),
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
   weekDaysContainerStyle: {
-    height: scale(40),
+    height: 40,
     borderBottomWidth: 1,
     borderBottomColor: colors.grey50,
     paddingBottom: 0,

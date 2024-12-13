@@ -1,6 +1,5 @@
 import View from '@common/components/View';
 import { Colors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
@@ -24,8 +23,8 @@ const ProgressBar: FC<ProgressBarProps> = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: scale(5),
-    borderRadius: scale(3),
+    height: 5,
+    borderRadius: 3,
     overflow: 'hidden',
   },
 });

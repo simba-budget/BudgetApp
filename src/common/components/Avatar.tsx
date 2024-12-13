@@ -1,6 +1,5 @@
 import { colors } from '@styles/lightTheme';
 import { FontSizes, ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import { getInitials } from '@utils/string';
 import React, { FC } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
@@ -40,14 +39,14 @@ const Avatar: FC<AvatarProps> = (props) => {
 
 const containerSizeMap: Record<AvatarSize, ViewStyle> = {
   medium: {
-    height: scale(46),
-    width: scale(46),
-    borderRadius: scale(23),
+    height: 46,
+    width: 46,
+    borderRadius: 23,
   },
   large: {
-    height: scale(52),
-    width: scale(52),
-    borderRadius: scale(26),
+    height: 52,
+    width: 52,
+    borderRadius: 26,
   },
 };
 

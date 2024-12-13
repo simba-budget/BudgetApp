@@ -3,7 +3,6 @@ import { IconName } from '@icons';
 import { center, rowCenter } from '@styles/common';
 import { colors, gap, padding, themeTextColors } from '@styles/lightTheme';
 import { FontSizes, ThemeTextColors } from '@styles/types';
-import { scale } from '@styles/utils';
 import React, { FC } from 'react';
 import {
   ActivityIndicator,
@@ -79,19 +78,19 @@ const Button: FC<ButtonProps> = (props) => {
 const containerSizeMap: Record<ButtonSize, ViewStyle> = {
   small: {
     ...padding('horizontal')('s'),
-    height: scale(30),
-    borderRadius: scale(15),
+    height: 30,
+    borderRadius: 15,
   },
   medium: {
     ...padding('horizontal')('m'),
-    height: scale(52),
-    borderRadius: scale(26),
+    height: 52,
+    borderRadius: 26,
   },
 };
 
 const iconSizeMap: Record<ButtonSize, number> = {
-  small: scale(16),
-  medium: scale(20),
+  small: 16,
+  medium: 20,
 };
 
 const containerVariantMap: Record<ButtonVariant, ViewStyle> = {

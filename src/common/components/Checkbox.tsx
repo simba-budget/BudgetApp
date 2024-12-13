@@ -36,9 +36,9 @@ const Checkbox: FC<CheckboxProps> = (props) => {
 const styles = StyleSheet.create({
   checkbox: {
     ...center,
-    width: scale(20),
-    height: scale(20),
-    borderRadius: scale(6),
+    width: 20,
+    height: 20,
+    borderRadius: 6,
     borderWidth: 1,
     backgroundColor: colors.white,
     borderColor: colors.grey500,

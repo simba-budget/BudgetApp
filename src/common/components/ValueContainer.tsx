@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     ...padding('left')('s'),
     ...rowCenter,
     ...gap('column')('xs'),
-    borderRadius: scale(12),
-    height: scale(48),
+    borderRadius: 12,
+    height: 48,
     borderWidth: 1,
   },
   clearButton: {

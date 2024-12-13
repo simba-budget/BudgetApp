@@ -1,6 +1,5 @@
 import { colors, sizes } from '@styles/lightTheme';
 import { Sizes } from '@styles/types';
-import { scale } from '@styles/utils';
 import hexToRgba from 'hex-to-rgba';
 import React, { FC, useMemo } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
@@ -25,10 +24,10 @@ const Skeleton: FC<SkeletonProps> = (props) => {
 
   const containerStyle = useMemo<ViewStyle>(
     () => ({
-      width: typeof width === 'number' ? scale(width) : width,
-      height: typeof height === 'number' ? scale(height) : width,
+      width,
+      height,
+      borderRadius,
       ...(mv && { marginVertical: sizes[mv] }),
-      ...(borderRadius && { borderRadius: scale(borderRadius) }),
     }),
     [width, height, borderRadius, mv],
   );
