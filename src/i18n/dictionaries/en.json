@@ -1,0 +1,81 @@
+{
+  "welcome": {
+    "The Budget App That Makes You Look Your Best": "The <highlighted>Budget App</highlighted> That Makes You Look Your Best",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    "Let’s Get Started": "Let’s Get Started",
+    "Already have an account? Sign In": "Already have an account? <highlighted>Sign In</highlighted>"
+  },
+  "onboarding": {
+    "Skip": "Skip",
+    "Seamless Shopping Experience": "<highlighted>Seamless</highlighted> Shopping Experience",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    "Wishlist: Where Fashion Dreams Begin": "Wishlist: Where <highlighted>Fashion Dreams</highlighted> Begin",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kempor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kempor",
+    "Swift and Reliable Delivery": "<highlighted>Swift</highlighted> and <highlighted>Reliable</highlighted>\nDelivery",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod rempor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod rempor"
+  },
+  "auth": {
+    "Welcome Back": "Welcome Back \uD83D\uDC4B",
+    "We happy to see you again! to use your account, you should sign in first": "We happy to see you again! to use your account, you should sign in first.",
+    "Email": "Email",
+    "Or sign in with": "Or sign in with",
+    "Or sign up with": "Or sign up with",
+    "Don’t have an account? Sign Up": "Don’t have an account? <highlighted>Sign Up</highlighted>",
+    "Create an account": "Create an account \uD83C\uDF89",
+    "Fill your information below or register with your social account": "Fill your information below or register with your social account.",
+    "First name": "First name",
+    "Last name": "Last name",
+    "Agree with terms and conditions": "Agree with <highlighted>terms & conditions</highlighted>",
+    "Sign up": "Sign up",
+    "Resend OTP": "Resend OTP",
+    "New OTP can be resend in {{seconds}}s": "New OTP can be resend in {{seconds}}s",
+    "Send OTP": "Send OTP",
+    "Already have an account? Sign In": "Already  have an account? <highlighted>Sign In</highlighted>",
+    "Verify Code": "Verify Code",
+    "Please enter the OTP we just sent to provided phone: {{phone}}": "Please enter the code we just sent to provided phone: <highlighted>{{phone}}</highlighted>",
+    "Did not receive OTP? Resend code": "Did not receive OTP?\n<highlighted>Resend code</highlighted>",
+    "Verify": "Verify",
+    "OTP": "OTP",
+    "Terms and conditions": "Terms and conditions",
+    "Privacy policy": "Privacy policy",
+    "Verify OTP": "Verify OTP \uD83D\uDD12"
+  },
+  "navigation": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Edit profile": "Edit profile",
+    "Change locale": "Change language",
+    "Terms and conditions": "Terms and conditions",
+    "Privacy policy": "Privacy policy",
+    "Notifications": "Notifications",
+    "FAQ": "Frequently asked questions"
+  },
+  "common": {
+    "All": "All",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "Today": "Today",
+    "Yesterday": "Yesterday",
+    "This week": "This week",
+    "This month": "This month",
+    "This year": "This year",
+    "Last week": "Last week",
+    "Last month": "Last month",
+    "Last year": "Last year",
+    "Choose": "Choose"
+  },
+  "notifications": {
+    "Account": "Profile",
+    "All": "All"
+  },
+  "validations": {
+    "Email is invalid": "Email is invalid",
+    "Email is required": "Email is required",
+    "Must agree with terms and conditions": "Must agree with terms and conditions",
+    "Code must be 6 digits length": "Code must be 6 digits length",
+    "First name is required": "First name is required",
+    "Last name is required": "Last name is required",
+    "Language is required": "Language is required",
+    "OTP is required": "OTP is required"
+  }
+}
