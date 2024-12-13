@@ -4,6 +4,7 @@ import { BaseModel } from '@api/types';
 export interface Invitation extends BaseModel {
   email: string;
   role: MemberRole;
+  expiresAt: string;
 }
 
 export interface SaveInvitationRequest {
