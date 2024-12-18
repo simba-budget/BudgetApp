@@ -1,9 +1,10 @@
-import { CategoriesFilter } from '@api/clients/categories/types';
 import { logoutAction } from '@features/auth/actions';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { CategoriesFilter } from './types';
+
 export interface CategoryState {
-  filter: Omit<CategoriesFilter, 'accountId'>;
+  filter: CategoriesFilter;
   lastUpdated: number;
 }
 

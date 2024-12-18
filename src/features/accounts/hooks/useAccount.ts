@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { selectAccountsLastUpdated } from '../selectors';
 
 export const getQueryKey = (id: number, lastUpdated: number) => {
-  return ['client', id, lastUpdated];
+  return ['account', id, lastUpdated];
 };
 
 const useAccount = (id: number) => {

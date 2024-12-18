@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { selectCategoriesLastUpdated } from '../selectors';
 
 export const getQueryKey = (id: number, lastUpdated: number) => {
-  return ['client', id, lastUpdated];
+  return ['category', id, lastUpdated];
 };
 
 const useCategory = (id: number) => {
