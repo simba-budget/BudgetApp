@@ -1,5 +1,6 @@
 import { reducer as accountsReducer } from '@features/accounts/slice';
 import { reducer as authReducer } from '@features/auth/slice';
+import { reducer as categoriesReducer } from '@features/categories/slice';
 import { reducer as notificationsReducer } from '@features/notifications/slice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -9,6 +10,7 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   notifications: notificationsReducer,
   accounts: accountsReducer,
+  categories: categoriesReducer,
 });
 
 export const store = configureStore({
