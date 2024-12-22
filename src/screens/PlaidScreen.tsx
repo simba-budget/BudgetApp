@@ -13,10 +13,7 @@ import {
 const PlaidScreen = () => {
   const [linkToken, setLinkToken] = useState<string | null>(null);
   const { createLinkToken, isSubmitting } = useCreateLinkToken({ onSuccess: setLinkToken });
-
-  const { createAccessToken } = useCreateAccessToken({
-    onSuccess: () => console.log('as cia'),
-  });
+  const { createAccessToken } = useCreateAccessToken();
 
   useEffect(() => {
     if (!linkToken) {
