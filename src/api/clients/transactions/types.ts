@@ -21,11 +21,11 @@ export interface SaveTransactionRequest {
 }
 
 export interface TransactionsFilter {
+  accountId: number;
   keyword?: string | null;
   categoriesIds?: number[] | null;
   amountFrom?: number | null;
   amountTo?: number | null;
-  accountId: number;
   dateFrom?: string | null;
   dateTo?: string | null;
 }

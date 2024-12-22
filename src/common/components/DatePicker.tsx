@@ -45,7 +45,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
 
   const handleOnChange = useCallback(
     ({ date }: { date: DateType }) => {
-      onChange?.(formatDate(date));
+      onChange?.(formatDate(date ?? ''));
       handleOnBlur();
     },
     [onChange, handleOnBlur],
@@ -55,7 +55,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     <>
       <ValueContainer
         iconName="calendar"
-        label={formatDate(value)}
+        label={formatDate(value ?? '')}
         isFocused={isFocused}
         onPress={handleOnFocus}
         onClearPress={handleOnCLear}

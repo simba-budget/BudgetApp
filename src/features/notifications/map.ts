@@ -1,6 +1,6 @@
 import { Notification } from '@api/clients/notifications/types';
 import { ListItem, Section } from '@common/types';
-import { formatRelevantDate, formatYearsAndMonth } from '@utils/date';
+import { formatRelevantDate } from '@utils/date';
 import groupBy from 'lodash/groupBy';
 import map from 'lodash/map';
 import orderBy from 'lodash/orderBy';
@@ -11,9 +11,7 @@ export const mapNotificationsToMonthsSections = (
   notifications: Notification[],
 ): Section<ListItem>[] => {
   return map(
-    groupBy(orderBy(notifications, 'date', 'desc'), (notification) =>
-      formatYearsAndMonth(notification.date),
-    ),
+    groupBy(orderBy(notifications, 'date', 'desc'), (notification) => notification.date),
     (notificationsForMonth, month) => ({
       title: month,
       data: notificationsForMonth.map(mapNotificationToListItem),
@@ -23,8 +21,8 @@ export const mapNotificationsToMonthsSections = (
 
 export const mapNotificationToListItem = (notification: Notification): ListItem => ({
   id: notification.id,
-  updated: notification.updated,
-  created: notification.created,
+  updatedAt: notification.updatedAt,
+  createdAt: notification.createdAt,
   iconName: notificationTypeIconMap[notification.type],
   leftTitle: notification.title,
   leftSubtitle: notification.description,

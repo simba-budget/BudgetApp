@@ -33,3 +33,9 @@ export type MainNavigation = StackNavigationProp<MainParamsList>;
 
 export type OpenBankingRoute = 'OpenBanking';
 export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
+
+export type TransactionsRoute = 'Transactions';
+export const transactionsRoute: TransactionsRoute = 'Transactions';
+
+export type HomeRoute = 'Home';
+export const homeRoute: HomeRoute = 'Home';

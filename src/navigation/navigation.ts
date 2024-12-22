@@ -1,10 +1,12 @@
 import { createStaticNavigation, NavigatorScreenParams } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
+  HomeScreen,
   PrivacyPolicyScreen,
   RegistrationScreen,
   SendOtpScreen,
   TermsAndConditionsScreen,
+  TransactionsScreen,
   VerifyOtpScreen,
   WelcomeScreen,
 } from '@screens';
@@ -15,12 +17,14 @@ import { useIsLoggedIn, useIsLoggedOut } from './hooks';
 import { headerHiddenOptions, stackOptions } from './options';
 import {
   authRoute,
+  homeRoute,
   mainRoute,
   openBankingRoute,
   privacyPolicyRoute,
   registrationRoute,
   sendOtpRoute,
   termsAndConditionsRoute,
+  transactionsRoute,
   verifyOtpRoute,
   welcomeRoute,
 } from './types';
@@ -41,6 +45,8 @@ export type RootParamsList = {
 
 export type MainParamsList = {
   [openBankingRoute]: undefined;
+  [transactionsRoute]: undefined;
+  [homeRoute]: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthParamsList>({
@@ -54,10 +60,12 @@ const AuthStack = createStackNavigator<AuthParamsList>({
 });
 
 const MainStack = createStackNavigator<MainParamsList>({
-  initialRouteName: openBankingRoute,
-  screenOptions: stackOptions,
+  initialRouteName: homeRoute,
+  screenOptions: headerHiddenOptions,
   screens: {
     [openBankingRoute]: PlaidScreen,
+    [transactionsRoute]: TransactionsScreen,
+    [homeRoute]: HomeScreen,
   },
 });
 

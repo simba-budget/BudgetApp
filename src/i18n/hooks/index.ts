@@ -6,3 +6,4 @@ export { default as useCommonTranslations } from './useCommonTranslations';
 export { default as useNotificationsTranslations } from './useNotificationsTranslations';
 export { default as useAccountsTranslations } from './useAccountsTranslations';
 export { default as useCategoriesTranslations } from './useCategoriesTranslations';
+export { default as useTransactionsTranslations } from './useTransactionsTranslations';

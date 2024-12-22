@@ -21,13 +21,25 @@ export interface SectionListProps<T> {
   style?: StyleProp<ViewStyle>;
   sections: Section<T>[];
   isLoading: boolean;
+  isRefreshing?: boolean;
+  onRefresh?: () => void;
   onItemPress?: (item: T) => void;
   onItemLongPress?: (item: T) => void;
   renderItem: FC<SectionListRenderItemInfo<T>>;
 }
 
 const SectionList = <T extends BaseModel>(props: SectionListProps<T>) => {
-  const { sections, style, onItemPress, onItemLongPress, isLoading, renderItem } = props;
+  const {
+    sections,
+    style,
+    onItemPress,
+    onItemLongPress,
+    isLoading,
+    renderItem,
+    onRefresh,
+    isRefreshing = false,
+  } = props;
+
   const { bottom } = useSafeAreaInsets();
 
   const paddingBottom = useMemo<number>(() => 54 + bottom + sizes.l, [bottom]);
@@ -49,7 +61,8 @@ const SectionList = <T extends BaseModel>(props: SectionListProps<T>) => {
 
   return (
     <RNSectionList<T, Section<T>>
-      bounces={false}
+      onRefresh={onRefresh}
+      refreshing={isRefreshing}
       showsVerticalScrollIndicator={false}
       stickySectionHeadersEnabled={false}
       scrollIndicatorInsets={scrollIndicatorInsets}

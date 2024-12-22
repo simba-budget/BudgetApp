@@ -23,7 +23,6 @@ export { default as ScrollView } from './ScrollView';
 export { default as Divider } from './Divider';
 export { default as DatePicker } from './DatePicker';
 export { default as Markdown } from './Markdown';
-export { default as RelevantDatesFilter } from './RelevantDatesFilter';
 export { default as Message } from './Message';
 export { default as ListItem } from './ListItem';
 export { default as SectionList } from './SectionList';

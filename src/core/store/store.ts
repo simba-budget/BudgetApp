@@ -2,6 +2,7 @@ import { reducer as accountsReducer } from '@features/accounts/slice';
 import { reducer as authReducer } from '@features/auth/slice';
 import { reducer as categoriesReducer } from '@features/categories/slice';
 import { reducer as notificationsReducer } from '@features/notifications/slice';
+import { reducer as transactionsReducer } from '@features/transactions/slice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import logger from 'redux-logger';
@@ -11,6 +12,7 @@ export const rootReducer = combineReducers({
   notifications: notificationsReducer,
   accounts: accountsReducer,
   categories: categoriesReducer,
+  transactions: transactionsReducer,
 });
 
 export const store = configureStore({
