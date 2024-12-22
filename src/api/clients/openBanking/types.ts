@@ -2,7 +2,9 @@ export interface LinkTokenResponse {
   linkToken: string;
 }
 
-export interface CreateAccessTokenRequest {
+export interface CreateInstitutionLinkRequest {
   publicToken: string;
+  name: string;
   institutionId: string;
+  accountsIds: string[];
 }

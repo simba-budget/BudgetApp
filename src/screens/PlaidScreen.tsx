@@ -1,5 +1,5 @@
 import { Button, ScreenContainer } from '@common/components';
-import { useCreateAccessToken, useCreateLinkToken } from '@features/openBanking/hooks';
+import { useCreateInstitutionLink, useCreateLinkToken } from '@features/openBanking/hooks';
 import React, { useEffect, useState } from 'react';
 import {
   create,
@@ -13,7 +13,7 @@ import {
 const PlaidScreen = () => {
   const [linkToken, setLinkToken] = useState<string | null>(null);
   const { createLinkToken, isSubmitting } = useCreateLinkToken({ onSuccess: setLinkToken });
-  const { createAccessToken } = useCreateAccessToken();
+  const { createInstitutionLink } = useCreateInstitutionLink();
 
   useEffect(() => {
     if (!linkToken) {
@@ -35,7 +35,10 @@ const PlaidScreen = () => {
     onSuccess: async (response: LinkSuccess) => {
       const { publicToken, metadata } = response;
       if (!metadata.institution) return;
-      return createAccessToken({ publicToken, institutionId: metadata.institution.id });
+      const name = metadata.institution.name;
+      const institutionId = metadata.institution.id;
+      const accountsIds = metadata.accounts.map((account) => account.id);
+      return createInstitutionLink({ publicToken, institutionId, accountsIds, name });
     },
     onExit: dismissLink,
     iOSPresentationStyle: LinkIOSPresentationStyle.MODAL,
