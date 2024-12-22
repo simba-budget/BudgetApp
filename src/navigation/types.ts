@@ -1,6 +1,6 @@
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 
-import { AuthParamsList, RootParamsList } from './navigation';
+import { AuthParamsList, MainParamsList, RootParamsList } from './navigation';
 
 export type RootNavigation = StackNavigationProp<RootParamsList>;
 
@@ -26,3 +26,10 @@ export type VerifyOtpScreenProps = StackScreenProps<AuthParamsList, VerifyOtpRou
 
 export type RegistrationRoute = 'Registration';
 export const registrationRoute: RegistrationRoute = 'Registration';
+
+export type MainRoute = 'Main';
+export const mainRoute: MainRoute = 'Main';
+export type MainNavigation = StackNavigationProp<MainParamsList>;
+
+export type OpenBankingRoute = 'OpenBanking';
+export const openBankingRoute: OpenBankingRoute = 'OpenBanking';

@@ -9,9 +9,14 @@ import {
   WelcomeScreen,
 } from '@screens';
 
+import PlaidScreen from '../screens/PlaidScreen';
+
+import { useIsLoggedIn, useIsLoggedOut } from './hooks';
 import { headerHiddenOptions, stackOptions } from './options';
 import {
   authRoute,
+  mainRoute,
+  openBankingRoute,
   privacyPolicyRoute,
   registrationRoute,
   sendOtpRoute,
@@ -31,6 +36,11 @@ export type RootParamsList = {
   [privacyPolicyRoute]: undefined;
   [termsAndConditionsRoute]: undefined;
   [authRoute]: NavigatorScreenParams<AuthParamsList>;
+  [mainRoute]: NavigatorScreenParams<MainParamsList>;
+};
+
+export type MainParamsList = {
+  [openBankingRoute]: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthParamsList>({
@@ -43,14 +53,29 @@ const AuthStack = createStackNavigator<AuthParamsList>({
   },
 });
 
+const MainStack = createStackNavigator<MainParamsList>({
+  initialRouteName: openBankingRoute,
+  screenOptions: stackOptions,
+  screens: {
+    [openBankingRoute]: PlaidScreen,
+  },
+});
+
 const RootStack = createStackNavigator<RootParamsList>({
-  initialRouteName: welcomeRoute,
+  initialRouteName: mainRoute,
   screenOptions: headerHiddenOptions,
   screens: {
     [welcomeRoute]: WelcomeScreen,
     [privacyPolicyRoute]: PrivacyPolicyScreen,
     [termsAndConditionsRoute]: TermsAndConditionsScreen,
-    [authRoute]: AuthStack,
+    [authRoute]: {
+      if: useIsLoggedOut,
+      screen: AuthStack,
+    },
+    [mainRoute]: {
+      if: useIsLoggedIn,
+      screen: MainStack,
+    },
   },
 });
 

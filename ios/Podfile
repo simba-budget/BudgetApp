@@ -23,6 +23,8 @@ target 'BudgetApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'Plaid', '~> 5.6.1'
+
   target 'BudgetAppTests' do
     inherit! :complete
     # Pods for testing
