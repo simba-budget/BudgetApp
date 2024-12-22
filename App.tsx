@@ -4,6 +4,7 @@ import { store } from '@core/store/store';
 import ToastProvider from '@core/toasts/ToastProvider';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setupTranslations } from '@i18n/setup';
+import linking from '@navigation/linking';
 import Navigation from '@navigation/navigation';
 import { flex1 } from '@styles/common';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -28,7 +29,7 @@ const App = () => {
             <SafeAreaProvider>
               <ToastProvider>
                 <BottomSheetModalProvider>
-                  <Navigation />
+                  <Navigation linking={linking} />
                 </BottomSheetModalProvider>
               </ToastProvider>
             </SafeAreaProvider>

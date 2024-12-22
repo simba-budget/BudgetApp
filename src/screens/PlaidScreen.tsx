@@ -1,10 +1,9 @@
 import { Button, ScreenContainer } from '@common/components';
-import { useCreateLinkToken } from '@features/openBanking/hooks';
+import { useCreateAccessToken, useCreateLinkToken } from '@features/openBanking/hooks';
 import React, { useEffect, useState } from 'react';
 import {
   create,
   dismissLink,
-  LinkExit,
   LinkIOSPresentationStyle,
   LinkLogLevel,
   LinkSuccess,
@@ -14,6 +13,10 @@ import {
 const PlaidScreen = () => {
   const [linkToken, setLinkToken] = useState<string | null>(null);
   const { createLinkToken, isSubmitting } = useCreateLinkToken({ onSuccess: setLinkToken });
+
+  const { createAccessToken } = useCreateAccessToken({
+    onSuccess: () => console.log('as cia'),
+  });
 
   useEffect(() => {
     if (!linkToken) {
@@ -31,19 +34,16 @@ const PlaidScreen = () => {
     };
   };
 
-  const createLinkOpenProps = () => {
-    return {
-      onSuccess: async (success: LinkSuccess) => {
-        console.log('success', success);
-      },
-      onExit: (linkExit: LinkExit) => {
-        console.log('Exit: ', linkExit);
-        dismissLink();
-      },
-      iOSPresentationStyle: LinkIOSPresentationStyle.MODAL,
-      logLevel: LinkLogLevel.ERROR,
-    };
-  };
+  const createLinkOpenProps = () => ({
+    onSuccess: async (response: LinkSuccess) => {
+      const { publicToken, metadata } = response;
+      if (!metadata.institution) return;
+      return createAccessToken({ publicToken, institutionId: metadata.institution.id });
+    },
+    onExit: dismissLink,
+    iOSPresentationStyle: LinkIOSPresentationStyle.MODAL,
+    logLevel: LinkLogLevel.ERROR,
+  });
 
   const handleOpenLink = () => {
     const openProps = createLinkOpenProps();
