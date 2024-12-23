@@ -109,6 +109,7 @@ const AccountStack = createStackNavigator<AccountParamsList>({
 
 const MainStack = createStackNavigator<MainParamsList>({
   initialRouteName: accountsRoute,
+  screenOptions: headerHiddenOptions,
   screens: {
     [accountsRoute]: AccountsScreen,
     [accountRoute]: { if: useIsAccountSelected, screen: AccountStack },
