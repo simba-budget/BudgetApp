@@ -1,34 +1,27 @@
-import { Transaction } from '@api/clients/transactions/types';
-import { SectionList } from '@common/components';
-import { Section } from '@common/types';
 import { useAppSelector } from '@core/store/store';
-import React, { useMemo } from 'react';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import React from 'react';
 
-import { TransactionsListItem } from '../components';
+import { TransactionsSections } from '../components';
 import { useTransactions } from '../hooks';
-import { mapTransactionsToDaySections } from '../map';
 import { selectTransactionsFilter } from '../selectors';
 
 const Transactions = () => {
+  const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectTransactionsFilter);
 
   const { transactions, isLoading, isRefetching, refetch } = useTransactions({
-    accountId: 4,
+    accountId,
     filter,
   });
 
-  const sections = useMemo<Section<Transaction>[]>(
-    () => mapTransactionsToDaySections(transactions),
-    [transactions],
-  );
-
   return (
-    <SectionList<Transaction>
-      onRefresh={refetch}
-      isRefreshing={isRefetching}
-      renderItem={TransactionsListItem}
+    <TransactionsSections
       isLoading={isLoading}
-      sections={sections}
+      isRefreshing={isRefetching}
+      onRefresh={refetch}
+      transactions={transactions}
+      onTransactionPress={console.log}
     />
   );
 };

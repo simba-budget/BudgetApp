@@ -1,6 +1,7 @@
 import { removeTokens, saveTokens } from '@api/auth/storage';
 import { TokensResponse } from '@api/clients/auth/types';
 import queryClient from '@core/query/client';
+import { removeAccount } from '@features/accounts/storage';
 import { defaultLocale } from '@i18n/constants';
 import { changeLanguage } from '@i18n/utils';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -10,6 +11,7 @@ export const logoutAction = createAsyncThunk('logout', async () => {
 
   await Promise.all([
     removeTokens(),
+    removeAccount(),
     queryClient.invalidateQueries(),
     changeLanguage(defaultLocale),
   ]);

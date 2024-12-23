@@ -3,8 +3,8 @@ import { Home } from '@features/home/containers';
 import React from 'react';
 
 const HomeScreen = () => (
-  <ScreenContainer isDark>
-    <StatusBar translucent barStyle="light-content" />
+  <ScreenContainer>
+    <StatusBar translucent barStyle="dark-content" />
     <Home />
   </ScreenContainer>
 );

@@ -7,3 +7,6 @@ export { default as useNotificationsTranslations } from './useNotificationsTrans
 export { default as useAccountsTranslations } from './useAccountsTranslations';
 export { default as useCategoriesTranslations } from './useCategoriesTranslations';
 export { default as useTransactionsTranslations } from './useTransactionsTranslations';
+export { default as useGoalsTranslations } from './useGoalsTranslations';
+export { default as useInvitationsTranslations } from './useInvitationsTranslations';
+export { default as useContributionsTranslations } from './useContributionsTranslations';

@@ -1,6 +1,12 @@
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 
-import { AuthParamsList, MainParamsList, RootParamsList } from './navigation';
+import {
+  AccountParamsList,
+  AuthParamsList,
+  MainParamsList,
+  RootParamsList,
+} from './navigation';
 
 export type RootNavigation = StackNavigationProp<RootParamsList>;
 
@@ -34,8 +40,35 @@ export type MainNavigation = StackNavigationProp<MainParamsList>;
 export type OpenBankingRoute = 'OpenBanking';
 export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
 
-export type TransactionsRoute = 'Transactions';
-export const transactionsRoute: TransactionsRoute = 'Transactions';
+export type AccountsRoute = 'Accounts';
+export const accountsRoute: AccountsRoute = 'Accounts';
+
+export type AccountRoute = 'Account';
+export const accountRoute: AccountRoute = 'Account';
+export type AccountNavigation = BottomTabNavigationProp<AccountParamsList>;
+
+export type ContributionsRoute = 'Contributions';
+export const contributionsRoute: ContributionsRoute = 'Contributions';
+
+export type GoalRoute = 'Goal';
+export const goalRoute: GoalRoute = 'Goal';
+export type GoalScreenProps = StackScreenProps<AccountParamsList, GoalRoute>;
+
+export type BottomTabsRoute = 'BottomTabs';
+export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
+export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;
 
 export type HomeRoute = 'Home';
 export const homeRoute: HomeRoute = 'Home';
+
+export type TransactionsRoute = 'Transactions';
+export const transactionsRoute: TransactionsRoute = 'Transactions';
+
+export type CategoriesRoute = 'Categories';
+export const categoriesRoute: CategoriesRoute = 'Categories';
+
+export type GoalsRoute = 'Goals';
+export const goalsRoute: GoalsRoute = 'Goals';
+
+export type InvitationsRoute = 'Invitations';
+export const invitationsRoute: InvitationsRoute = 'Invitations';

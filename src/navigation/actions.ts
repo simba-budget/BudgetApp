@@ -1,7 +1,15 @@
-import { AuthParamsList } from '@navigation/navigation';
+import { AccountParamsList, AuthParamsList } from '@navigation/navigation';
 
 import {
+  accountRoute,
   AuthNavigation,
+  bottomTabsRoute,
+  contributionsRoute,
+  ContributionsRoute,
+  goalRoute,
+  GoalRoute,
+  homeRoute,
+  MainNavigation,
   privacyPolicyRoute,
   registrationRoute,
   RootNavigation,
@@ -32,4 +40,19 @@ export const toPrivacyPolicy = ({ navigate }: RootNavigation) => {
 
 export const toTermsAndConditions = ({ navigate }: RootNavigation) => {
   return navigate(termsAndConditionsRoute);
+};
+
+export const toHome = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: bottomTabsRoute, params: { screen: homeRoute } });
+};
+
+export const toContributions = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[ContributionsRoute],
+) => {
+  return navigate(accountRoute, { screen: contributionsRoute, params });
+};
+
+export const toGoal = ({ navigate }: MainNavigation, params: AccountParamsList[GoalRoute]) => {
+  return navigate(accountRoute, { screen: goalRoute, params });
 };

@@ -1,6 +1,9 @@
 import { reducer as accountsReducer } from '@features/accounts/slice';
 import { reducer as authReducer } from '@features/auth/slice';
 import { reducer as categoriesReducer } from '@features/categories/slice';
+import { reducer as contributionsReducer } from '@features/contributions/slice';
+import { reducer as goalsReducer } from '@features/goals/slice';
+import { reducer as invitationsReducer } from '@features/invitations/slice';
 import { reducer as notificationsReducer } from '@features/notifications/slice';
 import { reducer as transactionsReducer } from '@features/transactions/slice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -13,6 +16,9 @@ export const rootReducer = combineReducers({
   accounts: accountsReducer,
   categories: categoriesReducer,
   transactions: transactionsReducer,
+  goals: goalsReducer,
+  invitations: invitationsReducer,
+  contributions: contributionsReducer,
 });
 
 export const store = configureStore({

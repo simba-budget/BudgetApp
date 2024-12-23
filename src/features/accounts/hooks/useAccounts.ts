@@ -9,12 +9,7 @@ export const getQueryKey = (filter: AccountsFilter, lastUpdated: number) => {
   return ['accounts', filter, lastUpdated];
 };
 
-interface Options {
-  filter: AccountsFilter;
-}
-
-const useAccounts = (options: Options) => {
-  const { filter } = options;
+const useAccounts = (filter: AccountsFilter) => {
   const lastUpdated = useAppSelector(selectAccountsLastUpdated);
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({

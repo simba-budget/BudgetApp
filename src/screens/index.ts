@@ -4,3 +4,8 @@ export * from './documents';
 export * from './notifications';
 export * from './transactions';
 export * from './home';
+export * from './accounts';
+export * from './categories';
+export * from './goals';
+export * from './invitations';
+export * from './contributions';

@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { CategoriesFilter } from './types';
 
-export interface CategoryState {
+export interface CategoriesState {
   filter: CategoriesFilter;
   lastUpdated: number;
 }
 
-const initialState: CategoryState = {
+const initialState: CategoriesState = {
   filter: {},
   lastUpdated: Date.now(),
 };
@@ -23,11 +23,14 @@ const categoriesSlice = createSlice({
     updateFilter: (state, action: PayloadAction<{ filter: CategoriesFilter }>) => {
       state.filter = action.payload.filter;
     },
+    updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
+      state.filter.keyword = action.payload.keyword;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(logoutAction.fulfilled, () => initialState);
   },
 });
 
-export const { updateFilter, updateCategories } = categoriesSlice.actions;
+export const { updateFilter, updateCategories, updateKeyword } = categoriesSlice.actions;
 export const { reducer } = categoriesSlice;

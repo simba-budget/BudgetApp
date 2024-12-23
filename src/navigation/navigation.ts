@@ -1,7 +1,14 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStaticNavigation, NavigatorScreenParams } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
+  AccountsScreen,
+  CategoriesScreen,
+  ContributionsScreen,
+  GoalScreen,
+  GoalsScreen,
   HomeScreen,
+  InvitationsScreen,
   PrivacyPolicyScreen,
   RegistrationScreen,
   SendOtpScreen,
@@ -10,14 +17,21 @@ import {
   VerifyOtpScreen,
   WelcomeScreen,
 } from '@screens';
+import { View } from 'react-native';
 
-import PlaidScreen from '../screens/PlaidScreen';
-
-import { useIsLoggedIn, useIsLoggedOut } from './hooks';
-import { headerHiddenOptions, stackOptions } from './options';
+import { useIsAccountSelected, useIsLoggedIn, useIsLoggedOut } from './hooks';
+import { headerHiddenOptions } from './options';
 import {
+  accountRoute,
+  accountsRoute,
   authRoute,
+  bottomTabsRoute,
+  categoriesRoute,
+  contributionsRoute,
+  goalRoute,
+  goalsRoute,
   homeRoute,
+  invitationsRoute,
   mainRoute,
   openBankingRoute,
   privacyPolicyRoute,
@@ -44,14 +58,27 @@ export type RootParamsList = {
 };
 
 export type MainParamsList = {
+  [accountsRoute]: undefined;
+  [accountRoute]: NavigatorScreenParams<AccountParamsList>;
+};
+
+export type AccountParamsList = {
   [openBankingRoute]: undefined;
-  [transactionsRoute]: undefined;
+  [contributionsRoute]: { goalId: number };
+  [goalRoute]: { id: number };
+  [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
+};
+
+export type BottomTabsParamsList = {
   [homeRoute]: undefined;
+  [transactionsRoute]: undefined;
+  [categoriesRoute]: undefined;
+  [goalsRoute]: undefined;
+  [invitationsRoute]: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthParamsList>({
   initialRouteName: sendOtpRoute,
-  screenOptions: stackOptions,
   screens: {
     [sendOtpRoute]: SendOtpScreen,
     [verifyOtpRoute]: VerifyOtpScreen,
@@ -59,13 +86,32 @@ const AuthStack = createStackNavigator<AuthParamsList>({
   },
 });
 
-const MainStack = createStackNavigator<MainParamsList>({
+const BottomTabs = createBottomTabNavigator<BottomTabsParamsList>({
   initialRouteName: homeRoute,
-  screenOptions: headerHiddenOptions,
   screens: {
-    [openBankingRoute]: PlaidScreen,
-    [transactionsRoute]: TransactionsScreen,
     [homeRoute]: HomeScreen,
+    [transactionsRoute]: TransactionsScreen,
+    [categoriesRoute]: CategoriesScreen,
+    [goalsRoute]: GoalsScreen,
+    [invitationsRoute]: InvitationsScreen,
+  },
+});
+
+const AccountStack = createStackNavigator<AccountParamsList>({
+  initialRouteName: bottomTabsRoute,
+  screens: {
+    [openBankingRoute]: View,
+    [contributionsRoute]: ContributionsScreen,
+    [goalRoute]: GoalScreen,
+    [bottomTabsRoute]: BottomTabs,
+  },
+});
+
+const MainStack = createStackNavigator<MainParamsList>({
+  initialRouteName: accountsRoute,
+  screens: {
+    [accountsRoute]: AccountsScreen,
+    [accountRoute]: { if: useIsAccountSelected, screen: AccountStack },
   },
 });
 
@@ -76,14 +122,8 @@ const RootStack = createStackNavigator<RootParamsList>({
     [welcomeRoute]: WelcomeScreen,
     [privacyPolicyRoute]: PrivacyPolicyScreen,
     [termsAndConditionsRoute]: TermsAndConditionsScreen,
-    [authRoute]: {
-      if: useIsLoggedOut,
-      screen: AuthStack,
-    },
-    [mainRoute]: {
-      if: useIsLoggedIn,
-      screen: MainStack,
-    },
+    [authRoute]: { if: useIsLoggedOut, screen: AuthStack },
+    [mainRoute]: { if: useIsLoggedIn, screen: MainStack },
   },
 });
 
