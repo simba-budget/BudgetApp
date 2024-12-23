@@ -1,7 +1,6 @@
 import { IconName } from '@icons';
 import { flex1, rowCenter } from '@styles/common';
 import { colors, gap, padding } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import React, { FC, useMemo } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 

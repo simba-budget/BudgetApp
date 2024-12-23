@@ -1,7 +1,6 @@
 import { BottomSheetModal, BottomSheetModalProps } from '@gorhom/bottom-sheet';
 import type { BottomSheetFooterProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetFooter';
 import { colors } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import React, { FC, ReactNode, useEffect, useRef } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

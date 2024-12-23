@@ -1,6 +1,5 @@
 import { center, flex1, rowCenter } from '@styles/common';
 import { colors, margin } from '@styles/lightTheme';
-import { scale } from '@styles/utils';
 import React, { FC, ReactNode } from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
