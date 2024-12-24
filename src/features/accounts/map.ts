@@ -4,4 +4,5 @@ export const mapSaveAccountRequest = (account?: Account | null): SaveAccountRequ
   name: account?.name ?? '',
   initialBudget: account?.initialBudget ?? 0,
   currency: account?.currency ?? 'EUR',
+  type: account?.type ?? 'PERSONAL',
 });

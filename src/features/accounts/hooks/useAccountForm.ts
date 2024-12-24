@@ -9,6 +9,7 @@ const initialFormData: SaveAccountRequest = {
   name: '',
   initialBudget: 0,
   currency: 'EUR',
+  type: 'PERSONAL',
 };
 
 const getSchema = (t: TFunction) => {
@@ -16,6 +17,10 @@ const getSchema = (t: TFunction) => {
     name: yup.string().required(t('Name is required')),
     initialBudget: yup.number().required(t('Initial budget is required')),
     currency: yup.string().required(t('Currency is required')),
+    type: yup
+      .string()
+      .oneOf(['PERSONAL', 'BUSINESS'], t('Type is required'))
+      .required(t('Type is required')),
   });
 };
 
