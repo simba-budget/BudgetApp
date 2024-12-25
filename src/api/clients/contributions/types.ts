@@ -23,4 +23,5 @@ export interface SaveContributionRequest {
 export interface ContributionsFilter {
   keyword?: string | null;
   goalId?: number | null;
+  accountId: number;
 }

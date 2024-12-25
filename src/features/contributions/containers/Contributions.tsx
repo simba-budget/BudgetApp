@@ -2,6 +2,7 @@ import { Contribution } from '@api/clients/contributions/types';
 import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { toContribution, toContributionAdd } from '@navigation/actions';
 import { MainNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
@@ -23,11 +24,13 @@ export interface ContributionsProps {
 const Contributions = ({ goalId }: ContributionsProps) => {
   const navigation = useNavigation<MainNavigation>();
   const dispatch = useAppDispatch();
+  const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectContributionsFilter);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
   const { contributions, isLoading, isRefetching, refetch } = useContributions({
     goalId,
+    accountId,
     filter: debouncedFilter,
   });
 
