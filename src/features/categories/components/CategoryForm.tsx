@@ -6,7 +6,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 
 import { SaveCategoryRequest } from '../types';
 
-export interface ClientFormProps {
+export interface CategoryFormProps {
   style?: StyleProp<ViewStyle>;
   onSubmit: () => void;
   isSubmitting: boolean;
@@ -20,7 +20,7 @@ const CategoryForm = ({
   onSubmit,
   control,
   isDisabled = false,
-}: ClientFormProps) => {
+}: CategoryFormProps) => {
   const { t } = useCategoriesTranslations();
 
   return (

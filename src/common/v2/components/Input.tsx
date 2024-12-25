@@ -3,7 +3,7 @@ import { TextInputProps as RNTextInputProps, StyleSheet, TextInput } from 'react
 
 export interface InputProps
   extends Omit<RNTextInputProps, 'onChange' | 'onChangeText' | 'value'> {
-  value?: string | null;
+  value?: string | null | number;
   onChange?: (text: string) => void;
 }
 
@@ -11,7 +11,7 @@ const Input = ({ onChange, value, style, ...rest }: InputProps) => (
   <TextInput
     onChangeText={onChange}
     style={[styles.container, style]}
-    value={value ?? undefined}
+    value={value?.toString() ?? undefined}
     {...rest}
   />
 );

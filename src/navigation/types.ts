@@ -65,6 +65,20 @@ export type CategoryRoute = 'Category';
 export const categoryRoute: CategoryRoute = 'Category';
 export type CategoryScreenProps = StackScreenProps<AccountParamsList, CategoryRoute>;
 
+export type TransactionAddRoute = 'TransactionAdd';
+export const transactionAddRoute: TransactionAddRoute = 'TransactionAdd';
+
+export type TransactionEditRoute = 'TransactionEdit';
+export const transactionEditRoute: TransactionEditRoute = 'TransactionEdit';
+export type TransactionEditScreenProps = StackScreenProps<
+  AccountParamsList,
+  TransactionEditRoute
+>;
+
+export type TransactionRoute = 'Transaction';
+export const transactionRoute: TransactionRoute = 'Transaction';
+export type TransactionScreenProps = StackScreenProps<AccountParamsList, TransactionRoute>;
+
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
 export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;

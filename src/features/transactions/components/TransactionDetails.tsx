@@ -1,28 +1,28 @@
-import { Category } from '@api/clients/categories/types';
+import { Transaction } from '@api/clients/transactions/types';
 import { Button } from '@common/v2/components';
-import { useCategoriesTranslations } from '@i18n/hooks';
+import { useTransactionsTranslations } from '@i18n/hooks';
 import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { RefreshControl, ScrollView, StyleProp, Text, ViewStyle } from 'react-native';
 
-export interface CategoryDetailsProps {
+export interface TransactionDetailsProps {
   style?: StyleProp<ViewStyle>;
-  category: Category | null;
+  transaction: Transaction | null;
   isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   onEditPress: () => void;
 }
 
-const CategoryDetails = ({
-  category,
+const TransactionDetails = ({
+  transaction,
   isLoading,
   onRefresh,
   isRefreshing,
   style,
   onEditPress,
-}: CategoryDetailsProps) => {
-  const { t } = useCategoriesTranslations();
+}: TransactionDetailsProps) => {
+  const { t } = useTransactionsTranslations();
 
   return (
     <ScrollView
@@ -31,10 +31,10 @@ const CategoryDetails = ({
         <RefreshControl onRefresh={onRefresh} refreshing={isLoading || isRefreshing} />
       }
       contentContainerStyle={padding('full')('m')}>
-      <Text>{JSON.stringify(category, null, 2)}</Text>
+      <Text>{JSON.stringify(transaction, null, 2)}</Text>
       <Button style={margin('top')('m')} onPress={onEditPress} title={t('Edit')} />
     </ScrollView>
   );
 };
 
-export default CategoryDetails;
+export default TransactionDetails;

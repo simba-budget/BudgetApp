@@ -1,4 +1,4 @@
-import { Transaction } from '@api/clients/transactions/types';
+import { SaveTransactionRequest, Transaction } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
 import { formatPrice } from '@utils/price';
 import groupBy from 'lodash/groupBy';
@@ -18,3 +18,13 @@ export const mapTransactionsToDaySections = (
     }),
   );
 };
+
+export const mapSaveTransactionRequest = (
+  transaction?: Transaction | null,
+): SaveTransactionRequest => ({
+  description: transaction?.description ?? '',
+  categoryId: transaction?.category?.id ?? 0,
+  date: transaction?.date ?? '',
+  amount: transaction?.amount ?? 0,
+  currency: transaction?.currency ?? 'EUR',
+});

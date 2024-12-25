@@ -20,6 +20,9 @@ import {
   RootNavigation,
   sendOtpRoute,
   termsAndConditionsRoute,
+  transactionAddRoute,
+  transactionEditRoute,
+  transactionRoute,
   verifyOtpRoute,
   VerifyOtpRoute,
 } from './types';
@@ -78,4 +81,22 @@ export const toCategory = (
   params: AccountParamsList[CategoryRoute],
 ) => {
   return navigate(accountRoute, { screen: categoryRoute, params });
+};
+
+export const toTransactionAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: transactionAddRoute });
+};
+
+export const toTransactionEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[CategoryEditRoute],
+) => {
+  return navigate(accountRoute, { screen: transactionEditRoute, params });
+};
+
+export const toTransaction = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[CategoryRoute],
+) => {
+  return navigate(accountRoute, { screen: transactionRoute, params });
 };

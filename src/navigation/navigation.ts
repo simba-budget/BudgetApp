@@ -16,6 +16,9 @@ import {
   RegistrationScreen,
   SendOtpScreen,
   TermsAndConditionsScreen,
+  TransactionAddScreen,
+  TransactionEditScreen,
+  TransactionScreen,
   TransactionsScreen,
   VerifyOtpScreen,
   WelcomeScreen,
@@ -44,6 +47,9 @@ import {
   registrationRoute,
   sendOtpRoute,
   termsAndConditionsRoute,
+  transactionAddRoute,
+  transactionEditRoute,
+  transactionRoute,
   transactionsRoute,
   verifyOtpRoute,
   welcomeRoute,
@@ -75,6 +81,9 @@ export type AccountParamsList = {
   [categoryAddRoute]: undefined;
   [categoryEditRoute]: { id: number };
   [categoryRoute]: { id: number };
+  [transactionAddRoute]: undefined;
+  [transactionEditRoute]: { id: number };
+  [transactionRoute]: { id: number };
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -115,6 +124,9 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [categoryAddRoute]: CategoryAddScreen,
     [categoryEditRoute]: CategoryEditScreen,
     [categoryRoute]: CategoryScreen,
+    [transactionAddRoute]: TransactionAddScreen,
+    [transactionEditRoute]: TransactionEditScreen,
+    [transactionRoute]: TransactionScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });
