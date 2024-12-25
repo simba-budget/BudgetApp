@@ -7,6 +7,8 @@ import {
   categoryAddRoute,
   categoryEditRoute,
   CategoryEditRoute,
+  categoryRoute,
+  CategoryRoute,
   contributionsRoute,
   ContributionsRoute,
   goalRoute,
@@ -69,4 +71,11 @@ export const toCategoryEdit = (
   params: AccountParamsList[CategoryEditRoute],
 ) => {
   return navigate(accountRoute, { screen: categoryEditRoute, params });
+};
+
+export const toCategory = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[CategoryRoute],
+) => {
+  return navigate(accountRoute, { screen: categoryRoute, params });
 };

@@ -6,6 +6,7 @@ import {
   CategoriesScreen,
   CategoryAddScreen,
   CategoryEditScreen,
+  CategoryScreen,
   ContributionsScreen,
   GoalScreen,
   GoalsScreen,
@@ -31,6 +32,7 @@ import {
   categoriesRoute,
   categoryAddRoute,
   categoryEditRoute,
+  categoryRoute,
   contributionsRoute,
   goalRoute,
   goalsRoute,
@@ -72,6 +74,7 @@ export type AccountParamsList = {
   [goalRoute]: { id: number };
   [categoryAddRoute]: undefined;
   [categoryEditRoute]: { id: number };
+  [categoryRoute]: { id: number };
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -111,6 +114,7 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [goalRoute]: GoalScreen,
     [categoryAddRoute]: CategoryAddScreen,
     [categoryEditRoute]: CategoryEditScreen,
+    [categoryRoute]: CategoryScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });

@@ -61,6 +61,10 @@ export type CategoryEditRoute = 'CategoryEdit';
 export const categoryEditRoute: CategoryEditRoute = 'CategoryEdit';
 export type CategoryEditScreenProps = StackScreenProps<AccountParamsList, CategoryEditRoute>;
 
+export type CategoryRoute = 'Category';
+export const categoryRoute: CategoryRoute = 'Category';
+export type CategoryScreenProps = StackScreenProps<AccountParamsList, CategoryRoute>;
+
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
 export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;

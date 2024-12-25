@@ -3,7 +3,7 @@ import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { toCategoryAdd, toCategoryEdit } from '@navigation/actions';
+import { toCategory, toCategoryAdd } from '@navigation/actions';
 import { MainNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
@@ -35,16 +35,16 @@ const Categories = () => {
   );
 
   const handleOnCategoryPress = useCallback(
-    (category: Category) => toCategoryEdit(navigation, { id: category.id }),
+    (category: Category) => toCategory(navigation, { id: category.id }),
     [navigation],
   );
 
   return (
     <SafeAreaView style={flex1}>
-      <CategoriesSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <View style={padding('horizontal')('m')}>
         <Button onPress={() => toCategoryAdd(navigation)} title="Add" />
       </View>
+      <CategoriesSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <CategoriesList
         isLoading={isLoading}
         isRefreshing={isRefetching}
