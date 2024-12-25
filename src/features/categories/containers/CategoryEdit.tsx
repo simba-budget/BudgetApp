@@ -1,0 +1,41 @@
+import { useAppSelector } from '@core/store/store';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { MainNavigation } from '@navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+
+import { CategoryForm } from '../components';
+import { useCategory, useCategoryForm, useEditCategory } from '../hooks';
+import { mapSaveCategoryRequest } from '../map';
+import { SaveCategoryRequest } from '../types';
+
+export interface CategoryEditProps {
+  id: number;
+}
+
+const CategoryEdit = ({ id }: CategoryEditProps) => {
+  const accountId = useAppSelector(selectSelectedAccountIdStrict);
+  const { goBack } = useNavigation<MainNavigation>();
+  const { category, isLoading } = useCategory(id);
+  const { handleSubmit, control, reset } = useCategoryForm();
+  const { editCategory, isSubmitting } = useEditCategory({ onSuccess: goBack });
+
+  const handleOnSubmit = (request: SaveCategoryRequest) => {
+    return editCategory({ id, ...request, accountId });
+  };
+
+  useEffect(() => {
+    if (category) reset(mapSaveCategoryRequest(category));
+  }, [category, reset]);
+
+  return (
+    <CategoryForm
+      onSubmit={handleSubmit(handleOnSubmit)}
+      isSubmitting={isSubmitting}
+      control={control}
+      isDisabled={isLoading}
+    />
+  );
+};
+
+export default CategoryEdit;

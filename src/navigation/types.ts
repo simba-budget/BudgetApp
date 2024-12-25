@@ -54,6 +54,13 @@ export type GoalRoute = 'Goal';
 export const goalRoute: GoalRoute = 'Goal';
 export type GoalScreenProps = StackScreenProps<AccountParamsList, GoalRoute>;
 
+export type CategoryAddRoute = 'CategoryAdd';
+export const categoryAddRoute: CategoryAddRoute = 'CategoryAdd';
+
+export type CategoryEditRoute = 'CategoryEdit';
+export const categoryEditRoute: CategoryEditRoute = 'CategoryEdit';
+export type CategoryEditScreenProps = StackScreenProps<AccountParamsList, CategoryEditRoute>;
+
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
 export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;

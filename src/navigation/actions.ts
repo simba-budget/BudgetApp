@@ -4,6 +4,9 @@ import {
   accountRoute,
   AuthNavigation,
   bottomTabsRoute,
+  categoryAddRoute,
+  categoryEditRoute,
+  CategoryEditRoute,
   contributionsRoute,
   ContributionsRoute,
   goalRoute,
@@ -55,4 +58,15 @@ export const toContributions = (
 
 export const toGoal = ({ navigate }: MainNavigation, params: AccountParamsList[GoalRoute]) => {
   return navigate(accountRoute, { screen: goalRoute, params });
+};
+
+export const toCategoryAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: categoryAddRoute });
+};
+
+export const toCategoryEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[CategoryEditRoute],
+) => {
+  return navigate(accountRoute, { screen: categoryEditRoute, params });
 };

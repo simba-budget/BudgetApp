@@ -4,6 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {
   AccountsScreen,
   CategoriesScreen,
+  CategoryAddScreen,
+  CategoryEditScreen,
   ContributionsScreen,
   GoalScreen,
   GoalsScreen,
@@ -27,6 +29,8 @@ import {
   authRoute,
   bottomTabsRoute,
   categoriesRoute,
+  categoryAddRoute,
+  categoryEditRoute,
   contributionsRoute,
   goalRoute,
   goalsRoute,
@@ -66,6 +70,8 @@ export type AccountParamsList = {
   [openBankingRoute]: undefined;
   [contributionsRoute]: { goalId: number };
   [goalRoute]: { id: number };
+  [categoryAddRoute]: undefined;
+  [categoryEditRoute]: { id: number };
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -103,6 +109,8 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [openBankingRoute]: View,
     [contributionsRoute]: ContributionsScreen,
     [goalRoute]: GoalScreen,
+    [categoryAddRoute]: CategoryAddScreen,
+    [categoryEditRoute]: CategoryEditScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });
