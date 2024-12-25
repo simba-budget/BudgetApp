@@ -43,6 +43,13 @@ export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
 export type AccountsRoute = 'Accounts';
 export const accountsRoute: AccountsRoute = 'Accounts';
 
+export type AccountAddRoute = 'AccountAdd';
+export const accountAddRoute: AccountAddRoute = 'AccountAdd';
+
+export type AccountEditRoute = 'AccountEdit';
+export const accountEditRoute: AccountEditRoute = 'AccountEdit';
+export type AccountEditScreenProps = StackScreenProps<MainParamsList, AccountEditRoute>;
+
 export type AccountRoute = 'Account';
 export const accountRoute: AccountRoute = 'Account';
 export type AccountNavigation = BottomTabNavigationProp<AccountParamsList>;

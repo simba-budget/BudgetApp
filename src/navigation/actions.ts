@@ -1,6 +1,9 @@
-import { AccountParamsList, AuthParamsList } from '@navigation/navigation';
+import { AccountParamsList, AuthParamsList, MainParamsList } from '@navigation/navigation';
 
 import {
+  accountAddRoute,
+  accountEditRoute,
+  AccountEditRoute,
   accountRoute,
   AuthNavigation,
   bottomTabsRoute,
@@ -99,4 +102,15 @@ export const toTransaction = (
   params: AccountParamsList[CategoryRoute],
 ) => {
   return navigate(accountRoute, { screen: transactionRoute, params });
+};
+
+export const toAccountAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountAddRoute);
+};
+
+export const toAccountEdit = (
+  { navigate }: MainNavigation,
+  params: MainParamsList[AccountEditRoute],
+) => {
+  return navigate(accountEditRoute, params);
 };

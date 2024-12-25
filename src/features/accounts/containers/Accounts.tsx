@@ -3,7 +3,7 @@ import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { useAccountsTranslations } from '@i18n/hooks';
-import { toHome } from '@navigation/actions';
+import { toAccountAdd, toHome } from '@navigation/actions';
 import { MainNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
@@ -43,6 +43,9 @@ const Accounts = () => {
 
   return (
     <SafeAreaView style={flex1}>
+      <View style={padding('horizontal')('m')}>
+        <Button onPress={() => toAccountAdd(navigation)} title="Add" />
+      </View>
       <AccountsSearch keyword={filter.keyword} onKeywordChange={handleOnKeywordChange} />
       <AccountsList
         isLoading={isLoading}

@@ -4,7 +4,7 @@ export type AccountType = 'PERSONAL' | 'BUSINESS';
 
 export interface Account extends BaseModel {
   name: string;
-  initialBudget: number;
+  initialBalance: number;
   type: AccountType;
   currency: string;
 }
@@ -12,7 +12,7 @@ export interface Account extends BaseModel {
 export interface SaveAccountRequest {
   name: string;
   type: AccountType;
-  initialBudget: number;
+  initialBalance: number;
   currency: string;
 }
 
