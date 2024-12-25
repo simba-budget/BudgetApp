@@ -12,8 +12,17 @@ import {
   CategoryEditRoute,
   categoryRoute,
   CategoryRoute,
+  ContributionAddRoute,
+  contributionAddRoute,
+  contributionEditRoute,
+  ContributionEditRoute,
+  contributionRoute,
+  ContributionRoute,
   contributionsRoute,
   ContributionsRoute,
+  goalAddRoute,
+  goalEditRoute,
+  GoalEditRoute,
   goalRoute,
   GoalRoute,
   homeRoute,
@@ -57,11 +66,43 @@ export const toHome = ({ navigate }: MainNavigation) => {
   return navigate(accountRoute, { screen: bottomTabsRoute, params: { screen: homeRoute } });
 };
 
+export const toContributionAdd = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[ContributionAddRoute],
+) => {
+  return navigate(accountRoute, { screen: contributionAddRoute, params });
+};
+
+export const toContributionEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[ContributionEditRoute],
+) => {
+  return navigate(accountRoute, { screen: contributionEditRoute, params });
+};
+
+export const toContribution = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[ContributionRoute],
+) => {
+  return navigate(accountRoute, { screen: contributionRoute, params });
+};
+
 export const toContributions = (
   { navigate }: MainNavigation,
   params: AccountParamsList[ContributionsRoute],
 ) => {
   return navigate(accountRoute, { screen: contributionsRoute, params });
+};
+
+export const toGoalAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: goalAddRoute });
+};
+
+export const toGoalEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[GoalEditRoute],
+) => {
+  return navigate(accountRoute, { screen: goalEditRoute, params });
 };
 
 export const toGoal = ({ navigate }: MainNavigation, params: AccountParamsList[GoalRoute]) => {

@@ -11,14 +11,14 @@ export const getQueryKey = (filter: ApiContributionsFilter, lastUpdated: number)
 };
 
 interface Options {
-  accountId: number;
+  goalId: number;
   filter: ContributionsFilter;
 }
 
 const useContributions = (options: Options) => {
-  const { filter, accountId } = options;
+  const { filter, goalId } = options;
   const lastUpdated = useAppSelector(selectContributionsLastUpdated);
-  const apiFilter = { ...filter, accountId };
+  const apiFilter = { ...filter, goalId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
     queryKey: getQueryKey(apiFilter, lastUpdated),

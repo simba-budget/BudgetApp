@@ -9,7 +9,12 @@ import {
   CategoryAddScreen,
   CategoryEditScreen,
   CategoryScreen,
+  ContributionAddScreen,
+  ContributionEditScreen,
+  ContributionScreen,
   ContributionsScreen,
+  GoalAddScreen,
+  GoalEditScreen,
   GoalScreen,
   GoalsScreen,
   HomeScreen,
@@ -40,7 +45,12 @@ import {
   categoryAddRoute,
   categoryEditRoute,
   categoryRoute,
+  contributionAddRoute,
+  contributionEditRoute,
+  contributionRoute,
   contributionsRoute,
+  goalAddRoute,
+  goalEditRoute,
   goalRoute,
   goalsRoute,
   homeRoute,
@@ -82,7 +92,12 @@ export type MainParamsList = {
 
 export type AccountParamsList = {
   [openBankingRoute]: undefined;
+  [contributionAddRoute]: { goalId: number };
+  [contributionEditRoute]: { id: number };
+  [contributionRoute]: { id: number };
   [contributionsRoute]: { goalId: number };
+  [goalAddRoute]: undefined;
+  [goalEditRoute]: { id: number };
   [goalRoute]: { id: number };
   [categoryAddRoute]: undefined;
   [categoryEditRoute]: { id: number };
@@ -125,7 +140,12 @@ const AccountStack = createStackNavigator<AccountParamsList>({
   initialRouteName: bottomTabsRoute,
   screens: {
     [openBankingRoute]: View,
+    [contributionAddRoute]: ContributionAddScreen,
+    [contributionEditRoute]: ContributionEditScreen,
+    [contributionRoute]: ContributionScreen,
     [contributionsRoute]: ContributionsScreen,
+    [goalAddRoute]: GoalAddScreen,
+    [goalEditRoute]: GoalEditScreen,
     [goalRoute]: GoalScreen,
     [categoryAddRoute]: CategoryAddScreen,
     [categoryEditRoute]: CategoryEditScreen,

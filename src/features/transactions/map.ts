@@ -1,5 +1,6 @@
 import { SaveTransactionRequest, Transaction } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
+import { getCurrentDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import groupBy from 'lodash/groupBy';
 import map from 'lodash/map';
@@ -24,7 +25,7 @@ export const mapSaveTransactionRequest = (
 ): SaveTransactionRequest => ({
   description: transaction?.description ?? '',
   categoryId: transaction?.category?.id ?? 0,
-  date: transaction?.date ?? '',
+  date: transaction?.date ?? getCurrentDate(),
   amount: transaction?.amount ?? 0,
   currency: transaction?.currency ?? 'EUR',
 });

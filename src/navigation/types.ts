@@ -54,8 +54,34 @@ export type AccountRoute = 'Account';
 export const accountRoute: AccountRoute = 'Account';
 export type AccountNavigation = BottomTabNavigationProp<AccountParamsList>;
 
+export type ContributionAddRoute = 'ContributionAdd';
+export const contributionAddRoute: ContributionAddRoute = 'ContributionAdd';
+export type ContributionAddScreenProps = StackScreenProps<
+  AccountParamsList,
+  ContributionAddRoute
+>;
+
+export type ContributionEditRoute = 'ContributionEdit';
+export const contributionEditRoute: ContributionEditRoute = 'ContributionEdit';
+export type ContributionEditScreenProps = StackScreenProps<
+  AccountParamsList,
+  ContributionEditRoute
+>;
+
+export type ContributionRoute = 'Contribution';
+export const contributionRoute: ContributionRoute = 'Contribution';
+export type ContributionScreenProps = StackScreenProps<AccountParamsList, ContributionRoute>;
+
 export type ContributionsRoute = 'Contributions';
 export const contributionsRoute: ContributionsRoute = 'Contributions';
+export type ContributionsScreenProps = StackScreenProps<AccountParamsList, ContributionsRoute>;
+
+export type GoalAddRoute = 'GoalAdd';
+export const goalAddRoute: GoalAddRoute = 'GoalAdd';
+
+export type GoalEditRoute = 'GoalEdit';
+export const goalEditRoute: GoalEditRoute = 'GoalEdit';
+export type GoalEditScreenProps = StackScreenProps<AccountParamsList, GoalEditRoute>;
 
 export type GoalRoute = 'Goal';
 export const goalRoute: GoalRoute = 'Goal';

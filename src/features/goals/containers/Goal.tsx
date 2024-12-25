@@ -1,4 +1,4 @@
-import { toContributions } from '@navigation/actions';
+import { toContributions, toGoalEdit } from '@navigation/actions';
 import { MainNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
@@ -19,6 +19,11 @@ const Goal = ({ id }: GoalProps) => {
     [navigation, id],
   );
 
+  const handleOnEditPress = useCallback(
+    () => toGoalEdit(navigation, { id }),
+    [navigation, id],
+  );
+
   return (
     <GoalDetails
       goal={goal}
@@ -26,6 +31,7 @@ const Goal = ({ id }: GoalProps) => {
       isRefreshing={isRefetching}
       onRefresh={refetch}
       onContributionsPress={handleOnContributionsPress}
+      onEditPress={handleOnEditPress}
     />
   );
 };
