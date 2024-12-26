@@ -18,6 +18,8 @@ import {
   GoalScreen,
   GoalsScreen,
   HomeScreen,
+  InvitationAddScreen,
+  InvitationScreen,
   InvitationsScreen,
   PrivacyPolicyScreen,
   RegistrationScreen,
@@ -54,6 +56,8 @@ import {
   goalRoute,
   goalsRoute,
   homeRoute,
+  invitationAddRoute,
+  invitationRoute,
   invitationsRoute,
   mainRoute,
   openBankingRoute,
@@ -105,6 +109,8 @@ export type AccountParamsList = {
   [transactionAddRoute]: undefined;
   [transactionEditRoute]: { id: number };
   [transactionRoute]: { id: number };
+  [invitationAddRoute]: undefined;
+  [invitationRoute]: { id: number };
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -153,6 +159,8 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [transactionAddRoute]: TransactionAddScreen,
     [transactionEditRoute]: TransactionEditScreen,
     [transactionRoute]: TransactionScreen,
+    [invitationRoute]: InvitationScreen,
+    [invitationAddRoute]: InvitationAddScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });

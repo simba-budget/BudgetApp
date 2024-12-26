@@ -1,9 +1,15 @@
+import { Invitation } from '@api/clients/invitations/types';
 import { debounceTime } from '@common/constants';
+import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { toInvitation, toInvitationAdd } from '@navigation/actions';
+import { MainNavigation } from '@navigation/types';
+import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
+import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { InvitationsList, InvitationsSearch } from '../components';
@@ -12,6 +18,7 @@ import { selectInvitationsFilter } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Invitations = () => {
+  const navigation = useNavigation<MainNavigation>();
   const dispatch = useAppDispatch();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectInvitationsFilter);
@@ -27,15 +34,23 @@ const Invitations = () => {
     [dispatch],
   );
 
+  const handleOnInvitationPress = useCallback(
+    (invitation: Invitation) => toInvitation(navigation, { id: invitation.id }),
+    [navigation],
+  );
+
   return (
     <SafeAreaView style={flex1}>
+      <View style={padding('horizontal')('m')}>
+        <Button onPress={() => toInvitationAdd(navigation)} title="Add" />
+      </View>
       <InvitationsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <InvitationsList
         isLoading={isLoading}
         isRefreshing={isRefetching}
         onRefresh={refetch}
         invitations={invitations}
-        onInvitationPress={console.log}
+        onInvitationPress={handleOnInvitationPress}
       />
     </SafeAreaView>
   );

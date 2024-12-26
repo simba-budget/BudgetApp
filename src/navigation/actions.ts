@@ -26,6 +26,9 @@ import {
   goalRoute,
   GoalRoute,
   homeRoute,
+  invitationAddRoute,
+  invitationRoute,
+  InvitationRoute,
   MainNavigation,
   privacyPolicyRoute,
   registrationRoute,
@@ -154,4 +157,15 @@ export const toAccountEdit = (
   params: MainParamsList[AccountEditRoute],
 ) => {
   return navigate(accountEditRoute, params);
+};
+
+export const toInvitationAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: invitationAddRoute });
+};
+
+export const toInvitation = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[InvitationRoute],
+) => {
+  return navigate(accountRoute, { screen: invitationRoute, params });
 };

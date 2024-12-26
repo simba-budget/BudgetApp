@@ -112,6 +112,13 @@ export type TransactionRoute = 'Transaction';
 export const transactionRoute: TransactionRoute = 'Transaction';
 export type TransactionScreenProps = StackScreenProps<AccountParamsList, TransactionRoute>;
 
+export type InvitationAddRoute = 'InvitationAdd';
+export const invitationAddRoute: InvitationAddRoute = 'InvitationAdd';
+
+export type InvitationRoute = 'Invitation';
+export const invitationRoute: InvitationRoute = 'Invitation';
+export type InvitationScreenProps = StackScreenProps<AccountParamsList, InvitationRoute>;
+
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
 export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;
