@@ -1,4 +1,5 @@
 import { CachedResourcesLoader } from '@common/hoc';
+import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
 import ToastProvider from '@core/toasts/ToastProvider';
@@ -19,6 +20,7 @@ import { Provider } from 'react-redux';
 dayjs.extend(relativeTime);
 dayjs.extend(minMax);
 setupTranslations();
+setupNotifications();
 
 const App = () => {
   return (
