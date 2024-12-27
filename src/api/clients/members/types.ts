@@ -11,6 +11,7 @@ export interface Member extends BaseModel {
 
 export interface SaveMemberRequest {
   role: MemberRole;
+  accountId: number;
 }
 
 export interface MembersFilter {

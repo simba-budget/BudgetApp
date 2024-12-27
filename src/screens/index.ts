@@ -10,3 +10,4 @@ export * from './goals';
 export * from './invitations';
 export * from './contributions';
 export * from './profile';
+export * from './members';

@@ -21,6 +21,9 @@ import {
   InvitationAddScreen,
   InvitationScreen,
   InvitationsScreen,
+  MemberEditScreen,
+  MemberScreen,
+  MembersScreen,
   PrivacyPolicyScreen,
   ProfileScreen,
   RegistrationScreen,
@@ -61,6 +64,9 @@ import {
   invitationRoute,
   invitationsRoute,
   mainRoute,
+  memberEditRoute,
+  memberRoute,
+  membersRoute,
   openBankingRoute,
   privacyPolicyRoute,
   profileRoute,
@@ -114,6 +120,8 @@ export type AccountParamsList = {
   [invitationAddRoute]: undefined;
   [invitationRoute]: { id: number };
   [profileRoute]: undefined;
+  [memberRoute]: { id: number };
+  [memberEditRoute]: { id: number };
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -123,6 +131,7 @@ export type BottomTabsParamsList = {
   [categoriesRoute]: undefined;
   [goalsRoute]: undefined;
   [invitationsRoute]: undefined;
+  [membersRoute]: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthParamsList>({
@@ -143,6 +152,7 @@ const BottomTabs = createBottomTabNavigator<BottomTabsParamsList>({
     [categoriesRoute]: CategoriesScreen,
     [goalsRoute]: GoalsScreen,
     [invitationsRoute]: InvitationsScreen,
+    [membersRoute]: MembersScreen,
   },
 });
 
@@ -167,6 +177,8 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [invitationRoute]: InvitationScreen,
     [invitationAddRoute]: InvitationAddScreen,
     [profileRoute]: ProfileScreen,
+    [memberRoute]: MemberScreen,
+    [memberEditRoute]: MemberEditScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });

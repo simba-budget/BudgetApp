@@ -122,6 +122,14 @@ export type InvitationScreenProps = StackScreenProps<AccountParamsList, Invitati
 export type ProfileRoute = 'Profile';
 export const profileRoute: ProfileRoute = 'Profile';
 
+export type MemberRoute = 'Member';
+export const memberRoute: MemberRoute = 'Member';
+export type MemberScreenProps = StackScreenProps<AccountParamsList, MemberRoute>;
+
+export type MemberEditRoute = 'MemberEdit';
+export const memberEditRoute: MemberEditRoute = 'MemberEdit';
+export type MemberEditScreenProps = StackScreenProps<AccountParamsList, MemberEditRoute>;
+
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
 export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;
@@ -140,3 +148,6 @@ export const goalsRoute: GoalsRoute = 'Goals';
 
 export type InvitationsRoute = 'Invitations';
 export const invitationsRoute: InvitationsRoute = 'Invitations';
+
+export type MembersRoute = 'Members';
+export const membersRoute: MembersRoute = 'Members';

@@ -30,6 +30,10 @@ import {
   invitationRoute,
   InvitationRoute,
   MainNavigation,
+  memberEditRoute,
+  MemberEditRoute,
+  memberRoute,
+  MemberRoute,
   privacyPolicyRoute,
   profileRoute,
   registrationRoute,
@@ -173,4 +177,18 @@ export const toInvitation = (
 
 export const toProfile = ({ navigate }: MainNavigation) => {
   return navigate(accountRoute, { screen: profileRoute });
+};
+
+export const toMember = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[MemberRoute],
+) => {
+  return navigate(accountRoute, { screen: memberRoute, params });
+};
+
+export const toMemberEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[MemberEditRoute],
+) => {
+  return navigate(accountRoute, { screen: memberEditRoute, params });
 };
