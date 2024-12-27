@@ -52,7 +52,7 @@ const PlaidScreen = () => {
 
   return (
     <ScreenContainer>
-      <Button isLoading={isSubmitting} title="Open Link" onPress={handleOpenLink} />
+      <Button isDisabled={isSubmitting} title="Open Link" onPress={handleOpenLink} />
     </ScreenContainer>
   );
 };
