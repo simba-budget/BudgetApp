@@ -1,9 +1,12 @@
+import { AccountNameFormData } from '@features/accounts/types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStaticNavigation, NavigatorScreenParams } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   AccountAddScreen,
+  AccountBalanceScreen,
   AccountEditScreen,
+  AccountNameScreen,
   AccountsScreen,
   CategoriesScreen,
   CategoryAddScreen,
@@ -42,7 +45,9 @@ import { useIsAccountSelected, useIsLoggedIn, useIsLoggedOut } from './hooks';
 import { headerHiddenOptions, stackOptions } from './options';
 import {
   accountAddRoute,
+  accountBalanceRoute,
   accountEditRoute,
+  accountNameRoute,
   accountRoute,
   accountsRoute,
   authRoute,
@@ -98,6 +103,8 @@ export type RootParamsList = {
 export type MainParamsList = {
   [accountsRoute]: undefined;
   [accountAddRoute]: undefined;
+  [accountNameRoute]: undefined;
+  [accountBalanceRoute]: { data: AccountNameFormData };
   [accountEditRoute]: { id: number };
   [accountRoute]: NavigatorScreenParams<AccountParamsList>;
 };
@@ -189,6 +196,8 @@ const MainStack = createStackNavigator<MainParamsList>({
   screens: {
     [accountsRoute]: AccountsScreen,
     [accountAddRoute]: AccountAddScreen,
+    [accountNameRoute]: AccountNameScreen,
+    [accountBalanceRoute]: AccountBalanceScreen,
     [accountEditRoute]: AccountEditScreen,
     [accountRoute]: { if: useIsAccountSelected, screen: AccountStack },
   },

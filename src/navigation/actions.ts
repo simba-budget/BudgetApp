@@ -2,8 +2,11 @@ import { AccountParamsList, AuthParamsList, MainParamsList } from '@navigation/n
 
 import {
   accountAddRoute,
+  AccountBalanceRoute,
+  accountBalanceRoute,
   accountEditRoute,
   AccountEditRoute,
+  accountNameRoute,
   accountRoute,
   AuthNavigation,
   bottomTabsRoute,
@@ -155,6 +158,17 @@ export const toTransaction = (
 
 export const toAccountAdd = ({ navigate }: MainNavigation) => {
   return navigate(accountAddRoute);
+};
+
+export const toAccountName = ({ navigate }: MainNavigation) => {
+  return navigate(accountNameRoute);
+};
+
+export const toAccountBalance = (
+  { navigate }: MainNavigation,
+  params: MainParamsList[AccountBalanceRoute],
+) => {
+  return navigate(accountBalanceRoute, params);
 };
 
 export const toAccountEdit = (

@@ -1,7 +1,8 @@
 import { Account, AccountsFilter } from '@api/clients/accounts/types';
-import { selectAccountAction } from '@features/accounts/actions';
 import { logoutAction } from '@features/auth/actions';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { selectAccountAction } from './actions';
 
 export interface AccountState {
   filter: AccountsFilter;
@@ -38,4 +39,5 @@ const accountsSlice = createSlice({
 });
 
 export const { updateAccounts, updateKeyword, updateFilter } = accountsSlice.actions;
+
 export const { reducer } = accountsSlice;

@@ -46,6 +46,13 @@ export const accountsRoute: AccountsRoute = 'Accounts';
 export type AccountAddRoute = 'AccountAdd';
 export const accountAddRoute: AccountAddRoute = 'AccountAdd';
 
+export type AccountNameRoute = 'AccountName';
+export const accountNameRoute: AccountNameRoute = 'AccountName';
+
+export type AccountBalanceRoute = 'AccountBalance';
+export const accountBalanceRoute: AccountBalanceRoute = 'AccountBalance';
+export type AccountBalanceScreenProps = StackScreenProps<MainParamsList, AccountBalanceRoute>;
+
 export type AccountEditRoute = 'AccountEdit';
 export const accountEditRoute: AccountEditRoute = 'AccountEdit';
 export type AccountEditScreenProps = StackScreenProps<MainParamsList, AccountEditRoute>;
