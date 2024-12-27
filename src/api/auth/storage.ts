@@ -1,17 +1,17 @@
 import { readAsync, removeAsync, writeAsync } from '@utils/storage';
 
-import { TokensResponse } from '../clients/auth/types';
+import { LoggedUser } from '../clients/auth/types';
 
 const key = 'auth';
 
-export const getTokens = () => {
-  return readAsync<TokensResponse>(key);
+export const getLoggedUser = () => {
+  return readAsync<LoggedUser>(key);
 };
 
-export const saveTokens = (tokens: TokensResponse) => {
-  return writeAsync<TokensResponse>(key, tokens);
+export const saveLoggedUser = (user: LoggedUser) => {
+  return writeAsync<LoggedUser>(key, user);
 };
 
-export const removeTokens = () => {
+export const removeLoggedUser = () => {
   return removeAsync(key);
 };

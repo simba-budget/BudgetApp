@@ -22,6 +22,7 @@ import {
   InvitationScreen,
   InvitationsScreen,
   PrivacyPolicyScreen,
+  ProfileScreen,
   RegistrationScreen,
   SendOtpScreen,
   TermsAndConditionsScreen,
@@ -62,6 +63,7 @@ import {
   mainRoute,
   openBankingRoute,
   privacyPolicyRoute,
+  profileRoute,
   registrationRoute,
   sendOtpRoute,
   termsAndConditionsRoute,
@@ -74,13 +76,13 @@ import {
 } from './types';
 
 export type AuthParamsList = {
+  [welcomeRoute]: undefined;
   [sendOtpRoute]: undefined;
   [verifyOtpRoute]: { email: string; expirationDate: string };
   [registrationRoute]: undefined;
 };
 
 export type RootParamsList = {
-  [welcomeRoute]: undefined;
   [privacyPolicyRoute]: undefined;
   [termsAndConditionsRoute]: undefined;
   [authRoute]: NavigatorScreenParams<AuthParamsList>;
@@ -111,6 +113,7 @@ export type AccountParamsList = {
   [transactionRoute]: { id: number };
   [invitationAddRoute]: undefined;
   [invitationRoute]: { id: number };
+  [profileRoute]: undefined;
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -123,8 +126,9 @@ export type BottomTabsParamsList = {
 };
 
 const AuthStack = createStackNavigator<AuthParamsList>({
-  initialRouteName: sendOtpRoute,
+  initialRouteName: welcomeRoute,
   screens: {
+    [welcomeRoute]: WelcomeScreen,
     [sendOtpRoute]: SendOtpScreen,
     [verifyOtpRoute]: VerifyOtpScreen,
     [registrationRoute]: RegistrationScreen,
@@ -161,6 +165,7 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [transactionRoute]: TransactionScreen,
     [invitationRoute]: InvitationScreen,
     [invitationAddRoute]: InvitationAddScreen,
+    [profileRoute]: ProfileScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });
@@ -176,14 +181,12 @@ const MainStack = createStackNavigator<MainParamsList>({
 });
 
 const RootStack = createStackNavigator<RootParamsList>({
-  initialRouteName: mainRoute,
   screenOptions: headerHiddenOptions,
   screens: {
-    [welcomeRoute]: WelcomeScreen,
-    [privacyPolicyRoute]: PrivacyPolicyScreen,
-    [termsAndConditionsRoute]: TermsAndConditionsScreen,
     [authRoute]: { if: useIsLoggedOut, screen: AuthStack },
     [mainRoute]: { if: useIsLoggedIn, screen: MainStack },
+    [privacyPolicyRoute]: PrivacyPolicyScreen,
+    [termsAndConditionsRoute]: TermsAndConditionsScreen,
   },
 });
 

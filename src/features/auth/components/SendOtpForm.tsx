@@ -49,6 +49,7 @@ const SendOtpForm: FC<SignInFormProps> = (props) => {
                 isError={!!error}
                 keyboardType="email-address"
                 iconName="email"
+                autoCapitalize="none"
                 placeholder={t('Email')}
               />
             </FormControl>

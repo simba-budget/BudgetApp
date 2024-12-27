@@ -119,6 +119,9 @@ export type InvitationRoute = 'Invitation';
 export const invitationRoute: InvitationRoute = 'Invitation';
 export type InvitationScreenProps = StackScreenProps<AccountParamsList, InvitationRoute>;
 
+export type ProfileRoute = 'Profile';
+export const profileRoute: ProfileRoute = 'Profile';
+
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
 export type BottomTabsNavigation = BottomTabNavigationProp<AuthParamsList>;

@@ -31,6 +31,7 @@ import {
   InvitationRoute,
   MainNavigation,
   privacyPolicyRoute,
+  profileRoute,
   registrationRoute,
   RootNavigation,
   sendOtpRoute,
@@ -168,4 +169,8 @@ export const toInvitation = (
   params: AccountParamsList[InvitationRoute],
 ) => {
   return navigate(accountRoute, { screen: invitationRoute, params });
+};
+
+export const toProfile = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: profileRoute });
 };

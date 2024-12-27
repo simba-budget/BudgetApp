@@ -21,7 +21,7 @@ const useAddInvitation = (options: Options) => {
   const { mutateAsync, isPending: isSubmitting } = useMutation({
     mutationFn: InvitationsClient.addInvitation,
     onSuccess: (response) => {
-      showSuccessToast(t('Invitation is successfully added!'));
+      showSuccessToast(t('Invitation is successfully sent!'));
       onSuccess(response.data);
       dispatch(updateInvitations());
     },

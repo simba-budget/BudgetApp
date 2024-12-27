@@ -18,7 +18,9 @@ export interface RegisterRequest {
   isAgreementChecked: boolean;
 }
 
-export interface TokensResponse {
+export interface LoggedUser {
+  id: number;
+  email: string;
   token: string;
   refreshToken: string;
 }

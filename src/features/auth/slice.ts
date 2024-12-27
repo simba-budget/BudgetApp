@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { logoutAction, setTokensAction } from './actions';
+import { loginAction, logoutAction } from './actions';
 
 export interface AuthState {
   token: string | null;
@@ -17,7 +17,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(setTokensAction.fulfilled, (state, action) => {
+    builder.addCase(loginAction.fulfilled, (state, action) => {
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
     });

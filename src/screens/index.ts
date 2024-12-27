@@ -9,3 +9,4 @@ export * from './categories';
 export * from './goals';
 export * from './invitations';
 export * from './contributions';
+export * from './profile';

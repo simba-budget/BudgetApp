@@ -1,10 +1,10 @@
 import httpClient from '@api/httpClient';
 
 import {
+  LoggedUser,
   OtpResponse,
   RegisterRequest,
   SendOtpRequest,
-  TokensResponse,
   VerifyOtpRequest,
 } from './types';
 
@@ -15,7 +15,7 @@ export const sendOtp = (request: SendOtpRequest) => {
 };
 
 export const verifyOtp = (request: VerifyOtpRequest) => {
-  return httpClient.post<void, TokensResponse>(`${url}/verify-otp`, request);
+  return httpClient.post<void, LoggedUser>(`${url}/verify-otp`, request);
 };
 
 export const register = (request: RegisterRequest) => {
