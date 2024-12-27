@@ -1,15 +1,14 @@
 import { BaseModel } from '@api/types';
 
-import { Goal } from '../goals/types';
 import { Member } from '../members/types';
 
 export interface Contribution extends BaseModel {
   amount: number;
   currency: string;
   description: string | null;
-  goal: Goal;
   date: string;
   createdBy: Member;
+  goalId: number;
 }
 
 export interface SaveContributionRequest {

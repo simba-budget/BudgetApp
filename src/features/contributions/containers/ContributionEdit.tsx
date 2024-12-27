@@ -19,7 +19,7 @@ const ContributionEdit = ({ id }: ContributionEditProps) => {
 
   const handleOnSubmit = (request: SaveContributionRequest) => {
     if (!contribution) return;
-    return editContribution({ id, ...request, goalId: contribution.goal.id });
+    return editContribution({ id, ...request, goalId: contribution.goalId });
   };
 
   useEffect(() => {
