@@ -1,10 +1,10 @@
-import { ScreenContainer, StatusBar } from '@common/components';
+import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { AccountAdd } from '@features/accounts/containers';
 import React from 'react';
 
 const AccountAddScreen = () => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="dark-content" />
+    <StatusBar translucent barStyle="light-content" />
     <AccountAdd />
   </ScreenContainer>
 );

@@ -1,4 +1,4 @@
-import { ScreenContainer } from '@common/components';
+import { ScreenContainer } from '@common/v2/components';
 import { Transaction } from '@features/transactions/containers';
 import { TransactionScreenProps } from '@navigation/types';
 import React from 'react';

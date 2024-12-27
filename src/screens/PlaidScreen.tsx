@@ -1,4 +1,4 @@
-import { Button, ScreenContainer } from '@common/components';
+import { Button, ScreenContainer } from '@common/v2/components';
 import { useCreateInstitutionLink, useCreateLinkToken } from '@features/openBanking/hooks';
 import React, { useEffect, useState } from 'react';
 import {

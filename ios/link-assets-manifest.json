@@ -16,6 +16,30 @@
     {
       "path": "assets/fonts/SpaceGrotesk/SpaceGrotesk-SemiBold.ttf",
       "sha1": "0f5ec8c385c42b65cd8bcb494f26e9c282d6a107"
+    },
+    {
+      "path": "assets/fonts/Urbanist/Urbanist-Black.ttf",
+      "sha1": "516d2b16481f274b7b5d4a61eb317e6e77892671"
+    },
+    {
+      "path": "assets/fonts/Urbanist/Urbanist-Bold.ttf",
+      "sha1": "5393e451665e344701f6f250898895ca98dabdbc"
+    },
+    {
+      "path": "assets/fonts/Urbanist/Urbanist-Light.ttf",
+      "sha1": "9477d6f6236a773d649a5e58a2ab612411f8e1ee"
+    },
+    {
+      "path": "assets/fonts/Urbanist/Urbanist-Medium.ttf",
+      "sha1": "8fdacadcc8bf9a54e98e7894f54c0d8edab92b03"
+    },
+    {
+      "path": "assets/fonts/Urbanist/Urbanist-Regular.ttf",
+      "sha1": "ca6e793bc43b42306c06fedc353c68af20ee2c7b"
+    },
+    {
+      "path": "assets/fonts/Urbanist/Urbanist-SemiBold.ttf",
+      "sha1": "a0dd44015ece2092d0b480cd60c87ccbe932e3f4"
     }
   ]
 }

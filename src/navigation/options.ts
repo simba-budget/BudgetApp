@@ -1,8 +1,7 @@
 import { StackNavigationOptions } from '@react-navigation/stack';
-import { fonts, fontSizes, themeTextColors } from '@styles/lightTheme';
-import { TextStyle } from 'react-native';
+import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
+import { TextStyle, ViewStyle } from 'react-native';
 
-import { StackHeaderLeft } from './components';
 import {
   headerLeftContainerStyle,
   headerRightContainerStyle,
@@ -14,18 +13,21 @@ export const headerHiddenOptions = {
 };
 
 export const headerTitleStyle: TextStyle = {
-  ...fonts.spaceGrotesk.medium,
-  ...fontSizes.m,
-  color: themeTextColors.primary,
+  ...fonts.urbanist.medium,
+  ...fontSizes.l,
+  color: colors.text.primary,
+};
+
+export const headerStyle: ViewStyle = {
+  backgroundColor: colors.background.primary,
 };
 
 export const stackOptions: StackNavigationOptions = {
   headerTitleAlign: 'center',
-  headerTitle: '',
   headerShadowVisible: false,
   headerTitleContainerStyle,
   headerLeftContainerStyle,
   headerRightContainerStyle,
-  headerLeft: StackHeaderLeft,
   headerTitleStyle,
+  headerStyle,
 };

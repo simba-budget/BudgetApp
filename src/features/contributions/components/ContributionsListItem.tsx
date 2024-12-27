@@ -1,6 +1,9 @@
 import { Contribution } from '@api/clients/contributions/types';
+import { Text } from '@common/v2/components';
+import { padding } from '@styles/lightTheme';
+import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleProp, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 
 export interface ContributionsListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -20,9 +23,11 @@ const ContributionsListItem = ({
 
 const styles = StyleSheet.create({
   container: {
+    ...padding('full')('m'),
+    backgroundColor: colors.background.secondary,
     borderWidth: 1,
-    borderColor: '#000000',
-    padding: 12,
+    borderColor: colors.border.primary,
+    borderRadius: 12,
   },
 });
 

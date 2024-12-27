@@ -36,7 +36,7 @@ import {
 import { View } from 'react-native';
 
 import { useIsAccountSelected, useIsLoggedIn, useIsLoggedOut } from './hooks';
-import { headerHiddenOptions } from './options';
+import { headerHiddenOptions, stackOptions } from './options';
 import {
   accountAddRoute,
   accountEditRoute,
@@ -148,6 +148,7 @@ const BottomTabs = createBottomTabNavigator<BottomTabsParamsList>({
 
 const AccountStack = createStackNavigator<AccountParamsList>({
   initialRouteName: bottomTabsRoute,
+  screenOptions: stackOptions,
   screens: {
     [openBankingRoute]: View,
     [contributionAddRoute]: ContributionAddScreen,
@@ -172,6 +173,7 @@ const AccountStack = createStackNavigator<AccountParamsList>({
 
 const MainStack = createStackNavigator<MainParamsList>({
   initialRouteName: accountsRoute,
+  screenOptions: stackOptions,
   screens: {
     [accountsRoute]: AccountsScreen,
     [accountAddRoute]: AccountAddScreen,

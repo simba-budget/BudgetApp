@@ -1,10 +1,10 @@
-import { ScreenContainer, StatusBar } from '@common/components';
+import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Welcome } from '@features/welcome/components';
 import React from 'react';
 
 const WelcomeScreen = () => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="dark-content" />
+    <StatusBar translucent barStyle="light-content" />
     <Welcome />
   </ScreenContainer>
 );

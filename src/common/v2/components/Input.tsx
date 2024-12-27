@@ -1,3 +1,5 @@
+import { padding } from '@styles/lightTheme';
+import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { TextInputProps as RNTextInputProps, StyleSheet, TextInput } from 'react-native';
 
@@ -9,6 +11,7 @@ export interface InputProps
 
 const Input = ({ onChange, value, style, ...rest }: InputProps) => (
   <TextInput
+    placeholderTextColor={colors.text.placeholder}
     onChangeText={onChange}
     style={[styles.container, style]}
     value={value?.toString() ?? undefined}
@@ -18,10 +21,15 @@ const Input = ({ onChange, value, style, ...rest }: InputProps) => (
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
-    paddingHorizontal: 12,
+    ...padding('horizontal')('m'),
+    ...fonts.urbanist.medium,
+    fontSize: fontSizes.s.fontSize,
+    color: colors.text.primary,
+    height: 50,
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#000000',
+    backgroundColor: colors.background.secondary,
+    borderColor: colors.border.primary,
   },
 });
 

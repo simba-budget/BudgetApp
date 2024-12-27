@@ -1,9 +1,10 @@
 import { Contribution } from '@api/clients/contributions/types';
 import { Button } from '@common/v2/components';
+import { Text } from '@common/v2/components';
 import { useContributionsTranslations } from '@i18n/hooks';
 import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
-import { RefreshControl, ScrollView, StyleProp, Text, ViewStyle } from 'react-native';
+import { RefreshControl, ScrollView, StyleProp, ViewStyle } from 'react-native';
 
 export interface ContributionDetailsProps {
   style?: StyleProp<ViewStyle>;

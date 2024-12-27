@@ -1,11 +1,11 @@
-import { ScreenContainer, StatusBar } from '@common/components';
+import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Contributions } from '@features/contributions/containers';
 import { ContributionsScreenProps } from '@navigation/types';
 import React from 'react';
 
 const ContributionsScreen = ({ route }: ContributionsScreenProps) => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="dark-content" />
+    <StatusBar translucent barStyle="light-content" />
     <Contributions goalId={route.params.goalId} />
   </ScreenContainer>
 );

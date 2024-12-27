@@ -1,10 +1,10 @@
-import { ScreenContainer, StatusBar } from '@common/components';
+import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Home } from '@features/home/containers';
 import React from 'react';
 
 const HomeScreen = () => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="dark-content" />
+    <StatusBar translucent barStyle="light-content" />
     <Home />
   </ScreenContainer>
 );

@@ -1,5 +1,8 @@
+import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleProp, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+
+import Text from './Text';
 
 export interface ButtonProps {
   onPress?: () => void;
@@ -13,7 +16,9 @@ const Button = ({ onPress, style, isDisabled = false, title }: ButtonProps) => (
     onPress={onPress}
     style={[styles.container, isDisabled && styles.disabledContainer, style]}
     disabled={isDisabled}>
-    <Text style={styles.text}>{title}</Text>
+    <Text color="secondary" weight="medium">
+      {title}
+    </Text>
   </TouchableOpacity>
 );
 
@@ -22,14 +27,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#000000',
-    height: 46,
+    backgroundColor: colors.background.accent,
+    height: 50,
+    borderRadius: 25,
   },
   disabledContainer: {
     opacity: 0.5,
-  },
-  text: {
-    color: '#FFFFFF',
   },
 });
 

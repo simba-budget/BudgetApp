@@ -1,7 +1,8 @@
 import { Invitation } from '@api/clients/invitations/types';
+import { Text } from '@common/v2/components';
 import { padding } from '@styles/lightTheme';
 import React from 'react';
-import { RefreshControl, ScrollView, StyleProp, Text, ViewStyle } from 'react-native';
+import { RefreshControl, ScrollView, StyleProp, ViewStyle } from 'react-native';
 
 export interface InvitationDetailsProps {
   style?: StyleProp<ViewStyle>;

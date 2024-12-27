@@ -32,13 +32,19 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SpaceGrotesk-Bold.ttf</string>
 		<string>SpaceGrotesk-Medium.ttf</string>
 		<string>SpaceGrotesk-Regular.ttf</string>
 		<string>SpaceGrotesk-SemiBold.ttf</string>
+		<string>Urbanist-Black.ttf</string>
+		<string>Urbanist-Bold.ttf</string>
+		<string>Urbanist-Light.ttf</string>
+		<string>Urbanist-Medium.ttf</string>
+		<string>Urbanist-Regular.ttf</string>
+		<string>Urbanist-SemiBold.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

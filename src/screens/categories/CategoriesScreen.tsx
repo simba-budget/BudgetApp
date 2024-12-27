@@ -1,10 +1,10 @@
-import { ScreenContainer, StatusBar } from '@common/components';
+import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Categories } from '@features/categories/containers';
 import React from 'react';
 
 const CategoriesScreen = () => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="dark-content" />
+    <StatusBar translucent barStyle="light-content" />
     <Categories />
   </ScreenContainer>
 );

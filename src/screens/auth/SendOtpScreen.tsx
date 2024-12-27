@@ -1,10 +1,10 @@
-import { ScreenContainer, StatusBar } from '@common/components';
+import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { SendOtp } from '@features/auth/hoc';
 import React from 'react';
 
 const SendOtpScreen = () => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="dark-content" />
+    <StatusBar translucent barStyle="light-content" />
     <SendOtp />
   </ScreenContainer>
 );

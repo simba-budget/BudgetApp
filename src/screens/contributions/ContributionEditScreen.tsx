@@ -1,4 +1,4 @@
-import { ScreenContainer } from '@common/components';
+import { ScreenContainer } from '@common/v2/components';
 import { ContributionEdit } from '@features/contributions/containers';
 import { ContributionEditScreenProps } from '@navigation/types';
 import React from 'react';
