@@ -1,0 +1,44 @@
+import { Subscription } from '@api/clients/subscriptions/types';
+import { gap, padding } from '@styles/lightTheme';
+import React, { useCallback } from 'react';
+import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+
+import SubscriptionsListItem from './SubscriptionsListItem';
+
+export interface SubscriptionsListProps {
+  style?: StyleProp<ViewStyle>;
+  isLoading: boolean;
+  isRefreshing: boolean;
+  onRefresh: () => void;
+  subscriptions: Subscription[];
+  onSubscriptionPress: (subscription: Subscription) => void;
+}
+
+const SubscriptionsList = ({
+  onSubscriptionPress,
+  subscriptions,
+  isLoading,
+  style,
+  onRefresh,
+  isRefreshing,
+}: SubscriptionsListProps) => {
+  const renderItem = useCallback(
+    ({ item }: ListRenderItemInfo<Subscription>) => (
+      <SubscriptionsListItem onPress={() => onSubscriptionPress(item)} subscription={item} />
+    ),
+    [onSubscriptionPress],
+  );
+
+  return (
+    <FlatList
+      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
+      onRefresh={onRefresh}
+      style={style}
+      data={subscriptions}
+      refreshing={isLoading || isRefreshing}
+      renderItem={renderItem}
+    />
+  );
+};
+
+export default SubscriptionsList;

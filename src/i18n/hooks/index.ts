@@ -11,3 +11,5 @@ export { default as useGoalsTranslations } from './useGoalsTranslations';
 export { default as useInvitationsTranslations } from './useInvitationsTranslations';
 export { default as useContributionsTranslations } from './useContributionsTranslations';
 export { default as useMembersTranslations } from './useMembersTranslations';
+export { default as useSubscriptionsTranslations } from './useSubscriptionsTranslations';
+export { default as useTagsTranslations } from './useTagsTranslations';

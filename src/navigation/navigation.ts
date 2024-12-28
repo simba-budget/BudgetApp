@@ -31,6 +31,13 @@ import {
   ProfileScreen,
   RegistrationScreen,
   SendOtpScreen,
+  SubscriptionAddScreen,
+  SubscriptionEditScreen,
+  SubscriptionScreen,
+  SubscriptionsScreen,
+  TagAddScreen,
+  TagEditScreen,
+  TagsScreen,
   TermsAndConditionsScreen,
   TransactionAddScreen,
   TransactionEditScreen,
@@ -77,6 +84,14 @@ import {
   profileRoute,
   registrationRoute,
   sendOtpRoute,
+  subscriptionAddRoute,
+  subscriptionEditRoute,
+  subscriptionRoute,
+  subscriptionsRoute,
+  tagAddRoute,
+  tagEditRoute,
+  tagRoute,
+  tagsRoute,
   termsAndConditionsRoute,
   transactionAddRoute,
   transactionEditRoute,
@@ -129,6 +144,13 @@ export type AccountParamsList = {
   [profileRoute]: undefined;
   [memberRoute]: { id: number };
   [memberEditRoute]: { id: number };
+  [tagsRoute]: undefined;
+  [tagRoute]: { id: number };
+  [tagEditRoute]: { id: number };
+  [tagAddRoute]: undefined;
+  [subscriptionRoute]: { id: number };
+  [subscriptionEditRoute]: { id: number };
+  [subscriptionAddRoute]: undefined;
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParamsList>;
 };
 
@@ -139,6 +161,7 @@ export type BottomTabsParamsList = {
   [goalsRoute]: undefined;
   [invitationsRoute]: undefined;
   [membersRoute]: undefined;
+  [subscriptionsRoute]: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthParamsList>({
@@ -160,6 +183,7 @@ const BottomTabs = createBottomTabNavigator<BottomTabsParamsList>({
     [goalsRoute]: GoalsScreen,
     [invitationsRoute]: InvitationsScreen,
     [membersRoute]: MembersScreen,
+    [subscriptionsRoute]: SubscriptionsScreen,
   },
 });
 
@@ -186,6 +210,13 @@ const AccountStack = createStackNavigator<AccountParamsList>({
     [profileRoute]: ProfileScreen,
     [memberRoute]: MemberScreen,
     [memberEditRoute]: MemberEditScreen,
+    [tagsRoute]: TagsScreen,
+    [tagAddRoute]: TagAddScreen,
+    [tagEditRoute]: TagEditScreen,
+    [tagRoute]: TagsScreen,
+    [subscriptionAddRoute]: SubscriptionAddScreen,
+    [subscriptionEditRoute]: SubscriptionEditScreen,
+    [subscriptionRoute]: SubscriptionScreen,
     [bottomTabsRoute]: BottomTabs,
   },
 });

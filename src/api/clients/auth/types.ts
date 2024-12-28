@@ -23,4 +23,5 @@ export interface LoggedUser {
   email: string;
   token: string;
   refreshToken: string;
+  isOnboarded: boolean;
 }

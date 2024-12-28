@@ -6,6 +6,8 @@ import { reducer as goalsReducer } from '@features/goals/slice';
 import { reducer as invitationsReducer } from '@features/invitations/slice';
 import { reducer as membersReducer } from '@features/members/slice';
 import { reducer as notificationsReducer } from '@features/notifications/slice';
+import { reducer as subscriptionsReducer } from '@features/subscriptions/slice';
+import { reducer as tagsReducer } from '@features/tags/slice';
 import { reducer as transactionsReducer } from '@features/transactions/slice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -21,6 +23,8 @@ export const rootReducer = combineReducers({
   invitations: invitationsReducer,
   contributions: contributionsReducer,
   members: membersReducer,
+  tags: tagsReducer,
+  subscriptions: subscriptionsReducer,
 });
 
 export const store = configureStore({

@@ -94,6 +94,34 @@ export type GoalRoute = 'Goal';
 export const goalRoute: GoalRoute = 'Goal';
 export type GoalScreenProps = StackScreenProps<AccountParamsList, GoalRoute>;
 
+export type TagAddRoute = 'TagAdd';
+export const tagAddRoute: TagAddRoute = 'TagAdd';
+
+export type TagEditRoute = 'TagEdit';
+export const tagEditRoute: TagEditRoute = 'TagEdit';
+export type TagEditScreenProps = StackScreenProps<AccountParamsList, TagEditRoute>;
+
+export type TagRoute = 'Tag';
+export const tagRoute: TagRoute = 'Tag';
+export type TagScreenProps = StackScreenProps<AccountParamsList, TagRoute>;
+
+export type TagsRoute = 'Tags';
+export const tagsRoute: TagsRoute = 'Tags';
+
+export type SubscriptionAddRoute = 'SubscriptionAdd';
+export const subscriptionAddRoute: SubscriptionAddRoute = 'SubscriptionAdd';
+
+export type SubscriptionEditRoute = 'SubscriptionEdit';
+export const subscriptionEditRoute: SubscriptionEditRoute = 'SubscriptionEdit';
+export type SubscriptionEditScreenProps = StackScreenProps<
+  AccountParamsList,
+  SubscriptionEditRoute
+>;
+
+export type SubscriptionRoute = 'Subscription';
+export const subscriptionRoute: SubscriptionRoute = 'Subscription';
+export type SubscriptionScreenProps = StackScreenProps<AccountParamsList, SubscriptionRoute>;
+
 export type CategoryAddRoute = 'CategoryAdd';
 export const categoryAddRoute: CategoryAddRoute = 'CategoryAdd';
 
@@ -158,3 +186,6 @@ export const invitationsRoute: InvitationsRoute = 'Invitations';
 
 export type MembersRoute = 'Members';
 export const membersRoute: MembersRoute = 'Members';
+
+export type SubscriptionsRoute = 'Subscriptions';
+export const subscriptionsRoute: SubscriptionsRoute = 'Subscriptions';

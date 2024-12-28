@@ -42,6 +42,17 @@ import {
   registrationRoute,
   RootNavigation,
   sendOtpRoute,
+  subscriptionAddRoute,
+  subscriptionEditRoute,
+  SubscriptionEditRoute,
+  subscriptionRoute,
+  SubscriptionRoute,
+  tagAddRoute,
+  tagEditRoute,
+  TagEditRoute,
+  tagRoute,
+  TagRoute,
+  tagsRoute,
   termsAndConditionsRoute,
   transactionAddRoute,
   transactionEditRoute,
@@ -205,4 +216,41 @@ export const toMemberEdit = (
   params: AccountParamsList[MemberEditRoute],
 ) => {
   return navigate(accountRoute, { screen: memberEditRoute, params });
+};
+
+export const toTag = ({ navigate }: MainNavigation, params: AccountParamsList[TagRoute]) => {
+  return navigate(accountRoute, { screen: tagRoute, params });
+};
+
+export const toTagEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[TagEditRoute],
+) => {
+  return navigate(accountRoute, { screen: tagEditRoute, params });
+};
+
+export const toTagAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: tagAddRoute });
+};
+
+export const toTags = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: tagsRoute });
+};
+
+export const toSubscription = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[SubscriptionRoute],
+) => {
+  return navigate(accountRoute, { screen: subscriptionRoute, params });
+};
+
+export const toSubscriptionEdit = (
+  { navigate }: MainNavigation,
+  params: AccountParamsList[SubscriptionEditRoute],
+) => {
+  return navigate(accountRoute, { screen: subscriptionEditRoute, params });
+};
+
+export const toSubscriptionAdd = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: subscriptionAddRoute });
 };

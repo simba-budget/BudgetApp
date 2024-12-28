@@ -1,0 +1,59 @@
+import { Tag } from '@api/clients/tags/types';
+import { debounceTime } from '@common/constants';
+import { Button } from '@common/v2/components';
+import { useAppDispatch, useAppSelector } from '@core/store/store';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { toTag, toTagAdd } from '@navigation/actions';
+import { MainNavigation } from '@navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import { flex1 } from '@styles/common';
+import { padding } from '@styles/lightTheme';
+import React, { useCallback } from 'react';
+import { SafeAreaView, View } from 'react-native';
+import { useDebounce } from 'use-debounce';
+
+import { TagsList, TagsSearch } from '../components';
+import { useTags } from '../hooks';
+import { selectTagsFilter } from '../selectors';
+import { updateKeyword } from '../slice';
+
+const Tags = () => {
+  const navigation = useNavigation<MainNavigation>();
+  const dispatch = useAppDispatch();
+  const accountId = useAppSelector(selectSelectedAccountIdStrict);
+  const filter = useAppSelector(selectTagsFilter);
+  const [debouncedFilter] = useDebounce(filter, debounceTime);
+
+  const { tags, isLoading, isRefetching, refetch } = useTags({
+    accountId,
+    filter: debouncedFilter,
+  });
+
+  const handleOnKeywordChange = useCallback(
+    (keyword: string) => dispatch(updateKeyword({ keyword })),
+    [dispatch],
+  );
+
+  const handleOnTagPress = useCallback(
+    (tag: Tag) => toTag(navigation, { id: tag.id }),
+    [navigation],
+  );
+
+  return (
+    <SafeAreaView style={flex1}>
+      <View style={padding('horizontal')('m')}>
+        <Button onPress={() => toTagAdd(navigation)} title="Add" />
+      </View>
+      <TagsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
+      <TagsList
+        isLoading={isLoading}
+        isRefreshing={isRefetching}
+        onRefresh={refetch}
+        tags={tags}
+        onTagPress={handleOnTagPress}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default Tags;

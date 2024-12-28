@@ -1,0 +1,34 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useValidationsTranslations } from '@i18n/hooks';
+import { TFunction } from 'i18next';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+
+import { SaveSubscriptionRequest } from '../types';
+
+const initialFormData: SaveSubscriptionRequest = {
+  name: '',
+  day: 15,
+};
+
+const getSchema = (t: TFunction) => {
+  return yup.object().shape({
+    name: yup.string().required(t('Name is required')),
+    day: yup.number().required(t('Day is required')),
+  });
+};
+
+const useSubscriptionForm = () => {
+  const { t } = useValidationsTranslations();
+
+  const { control, handleSubmit, reset } = useForm<SaveSubscriptionRequest>({
+    defaultValues: initialFormData,
+    resolver: yupResolver(getSchema(t)),
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  });
+
+  return { control, handleSubmit, reset };
+};
+
+export default useSubscriptionForm;
