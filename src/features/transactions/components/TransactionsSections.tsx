@@ -1,8 +1,8 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
-import { gap, padding } from '@styles/lightTheme';
+import { SectionList } from '@common/v2/components';
 import React, { useCallback, useMemo } from 'react';
-import { ListRenderItemInfo, SectionList, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import { mapTransactionsToDaySections } from '../map';
 
@@ -39,7 +39,6 @@ const TransactionsSections = ({
 
   return (
     <SectionList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
       onRefresh={onRefresh}
       style={style}
       sections={sections}

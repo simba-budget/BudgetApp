@@ -12,6 +12,7 @@ const TransactionsActions = () => {
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>
+      <IconButton onPress={handleOnAddPress} iconName="filter" />
       <IconButton onPress={handleOnAddPress} iconName="userAdd" />
     </View>
   );

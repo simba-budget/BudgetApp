@@ -26,7 +26,7 @@ export const stackOptions: StackNavigationOptions = {
 };
 
 export const bottomTabsOptions: BottomTabNavigationOptions = {
-  headerTitleAlign: 'center',
+  headerTitleAlign: 'left',
   headerShadowVisible: false,
   headerTitleContainerStyle,
   headerLeftContainerStyle,

@@ -3,26 +3,32 @@ import { colors } from '@styles/v2/urbanistTheme';
 import React, { useMemo } from 'react';
 import {
   RefreshControl,
-  FlatList as RNFlatList,
-  FlatListProps as RNFlatListProps,
+  SectionList as RNSectionList,
+  SectionListProps as RNSectionListProps,
   StyleSheet,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { scrollIndicatorInsets } from '../../constants';
+import { Section } from '../../types';
 
-export interface FlatListProps<T>
-  extends Omit<RNFlatListProps<T>, 'scrollIndicatorInsets' | 'refreshControl'> {
+import SectionHeader from './SectionHeader';
+
+export interface SectionListProps<T>
+  extends Omit<
+    RNSectionListProps<T, Section<T>>,
+    'scrollIndicatorInsets' | 'renderSectionHeader'
+  > {
   isSafeBottomArea?: boolean;
 }
 
-const FlatList = <T,>({
+const SectionList = <T,>({
   isSafeBottomArea = false,
   contentContainerStyle,
   refreshing,
   onRefresh,
   ...rest
-}: FlatListProps<T>) => {
+}: SectionListProps<T>) => {
   const { bottom } = useSafeAreaInsets();
 
   const paddingBottom = useMemo<number>(
@@ -31,8 +37,10 @@ const FlatList = <T,>({
   );
 
   return (
-    <RNFlatList<T>
+    <RNSectionList<T, Section<T>>
+      stickySectionHeadersEnabled={false}
       scrollIndicatorInsets={scrollIndicatorInsets}
+      renderSectionHeader={SectionHeader}
       contentContainerStyle={[styles.container, contentContainerStyle, { paddingBottom }]}
       refreshControl={
         <RefreshControl
@@ -48,10 +56,10 @@ const FlatList = <T,>({
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('horizontal')('m'),
+    ...padding('full')('m'),
     ...gap('row')('s'),
     flexGrow: 1,
   },
 });
 
-export default FlatList;
+export default SectionList;

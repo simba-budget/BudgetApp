@@ -7,3 +7,4 @@ export { default as Text } from './Text';
 export { default as Svg } from './Svg';
 export { default as IconButton } from './IconButton';
 export { default as FlatList } from './FlatList';
+export { default as SectionList } from './SectionList';
