@@ -1,7 +1,7 @@
 import { Account } from '@api/clients/accounts/types';
-import { gap, padding } from '@styles/lightTheme';
+import { FlatList } from '@common/v2/components';
 import React, { useCallback } from 'react';
-import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import AccountsListItem from './AccountsListItem';
 
@@ -12,11 +12,9 @@ export interface AccountsListProps {
   onRefresh: () => void;
   accounts: Account[];
   onAccountPress: (account: Account) => void;
-  selectedAccountId?: number | null;
 }
 
 const AccountsList = ({
-  selectedAccountId,
   onAccountPress,
   accounts,
   isLoading,
@@ -26,18 +24,14 @@ const AccountsList = ({
 }: AccountsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Account>) => (
-      <AccountsListItem
-        onPress={() => onAccountPress(item)}
-        account={item}
-        isSelected={selectedAccountId === item.id}
-      />
+      <AccountsListItem onPress={() => onAccountPress(item)} account={item} />
     ),
-    [selectedAccountId, onAccountPress],
+    [onAccountPress],
   );
 
   return (
     <FlatList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
+      isSafeBottomArea
       onRefresh={onRefresh}
       style={style}
       data={accounts}

@@ -1,4 +1,8 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TransactionsActions } from '@features/transactions/containers';
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import { GoalsScreen, HomeScreen, SubscriptionsScreen, TransactionsScreen } from '@screens';
 
 import { bottomTabsOptions } from '../../options';
@@ -13,12 +17,16 @@ import {
   transactionsRoute,
 } from './types';
 
+const transactionsOptions: BottomTabNavigationOptions = {
+  headerRight: TransactionsActions,
+};
+
 const BottomTabs = createBottomTabNavigator<BottomTabsParams>({
   initialRouteName: homeRoute,
   screenOptions: bottomTabsOptions,
   screens: {
     [homeRoute]: HomeScreen,
-    [transactionsRoute]: TransactionsScreen,
+    [transactionsRoute]: { screen: TransactionsScreen, options: transactionsOptions },
     [goalsRoute]: GoalsScreen,
     [subscriptionsRoute]: SubscriptionsScreen,
   },

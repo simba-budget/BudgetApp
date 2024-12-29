@@ -1,4 +1,5 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { AccountsActions } from '@features/accounts/containers';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { AccountAddScreen, AccountEditScreen, AccountsScreen } from '@screens';
 
 import { useIsNotOnboarded } from '../../hooks';
@@ -16,11 +17,15 @@ import {
   mainRoute,
 } from './types';
 
+const accountsOptions: StackNavigationOptions = {
+  headerRight: AccountsActions,
+};
+
 const MainStack = createStackNavigator<MainParams>({
   screenOptions: stackOptions,
   screens: {
     [onboardingRoute]: { if: useIsNotOnboarded, screen: OnboardingStack },
-    [accountsRoute]: AccountsScreen,
+    [accountsRoute]: { screen: AccountsScreen, options: accountsOptions },
     [accountRoute]: { screen: AccountStack, options: headerHiddenOptions },
     [accountAddRoute]: AccountAddScreen,
     [accountEditRoute]: AccountEditScreen,

@@ -4,3 +4,6 @@ export { default as FormControl } from './FormControl';
 export { default as ScreenContainer } from './ScreenContainer';
 export { default as StatusBar } from './StatusBar';
 export { default as Text } from './Text';
+export { default as Svg } from './Svg';
+export { default as IconButton } from './IconButton';
+export { default as FlatList } from './FlatList';

@@ -1,14 +1,8 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { Button } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import {
-  AccountNavigation,
-  toTransaction,
-  toTransactionAdd,
-} from '@navigation/navigators/account';
+import { AccountNavigation, toTransaction } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
-import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 
@@ -33,9 +27,6 @@ const Transactions = () => {
 
   return (
     <View>
-      <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toTransactionAdd(navigation)} title="Add" />
-      </View>
       <TransactionsSections
         isLoading={isLoading}
         isRefreshing={isRefetching}

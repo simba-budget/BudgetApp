@@ -9,19 +9,10 @@ export interface AccountsListItemProps {
   style?: StyleProp<ViewStyle>;
   account: Account;
   onPress?: () => void;
-  isSelected?: boolean;
 }
 
-const AccountsListItem = ({
-  style,
-  onPress,
-  isSelected = false,
-  account,
-}: AccountsListItemProps) => (
-  <TouchableOpacity
-    disabled={isSelected}
-    style={[styles.container, isSelected && styles.selectedContainer, style]}
-    onPress={onPress}>
+const AccountsListItem = ({ style, onPress, account }: AccountsListItemProps) => (
+  <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <Text>{JSON.stringify(account, null, 2)}</Text>
   </TouchableOpacity>
 );
@@ -33,9 +24,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border.primary,
     borderRadius: 12,
-  },
-  selectedContainer: {
-    backgroundColor: '#000000',
   },
 });
 
