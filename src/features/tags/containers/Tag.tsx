@@ -1,5 +1,5 @@
 import { toTagEdit } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -11,7 +11,7 @@ export interface TagProps {
 }
 
 const Tag = ({ id }: TagProps) => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const { tag, refetch, isRefetching, isLoading } = useTag(id);
   const handleOnEditPress = useCallback(() => toTagEdit(navigation, { id }), [navigation, id]);
 

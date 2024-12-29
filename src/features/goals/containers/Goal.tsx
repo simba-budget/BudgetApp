@@ -1,5 +1,5 @@
 import { toContributions, toGoalEdit } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -11,7 +11,7 @@ export interface GoalProps {
 }
 
 const Goal = ({ id }: GoalProps) => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const { goal, refetch, isRefetching, isLoading } = useGoal(id);
 
   const handleOnContributionsPress = useCallback(

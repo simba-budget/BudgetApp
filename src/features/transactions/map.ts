@@ -29,5 +29,6 @@ export const mapSaveTransactionRequest = (
   amount: transaction?.amount ?? 0,
   currency: transaction?.currency ?? 'EUR',
   subscriptionId: transaction?.subscription?.id ?? null,
+  merchantId: transaction?.merchant?.id ?? null,
   tagsIds: transaction?.tags?.map((tag) => tag.id) ?? null,
 });

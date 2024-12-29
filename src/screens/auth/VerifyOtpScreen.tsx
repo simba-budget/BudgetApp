@@ -1,5 +1,5 @@
 import { ScreenContainer, StatusBar } from '@common/v2/components';
-import { VerifyOtp } from '@features/auth/hoc';
+import { VerifyOtp } from '@features/auth/containers';
 import { VerifyOtpScreenProps } from '@navigation/types';
 import React from 'react';
 

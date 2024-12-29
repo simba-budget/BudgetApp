@@ -1,5 +1,5 @@
 import { toSubscriptionEdit } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -11,8 +11,9 @@ export interface SubscriptionProps {
 }
 
 const Subscription = ({ id }: SubscriptionProps) => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const { subscription, refetch, isRefetching, isLoading } = useSubscription(id);
+
   const handleOnEditPress = useCallback(
     () => toSubscriptionEdit(navigation, { id }),
     [navigation, id],

@@ -6,6 +6,7 @@ import { reducer as goalsReducer } from '@features/goals/slice';
 import { reducer as invitationsReducer } from '@features/invitations/slice';
 import { reducer as membersReducer } from '@features/members/slice';
 import { reducer as notificationsReducer } from '@features/notifications/slice';
+import { reducer as onboardingReducer } from '@features/onboarding/slice';
 import { reducer as subscriptionsReducer } from '@features/subscriptions/slice';
 import { reducer as tagsReducer } from '@features/tags/slice';
 import { reducer as transactionsReducer } from '@features/transactions/slice';
@@ -25,6 +26,7 @@ export const rootReducer = combineReducers({
   members: membersReducer,
   tags: tagsReducer,
   subscriptions: subscriptionsReducer,
+  onboarding: onboardingReducer,
 });
 
 export const store = configureStore({

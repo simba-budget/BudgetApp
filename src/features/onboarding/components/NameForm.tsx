@@ -1,27 +1,22 @@
 import { Button, FormControl, Input } from '@common/v2/components';
-import { useAccountsTranslations } from '@i18n/hooks';
+import { useOnboardingTranslations } from '@i18n/hooks';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
 
-import { AccountNameFormData } from '../types';
+import { NameFormData } from '../types';
 
-export interface AccountNameFormProps {
+export interface NameFormProps {
   style?: StyleProp<ViewStyle>;
   onSubmit: () => void;
   isDisabled?: boolean;
-  control: Control<AccountNameFormData>;
+  control: Control<NameFormData>;
 }
 
-const AccountNameForm = ({
-  style,
-  onSubmit,
-  control,
-  isDisabled = false,
-}: AccountNameFormProps) => {
-  const { t } = useAccountsTranslations();
+const NameForm = ({ style, onSubmit, control, isDisabled = false }: NameFormProps) => {
+  const { t } = useOnboardingTranslations();
 
   return (
     <View style={[padding('full')('m'), flex1, style]}>
@@ -43,4 +38,4 @@ const AccountNameForm = ({
   );
 };
 
-export default AccountNameForm;
+export default NameForm;

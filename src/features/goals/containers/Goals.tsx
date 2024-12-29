@@ -4,7 +4,7 @@ import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { toGoal, toGoalAdd } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
@@ -18,7 +18,7 @@ import { selectGoalsFilter } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Goals = () => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectGoalsFilter);

@@ -1,28 +1,25 @@
+import { useAppSelector } from '@core/store/store';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useValidationsTranslations } from '@i18n/hooks';
 import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { AccountBalanceFormData } from '../types';
-
-const initialFormData: AccountBalanceFormData = {
-  initialBalance: 0,
-  currency: 'EUR',
-};
+import { selectNameFormData } from '../selectors';
+import { NameFormData } from '../types';
 
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
-    initialBalance: yup.number().required(t('Initial budget is required')),
-    currency: yup.string().required(t('Currency is required')),
+    name: yup.string().required(t('Name is required')),
   });
 };
 
-const useAccountForm = () => {
+const useNameForm = () => {
   const { t } = useValidationsTranslations();
+  const formData = useAppSelector(selectNameFormData);
 
-  const { control, handleSubmit, reset } = useForm<AccountBalanceFormData>({
-    defaultValues: initialFormData,
+  const { control, handleSubmit, reset } = useForm<NameFormData>({
+    defaultValues: formData,
     resolver: yupResolver(getSchema(t)),
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -31,4 +28,4 @@ const useAccountForm = () => {
   return { control, handleSubmit, reset };
 };
 
-export default useAccountForm;
+export default useNameForm;

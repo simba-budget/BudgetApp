@@ -3,7 +3,7 @@ import { Button } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { toTransaction, toTransactionAdd } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
@@ -14,7 +14,7 @@ import { useTransactions } from '../hooks';
 import { selectTransactionsFilter } from '../selectors';
 
 const Transactions = () => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectTransactionsFilter);
 

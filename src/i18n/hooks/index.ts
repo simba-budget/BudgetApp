@@ -13,3 +13,4 @@ export { default as useContributionsTranslations } from './useContributionsTrans
 export { default as useMembersTranslations } from './useMembersTranslations';
 export { default as useSubscriptionsTranslations } from './useSubscriptionsTranslations';
 export { default as useTagsTranslations } from './useTagsTranslations';
+export { default as useOnboardingTranslations } from './useOnboardingTranslations';

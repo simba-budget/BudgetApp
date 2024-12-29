@@ -3,7 +3,7 @@ import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { toMember } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -16,7 +16,7 @@ import { selectMembersFilter } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Members = () => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectMembersFilter);

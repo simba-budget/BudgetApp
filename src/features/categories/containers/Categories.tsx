@@ -4,7 +4,7 @@ import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { toCategory, toCategoryAdd } from '@navigation/actions';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/types';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
@@ -18,7 +18,7 @@ import { selectCategoriesFilter } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Categories = () => {
-  const navigation = useNavigation<MainNavigation>();
+  const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const filter = useAppSelector(selectCategoriesFilter);

@@ -6,6 +6,7 @@ import * as DocumentsClient from './documents';
 import * as GoalsClient from './goals';
 import * as InvitationsClient from './invitations';
 import * as MembersClient from './members';
+import * as MerchantsClient from './merchants';
 import * as NotificationsClient from './notifications';
 import * as OpenBankingClient from './openBanking';
 import * as SubscriptionsClient from './subscriptions';
@@ -26,4 +27,5 @@ export {
   OpenBankingClient,
   SubscriptionsClient,
   TagsClient,
+  MerchantsClient,
 };

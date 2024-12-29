@@ -1,27 +1,27 @@
 import { Button, FormControl, Input } from '@common/v2/components';
-import { useAccountsTranslations } from '@i18n/hooks';
+import { useOnboardingTranslations } from '@i18n/hooks';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
 
-import { AccountBalanceFormData } from '../types';
+import { InitialBalanceFormData } from '../types';
 
-export interface AccountBalanceFormProps {
+export interface InitialBalanceFormProps {
   style?: StyleProp<ViewStyle>;
   onSubmit: () => void;
   isDisabled?: boolean;
-  control: Control<AccountBalanceFormData>;
+  control: Control<InitialBalanceFormData>;
 }
 
-const AccountBalanceForm = ({
+const InitialBalanceForm = ({
   style,
   onSubmit,
   control,
   isDisabled = false,
-}: AccountBalanceFormProps) => {
-  const { t } = useAccountsTranslations();
+}: InitialBalanceFormProps) => {
+  const { t } = useOnboardingTranslations();
 
   return (
     <View style={[padding('full')('m'), flex1, style]}>
@@ -52,4 +52,4 @@ const AccountBalanceForm = ({
   );
 };
 
-export default AccountBalanceForm;
+export default InitialBalanceForm;

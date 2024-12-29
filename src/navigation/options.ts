@@ -22,6 +22,10 @@ export const headerStyle: ViewStyle = {
   backgroundColor: colors.background.primary,
 };
 
+export const cardStyle: ViewStyle = {
+  backgroundColor: colors.background.primary,
+};
+
 export const stackOptions: StackNavigationOptions = {
   headerTitleAlign: 'center',
   headerShadowVisible: false,
@@ -30,4 +34,5 @@ export const stackOptions: StackNavigationOptions = {
   headerRightContainerStyle,
   headerTitleStyle,
   headerStyle,
+  cardStyle,
 };
