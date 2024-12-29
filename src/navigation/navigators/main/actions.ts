@@ -6,13 +6,12 @@ import {
   accountAddRoute,
   AccountEditRoute,
   accountEditRoute,
-  accountsRoute,
   MainNavigation,
   MainParams,
 } from './types';
 
-export const toAccounts = ({ replace }: MainNavigation) => {
-  return replace(accountsRoute);
+export const toAccounts = ({ popToTop }: MainNavigation) => {
+  return popToTop();
 };
 
 export const toAccountAdd = ({ navigate }: MainNavigation) => {

@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AccountAddScreen, AccountEditScreen, AccountsScreen } from '@screens';
 
 import { useIsNotOnboarded } from '../../hooks';
-import { stackOptions } from '../../options';
+import { headerHiddenOptions, stackOptions } from '../../options';
 import AccountStack, { accountRoute } from '../account';
 import OnboardingStack, { onboardingRoute } from '../onboarding';
 
@@ -21,7 +21,7 @@ const MainStack = createStackNavigator<MainParams>({
   screens: {
     [onboardingRoute]: { if: useIsNotOnboarded, screen: OnboardingStack },
     [accountsRoute]: AccountsScreen,
-    [accountRoute]: AccountStack,
+    [accountRoute]: { screen: AccountStack, options: headerHiddenOptions },
     [accountAddRoute]: AccountAddScreen,
     [accountEditRoute]: AccountEditScreen,
   },
