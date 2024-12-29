@@ -1,3 +1,5 @@
+import { GoalsActions } from '@features/goals/containers';
+import { SubscriptionsActions } from '@features/subscriptions/containers';
 import { TransactionsActions } from '@features/transactions/containers';
 import {
   BottomTabNavigationOptions,
@@ -21,14 +23,22 @@ const transactionsOptions: BottomTabNavigationOptions = {
   headerRight: TransactionsActions,
 };
 
+const goalsOptions: BottomTabNavigationOptions = {
+  headerRight: GoalsActions,
+};
+
+const subscriptionsOptions: BottomTabNavigationOptions = {
+  headerRight: SubscriptionsActions,
+};
+
 const BottomTabs = createBottomTabNavigator<BottomTabsParams>({
   initialRouteName: homeRoute,
   screenOptions: bottomTabsOptions,
   screens: {
     [homeRoute]: HomeScreen,
     [transactionsRoute]: { screen: TransactionsScreen, options: transactionsOptions },
-    [goalsRoute]: GoalsScreen,
-    [subscriptionsRoute]: SubscriptionsScreen,
+    [goalsRoute]: { screen: GoalsScreen, options: goalsOptions },
+    [subscriptionsRoute]: { screen: SubscriptionsScreen, options: subscriptionsOptions },
   },
 });
 

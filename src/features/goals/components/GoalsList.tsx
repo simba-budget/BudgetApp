@@ -1,7 +1,7 @@
 import { Goal } from '@api/clients/goals/types';
-import { gap, padding } from '@styles/lightTheme';
+import { FlatList } from '@common/v2/components';
 import React, { useCallback } from 'react';
-import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import GoalsListItem from './GoalsListItem';
 
@@ -31,7 +31,6 @@ const GoalsList = ({
 
   return (
     <FlatList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
       onRefresh={onRefresh}
       style={style}
       data={goals}

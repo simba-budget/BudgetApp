@@ -1,14 +1,12 @@
 import { Goal } from '@api/clients/goals/types';
 import { debounceTime } from '@common/constants';
-import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { AccountNavigation, toGoal, toGoalAdd } from '@navigation/navigators/account';
+import { AccountNavigation, toGoal } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { GoalsList, GoalsSearch } from '../components';
@@ -39,10 +37,7 @@ const Goals = () => {
   );
 
   return (
-    <SafeAreaView style={flex1}>
-      <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toGoalAdd(navigation)} title="Add" />
-      </View>
+    <View style={flex1}>
       <GoalsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <GoalsList
         isLoading={isLoading}
@@ -51,7 +46,7 @@ const Goals = () => {
         goals={goals}
         onGoalPress={handleOnGoalPress}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

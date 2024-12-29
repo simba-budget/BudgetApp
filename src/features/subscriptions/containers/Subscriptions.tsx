@@ -1,18 +1,12 @@
 import { Subscription } from '@api/clients/subscriptions/types';
 import { debounceTime } from '@common/constants';
-import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import {
-  AccountNavigation,
-  toSubscription,
-  toSubscriptionAdd,
-} from '@navigation/navigators/account';
+import { AccountNavigation, toSubscription } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { SubscriptionsList, SubscriptionsSearch } from '../components';
@@ -43,10 +37,7 @@ const Subscriptions = () => {
   );
 
   return (
-    <SafeAreaView style={flex1}>
-      <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toSubscriptionAdd(navigation)} title="Add" />
-      </View>
+    <View style={flex1}>
       <SubscriptionsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <SubscriptionsList
         isLoading={isLoading}
@@ -55,7 +46,7 @@ const Subscriptions = () => {
         subscriptions={subscriptions}
         onSubscriptionPress={handleOnSubscriptionPress}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

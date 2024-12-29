@@ -28,7 +28,6 @@ export const headerTitleStyle: TextStyle = {
 
 export const headerStyle: ViewStyle = {
   backgroundColor: colors.background.primary,
-  height: 108,
 };
 
 export const cardStyle: ViewStyle = {
