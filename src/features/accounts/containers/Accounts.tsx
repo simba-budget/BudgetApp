@@ -3,8 +3,7 @@ import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { useAccountsTranslations } from '@i18n/hooks';
-import { AccountNavigation, toHome } from '@navigation/navigators/account';
-import { MainNavigation, toAccountAdd } from '@navigation/navigators/main';
+import { MainNavigation, toAccountAdd, toHome } from '@navigation/navigators/main';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
@@ -19,8 +18,7 @@ import { selectAccountsFilter, selectSelectedAccount } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Accounts = () => {
-  const mainNavigation = useNavigation<MainNavigation>();
-  const accountNavigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<MainNavigation>();
   const { t } = useAccountsTranslations();
   const dispatch = useAppDispatch();
 
@@ -39,13 +37,13 @@ const Accounts = () => {
   const handleOnSelect = useCallback(async () => {
     if (!selectedAccount) return;
     await dispatch(selectAccountAction(selectedAccount));
-    toHome(accountNavigation);
-  }, [selectedAccount, dispatch, accountNavigation]);
+    toHome(navigation);
+  }, [selectedAccount, dispatch, navigation]);
 
   return (
     <SafeAreaView style={flex1}>
       <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toAccountAdd(mainNavigation)} title="Add" />
+        <Button onPress={() => toAccountAdd(navigation)} title="Add" />
       </View>
       <AccountsSearch keyword={filter.keyword} onKeywordChange={handleOnKeywordChange} />
       <AccountsList

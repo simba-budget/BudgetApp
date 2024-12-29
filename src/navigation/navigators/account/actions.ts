@@ -1,5 +1,3 @@
-import { bottomTabsRoute, homeRoute } from '../bottomTabs/types';
-
 import {
   AccountNavigation,
   AccountParams,
@@ -47,10 +45,6 @@ import {
   transactionEditRoute,
   transactionRoute,
 } from './types';
-
-export const toHome = ({ navigate }: AccountNavigation) => {
-  return navigate(bottomTabsRoute, { screen: homeRoute });
-};
 
 export const toContributionAdd = (
   { navigate }: AccountNavigation,

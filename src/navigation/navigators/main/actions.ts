@@ -1,3 +1,7 @@
+import { accountRoute } from '../account';
+import { bottomTabsRoute } from '../bottomTabs';
+import { homeRoute } from '../bottomTabs/types';
+
 import {
   accountAddRoute,
   AccountEditRoute,
@@ -20,4 +24,8 @@ export const toAccountEdit = (
   params: MainParams[AccountEditRoute],
 ) => {
   return navigate(accountEditRoute, params);
+};
+
+export const toHome = ({ navigate }: MainNavigation) => {
+  return navigate(accountRoute, { screen: bottomTabsRoute, params: { screen: homeRoute } });
 };
