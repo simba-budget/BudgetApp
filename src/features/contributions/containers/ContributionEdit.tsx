@@ -1,4 +1,4 @@
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 
@@ -12,7 +12,7 @@ export interface ContributionEditProps {
 }
 
 const ContributionEdit = ({ id }: ContributionEditProps) => {
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<AccountNavigation>();
   const { contribution, isLoading } = useContribution(id);
   const { handleSubmit, control, reset } = useContributionForm();
   const { editContribution, isSubmitting } = useEditContribution({ onSuccess: goBack });

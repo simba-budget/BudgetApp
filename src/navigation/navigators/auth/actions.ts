@@ -1,6 +1,6 @@
 import {
   AuthNavigation,
-  AuthParamsList,
+  AuthParams,
   registrationRoute,
   sendOtpRoute,
   verifyOtpRoute,
@@ -17,7 +17,7 @@ export const toRegistration = ({ navigate }: AuthNavigation) => {
 
 export const toVerifyOtp = (
   { navigate }: AuthNavigation,
-  params: AuthParamsList[VerifyOtpRoute],
+  params: AuthParams[VerifyOtpRoute],
 ) => {
   return navigate(verifyOtpRoute, params);
 };

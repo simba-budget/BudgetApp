@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 
-export type OnboardingParamsList = {
+export type OnboardingParams = {
   [nameRoute]: undefined;
   [initialBalanceRoute]: undefined;
   [initialInvitationsRoute]: undefined;
@@ -8,7 +8,7 @@ export type OnboardingParamsList = {
 
 export type OnboardingRoute = 'Onboarding';
 export const onboardingRoute: OnboardingRoute = 'Onboarding';
-export type OnboardingNavigation = StackNavigationProp<OnboardingParamsList>;
+export type OnboardingNavigation = StackNavigationProp<OnboardingParams>;
 
 export type NameRoute = 'Name';
 export const nameRoute: NameRoute = 'Name';

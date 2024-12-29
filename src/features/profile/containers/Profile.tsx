@@ -1,7 +1,12 @@
 import { Button } from '@common/v2/components';
 import { useLogout } from '@features/auth/hooks';
-import { toCategories, toInvitations, toMembers, toTags } from '@navigation/actions';
-import { AccountNavigation } from '@navigation/types';
+import {
+  AccountNavigation,
+  toCategories,
+  toInvitations,
+  toMembers,
+  toTags,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { padding } from '@styles/lightTheme';
 import React from 'react';

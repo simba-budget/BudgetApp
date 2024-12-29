@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -9,7 +9,7 @@ import { useAddInvitation, useInvitationForm } from '../hooks';
 
 const InvitationAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<AccountNavigation>();
   const { handleSubmit, control } = useInvitationForm();
   const { addInvitation, isSubmitting } = useAddInvitation({ onSuccess: goBack, accountId });
 

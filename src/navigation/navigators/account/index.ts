@@ -31,43 +31,61 @@ import {
 import { View } from 'react-native';
 
 import { stackOptions } from '../../options';
-import BottomTabs from '../bottomTabs/navigator';
-import { bottomTabsRoute } from '../bottomTabs/types';
+import BottomTabs, { bottomTabsRoute } from '../bottomTabs';
 
 import {
-  AccountParamsList,
+  AccountNavigation,
+  AccountParams,
+  accountRoute,
   categoriesRoute,
   categoryAddRoute,
   categoryEditRoute,
+  CategoryEditScreenProps,
   categoryRoute,
+  CategoryScreenProps,
   contributionAddRoute,
+  ContributionAddScreenProps,
   contributionEditRoute,
+  ContributionEditScreenProps,
   contributionRoute,
+  ContributionScreenProps,
   contributionsRoute,
+  ContributionsScreenProps,
   goalAddRoute,
   goalEditRoute,
+  GoalEditScreenProps,
   goalRoute,
+  GoalScreenProps,
   invitationAddRoute,
   invitationRoute,
+  InvitationScreenProps,
   invitationsRoute,
   memberEditRoute,
+  MemberEditScreenProps,
   memberRoute,
+  MemberScreenProps,
   membersRoute,
   openBankingRoute,
   profileRoute,
   subscriptionAddRoute,
   subscriptionEditRoute,
+  SubscriptionEditScreenProps,
   subscriptionRoute,
+  SubscriptionScreenProps,
   tagAddRoute,
   tagEditRoute,
+  TagEditScreenProps,
   tagRoute,
+  TagScreenProps,
   tagsRoute,
   transactionAddRoute,
   transactionEditRoute,
+  TransactionEditScreenProps,
   transactionRoute,
+  TransactionScreenProps,
 } from './types';
 
-const AccountStack = createStackNavigator<AccountParamsList>({
+const AccountStack = createStackNavigator<AccountParams>({
   initialRouteName: bottomTabsRoute,
   screenOptions: stackOptions,
   screens: {
@@ -120,4 +138,28 @@ const AccountStack = createStackNavigator<AccountParamsList>({
   },
 });
 
+export {
+  type AccountNavigation,
+  type AccountParams,
+  type TransactionScreenProps,
+  type SubscriptionEditScreenProps,
+  type CategoryEditScreenProps,
+  type TransactionEditScreenProps,
+  type TagScreenProps,
+  type TagEditScreenProps,
+  type ContributionsScreenProps,
+  type ContributionAddScreenProps,
+  type ContributionEditScreenProps,
+  type ContributionScreenProps,
+  type GoalEditScreenProps,
+  type GoalScreenProps,
+  type CategoryScreenProps,
+  type InvitationScreenProps,
+  type MemberScreenProps,
+  type MemberEditScreenProps,
+  type SubscriptionScreenProps,
+  accountRoute,
+};
+
+export * from './actions';
 export default AccountStack;

@@ -3,8 +3,11 @@ import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { toSubscription, toSubscriptionAdd } from '@navigation/actions';
-import { AccountNavigation } from '@navigation/types';
+import {
+  AccountNavigation,
+  toSubscription,
+  toSubscriptionAdd,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';

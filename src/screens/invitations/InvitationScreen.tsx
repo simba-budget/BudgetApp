@@ -1,6 +1,6 @@
 import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Invitation } from '@features/invitations/containers';
-import { InvitationScreenProps } from '@navigation/types';
+import { InvitationScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const InvitationScreen = ({ route }: InvitationScreenProps) => (

@@ -1,6 +1,6 @@
 import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Subscription } from '@features/subscriptions/containers';
-import { SubscriptionScreenProps } from '@navigation/types';
+import { SubscriptionScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const SubscriptionScreen = ({ route }: SubscriptionScreenProps) => (

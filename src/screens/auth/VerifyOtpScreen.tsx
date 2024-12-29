@@ -1,6 +1,6 @@
 import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { VerifyOtp } from '@features/auth/containers';
-import { VerifyOtpScreenProps } from '@navigation/types';
+import { VerifyOtpScreenProps } from '@navigation/navigators/auth';
 import React from 'react';
 
 const VerifyOtpScreen = ({ route }: VerifyOtpScreenProps) => (

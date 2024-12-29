@@ -1,6 +1,6 @@
 import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Goal } from '@features/goals/containers';
-import { GoalScreenProps } from '@navigation/types';
+import { GoalScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const GoalScreen = ({ route }: GoalScreenProps) => (

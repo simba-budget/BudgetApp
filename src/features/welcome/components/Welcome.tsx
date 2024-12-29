@@ -1,7 +1,7 @@
 import welcomeImage from '@assets/images/welcome/welcome.jpg';
 import { Button, TextBody, TransTextBody, TransTextHeading, View } from '@common/components';
 import { useWelcomeTranslations } from '@i18n/hooks';
-import { authRoute, registrationRoute, RootNavigation, sendOtpRoute } from '@navigation/types';
+import { AuthNavigation, toRegistration, toSendOtp } from '@navigation/navigators/auth';
 import { useNavigation } from '@react-navigation/native';
 import { flex1, justifyEnd } from '@styles/common';
 import { colors, sizes } from '@styles/lightTheme';
@@ -10,7 +10,7 @@ import { ImageBackground, StyleSheet } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 
 const Welcome = () => {
-  const { navigate } = useNavigation<RootNavigation>();
+  const navigation = useNavigation<AuthNavigation>();
   const { t } = useWelcomeTranslations();
 
   return (
@@ -35,11 +35,11 @@ const Welcome = () => {
               <Button
                 size="medium"
                 variant="primary"
-                onPress={() => navigate(authRoute, { screen: registrationRoute })}
+                onPress={() => toRegistration(navigation)}
                 title={t('Let’s Get Started')}
               />
               <TransTextBody
-                onHighlightedPress={() => navigate(authRoute, { screen: sendOtpRoute })}
+                onHighlightedPress={() => toSendOtp(navigation)}
                 textAlign="center"
                 size="xs"
                 ns="welcome"

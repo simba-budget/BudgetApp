@@ -2,8 +2,11 @@ import { Transaction } from '@api/clients/transactions/types';
 import { Button } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { toTransaction, toTransactionAdd } from '@navigation/actions';
-import { AccountNavigation } from '@navigation/types';
+import {
+  AccountNavigation,
+  toTransaction,
+  toTransactionAdd,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';

@@ -1,4 +1,4 @@
-import { AccountNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 

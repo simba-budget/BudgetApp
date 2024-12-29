@@ -1,8 +1,8 @@
 import { Button, Text } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccount } from '@features/accounts/selectors';
-import { toAccounts, toProfile } from '@navigation/actions';
-import { AccountNavigation, MainNavigation } from '@navigation/types';
+import { AccountNavigation, toProfile } from '@navigation/navigators/account';
+import { MainNavigation, toAccounts } from '@navigation/navigators/main';
 import { useNavigation } from '@react-navigation/native';
 import { padding } from '@styles/lightTheme';
 import React from 'react';

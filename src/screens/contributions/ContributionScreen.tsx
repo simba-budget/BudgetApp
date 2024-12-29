@@ -1,6 +1,6 @@
 import { ScreenContainer, StatusBar } from '@common/v2/components';
 import { Contribution } from '@features/contributions/containers';
-import { ContributionScreenProps } from '@navigation/types';
+import { ContributionScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const ContributionScreen = ({ route }: ContributionScreenProps) => (

@@ -1,9 +1,11 @@
 import { API_URL } from '@env';
 import { LinkingOptions } from '@react-navigation/native';
 
-import { accountsRoute, mainRoute, openBankingRoute, RootParamsList } from './types';
+import { openBankingRoute } from './navigators/account/types';
+import { accountsRoute, mainRoute } from './navigators/main/types';
+import { RootParams } from './navigators/root';
 
-const linking: LinkingOptions<RootParamsList> = {
+const linking: LinkingOptions<RootParams> = {
   prefixes: [`${API_URL}/app/`],
   config: {
     screens: {

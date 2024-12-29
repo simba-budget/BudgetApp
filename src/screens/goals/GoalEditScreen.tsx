@@ -1,6 +1,6 @@
 import { ScreenContainer } from '@common/v2/components';
 import { GoalEdit } from '@features/goals/containers';
-import { GoalEditScreenProps } from '@navigation/types';
+import { GoalEditScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const GoalEditScreen = ({ route }: GoalEditScreenProps) => (

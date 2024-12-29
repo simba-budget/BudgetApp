@@ -2,14 +2,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { RegistrationScreen, SendOtpScreen, VerifyOtpScreen, WelcomeScreen } from '@screens';
 
 import {
-  AuthParamsList,
+  AuthNavigation,
+  AuthParams,
+  authRoute,
   registrationRoute,
   sendOtpRoute,
   verifyOtpRoute,
+  VerifyOtpScreenProps,
   welcomeRoute,
 } from './types';
 
-const AuthStack = createStackNavigator<AuthParamsList>({
+const AuthStack = createStackNavigator<AuthParams>({
   initialRouteName: welcomeRoute,
   screens: {
     [welcomeRoute]: WelcomeScreen,
@@ -19,4 +22,6 @@ const AuthStack = createStackNavigator<AuthParamsList>({
   },
 });
 
+export { type AuthParams, type VerifyOtpScreenProps, type AuthNavigation, authRoute };
+export * from './actions';
 export default AuthStack;

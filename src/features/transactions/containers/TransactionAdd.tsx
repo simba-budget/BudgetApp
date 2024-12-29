@@ -1,4 +1,4 @@
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -6,7 +6,7 @@ import { TransactionForm } from '../components';
 import { useAddTransaction, useTransactionForm } from '../hooks';
 
 const TransactionAdd = () => {
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<AccountNavigation>();
   const { handleSubmit, control } = useTransactionForm();
   const { addTransaction, isSubmitting } = useAddTransaction({ onSuccess: goBack });
 

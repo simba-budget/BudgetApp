@@ -1,17 +1,17 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { AuthParamsList, authRoute } from '../auth/types';
-import { MainParamsList, mainRoute } from '../main/types';
+import { AuthParams, authRoute } from '../auth/types';
+import { MainParams, mainRoute } from '../main/types';
 
-export type RootParamsList = {
+export type RootParams = {
   [privacyPolicyRoute]: undefined;
   [termsAndConditionsRoute]: undefined;
-  [authRoute]: NavigatorScreenParams<AuthParamsList>;
-  [mainRoute]: NavigatorScreenParams<MainParamsList>;
+  [authRoute]: NavigatorScreenParams<AuthParams>;
+  [mainRoute]: NavigatorScreenParams<MainParams>;
 };
 
-export type RootNavigation = StackNavigationProp<RootParamsList>;
+export type RootNavigation = StackNavigationProp<RootParams>;
 
 export type PrivacyPolicyRoute = 'PrivacyPolicy';
 export const privacyPolicyRoute: PrivacyPolicyRoute = 'PrivacyPolicy';

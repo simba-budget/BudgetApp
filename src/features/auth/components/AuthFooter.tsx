@@ -1,7 +1,10 @@
 import { TextBody, View } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
-import { toPrivacyPolicy, toTermsAndConditions } from '@navigation/actions';
-import { RootNavigation } from '@navigation/types';
+import {
+  RootNavigation,
+  toPrivacyPolicy,
+  toTermsAndConditions,
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';

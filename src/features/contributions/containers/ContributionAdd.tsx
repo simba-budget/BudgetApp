@@ -1,4 +1,4 @@
-import { MainNavigation } from '@navigation/types';
+import { MainNavigation } from '@navigation/navigators/main';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 

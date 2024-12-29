@@ -4,7 +4,7 @@ import {
   accountEditRoute,
   accountsRoute,
   MainNavigation,
-  MainParamsList,
+  MainParams,
 } from './types';
 
 export const toAccounts = ({ navigate }: MainNavigation) => {
@@ -17,7 +17,7 @@ export const toAccountAdd = ({ navigate }: MainNavigation) => {
 
 export const toAccountEdit = (
   { navigate }: MainNavigation,
-  params: MainParamsList[AccountEditRoute],
+  params: MainParams[AccountEditRoute],
 ) => {
   return navigate(accountEditRoute, params);
 };

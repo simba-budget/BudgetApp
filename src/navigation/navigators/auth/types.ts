@@ -1,6 +1,6 @@
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 
-export type AuthParamsList = {
+export type AuthParams = {
   [welcomeRoute]: undefined;
   [sendOtpRoute]: undefined;
   [verifyOtpRoute]: { email: string; expirationDate: string };
@@ -9,7 +9,7 @@ export type AuthParamsList = {
 
 export type AuthRoute = 'Auth';
 export const authRoute: AuthRoute = 'Auth';
-export type AuthNavigation = StackNavigationProp<AuthParamsList>;
+export type AuthNavigation = StackNavigationProp<AuthParams>;
 
 export type WelcomeRoute = 'Welcome';
 export const welcomeRoute: WelcomeRoute = 'Welcome';
@@ -19,7 +19,7 @@ export const sendOtpRoute: SendOtpRoute = 'SendOtp';
 
 export type VerifyOtpRoute = 'VerifyOtp';
 export const verifyOtpRoute: VerifyOtpRoute = 'VerifyOtp';
-export type VerifyOtpScreenProps = StackScreenProps<AuthParamsList, VerifyOtpRoute>;
+export type VerifyOtpScreenProps = StackScreenProps<AuthParams, VerifyOtpRoute>;
 
 export type RegistrationRoute = 'Registration';
 export const registrationRoute: RegistrationRoute = 'Registration';

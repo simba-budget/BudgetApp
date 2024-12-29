@@ -2,46 +2,46 @@ import { bottomTabsRoute, homeRoute } from '../bottomTabs/types';
 
 import {
   AccountNavigation,
-  AccountParamsList,
+  AccountParams,
   categoriesRoute,
   categoryAddRoute,
-  categoryEditRoute,
   CategoryEditRoute,
-  categoryRoute,
+  categoryEditRoute,
   CategoryRoute,
-  ContributionAddRoute,
+  categoryRoute,
   contributionAddRoute,
-  contributionEditRoute,
+  ContributionAddRoute,
   ContributionEditRoute,
-  contributionRoute,
+  contributionEditRoute,
   ContributionRoute,
-  contributionsRoute,
+  contributionRoute,
   ContributionsRoute,
+  contributionsRoute,
   goalAddRoute,
-  goalEditRoute,
   GoalEditRoute,
-  goalRoute,
+  goalEditRoute,
   GoalRoute,
+  goalRoute,
   invitationAddRoute,
-  invitationRoute,
   InvitationRoute,
+  invitationRoute,
   invitationsRoute,
-  memberEditRoute,
   MemberEditRoute,
-  memberRoute,
+  memberEditRoute,
   MemberRoute,
+  memberRoute,
   membersRoute,
   profileRoute,
   subscriptionAddRoute,
-  subscriptionEditRoute,
   SubscriptionEditRoute,
-  subscriptionRoute,
+  subscriptionEditRoute,
   SubscriptionRoute,
+  subscriptionRoute,
   tagAddRoute,
-  tagEditRoute,
   TagEditRoute,
-  tagRoute,
+  tagEditRoute,
   TagRoute,
+  tagRoute,
   tagsRoute,
   transactionAddRoute,
   transactionEditRoute,
@@ -54,28 +54,28 @@ export const toHome = ({ navigate }: AccountNavigation) => {
 
 export const toContributionAdd = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[ContributionAddRoute],
+  params: AccountParams[ContributionAddRoute],
 ) => {
   return navigate(contributionAddRoute, params);
 };
 
 export const toContributionEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[ContributionEditRoute],
+  params: AccountParams[ContributionEditRoute],
 ) => {
   return navigate(contributionEditRoute, params);
 };
 
 export const toContribution = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[ContributionRoute],
+  params: AccountParams[ContributionRoute],
 ) => {
   return navigate(contributionRoute, params);
 };
 
 export const toContributions = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[ContributionsRoute],
+  params: AccountParams[ContributionsRoute],
 ) => {
   return navigate(contributionsRoute, params);
 };
@@ -86,15 +86,12 @@ export const toGoalAdd = ({ navigate }: AccountNavigation) => {
 
 export const toGoalEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[GoalEditRoute],
+  params: AccountParams[GoalEditRoute],
 ) => {
   return navigate(goalEditRoute, params);
 };
 
-export const toGoal = (
-  { navigate }: AccountNavigation,
-  params: AccountParamsList[GoalRoute],
-) => {
+export const toGoal = ({ navigate }: AccountNavigation, params: AccountParams[GoalRoute]) => {
   return navigate(goalRoute, params);
 };
 
@@ -108,14 +105,14 @@ export const toCategoryAdd = ({ navigate }: AccountNavigation) => {
 
 export const toCategoryEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[CategoryEditRoute],
+  params: AccountParams[CategoryEditRoute],
 ) => {
   return navigate(categoryEditRoute, params);
 };
 
 export const toCategory = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[CategoryRoute],
+  params: AccountParams[CategoryRoute],
 ) => {
   return navigate(categoryRoute, params);
 };
@@ -126,14 +123,14 @@ export const toTransactionAdd = ({ navigate }: AccountNavigation) => {
 
 export const toTransactionEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[CategoryEditRoute],
+  params: AccountParams[CategoryEditRoute],
 ) => {
   return navigate(transactionEditRoute, params);
 };
 
 export const toTransaction = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[CategoryRoute],
+  params: AccountParams[CategoryRoute],
 ) => {
   return navigate(transactionRoute, params);
 };
@@ -148,7 +145,7 @@ export const toInvitationAdd = ({ navigate }: AccountNavigation) => {
 
 export const toInvitation = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[InvitationRoute],
+  params: AccountParams[InvitationRoute],
 ) => {
   return navigate(invitationRoute, params);
 };
@@ -163,28 +160,25 @@ export const toMembers = ({ navigate }: AccountNavigation) => {
 
 export const toMember = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[MemberRoute],
+  params: AccountParams[MemberRoute],
 ) => {
   return navigate(memberRoute, params);
 };
 
 export const toMemberEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[MemberEditRoute],
+  params: AccountParams[MemberEditRoute],
 ) => {
   return navigate(memberEditRoute, params);
 };
 
-export const toTag = (
-  { navigate }: AccountNavigation,
-  params: AccountParamsList[TagRoute],
-) => {
+export const toTag = ({ navigate }: AccountNavigation, params: AccountParams[TagRoute]) => {
   return navigate(tagRoute, params);
 };
 
 export const toTagEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[TagEditRoute],
+  params: AccountParams[TagEditRoute],
 ) => {
   return navigate(tagEditRoute, params);
 };
@@ -199,14 +193,14 @@ export const toTags = ({ navigate }: AccountNavigation) => {
 
 export const toSubscription = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[SubscriptionRoute],
+  params: AccountParams[SubscriptionRoute],
 ) => {
   return navigate(subscriptionRoute, params);
 };
 
 export const toSubscriptionEdit = (
   { navigate }: AccountNavigation,
-  params: AccountParamsList[SubscriptionEditRoute],
+  params: AccountParams[SubscriptionEditRoute],
 ) => {
   return navigate(subscriptionEditRoute, params);
 };

@@ -1,5 +1,4 @@
-import { toVerifyOtp } from '@navigation/actions';
-import { AuthNavigation } from '@navigation/types';
+import { AuthNavigation, toVerifyOtp } from '@navigation/navigators/auth';
 import { useNavigation } from '@react-navigation/native';
 import React, { FC, useCallback } from 'react';
 

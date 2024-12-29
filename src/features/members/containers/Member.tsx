@@ -1,5 +1,4 @@
-import { toMemberEdit } from '@navigation/actions';
-import { AccountNavigation } from '@navigation/types';
+import { AccountNavigation, toMemberEdit } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 

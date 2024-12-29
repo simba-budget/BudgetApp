@@ -1,5 +1,6 @@
 import { Divider, IconButton, TextBody, TransTextBody, View } from '@common/components';
-import { AuthNavigation, RegistrationRoute, SendOtpRoute } from '@navigation/types';
+import { AuthNavigation } from '@navigation/navigators/auth';
+import { RegistrationRoute, SendOtpRoute } from '@navigation/navigators/auth/types';
 import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';

@@ -9,7 +9,7 @@ import {
   View,
 } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
-import { registrationRoute } from '@navigation/types';
+import { registrationRoute } from '@navigation/navigators/auth/types';
 import { flex1 } from '@styles/common';
 import { margin } from '@styles/lightTheme';
 import React, { FC } from 'react';

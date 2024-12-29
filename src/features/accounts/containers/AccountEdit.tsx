@@ -1,5 +1,5 @@
 import { SaveAccountRequest } from '@api/clients/accounts/types';
-import { AccountNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 

@@ -1,6 +1,6 @@
 import { ScreenContainer } from '@common/v2/components';
 import { Transaction } from '@features/transactions/containers';
-import { TransactionScreenProps } from '@navigation/types';
+import { TransactionScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const TransactionScreen = ({ route }: TransactionScreenProps) => (

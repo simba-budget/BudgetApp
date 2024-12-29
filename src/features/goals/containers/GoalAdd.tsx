@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -9,7 +9,7 @@ import { useAddGoal, useGoalForm } from '../hooks';
 
 const GoalAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<AccountNavigation>();
   const { handleSubmit, control } = useGoalForm();
   const { addGoal, isSubmitting } = useAddGoal({ onSuccess: goBack, accountId });
 

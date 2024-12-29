@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -9,7 +9,7 @@ import { useAddTag, useTagForm } from '../hooks';
 
 const TagAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<AccountNavigation>();
   const { handleSubmit, control } = useTagForm();
   const { addTag, isSubmitting } = useAddTag({ onSuccess: goBack, accountId });
 

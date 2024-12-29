@@ -1,6 +1,6 @@
 import { ScreenContainer } from '@common/v2/components';
 import { TagEdit } from '@features/tags/containers';
-import { TagEditScreenProps } from '@navigation/types';
+import { TagEditScreenProps } from '@navigation/navigators/account';
 import React from 'react';
 
 const TagEditScreen = ({ route }: TagEditScreenProps) => (

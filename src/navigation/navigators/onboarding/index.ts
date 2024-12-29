@@ -7,10 +7,12 @@ import {
   initialBalanceRoute,
   initialInvitationsRoute,
   nameRoute,
-  OnboardingParamsList,
+  OnboardingNavigation,
+  OnboardingParams,
+  onboardingRoute,
 } from './types';
 
-const OnboardingStack = createStackNavigator<OnboardingParamsList>({
+const OnboardingStack = createStackNavigator<OnboardingParams>({
   screenOptions: stackOptions,
   screens: {
     [nameRoute]: NameScreen,
@@ -19,4 +21,6 @@ const OnboardingStack = createStackNavigator<OnboardingParamsList>({
   },
 });
 
+export { type OnboardingParams, type OnboardingNavigation, onboardingRoute };
+export * from './actions';
 export default OnboardingStack;

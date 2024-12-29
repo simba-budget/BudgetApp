@@ -3,14 +3,17 @@ import { PrivacyPolicyScreen, TermsAndConditionsScreen } from '@screens';
 
 import { useIsLoggedIn, useIsLoggedOut } from '../../hooks';
 import { headerHiddenOptions } from '../../options';
-import AuthStack from '../auth/navigator';
-import { authRoute } from '../auth/types';
-import MainStack from '../main/navigator';
-import { mainRoute } from '../main/types';
+import AuthStack, { authRoute } from '../auth';
+import MainStack, { mainRoute } from '../main';
 
-import { privacyPolicyRoute, RootParamsList, termsAndConditionsRoute } from './types';
+import {
+  privacyPolicyRoute,
+  RootNavigation,
+  RootParams,
+  termsAndConditionsRoute,
+} from './types';
 
-const RootStack = createStackNavigator<RootParamsList>({
+const RootStack = createStackNavigator<RootParams>({
   screenOptions: headerHiddenOptions,
   screens: {
     [authRoute]: { if: useIsLoggedOut, screen: AuthStack },
@@ -20,4 +23,6 @@ const RootStack = createStackNavigator<RootParamsList>({
   },
 });
 
+export { type RootParams, type RootNavigation };
+export * from './actions';
 export default RootStack;

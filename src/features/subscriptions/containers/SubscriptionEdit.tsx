@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { MainNavigation } from '@navigation/types';
+import { AccountNavigation } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 
@@ -15,7 +15,7 @@ export interface SubscriptionEditProps {
 
 const SubscriptionEdit = ({ id }: SubscriptionEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<AccountNavigation>();
   const { subscription, isLoading } = useSubscription(id);
   const { handleSubmit, control, reset } = useSubscriptionForm();
   const { editSubscription, isSubmitting } = useEditSubscription({ onSuccess: goBack });
