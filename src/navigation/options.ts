@@ -1,3 +1,4 @@
+import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import { TextStyle, ViewStyle } from 'react-native';
@@ -35,4 +36,14 @@ export const stackOptions: StackNavigationOptions = {
   headerTitleStyle,
   headerStyle,
   cardStyle,
+};
+
+export const bottomTabsOptions: BottomTabNavigationOptions = {
+  headerTitleAlign: 'center',
+  headerShadowVisible: false,
+  headerTitleContainerStyle,
+  headerLeftContainerStyle,
+  headerRightContainerStyle,
+  headerTitleStyle,
+  headerStyle,
 };

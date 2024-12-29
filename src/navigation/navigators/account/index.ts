@@ -30,7 +30,7 @@ import {
 } from '@screens';
 import { View } from 'react-native';
 
-import { stackOptions } from '../../options';
+import { headerHiddenOptions, stackOptions } from '../../options';
 import BottomTabs, { bottomTabsRoute } from '../bottomTabs';
 
 import {
@@ -134,7 +134,7 @@ const AccountStack = createStackNavigator<AccountParams>({
 
     [openBankingRoute]: View,
     [profileRoute]: ProfileScreen,
-    [bottomTabsRoute]: BottomTabs,
+    [bottomTabsRoute]: { screen: BottomTabs, options: headerHiddenOptions },
   },
 });
 

@@ -11,8 +11,8 @@ import {
   MainParams,
 } from './types';
 
-export const toAccounts = ({ navigate }: MainNavigation) => {
-  return navigate(accountsRoute);
+export const toAccounts = ({ replace }: MainNavigation) => {
+  return replace(accountsRoute);
 };
 
 export const toAccountAdd = ({ navigate }: MainNavigation) => {

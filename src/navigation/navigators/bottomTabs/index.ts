@@ -1,6 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { GoalsScreen, HomeScreen, SubscriptionsScreen, TransactionsScreen } from '@screens';
 
+import { bottomTabsOptions } from '../../options';
+
 import {
   BottomTabsNavigation,
   BottomTabsParams,
@@ -13,6 +15,7 @@ import {
 
 const BottomTabs = createBottomTabNavigator<BottomTabsParams>({
   initialRouteName: homeRoute,
+  screenOptions: bottomTabsOptions,
   screens: {
     [homeRoute]: HomeScreen,
     [transactionsRoute]: TransactionsScreen,
