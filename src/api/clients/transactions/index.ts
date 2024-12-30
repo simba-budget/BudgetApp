@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { SaveTransactionRequest, Transaction, TransactionsFilter } from './types';
+import { ListTransactionsRequest, SaveTransactionRequest, Transaction } from './types';
 
 const url = '/transactions';
 
-export const getTransactions = (request: ListRequest<TransactionsFilter>) => {
-  const params = { ...request.filter, ...request.paging };
+export const getTransactions = (request: ListTransactionsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Transaction>>(url, { params });
 };
 

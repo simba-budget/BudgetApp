@@ -1,4 +1,5 @@
 import { RootState } from '@core/store/store';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 
 export const selectGoalsLastUpdated = (state: RootState) => {
   return state.goals.lastUpdated;
@@ -6,4 +7,14 @@ export const selectGoalsLastUpdated = (state: RootState) => {
 
 export const selectGoalsFilter = (state: RootState) => {
   return state.goals.filter;
+};
+
+export const selectGoalsPaging = (state: RootState) => {
+  return state.goals.paging;
+};
+
+export const selectApiGoalsFilter = (state: RootState) => {
+  const filter = selectGoalsFilter(state);
+  const accountId = selectSelectedAccountIdStrict(state);
+  return { ...filter, accountId };
 };

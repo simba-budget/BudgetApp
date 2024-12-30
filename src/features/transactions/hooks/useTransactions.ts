@@ -1,28 +1,32 @@
 import { TransactionsClient } from '@api/clients';
-import { TransactionsFilter as ApiTransactionsFilter } from '@api/clients/transactions/types';
+import { TransactionsFilter, TransactionsSort } from '@api/clients/transactions/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectTransactionsLastUpdated } from '../selectors';
-import { TransactionsFilter } from '../types';
 
-export const getQueryKey = (filter: ApiTransactionsFilter, lastUpdated: number) => {
-  return ['transactions', filter, lastUpdated];
+export const getQueryKey = (
+  filter: TransactionsFilter,
+  sort: TransactionsSort,
+  paging: Paging,
+  lastUpdated: number,
+) => {
+  return ['transactions', filter, sort, paging, lastUpdated];
 };
 
 interface Options {
-  accountId: number;
   filter: TransactionsFilter;
+  sort: TransactionsSort;
+  paging: Paging;
 }
 
-const useTransactions = (options: Options) => {
-  const { filter, accountId } = options;
+const useTransactions = ({ filter, sort, paging }: Options) => {
   const lastUpdated = useAppSelector(selectTransactionsLastUpdated);
-  const apiFilter = { ...filter, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => TransactionsClient.getTransactions({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, sort, paging, lastUpdated),
+    queryFn: () => TransactionsClient.getTransactions({ filter, sort, paging }),
   });
 
   return {

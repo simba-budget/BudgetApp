@@ -1,3 +1,4 @@
+import { Paging } from '@api/types';
 import { logoutAction } from '@features/auth/actions';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -5,11 +6,13 @@ import { SubscriptionsFilter } from './types';
 
 export interface SubscriptionsState {
   filter: SubscriptionsFilter;
+  paging: Paging;
   lastUpdated: number;
 }
 
 const initialState: SubscriptionsState = {
   filter: {},
+  paging: { limit: 20, offset: 0 },
   lastUpdated: Date.now(),
 };
 
@@ -23,6 +26,9 @@ const subscriptionsSlice = createSlice({
     updateFilter: (state, action: PayloadAction<{ filter: SubscriptionsFilter }>) => {
       state.filter = action.payload.filter;
     },
+    updatePaging: (state, action: PayloadAction<{ paging: Paging }>) => {
+      state.paging = action.payload.paging;
+    },
     updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
       state.filter.keyword = action.payload.keyword;
     },
@@ -32,5 +38,7 @@ const subscriptionsSlice = createSlice({
   },
 });
 
-export const { updateFilter, updateSubscriptions, updateKeyword } = subscriptionsSlice.actions;
+export const { updateFilter, updateSubscriptions, updateKeyword, updatePaging } =
+  subscriptionsSlice.actions;
+
 export const { reducer } = subscriptionsSlice;

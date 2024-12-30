@@ -1,28 +1,26 @@
 import { GoalsClient } from '@api/clients';
-import { GoalsFilter as ApiGoalsFilter } from '@api/clients/goals/types';
+import { GoalsFilter } from '@api/clients/goals/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectGoalsLastUpdated } from '../selectors';
-import { GoalsFilter } from '../types';
 
-export const getQueryKey = (filter: ApiGoalsFilter, lastUpdated: number) => {
-  return ['goals', filter, lastUpdated];
+export const getQueryKey = (filter: GoalsFilter, paging: Paging, lastUpdated: number) => {
+  return ['goals', filter, paging, lastUpdated];
 };
 
 interface Options {
-  accountId: number;
   filter: GoalsFilter;
+  paging: Paging;
 }
 
-const useGoals = (options: Options) => {
-  const { filter, accountId } = options;
+const useGoals = ({ filter, paging }: Options) => {
   const lastUpdated = useAppSelector(selectGoalsLastUpdated);
-  const apiFilter = { ...filter, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => GoalsClient.getGoals({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, paging, lastUpdated),
+    queryFn: () => GoalsClient.getGoals({ filter, paging }),
   });
 
   return {

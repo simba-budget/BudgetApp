@@ -1,28 +1,30 @@
 import { SubscriptionsClient } from '@api/clients';
-import { SubscriptionsFilter as ApiSubscriptionsFilter } from '@api/clients/subscriptions/types';
+import { SubscriptionsFilter } from '@api/clients/subscriptions/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectSubscriptionsLastUpdated } from '../selectors';
-import { SubscriptionsFilter } from '../types';
 
-export const getQueryKey = (filter: ApiSubscriptionsFilter, lastUpdated: number) => {
-  return ['subscriptions', filter, lastUpdated];
+export const getQueryKey = (
+  filter: SubscriptionsFilter,
+  paging: Paging,
+  lastUpdated: number,
+) => {
+  return ['subscriptions', filter, paging, lastUpdated];
 };
 
 interface Options {
-  accountId: number;
   filter: SubscriptionsFilter;
+  paging: Paging;
 }
 
-const useSubscriptions = (options: Options) => {
-  const { filter, accountId } = options;
+const useSubscriptions = ({ filter, paging }: Options) => {
   const lastUpdated = useAppSelector(selectSubscriptionsLastUpdated);
-  const apiFilter = { ...filter, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => SubscriptionsClient.getSubscriptions({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, paging, lastUpdated),
+    queryFn: () => SubscriptionsClient.getSubscriptions({ filter, paging }),
   });
 
   return {

@@ -1,22 +1,27 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { useAppSelector } from '@core/store/store';
-import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { AccountNavigation, toTransaction } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
 import { TransactionsSections } from '../components';
 import { useTransactions } from '../hooks';
-import { selectTransactionsFilter } from '../selectors';
+import {
+  selectApiTransactionsFilter,
+  selectTransactionsPaging,
+  selectTransactionsSort,
+} from '../selectors';
 
 const Transactions = () => {
   const navigation = useNavigation<AccountNavigation>();
-  const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const filter = useAppSelector(selectTransactionsFilter);
+  const filter = useAppSelector(selectApiTransactionsFilter);
+  const paging = useAppSelector(selectTransactionsPaging);
+  const sort = useAppSelector(selectTransactionsSort);
 
   const { transactions, isLoading, isRefetching, refetch } = useTransactions({
-    accountId,
     filter,
+    sort,
+    paging,
   });
 
   const handleOnTransactionPress = useCallback(

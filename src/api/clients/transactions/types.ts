@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Category } from '../categories/types';
 import { Member } from '../members/types';
@@ -41,3 +41,6 @@ export interface TransactionsFilter {
   dateFrom?: string | null;
   dateTo?: string | null;
 }
+
+export type TransactionsSort = Sort<'date'>;
+export type ListTransactionsRequest = ListRequest<TransactionsFilter, TransactionsSort>;

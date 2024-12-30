@@ -1,4 +1,5 @@
 import { RootState } from '@core/store/store';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 
 export const selectSubscriptionsLastUpdated = (state: RootState) => {
   return state.subscriptions.lastUpdated;
@@ -6,4 +7,14 @@ export const selectSubscriptionsLastUpdated = (state: RootState) => {
 
 export const selectSubscriptionsFilter = (state: RootState) => {
   return state.subscriptions.filter;
+};
+
+export const selectSubscriptionsPaging = (state: RootState) => {
+  return state.subscriptions.paging;
+};
+
+export const selectApiSubscriptionsFilter = (state: RootState) => {
+  const filter = selectSubscriptionsFilter(state);
+  const accountId = selectSelectedAccountIdStrict(state);
+  return { ...filter, accountId };
 };
