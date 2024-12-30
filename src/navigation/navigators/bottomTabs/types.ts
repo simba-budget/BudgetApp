@@ -5,6 +5,7 @@ export type BottomTabsParams = {
   [transactionsRoute]: undefined;
   [goalsRoute]: undefined;
   [subscriptionsRoute]: undefined;
+  [profileRoute]: undefined;
 };
 
 export type BottomTabsRoute = 'BottomTabs';
@@ -22,3 +23,6 @@ export const goalsRoute: GoalsRoute = 'Goals';
 
 export type SubscriptionsRoute = 'Subscriptions';
 export const subscriptionsRoute: SubscriptionsRoute = 'Subscriptions';
+
+export type ProfileRoute = 'Profile';
+export const profileRoute: ProfileRoute = 'Profile';

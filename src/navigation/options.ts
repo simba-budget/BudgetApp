@@ -1,6 +1,7 @@
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { StackNavigationOptions } from '@react-navigation/stack';
 
+import { StackHeaderLeft } from './components';
 import {
   cardStyle,
   headerLeftContainerStyle,
@@ -17,6 +18,7 @@ export const headerHiddenOptions = {
 export const stackOptions: StackNavigationOptions = {
   headerTitleAlign: 'center',
   headerShadowVisible: false,
+  headerLeft: StackHeaderLeft,
   headerTitleContainerStyle,
   headerLeftContainerStyle,
   headerRightContainerStyle,

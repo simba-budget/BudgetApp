@@ -13,16 +13,14 @@ export interface IconButtonProps {
   iconName: IconName;
 }
 
-const IconButton = ({ onPress, style, iconName, isDisabled = false }: IconButtonProps) => {
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.container, isDisabled && styles.disabledContainer, style]}
-      disabled={isDisabled}>
-      <Svg color={colors.text.primary} size={18} name={iconName} />
-    </TouchableOpacity>
-  );
-};
+const IconButton = ({ onPress, style, iconName, isDisabled = false }: IconButtonProps) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={[styles.container, isDisabled && styles.disabledContainer, style]}
+    disabled={isDisabled}>
+    <Svg color={colors.text.primary} size={18} name={iconName} />
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   container: {

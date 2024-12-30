@@ -29,7 +29,6 @@ import {
   MemberRoute,
   memberRoute,
   membersRoute,
-  profileRoute,
   subscriptionAddRoute,
   SubscriptionEditRoute,
   subscriptionEditRoute,
@@ -142,10 +141,6 @@ export const toInvitation = (
   params: AccountParams[InvitationRoute],
 ) => {
   return navigate(invitationRoute, params);
-};
-
-export const toProfile = ({ navigate }: AccountNavigation) => {
-  return navigate(profileRoute);
 };
 
 export const toMembers = ({ navigate }: AccountNavigation) => {

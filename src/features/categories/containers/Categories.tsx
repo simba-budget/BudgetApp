@@ -1,14 +1,12 @@
 import { Category } from '@api/clients/categories/types';
 import { debounceTime } from '@common/constants';
-import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { AccountNavigation, toCategory, toCategoryAdd } from '@navigation/navigators/account';
+import { AccountNavigation, toCategory } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { CategoriesList, CategoriesSearch } from '../components';
@@ -39,10 +37,7 @@ const Categories = () => {
   );
 
   return (
-    <SafeAreaView style={flex1}>
-      <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toCategoryAdd(navigation)} title="Add" />
-      </View>
+    <View style={flex1}>
       <CategoriesSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <CategoriesList
         isLoading={isLoading}
@@ -51,7 +46,7 @@ const Categories = () => {
         categories={categories}
         onCategoryPress={handleOnCategoryPress}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

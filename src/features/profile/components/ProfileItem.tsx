@@ -1,27 +1,34 @@
-import { Tag } from '@api/clients/tags/types';
 import { Svg, Text } from '@common/v2/components';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
-export interface TagsListItemProps {
-  style?: StyleProp<ViewStyle>;
-  tag: Tag;
-  onPress: () => void;
-}
+import { ProfileItemProps } from '../types';
 
-const TagsListItem = ({ style, tag, onPress }: TagsListItemProps) => (
-  <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
+const ProfileItem = ({
+  title,
+  iconName,
+  onPress,
+  subtitle,
+  hideArrow = false,
+}: ProfileItemProps) => (
+  <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={18} name="card" />
+      <Svg color={colors.text.primary} size={18} name={iconName} />
     </View>
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
-        {tag.name}
+        {title}
       </Text>
+      {subtitle && (
+        <Text weight="medium" size="xs" color="tertiary">
+          {subtitle}
+        </Text>
+      )}
     </View>
+    {!hideArrow && <Svg size={18} color={colors.text.tertiary} name="arrowRight" />}
   </TouchableOpacity>
 );
 
@@ -45,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TagsListItem;
+export default ProfileItem;

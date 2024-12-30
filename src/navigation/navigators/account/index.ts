@@ -1,4 +1,6 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { CategoriesActions } from '@features/categories/containers';
+import { TagsActions } from '@features/tags/containers';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import {
   CategoriesScreen,
   CategoryAddScreen,
@@ -17,12 +19,12 @@ import {
   MemberEditScreen,
   MemberScreen,
   MembersScreen,
-  ProfileScreen,
   SubscriptionAddScreen,
   SubscriptionEditScreen,
   SubscriptionScreen,
   TagAddScreen,
   TagEditScreen,
+  TagScreen,
   TagsScreen,
   TransactionAddScreen,
   TransactionEditScreen,
@@ -66,7 +68,6 @@ import {
   MemberScreenProps,
   membersRoute,
   openBankingRoute,
-  profileRoute,
   subscriptionAddRoute,
   subscriptionEditRoute,
   SubscriptionEditScreenProps,
@@ -85,6 +86,14 @@ import {
   TransactionScreenProps,
 } from './types';
 
+const categoriesOptions: StackNavigationOptions = {
+  headerRight: CategoriesActions,
+};
+
+const tagsOptions: StackNavigationOptions = {
+  headerRight: TagsActions,
+};
+
 const AccountStack = createStackNavigator<AccountParams>({
   initialRouteName: bottomTabsRoute,
   screenOptions: stackOptions,
@@ -101,7 +110,7 @@ const AccountStack = createStackNavigator<AccountParams>({
     [goalRoute]: GoalScreen,
 
     // Categories
-    [categoriesRoute]: CategoriesScreen,
+    [categoriesRoute]: { screen: CategoriesScreen, options: categoriesOptions },
     [categoryAddRoute]: CategoryAddScreen,
     [categoryEditRoute]: CategoryEditScreen,
     [categoryRoute]: CategoryScreen,
@@ -117,10 +126,10 @@ const AccountStack = createStackNavigator<AccountParams>({
     [invitationAddRoute]: InvitationAddScreen,
 
     // Tags
-    [tagsRoute]: TagsScreen,
+    [tagsRoute]: { screen: TagsScreen, options: tagsOptions },
     [tagAddRoute]: TagAddScreen,
     [tagEditRoute]: TagEditScreen,
-    [tagRoute]: TagsScreen,
+    [tagRoute]: TagScreen,
 
     // Members
     [membersRoute]: MembersScreen,
@@ -133,7 +142,6 @@ const AccountStack = createStackNavigator<AccountParams>({
     [subscriptionRoute]: SubscriptionScreen,
 
     [openBankingRoute]: View,
-    [profileRoute]: ProfileScreen,
     [bottomTabsRoute]: { screen: BottomTabs, options: headerHiddenOptions },
   },
 });

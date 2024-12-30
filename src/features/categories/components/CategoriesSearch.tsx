@@ -14,7 +14,7 @@ const CategoriesSearch = ({ style, keyword, onKeywordChange }: CategoriesSearchP
   const { t } = useCategoriesTranslations();
 
   return (
-    <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
+    <View style={[margin('vertical')('l'), padding('horizontal')('m'), style]}>
       <Input onChange={onKeywordChange} value={keyword} placeholder={t('Search....')} />
     </View>
   );

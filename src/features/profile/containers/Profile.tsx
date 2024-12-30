@@ -1,29 +1,22 @@
-import { Button } from '@common/v2/components';
-import { useLogout } from '@features/auth/hooks';
-import {
-  AccountNavigation,
-  toCategories,
-  toInvitations,
-  toMembers,
-  toTags,
-} from '@navigation/navigators/account';
-import { useNavigation } from '@react-navigation/native';
-import { padding } from '@styles/lightTheme';
+import { ScrollView } from '@common/v2/components';
 import React from 'react';
-import { View } from 'react-native';
+
+import { ProfileHeader, ProfileSection } from '../components';
+import { useProfile, useProfileSections } from '../hooks';
 
 const Profile = () => {
-  const { logout } = useLogout();
-  const navigation = useNavigation<AccountNavigation>();
+  const sections = useProfileSections();
+  const { profile, isRefetching, refetch, isLoading } = useProfile();
+
+  if (!profile) return null;
 
   return (
-    <View style={padding('full')('m')}>
-      <Button title="Categories" onPress={() => toCategories(navigation)} />
-      <Button title="Invitations" onPress={() => toInvitations(navigation)} />
-      <Button title="Members" onPress={() => toMembers(navigation)} />
-      <Button title="Tags" onPress={() => toTags(navigation)} />
-      <Button title="Logout" onPress={logout} />
-    </View>
+    <ScrollView onRefresh={refetch} refreshing={isLoading || isRefetching}>
+      <ProfileHeader profile={profile} />
+      {sections.map((section, index) => (
+        <ProfileSection {...section} key={index} />
+      ))}
+    </ScrollView>
   );
 };
 

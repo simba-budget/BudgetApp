@@ -1,9 +1,11 @@
 import { Category } from '@api/clients/categories/types';
-import { Text } from '@common/v2/components';
-import { padding } from '@styles/lightTheme';
+import { Svg, Text } from '@common/v2/components';
+import { center, flex1, rowCenter } from '@styles/common';
+import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
+import { formatPrice } from '@utils/price';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 export interface CategoriesListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -12,18 +14,38 @@ export interface CategoriesListItemProps {
 }
 
 const CategoriesListItemProps = ({ style, category, onPress }: CategoriesListItemProps) => (
-  <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <Text>{JSON.stringify(category, null, 2)}</Text>
+  <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
+    <View style={styles.iconContainer}>
+      <Svg color={colors.text.primary} size={18} name="card" />
+    </View>
+    <View style={flex1}>
+      <Text weight="semiBold" size="s" color="primary">
+        {category.name}
+      </Text>
+    </View>
+    <Text weight="semiBold" size="s" color="tertiary">
+      {formatPrice(category.balance, 'EUR')}
+    </Text>
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('m'),
-    backgroundColor: colors.background.secondary,
-    borderWidth: 1,
-    borderColor: colors.border.primary,
+    ...rowCenter,
+    ...gap('column')('s'),
+    ...padding('vertical')('xs'),
+    ...padding('horizontal')('xs'),
     borderRadius: 12,
+    backgroundColor: colors.background.secondary,
+    borderColor: colors.border.primary,
+    borderWidth: 1,
+  },
+  iconContainer: {
+    ...center,
+    backgroundColor: colors.background.tertiary,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
 });
 

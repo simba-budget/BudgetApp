@@ -1,7 +1,7 @@
 import { Category } from '@api/clients/categories/types';
-import { gap, padding } from '@styles/lightTheme';
+import { FlatList } from '@common/v2/components';
 import React, { useCallback } from 'react';
-import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import CategoriesListItem from './CategoriesListItem';
 
@@ -31,7 +31,7 @@ const CategoriesList = ({
 
   return (
     <FlatList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
+      isSafeBottomArea
       onRefresh={onRefresh}
       style={style}
       data={categories}

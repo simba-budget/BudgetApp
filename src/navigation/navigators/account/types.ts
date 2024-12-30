@@ -48,7 +48,6 @@ export type AccountParams = {
   [subscriptionAddRoute]: undefined;
 
   [openBankingRoute]: undefined;
-  [profileRoute]: undefined;
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParams>;
 };
 
@@ -162,6 +161,3 @@ export type SubscriptionScreenProps = StackScreenProps<AccountParams, Subscripti
 
 export type OpenBankingRoute = 'OpenBanking';
 export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
-
-export type ProfileRoute = 'Profile';
-export const profileRoute: ProfileRoute = 'Profile';

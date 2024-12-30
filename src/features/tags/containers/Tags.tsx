@@ -1,14 +1,12 @@
 import { Tag } from '@api/clients/tags/types';
 import { debounceTime } from '@common/constants';
-import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { AccountNavigation, toTag, toTagAdd } from '@navigation/navigators/account';
+import { AccountNavigation, toTag } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { TagsList, TagsSearch } from '../components';
@@ -39,10 +37,7 @@ const Tags = () => {
   );
 
   return (
-    <SafeAreaView style={flex1}>
-      <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toTagAdd(navigation)} title="Add" />
-      </View>
+    <View style={flex1}>
       <TagsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
       <TagsList
         isLoading={isLoading}
@@ -51,7 +46,7 @@ const Tags = () => {
         tags={tags}
         onTagPress={handleOnTagPress}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

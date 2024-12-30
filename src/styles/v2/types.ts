@@ -6,6 +6,7 @@ export interface Colors {
   background: {
     primary: string;
     secondary: string;
+    tertiary: string;
     accent: string;
   };
   text: {

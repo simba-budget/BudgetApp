@@ -9,6 +9,7 @@ import * as MembersClient from './members';
 import * as MerchantsClient from './merchants';
 import * as NotificationsClient from './notifications';
 import * as OpenBankingClient from './openBanking';
+import * as ProfileClient from './profile';
 import * as SubscriptionsClient from './subscriptions';
 import * as TagsClient from './tags';
 import * as TransactionsClient from './transactions';
@@ -28,4 +29,5 @@ export {
   SubscriptionsClient,
   TagsClient,
   MerchantsClient,
+  ProfileClient,
 };

@@ -5,7 +5,13 @@ import {
   BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { GoalsScreen, HomeScreen, SubscriptionsScreen, TransactionsScreen } from '@screens';
+import {
+  GoalsScreen,
+  HomeScreen,
+  ProfileScreen,
+  SubscriptionsScreen,
+  TransactionsScreen,
+} from '@screens';
 
 import { bottomTabsOptions } from '../../options';
 
@@ -15,9 +21,14 @@ import {
   bottomTabsRoute,
   goalsRoute,
   homeRoute,
+  profileRoute,
   subscriptionsRoute,
   transactionsRoute,
 } from './types';
+
+const homeOptions: BottomTabNavigationOptions = {
+  headerShown: false,
+};
 
 const transactionsOptions: BottomTabNavigationOptions = {
   headerRight: TransactionsActions,
@@ -31,14 +42,19 @@ const subscriptionsOptions: BottomTabNavigationOptions = {
   headerRight: SubscriptionsActions,
 };
 
+const profileOptions: BottomTabNavigationOptions = {
+  headerTitleAlign: 'center',
+};
+
 const BottomTabs = createBottomTabNavigator<BottomTabsParams>({
   initialRouteName: homeRoute,
   screenOptions: bottomTabsOptions,
   screens: {
-    [homeRoute]: HomeScreen,
+    [homeRoute]: { screen: HomeScreen, options: homeOptions },
     [transactionsRoute]: { screen: TransactionsScreen, options: transactionsOptions },
     [goalsRoute]: { screen: GoalsScreen, options: goalsOptions },
     [subscriptionsRoute]: { screen: SubscriptionsScreen, options: subscriptionsOptions },
+    [profileRoute]: { screen: ProfileScreen, options: profileOptions },
   },
 });
 
