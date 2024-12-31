@@ -1,3 +1,4 @@
+import ListFooter from '@common/v2/components/ListFooter';
 import { gap, padding, sizes } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React, { useMemo } from 'react';
@@ -12,12 +13,17 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scrollIndicatorInsets } from '../../constants';
 
 export interface FlatListProps<T>
-  extends Omit<RNFlatListProps<T>, 'scrollIndicatorInsets' | 'refreshControl'> {
+  extends Omit<
+    RNFlatListProps<T>,
+    'scrollIndicatorInsets' | 'refreshControl' | 'ListFooterComponent'
+  > {
   isSafeBottomArea?: boolean;
+  isFetchingMore?: boolean;
 }
 
 const FlatList = <T,>({
   isSafeBottomArea = false,
+  isFetchingMore = false,
   contentContainerStyle,
   refreshing,
   onRefresh,
@@ -41,6 +47,7 @@ const FlatList = <T,>({
           tintColor={colors.text.primary}
         />
       }
+      ListFooterComponent={<ListFooter isFetchingMore={isFetchingMore} />}
       {...rest}
     />
   );

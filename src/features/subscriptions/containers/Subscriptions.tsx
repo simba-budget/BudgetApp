@@ -9,20 +9,18 @@ import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { SubscriptionsList, SubscriptionsSearch } from '../components';
-import { useSubscriptions } from '../hooks';
-import { selectApiSubscriptionsFilter, selectSubscriptionsPaging } from '../selectors';
+import { useSubscriptionsInfinity } from '../hooks';
+import { selectApiSubscriptionsFilter } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Subscriptions = () => {
   const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiSubscriptionsFilter);
-  const paging = useAppSelector(selectSubscriptionsPaging);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
-  const { subscriptions, isLoading, isRefetching, refetch } = useSubscriptions({
+  const { subscriptions, isLoading, isRefetching, refetch } = useSubscriptionsInfinity({
     filter: debouncedFilter,
-    paging,
   });
 
   const handleOnKeywordChange = useCallback(

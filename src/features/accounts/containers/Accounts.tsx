@@ -10,16 +10,22 @@ import { useDebounce } from 'use-debounce';
 
 import { selectAccountAction } from '../actions';
 import { AccountsList, AccountsSearch } from '../components';
-import { useAccounts } from '../hooks';
-import { selectAccountsFilter } from '../selectors';
+import { useAccountsInfinity } from '../hooks';
+import { selectAccountsFilter, selectAccountsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Accounts = () => {
   const navigation = useNavigation<MainNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectAccountsFilter);
+  const sort = useAppSelector(selectAccountsSort);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
-  const { accounts, isLoading, refetch, isRefetching } = useAccounts(debouncedFilter);
+
+  const { accounts, isLoading, refetch, isRefetching, fetchMore, isFetchingMore } =
+    useAccountsInfinity({
+      filter: debouncedFilter,
+      sort,
+    });
 
   const handleOnKeywordChange = useCallback(
     (keyword: string) => dispatch(updateKeyword({ keyword })),
@@ -38,6 +44,8 @@ const Accounts = () => {
     <View style={flex1}>
       <AccountsSearch keyword={filter.keyword} onKeywordChange={handleOnKeywordChange} />
       <AccountsList
+        onFetchMore={fetchMore}
+        isFetchingMore={isFetchingMore}
         isLoading={isLoading}
         isRefreshing={isRefetching}
         onRefresh={refetch}

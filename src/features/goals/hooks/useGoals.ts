@@ -6,8 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { selectGoalsLastUpdated } from '../selectors';
 
-export const getQueryKey = (filter: GoalsFilter, paging: Paging, lastUpdated: number) => {
-  return ['goals', filter, paging, lastUpdated];
+export const getQueryKey = (filter: GoalsFilter, lastUpdated: number, paging?: Paging) => {
+  return ['goals', filter, lastUpdated, paging];
 };
 
 interface Options {
@@ -19,7 +19,7 @@ const useGoals = ({ filter, paging }: Options) => {
   const lastUpdated = useAppSelector(selectGoalsLastUpdated);
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(filter, paging, lastUpdated),
+    queryKey: getQueryKey(filter, lastUpdated, paging),
     queryFn: () => GoalsClient.getGoals({ filter, paging }),
   });
 

@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { Account, AccountsFilter, SaveAccountRequest } from './types';
+import { Account, ListAccountsRequest, SaveAccountRequest } from './types';
 
 const url = '/accounts';
 
-export const getAccounts = (request: ListRequest<AccountsFilter>) => {
-  const params = { ...request.filter };
+export const getAccounts = (request: ListAccountsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Account>>(url, { params });
 };
 

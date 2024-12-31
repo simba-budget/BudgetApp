@@ -1,24 +1,28 @@
 import { RootState } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectTransactionsLastUpdated = (state: RootState) => {
-  return state.transactions.lastUpdated;
+export const selectTransactions = (state: RootState) => {
+  return state.transactions;
 };
 
-export const selectTransactionsFilter = (state: RootState) => {
-  return state.transactions.filter;
-};
+export const selectTransactionsLastUpdated = createSelector(
+  selectTransactions,
+  (state) => state.lastUpdated,
+);
 
-export const selectTransactionsSort = (state: RootState) => {
-  return state.transactions.sort;
-};
+export const selectTransactionsFilter = createSelector(
+  selectTransactions,
+  (state) => state.filter,
+);
 
-export const selectTransactionsPaging = (state: RootState) => {
-  return state.transactions.paging;
-};
+export const selectTransactionsSort = createSelector(
+  selectTransactions,
+  (state) => state.sort,
+);
 
-export const selectApiTransactionsFilter = (state: RootState) => {
-  const filter = selectTransactionsFilter(state);
-  const accountId = selectSelectedAccountIdStrict(state);
-  return { ...filter, accountId };
-};
+export const selectApiTransactionsFilter = createSelector(
+  selectTransactionsFilter,
+  selectSelectedAccountIdStrict,
+  (filter, accountId) => ({ ...filter, accountId }),
+);

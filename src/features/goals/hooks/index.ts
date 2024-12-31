@@ -4,3 +4,4 @@ export { default as useAddGoal } from './useAddGoal';
 export { default as useEditGoal } from './useEditGoal';
 export { default as useDeleteGoal } from './useDeleteGoal';
 export { default as useGoalForm } from './useGoalForm';
+export { default as useGoalsInfinity } from './useGoalsInfinity';

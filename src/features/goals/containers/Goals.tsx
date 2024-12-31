@@ -9,20 +9,18 @@ import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { GoalsList, GoalsSearch } from '../components';
-import { useGoals } from '../hooks';
-import { selectApiGoalsFilter, selectGoalsPaging } from '../selectors';
+import { useGoalsInfinity } from '../hooks';
+import { selectApiGoalsFilter } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Goals = () => {
   const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiGoalsFilter);
-  const paging = useAppSelector(selectGoalsPaging);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
-  const { goals, isLoading, isRefetching, refetch } = useGoals({
+  const { goals, isLoading, isRefetching, refetch } = useGoalsInfinity({
     filter: debouncedFilter,
-    paging,
   });
 
   const handleOnKeywordChange = useCallback(

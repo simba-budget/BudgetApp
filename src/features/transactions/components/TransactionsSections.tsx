@@ -12,9 +12,11 @@ export interface TransactionsSectionsProps {
   style?: StyleProp<ViewStyle>;
   isLoading: boolean;
   isRefreshing: boolean;
+  isFetchingMore: boolean;
   onRefresh: () => void;
   transactions: Transaction[];
   onTransactionPress: (transaction: Transaction) => void;
+  onFetchMore: () => void;
 }
 
 const TransactionsSections = ({
@@ -24,6 +26,8 @@ const TransactionsSections = ({
   style,
   onRefresh,
   isRefreshing,
+  isFetchingMore,
+  onFetchMore,
 }: TransactionsSectionsProps) => {
   const sections = useMemo<Section<Transaction>[]>(
     () => mapTransactionsToDaySections(transactions),
@@ -44,6 +48,8 @@ const TransactionsSections = ({
       sections={sections}
       refreshing={isLoading || isRefreshing}
       renderItem={renderItem}
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
     />
   );
 };

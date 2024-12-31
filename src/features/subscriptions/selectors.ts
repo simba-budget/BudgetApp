@@ -9,10 +9,6 @@ export const selectSubscriptionsFilter = (state: RootState) => {
   return state.subscriptions.filter;
 };
 
-export const selectSubscriptionsPaging = (state: RootState) => {
-  return state.subscriptions.paging;
-};
-
 export const selectApiSubscriptionsFilter = (state: RootState) => {
   const filter = selectSubscriptionsFilter(state);
   const accountId = selectSelectedAccountIdStrict(state);

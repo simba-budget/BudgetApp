@@ -12,18 +12,21 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scrollIndicatorInsets } from '../../constants';
 import { Section } from '../../types';
 
+import ListFooter from './ListFooter';
 import SectionHeader from './SectionHeader';
 
 export interface SectionListProps<T>
   extends Omit<
     RNSectionListProps<T, Section<T>>,
-    'scrollIndicatorInsets' | 'renderSectionHeader'
+    'scrollIndicatorInsets' | 'renderSectionHeader' | 'ListFooterComponent'
   > {
   isSafeBottomArea?: boolean;
+  isFetchingMore?: boolean;
 }
 
 const SectionList = <T,>({
   isSafeBottomArea = false,
+  isFetchingMore = false,
   contentContainerStyle,
   refreshing,
   onRefresh,
@@ -49,6 +52,7 @@ const SectionList = <T,>({
           tintColor={colors.text.primary}
         />
       }
+      ListFooterComponent={<ListFooter isFetchingMore={isFetchingMore} />}
       {...rest}
     />
   );

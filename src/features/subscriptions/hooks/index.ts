@@ -4,3 +4,4 @@ export { default as useAddSubscription } from './useAddSubscription';
 export { default as useEditSubscription } from './useEditSubscription';
 export { default as useDeleteSubscription } from './useDeleteSubscription';
 export { default as useSubscriptionForm } from './useSubscriptionForm';
+export { default as useSubscriptionsInfinity } from './useSubscriptionsInfinity';

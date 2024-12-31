@@ -15,3 +15,4 @@ export { default as useSubscriptionsTranslations } from './useSubscriptionsTrans
 export { default as useTagsTranslations } from './useTagsTranslations';
 export { default as useOnboardingTranslations } from './useOnboardingTranslations';
 export { default as useProfileTranslations } from './useProfileTranslations';
+export { default as useHomeTranslations } from './useHomeTranslations';

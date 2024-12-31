@@ -9,10 +9,6 @@ export const selectGoalsFilter = (state: RootState) => {
   return state.goals.filter;
 };
 
-export const selectGoalsPaging = (state: RootState) => {
-  return state.goals.paging;
-};
-
 export const selectApiGoalsFilter = (state: RootState) => {
   const filter = selectGoalsFilter(state);
   const accountId = selectSelectedAccountIdStrict(state);

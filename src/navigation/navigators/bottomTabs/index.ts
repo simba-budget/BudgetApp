@@ -59,4 +59,5 @@ const BottomTabs = createBottomTabNavigator<BottomTabsParams>({
 });
 
 export { type BottomTabsParams, type BottomTabsNavigation, bottomTabsRoute };
+export * from './actions';
 export default BottomTabs;

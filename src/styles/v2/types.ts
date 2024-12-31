@@ -10,6 +10,7 @@ export interface Colors {
     accent: string;
   };
   text: {
+    accent: string;
     primary: string;
     secondary: string;
     tertiary: string;

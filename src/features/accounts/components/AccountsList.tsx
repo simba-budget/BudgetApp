@@ -9,9 +9,11 @@ export interface AccountsListProps {
   style?: StyleProp<ViewStyle>;
   isLoading: boolean;
   isRefreshing: boolean;
+  isFetchingMore: boolean;
   onRefresh: () => void;
   accounts: Account[];
   onAccountPress: (account: Account) => void;
+  onFetchMore: () => void;
 }
 
 const AccountsList = ({
@@ -21,6 +23,8 @@ const AccountsList = ({
   style,
   onRefresh,
   isRefreshing,
+  isFetchingMore,
+  onFetchMore,
 }: AccountsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Account>) => (
@@ -31,6 +35,8 @@ const AccountsList = ({
 
   return (
     <FlatList
+      isFetchingMore={isFetchingMore}
+      onEndReached={onFetchMore}
       isSafeBottomArea
       onRefresh={onRefresh}
       style={style}

@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 export type AccountType = 'PERSONAL' | 'BUSINESS';
 
@@ -19,3 +19,6 @@ export interface SaveAccountRequest {
 export interface AccountsFilter {
   keyword?: string | null;
 }
+
+export type AccountsSort = Sort<'name'>;
+export type ListAccountsRequest = ListRequest<AccountsFilter, AccountsSort>;

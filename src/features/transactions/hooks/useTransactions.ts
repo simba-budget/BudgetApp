@@ -9,10 +9,10 @@ import { selectTransactionsLastUpdated } from '../selectors';
 export const getQueryKey = (
   filter: TransactionsFilter,
   sort: TransactionsSort,
-  paging: Paging,
   lastUpdated: number,
+  paging?: Paging,
 ) => {
-  return ['transactions', filter, sort, paging, lastUpdated];
+  return ['transactions', filter, sort, lastUpdated, paging];
 };
 
 interface Options {
@@ -25,7 +25,7 @@ const useTransactions = ({ filter, sort, paging }: Options) => {
   const lastUpdated = useAppSelector(selectTransactionsLastUpdated);
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(filter, sort, paging, lastUpdated),
+    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
     queryFn: () => TransactionsClient.getTransactions({ filter, sort, paging }),
   });
 

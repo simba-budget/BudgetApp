@@ -14,6 +14,7 @@ export const colors: Colors = {
     accent: '#CFF008',
   },
   text: {
+    accent: '#CFF008',
     primary: '#FFFFFF',
     secondary: '#06080D',
     tertiary: '#8C8C8C',

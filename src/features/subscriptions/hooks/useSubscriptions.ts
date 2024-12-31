@@ -8,10 +8,10 @@ import { selectSubscriptionsLastUpdated } from '../selectors';
 
 export const getQueryKey = (
   filter: SubscriptionsFilter,
-  paging: Paging,
   lastUpdated: number,
+  paging?: Paging,
 ) => {
-  return ['subscriptions', filter, paging, lastUpdated];
+  return ['subscriptions', filter, lastUpdated, paging];
 };
 
 interface Options {
@@ -23,7 +23,7 @@ const useSubscriptions = ({ filter, paging }: Options) => {
   const lastUpdated = useAppSelector(selectSubscriptionsLastUpdated);
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(filter, paging, lastUpdated),
+    queryKey: getQueryKey(filter, lastUpdated, paging),
     queryFn: () => SubscriptionsClient.getSubscriptions({ filter, paging }),
   });
 
