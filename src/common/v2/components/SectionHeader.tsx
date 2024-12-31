@@ -12,11 +12,11 @@ export interface SectionHeaderProps<T> {
 
 const SectionHeader = <T,>({ section }: SectionHeaderProps<T>) => (
   <View style={rowCenter}>
-    <Text size="xs" weight="semiBold" color="secondary" style={flex1}>
+    <Text size="xs" weight="medium" color="tertiary" style={flex1}>
       {section.title}
     </Text>
     {section.subtitle && (
-      <Text size="xs" color="accent">
+      <Text weight="semiBold" size="xs" color="accent">
         {section.subtitle}
       </Text>
     )}
