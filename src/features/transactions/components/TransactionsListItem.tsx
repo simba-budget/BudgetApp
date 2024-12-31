@@ -1,9 +1,8 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { IconButton, Text } from '@common/v2/components';
-import { alignEnd, flex1, rowCenter } from '@styles/common';
+import { Svg, Text } from '@common/v2/components';
+import { alignEnd, center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import React from 'react';
 import {
@@ -13,6 +12,8 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
+import { getRandomIcon } from '../utils';
 
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -26,7 +27,9 @@ const TransactionsListItem = ({
   onPress,
 }: TransactionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <IconButton iconName="card" />
+    <View style={styles.iconContainer}>
+      <Svg color={colors.text.primary} size={18} name={getRandomIcon()} />
+    </View>
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
         {transaction.category.name}
@@ -38,9 +41,6 @@ const TransactionsListItem = ({
     <View style={alignEnd}>
       <Text weight="semiBold" size="s" color="primary">
         {formatPrice(transaction.amount, transaction.currency)}
-      </Text>
-      <Text weight="medium" size="xs" color="tertiary">
-        {formatDate(transaction.date)}
       </Text>
     </View>
   </TouchableOpacity>
@@ -55,6 +55,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border.primary,
     borderRadius: 8,
+  },
+  iconContainer: {
+    ...center,
+    backgroundColor: colors.background.tertiary,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
   },
 });
 
