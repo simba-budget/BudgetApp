@@ -1,7 +1,6 @@
 import { Tag } from '@api/clients/tags/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { AccountNavigation, toTag } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
@@ -10,21 +9,22 @@ import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { TagsList, TagsSearch } from '../components';
-import { useTags } from '../hooks';
-import { selectTagsFilter } from '../selectors';
+import { useTagsInfinity } from '../hooks';
+import { selectApiTagsFilter, selectTagsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Tags = () => {
   const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
-  const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const filter = useAppSelector(selectTagsFilter);
+  const filter = useAppSelector(selectApiTagsFilter);
+  const sort = useAppSelector(selectTagsSort);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
-  const { tags, isLoading, isRefetching, refetch } = useTags({
-    accountId,
-    filter: debouncedFilter,
-  });
+  const { tags, isLoading, isRefetching, refetch, isFetchingMore, fetchMore } =
+    useTagsInfinity({
+      sort,
+      filter: debouncedFilter,
+    });
 
   const handleOnKeywordChange = useCallback(
     (keyword: string) => dispatch(updateKeyword({ keyword })),
@@ -38,8 +38,13 @@ const Tags = () => {
 
   return (
     <View style={flex1}>
-      <TagsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
+      <TagsSearch
+        onKeywordChange={handleOnKeywordChange}
+        keyword={filter?.keyword}
+      />
       <TagsList
+        isFetchingMore={isFetchingMore}
+        onFetchMore={fetchMore}
         isLoading={isLoading}
         isRefreshing={isRefetching}
         onRefresh={refetch}

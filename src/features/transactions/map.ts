@@ -1,4 +1,7 @@
-import { SaveTransactionRequest, Transaction } from '@api/clients/transactions/types';
+import {
+  SaveTransactionRequest,
+  Transaction,
+} from '@api/clients/transactions/types';
 import { Section } from '@common/types';
 import { getCurrentDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
@@ -11,7 +14,10 @@ export const mapTransactionsToDaySections = (
   transactions: Transaction[],
 ): Section<Transaction>[] => {
   return map(
-    groupBy(orderBy(transactions, 'date', 'desc'), (transaction) => transaction.date),
+    groupBy(
+      orderBy(transactions, 'date', 'desc'),
+      (transaction) => transaction.date,
+    ),
     (dateTransactions, date) => ({
       title: date,
       subtitle: formatPrice(sumBy(dateTransactions, 'amount'), 'EUR'),

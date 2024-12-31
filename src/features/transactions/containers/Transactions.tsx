@@ -13,11 +13,17 @@ const Transactions = () => {
   const filter = useAppSelector(selectApiTransactionsFilter);
   const sort = useAppSelector(selectTransactionsSort);
 
-  const { transactions, isLoading, isRefetching, refetch, fetchMore, isFetchingMore } =
-    useTransactionsInfinity({
-      filter,
-      sort,
-    });
+  const {
+    transactions,
+    isLoading,
+    isRefetching,
+    refetch,
+    fetchMore,
+    isFetchingMore,
+  } = useTransactionsInfinity({
+    filter,
+    sort,
+  });
 
   const handleOnTransactionPress = useCallback(
     (transaction: Transaction) => toTransaction(navigation, { id: transaction.id }),

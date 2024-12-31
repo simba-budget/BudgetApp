@@ -15,7 +15,9 @@ const ContributionEdit = ({ id }: ContributionEditProps) => {
   const { goBack } = useNavigation<AccountNavigation>();
   const { contribution, isLoading } = useContribution(id);
   const { handleSubmit, control, reset } = useContributionForm();
-  const { editContribution, isSubmitting } = useEditContribution({ onSuccess: goBack });
+  const { editContribution, isSubmitting } = useEditContribution({
+    onSuccess: goBack,
+  });
 
   const handleOnSubmit = (request: SaveContributionRequest) => {
     if (!contribution) return;

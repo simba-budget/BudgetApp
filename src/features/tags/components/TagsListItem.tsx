@@ -4,7 +4,13 @@ import { center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 export interface TagsListItemProps {
   style?: StyleProp<ViewStyle>;

@@ -29,14 +29,16 @@ const TransactionsSection = ({
         <Text style={flex1} color="primary" size="s" weight="semiBold">
           {t('Recent Transactions')}
         </Text>
-        <TouchableOpacity style={[rowCenter, gap('column')('xxs')]} onPress={onViewAllPress}>
+        <TouchableOpacity
+          style={[rowCenter, gap('column')('xxs')]}
+          onPress={onViewAllPress}>
           <Text color="accent" size="xs" weight="semiBold">
             {t('View All')}
           </Text>
           <Svg color={colors.text.accent} size={18} name="arrowRight" />
         </TouchableOpacity>
       </View>
-      <View style={gap('row')('s')}>
+      <View style={gap('row')('xs')}>
         {transactions.map((transaction) => (
           <TransactionsListItem
             key={transaction.id}

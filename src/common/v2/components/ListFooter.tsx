@@ -11,7 +11,9 @@ export interface ListFooterProps {
 
 const ListFooter = ({ isFetchingMore, style }: ListFooterProps) => (
   <View style={[center, padding('bottom')('m'), style]}>
-    {isFetchingMore && <ActivityIndicator size="small" color={colors.text.primary} />}
+    {isFetchingMore && (
+      <ActivityIndicator size="small" color={colors.text.primary} />
+    )}
   </View>
 );
 

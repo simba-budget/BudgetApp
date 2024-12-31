@@ -1,12 +1,16 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { SaveSubscriptionRequest, Subscription, SubscriptionsFilter } from './types';
+import {
+  ListSubscriptionsRequest,
+  SaveSubscriptionRequest,
+  Subscription,
+} from './types';
 
 const url = '/subscriptions';
 
-export const getSubscriptions = (request: ListRequest<SubscriptionsFilter>) => {
-  const params = { ...request.filter };
+export const getSubscriptions = (request: ListSubscriptionsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Subscription>>(url, { params });
 };
 

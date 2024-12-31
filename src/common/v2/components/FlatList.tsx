@@ -39,7 +39,11 @@ const FlatList = <T,>({
   return (
     <RNFlatList<T>
       scrollIndicatorInsets={scrollIndicatorInsets}
-      contentContainerStyle={[styles.container, contentContainerStyle, { paddingBottom }]}
+      contentContainerStyle={[
+        styles.container,
+        contentContainerStyle,
+        { paddingBottom },
+      ]}
       refreshControl={
         <RefreshControl
           refreshing={refreshing || false}
@@ -56,7 +60,7 @@ const FlatList = <T,>({
 const styles = StyleSheet.create({
   container: {
     ...padding('horizontal')('m'),
-    ...gap('row')('s'),
+    ...gap('row')('xs'),
     flexGrow: 1,
   },
 });

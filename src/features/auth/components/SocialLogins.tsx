@@ -1,4 +1,10 @@
-import { Divider, IconButton, TextBody, TransTextBody, View } from '@common/components';
+import {
+  Divider,
+  IconButton,
+  TextBody,
+  TransTextBody,
+  View,
+} from '@common/components';
 import { AuthNavigation } from '@navigation/navigators/auth';
 import { RegistrationRoute, SendOtpRoute } from '@navigation/navigators/auth/types';
 import { useNavigation } from '@react-navigation/native';

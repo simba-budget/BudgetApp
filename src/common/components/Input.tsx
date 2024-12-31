@@ -90,7 +90,11 @@ const Input: FC<InputProps> = (props) => {
       />
       {secureTextEntry && (
         <TouchableOpacity onPress={() => setIsHidden((prev) => !prev)}>
-          <Svg size={24} color={iconColorMap[status]} name={isHidden ? 'hide' : 'show'} />
+          <Svg
+            size={24}
+            color={iconColorMap[status]}
+            name={isHidden ? 'hide' : 'show'}
+          />
         </TouchableOpacity>
       )}
     </View>

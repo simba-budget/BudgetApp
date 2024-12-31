@@ -1,5 +1,5 @@
 import { MemberRole } from '@api/clients/members/types';
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 export interface Invitation extends BaseModel {
   email: string;
@@ -17,3 +17,6 @@ export interface InvitationsFilter {
   keyword?: string | null;
   accountId: number;
 }
+
+export type InvitationsSort = Sort<'email'>;
+export type ListInvitationsRequest = ListRequest<InvitationsFilter, InvitationsSort>;

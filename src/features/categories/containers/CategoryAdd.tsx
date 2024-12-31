@@ -11,7 +11,10 @@ const CategoryAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<AccountNavigation>();
   const { handleSubmit, control } = useCategoryForm();
-  const { addCategory, isSubmitting } = useAddCategory({ onSuccess: goBack, accountId });
+  const { addCategory, isSubmitting } = useAddCategory({
+    onSuccess: goBack,
+    accountId,
+  });
 
   return (
     <CategoryForm

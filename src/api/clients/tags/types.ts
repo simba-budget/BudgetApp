@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Member } from '../members/types';
 
@@ -16,3 +16,6 @@ export interface TagsFilter {
   keyword?: string | null;
   accountId: number;
 }
+
+export type TagsSort = Sort<'name'>;
+export type ListTagsRequest = ListRequest<TagsFilter, TagsSort>;

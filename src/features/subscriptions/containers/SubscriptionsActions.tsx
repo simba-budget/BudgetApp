@@ -1,5 +1,8 @@
 import { IconButton } from '@common/v2/components';
-import { AccountNavigation, toSubscriptionAdd } from '@navigation/navigators/account';
+import {
+  AccountNavigation,
+  toSubscriptionAdd,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
@@ -8,7 +11,10 @@ import { View } from 'react-native';
 
 const SubscriptionsActions = () => {
   const navigation = useNavigation<AccountNavigation>();
-  const handleOnAddPress = useCallback(() => toSubscriptionAdd(navigation), [navigation]);
+  const handleOnAddPress = useCallback(
+    () => toSubscriptionAdd(navigation),
+    [navigation],
+  );
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>

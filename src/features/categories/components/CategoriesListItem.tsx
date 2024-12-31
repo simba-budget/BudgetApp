@@ -5,7 +5,13 @@ import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { formatPrice } from '@utils/price';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 export interface CategoriesListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -13,7 +19,11 @@ export interface CategoriesListItemProps {
   onPress: () => void;
 }
 
-const CategoriesListItemProps = ({ style, category, onPress }: CategoriesListItemProps) => (
+const CategoriesListItemProps = ({
+  style,
+  category,
+  onPress,
+}: CategoriesListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
     <View style={styles.iconContainer}>
       <Svg color={colors.text.primary} size={18} name="card" />
@@ -33,8 +43,7 @@ const styles = StyleSheet.create({
   container: {
     ...rowCenter,
     ...gap('column')('s'),
-    ...padding('vertical')('xs'),
-    ...padding('horizontal')('xs'),
+    ...padding('full')('xs'),
     borderRadius: 12,
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,
@@ -43,9 +52,9 @@ const styles = StyleSheet.create({
   iconContainer: {
     ...center,
     backgroundColor: colors.background.tertiary,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
   },
 });
 

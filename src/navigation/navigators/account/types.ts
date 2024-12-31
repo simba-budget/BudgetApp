@@ -57,11 +57,17 @@ export type AccountNavigation = StackNavigationProp<AccountParams>;
 
 export type ContributionsRoute = 'Contributions';
 export const contributionsRoute: ContributionsRoute = 'Contributions';
-export type ContributionsScreenProps = StackScreenProps<AccountParams, ContributionsRoute>;
+export type ContributionsScreenProps = StackScreenProps<
+  AccountParams,
+  ContributionsRoute
+>;
 
 export type ContributionAddRoute = 'ContributionAdd';
 export const contributionAddRoute: ContributionAddRoute = 'ContributionAdd';
-export type ContributionAddScreenProps = StackScreenProps<AccountParams, ContributionAddRoute>;
+export type ContributionAddScreenProps = StackScreenProps<
+  AccountParams,
+  ContributionAddRoute
+>;
 
 export type ContributionEditRoute = 'ContributionEdit';
 export const contributionEditRoute: ContributionEditRoute = 'ContributionEdit';
@@ -72,7 +78,10 @@ export type ContributionEditScreenProps = StackScreenProps<
 
 export type ContributionRoute = 'Contribution';
 export const contributionRoute: ContributionRoute = 'Contribution';
-export type ContributionScreenProps = StackScreenProps<AccountParams, ContributionRoute>;
+export type ContributionScreenProps = StackScreenProps<
+  AccountParams,
+  ContributionRoute
+>;
 
 export type GoalAddRoute = 'GoalAdd';
 export const goalAddRoute: GoalAddRoute = 'GoalAdd';
@@ -93,7 +102,10 @@ export const categoryAddRoute: CategoryAddRoute = 'CategoryAdd';
 
 export type CategoryEditRoute = 'CategoryEdit';
 export const categoryEditRoute: CategoryEditRoute = 'CategoryEdit';
-export type CategoryEditScreenProps = StackScreenProps<AccountParams, CategoryEditRoute>;
+export type CategoryEditScreenProps = StackScreenProps<
+  AccountParams,
+  CategoryEditRoute
+>;
 
 export type CategoryRoute = 'Category';
 export const categoryRoute: CategoryRoute = 'Category';
@@ -104,11 +116,17 @@ export const transactionAddRoute: TransactionAddRoute = 'TransactionAdd';
 
 export type TransactionEditRoute = 'TransactionEdit';
 export const transactionEditRoute: TransactionEditRoute = 'TransactionEdit';
-export type TransactionEditScreenProps = StackScreenProps<AccountParams, TransactionEditRoute>;
+export type TransactionEditScreenProps = StackScreenProps<
+  AccountParams,
+  TransactionEditRoute
+>;
 
 export type TransactionRoute = 'Transaction';
 export const transactionRoute: TransactionRoute = 'Transaction';
-export type TransactionScreenProps = StackScreenProps<AccountParams, TransactionRoute>;
+export type TransactionScreenProps = StackScreenProps<
+  AccountParams,
+  TransactionRoute
+>;
 
 export type InvitationsRoute = 'Invitations';
 export const invitationsRoute: InvitationsRoute = 'Invitations';
@@ -157,7 +175,10 @@ export type SubscriptionEditScreenProps = StackScreenProps<
 
 export type SubscriptionRoute = 'Subscription';
 export const subscriptionRoute: SubscriptionRoute = 'Subscription';
-export type SubscriptionScreenProps = StackScreenProps<AccountParams, SubscriptionRoute>;
+export type SubscriptionScreenProps = StackScreenProps<
+  AccountParams,
+  SubscriptionRoute
+>;
 
 export type OpenBankingRoute = 'OpenBanking';
 export const openBankingRoute: OpenBankingRoute = 'OpenBanking';

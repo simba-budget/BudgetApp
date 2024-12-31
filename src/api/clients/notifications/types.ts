@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 export type NotificationType = 'CLIENTS' | 'EXPENSES' | 'INVOICES' | 'ACCOUNT';
 
@@ -10,3 +10,14 @@ export interface Notification extends BaseModel {
   isRead: boolean;
   date: string;
 }
+
+export interface NotificationsFilter {
+  accountId: number;
+  isRead?: boolean | null;
+}
+
+export type NotificationsSort = Sort<'date'>;
+export type ListNotificationsRequest = ListRequest<
+  NotificationsFilter,
+  NotificationsSort
+>;

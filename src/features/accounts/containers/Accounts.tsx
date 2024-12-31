@@ -42,7 +42,10 @@ const Accounts = () => {
 
   return (
     <View style={flex1}>
-      <AccountsSearch keyword={filter.keyword} onKeywordChange={handleOnKeywordChange} />
+      <AccountsSearch
+        keyword={filter.keyword}
+        onKeywordChange={handleOnKeywordChange}
+      />
       <AccountsList
         onFetchMore={fetchMore}
         isFetchingMore={isFetchingMore}

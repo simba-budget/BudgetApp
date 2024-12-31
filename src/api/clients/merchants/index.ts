@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { Merchant, MerchantsFilter, SaveMerchantRequest } from './types';
+import { ListMerchantsRequest, Merchant, SaveMerchantRequest } from './types';
 
 const url = '/merchants';
 
-export const getMerchants = (request: ListRequest<MerchantsFilter>) => {
-  const params = { ...request.filter };
+export const getMerchants = (request: ListMerchantsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Merchant>>(url, { params });
 };
 
@@ -14,7 +14,7 @@ export const getMerchant = (id: number) => {
   return httpClient.get<void, DataResponse<Merchant>>(`${url}/${id}`);
 };
 
-export const addMarchant = (request: SaveMerchantRequest) => {
+export const addMerchant = (request: SaveMerchantRequest) => {
   return httpClient.post<void, DataResponse<Merchant>>(url, request);
 };
 

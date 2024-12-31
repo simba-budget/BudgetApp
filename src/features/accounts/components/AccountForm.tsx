@@ -56,11 +56,19 @@ const AccountForm = ({
         name="initialBalance"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Initial balance')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Initial balance')} />
+            <Input
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Initial balance')}
+            />
           </FormControl>
         )}
       />
-      <Button onPress={onSubmit} isDisabled={isSubmitting || isDisabled} title={t('Save')} />
+      <Button
+        onPress={onSubmit}
+        isDisabled={isSubmitting || isDisabled}
+        title={t('Save')}
+      />
     </View>
   );
 };

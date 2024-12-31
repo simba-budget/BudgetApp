@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { Goal, GoalsFilter, SaveGoalRequest } from './types';
+import { Goal, ListGoalsRequest, SaveGoalRequest } from './types';
 
 const url = '/goals';
 
-export const getGoals = (request: ListRequest<GoalsFilter>) => {
-  const params = { ...request.filter };
+export const getGoals = (request: ListGoalsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Goal>>(url, { params });
 };
 

@@ -3,7 +3,10 @@ import isString from 'lodash/isString';
 
 import { tryParseJson } from './json';
 
-export const writeAsync = async <T = string>(key: string, value: T): Promise<void> => {
+export const writeAsync = async <T = string>(
+  key: string,
+  value: T,
+): Promise<void> => {
   const formattedValue = isString(value) ? value : JSON.stringify(value);
   await AsyncStorage.setItem(key, formattedValue);
 };

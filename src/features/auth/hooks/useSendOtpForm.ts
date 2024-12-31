@@ -11,7 +11,10 @@ const initialFormData: SendOtpRequest = {
 
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
-    email: yup.string().email(t('Email is invalid')).required(t('Email is required')),
+    email: yup
+      .string()
+      .email(t('Email is invalid'))
+      .required(t('Email is required')),
   });
 };
 

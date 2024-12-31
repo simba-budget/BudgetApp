@@ -1,9 +1,26 @@
 import { RootState } from '@core/store/store';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectContributionsLastUpdated = (state: RootState) => {
-  return state.contributions.lastUpdated;
-};
+export const selectContributions = (state: RootState) => state.contributions;
 
-export const selectContributionsFilter = (state: RootState) => {
-  return state.contributions.filter;
-};
+export const selectContributionsLastUpdated = createSelector(
+  selectContributions,
+  (state) => state.lastUpdated,
+);
+
+export const selectContributionsFilter = createSelector(
+  selectContributions,
+  (state) => state.filter,
+);
+
+export const selectContributionsSort = createSelector(
+  selectContributions,
+  (state) => state.sort,
+);
+
+export const selectApiContributionsFilter = createSelector(
+  selectContributionsFilter,
+  selectSelectedAccountIdStrict,
+  (filter, accountId) => ({ ...filter, accountId }),
+);

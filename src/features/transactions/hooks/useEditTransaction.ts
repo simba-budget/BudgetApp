@@ -1,5 +1,8 @@
 import { TransactionsClient } from '@api/clients';
-import { SaveTransactionRequest, Transaction } from '@api/clients/transactions/types';
+import {
+  SaveTransactionRequest,
+  Transaction,
+} from '@api/clients/transactions/types';
 import { useAppDispatch } from '@core/store/store';
 import { showSuccessToast } from '@core/toasts/actions';
 import { useTransactionsTranslations } from '@i18n/hooks';
@@ -16,7 +19,10 @@ const useEditTransaction = (options: Options) => {
   const dispatch = useAppDispatch();
   const { t } = useTransactionsTranslations();
 
-  const mutationFn = ({ id, ...request }: SaveTransactionRequest & { id: number }) => {
+  const mutationFn = ({
+    id,
+    ...request
+  }: SaveTransactionRequest & { id: number }) => {
     return TransactionsClient.editTransaction(id, request);
   };
 

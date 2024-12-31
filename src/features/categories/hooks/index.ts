@@ -4,3 +4,4 @@ export { default as useAddCategory } from './useAddCategory';
 export { default as useEditCategory } from './useEditCategory';
 export { default as useDeleteCategory } from './useDeleteCategory';
 export { default as useCategoryForm } from './useCategoryForm';
+export { default as useCategoriesInfinity } from './useCategoriesInfinity';

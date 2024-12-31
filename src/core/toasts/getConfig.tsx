@@ -7,7 +7,11 @@ import { BaseToast } from 'react-native-toast-message';
 import { ToastConfig } from 'react-native-toast-message/lib/src/types';
 
 const renderSuccessIcon = () => (
-  <View style={styles.successIcon} align="center" justify="center" bgColor="success500">
+  <View
+    style={styles.successIcon}
+    align="center"
+    justify="center"
+    bgColor="success500">
     <Svg size={14} color="white" name="check" />
   </View>
 );

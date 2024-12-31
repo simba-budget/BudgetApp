@@ -1,7 +1,7 @@
 import { Member } from '@api/clients/members/types';
-import { gap, padding } from '@styles/lightTheme';
+import { FlatList } from '@common/v2/components';
 import React, { useCallback } from 'react';
-import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import MembersListItem from './MembersListItem';
 
@@ -12,6 +12,8 @@ export interface MembersListProps {
   onRefresh: () => void;
   members: Member[];
   onMemberPress: (member: Member) => void;
+  isFetchingMore: boolean;
+  onFetchMore: () => void;
 }
 
 const MembersList = ({
@@ -21,6 +23,8 @@ const MembersList = ({
   style,
   onRefresh,
   isRefreshing,
+  onFetchMore,
+  isFetchingMore,
 }: MembersListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Member>) => (
@@ -31,7 +35,9 @@ const MembersList = ({
 
   return (
     <FlatList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
+      isSafeBottomArea
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}
       style={style}
       data={members}

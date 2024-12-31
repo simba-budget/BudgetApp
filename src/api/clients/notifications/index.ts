@@ -1,10 +1,11 @@
 import httpClient from '@api/httpClient';
 import { ListResponse } from '@api/types';
 
-import { Notification } from './types';
+import { ListNotificationsRequest, Notification } from './types';
 
 const url = '/notifications';
 
-export const getNotifications = () => {
-  return httpClient.get<void, ListResponse<Notification>>(url);
+export const getNotifications = (request: ListNotificationsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
+  return httpClient.get<void, ListResponse<Notification>>(url, { params });
 };

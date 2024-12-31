@@ -8,7 +8,10 @@ import { View } from 'react-native';
 
 const CategoriesActions = () => {
   const navigation = useNavigation<AccountNavigation>();
-  const handleOnAddPress = useCallback(() => toCategoryAdd(navigation), [navigation]);
+  const handleOnAddPress = useCallback(
+    () => toCategoryAdd(navigation),
+    [navigation],
+  );
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>

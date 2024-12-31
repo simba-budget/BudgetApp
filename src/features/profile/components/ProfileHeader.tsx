@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.secondary,
     borderWidth: 1,
     borderColor: colors.border.primary,
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: 72,
+    height: 72,
+    borderRadius: 36,
   },
 });
 

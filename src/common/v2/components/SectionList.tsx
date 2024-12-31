@@ -44,7 +44,11 @@ const SectionList = <T,>({
       stickySectionHeadersEnabled={false}
       scrollIndicatorInsets={scrollIndicatorInsets}
       renderSectionHeader={SectionHeader}
-      contentContainerStyle={[styles.container, contentContainerStyle, { paddingBottom }]}
+      contentContainerStyle={[
+        styles.container,
+        contentContainerStyle,
+        { paddingBottom },
+      ]}
       refreshControl={
         <RefreshControl
           refreshing={refreshing || false}
@@ -61,7 +65,7 @@ const SectionList = <T,>({
 const styles = StyleSheet.create({
   container: {
     ...padding('full')('m'),
-    ...gap('row')('s'),
+    ...gap('row')('xs'),
     flexGrow: 1,
   },
 });

@@ -1,7 +1,13 @@
 import { center, flex1, rowCenter } from '@styles/common';
 import { colors, margin } from '@styles/lightTheme';
 import React, { FC, ReactNode } from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 import Svg from './Svg';
 
@@ -15,7 +21,14 @@ export interface CheckboxProps {
 }
 
 const Checkbox: FC<CheckboxProps> = (props) => {
-  const { style, onChange, onBlur, value = false, isDisabled = false, children } = props;
+  const {
+    style,
+    onChange,
+    onBlur,
+    value = false,
+    isDisabled = false,
+    children,
+  } = props;
 
   const handleOnPress = () => {
     onChange?.(!value);
@@ -23,7 +36,10 @@ const Checkbox: FC<CheckboxProps> = (props) => {
   };
 
   return (
-    <TouchableOpacity onPress={handleOnPress} disabled={isDisabled} style={[rowCenter, style]}>
+    <TouchableOpacity
+      onPress={handleOnPress}
+      disabled={isDisabled}
+      style={[rowCenter, style]}>
       <View style={[styles.checkbox, value && styles.activeCheckbox]}>
         {value && <Svg color="white" size={14} name="check" />}
       </View>

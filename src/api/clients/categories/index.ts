@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { CategoriesFilter, Category, SaveCategoryRequest } from './types';
+import { Category, ListCategoriesRequest, SaveCategoryRequest } from './types';
 
 const url = '/categories';
 
-export const getCategories = (request: ListRequest<CategoriesFilter>) => {
-  const params = { ...request.filter };
+export const getCategories = (request: ListCategoriesRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Category>>(url, { params });
 };
 

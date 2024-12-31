@@ -18,7 +18,9 @@ const SubscriptionEdit = ({ id }: SubscriptionEditProps) => {
   const { goBack } = useNavigation<AccountNavigation>();
   const { subscription, isLoading } = useSubscription(id);
   const { handleSubmit, control, reset } = useSubscriptionForm();
-  const { editSubscription, isSubmitting } = useEditSubscription({ onSuccess: goBack });
+  const { editSubscription, isSubmitting } = useEditSubscription({
+    onSuccess: goBack,
+  });
 
   const handleOnSubmit = (request: SaveSubscriptionRequest) => {
     return editSubscription({ id, ...request, accountId });

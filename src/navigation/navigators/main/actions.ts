@@ -26,5 +26,8 @@ export const toAccountEdit = (
 };
 
 export const toHome = ({ navigate }: MainNavigation) => {
-  return navigate(accountRoute, { screen: bottomTabsRoute, params: { screen: homeRoute } });
+  return navigate(accountRoute, {
+    screen: bottomTabsRoute,
+    params: { screen: homeRoute },
+  });
 };

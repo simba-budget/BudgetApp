@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Member } from '../members/types';
 
@@ -24,3 +24,9 @@ export interface ContributionsFilter {
   goalId?: number | null;
   accountId: number;
 }
+
+export type ContributionsSort = Sort<'date'>;
+export type ListContributionsRequest = ListRequest<
+  ContributionsFilter,
+  ContributionsSort
+>;

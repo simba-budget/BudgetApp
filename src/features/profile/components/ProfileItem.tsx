@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
   container: {
     ...rowCenter,
     ...gap('column')('s'),
-    ...padding('vertical')('xs'),
-    ...padding('horizontal')('xs'),
+    ...padding('full')('xs'),
     borderRadius: 12,
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,
@@ -46,9 +45,9 @@ const styles = StyleSheet.create({
   iconContainer: {
     ...center,
     backgroundColor: colors.background.tertiary,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
   },
 });
 

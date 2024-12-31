@@ -14,7 +14,14 @@ export interface FormControlProps {
 }
 
 const FormControl: FC<FormControlProps> = (props) => {
-  const { style, label, children, isRequired = false, error = false, labelStyle } = props;
+  const {
+    style,
+    label,
+    children,
+    isRequired = false,
+    error = false,
+    labelStyle,
+  } = props;
 
   return (
     <View style={[gap('row')('xxs'), style]}>

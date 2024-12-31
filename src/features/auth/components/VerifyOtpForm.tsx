@@ -73,7 +73,12 @@ const VerifyOtpForm: FC<VerifyOtpFormProps> = (props) => {
                 </FormControl>
               )}
             />
-            <View br={sizes.s} pv="l" bgColor="lightGrey500" align="center" justify="center">
+            <View
+              br={sizes.s}
+              pv="l"
+              bgColor="lightGrey500"
+              align="center"
+              justify="center">
               <TextHeading color="highlightPrimary" size="xxl" textAlign="center">
                 {`00:${seconds.toString().padStart(2, '0')}`}
               </TextHeading>

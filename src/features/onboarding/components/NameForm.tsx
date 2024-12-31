@@ -15,7 +15,12 @@ export interface NameFormProps {
   control: Control<NameFormData>;
 }
 
-const NameForm = ({ style, onSubmit, control, isDisabled = false }: NameFormProps) => {
+const NameForm = ({
+  style,
+  onSubmit,
+  control,
+  isDisabled = false,
+}: NameFormProps) => {
   const { t } = useOnboardingTranslations();
 
   return (

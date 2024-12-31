@@ -10,12 +10,20 @@ export interface AccountsSearchProps {
   onKeywordChange: (keyword: string) => void;
 }
 
-const AccountsSearch = ({ style, keyword, onKeywordChange }: AccountsSearchProps) => {
+const AccountsSearch = ({
+  style,
+  keyword,
+  onKeywordChange,
+}: AccountsSearchProps) => {
   const { t } = useAccountsTranslations();
 
   return (
     <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
-      <Input onChange={onKeywordChange} value={keyword} placeholder={t('Search....')} />
+      <Input
+        onChange={onKeywordChange}
+        value={keyword}
+        placeholder={t('Search....')}
+      />
     </View>
   );
 };

@@ -1,4 +1,7 @@
-import { TransactionsFilter, TransactionsSort } from '@api/clients/transactions/types';
+import {
+  TransactionsFilter,
+  TransactionsSort,
+} from '@api/clients/transactions/types';
 import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';

@@ -13,7 +13,13 @@ export interface DividerProps extends Omit<ViewProps, 'bgColor'> {
 const Divider: FC<DividerProps> = (props) => {
   const { variant = 'primary', style, ...rest } = props;
 
-  return <View bgColor={bgColorMap[variant]} style={[styles.container, style]} {...rest} />;
+  return (
+    <View
+      bgColor={bgColorMap[variant]}
+      style={[styles.container, style]}
+      {...rest}
+    />
+  );
 };
 
 const bgColorMap: Record<DividerVariant, keyof Colors> = {

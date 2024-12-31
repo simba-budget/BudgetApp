@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Member } from '../members/types';
 
@@ -16,3 +16,6 @@ export interface MerchantsFilter {
   keyword?: string | null;
   accountId: number;
 }
+
+export type MerchantsSort = Sort<'name'>;
+export type ListMerchantsRequest = ListRequest<MerchantsFilter, MerchantsSort>;

@@ -15,7 +15,11 @@ const MembersSearch = ({ style, keyword, onKeywordChange }: MembersSearchProps) 
 
   return (
     <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
-      <Input onChange={onKeywordChange} value={keyword} placeholder={t('Search....')} />
+      <Input
+        onChange={onKeywordChange}
+        value={keyword}
+        placeholder={t('Search....')}
+      />
     </View>
   );
 };

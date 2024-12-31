@@ -1,29 +1,35 @@
 import { ContributionsClient } from '@api/clients';
-import { ContributionsFilter as ApiContributionsFilter } from '@api/clients/contributions/types';
+import {
+  ContributionsFilter,
+  ContributionsSort,
+} from '@api/clients/contributions/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectContributionsLastUpdated } from '../selectors';
-import { ContributionsFilter } from '../types';
 
-export const getQueryKey = (filter: ApiContributionsFilter, lastUpdated: number) => {
-  return ['contributions', filter, lastUpdated];
+export const getQueryKey = (
+  filter: ContributionsFilter,
+  sort: ContributionsSort,
+  lastUpdated: number,
+  paging?: Paging,
+) => {
+  return ['contributions', filter, sort, lastUpdated, paging];
 };
 
 interface Options {
-  goalId: number;
-  accountId: number;
   filter: ContributionsFilter;
+  sort: ContributionsSort;
+  paging: Paging;
 }
 
-const useContributions = (options: Options) => {
-  const { filter, goalId, accountId } = options;
+const useContributions = ({ filter, sort, paging }: Options) => {
   const lastUpdated = useAppSelector(selectContributionsLastUpdated);
-  const apiFilter = { ...filter, goalId, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => ContributionsClient.getContributions({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
+    queryFn: () => ContributionsClient.getContributions({ filter, sort, paging }),
   });
 
   return {

@@ -23,7 +23,9 @@ const TransTextBody: FC<TransTextBodyProps> = (props) => {
   } = props;
 
   const memoizedHighlightedText = useMemo<ReactElement>(
-    () => <TextBody {...rest} onPress={onHighlightedPress} color={highlightedColor} />,
+    () => (
+      <TextBody {...rest} onPress={onHighlightedPress} color={highlightedColor} />
+    ),
     [rest, highlightedColor, onHighlightedPress],
   );
 

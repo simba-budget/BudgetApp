@@ -34,7 +34,11 @@ const CategoryForm = ({
           </FormControl>
         )}
       />
-      <Button onPress={onSubmit} isDisabled={isSubmitting || isDisabled} title={t('Save')} />
+      <Button
+        onPress={onSubmit}
+        isDisabled={isSubmitting || isDisabled}
+        title={t('Save')}
+      />
     </View>
   );
 };

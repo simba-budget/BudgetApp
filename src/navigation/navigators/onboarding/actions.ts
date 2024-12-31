@@ -1,4 +1,8 @@
-import { initialBalanceRoute, initialInvitationsRoute, OnboardingNavigation } from './types';
+import {
+  initialBalanceRoute,
+  initialInvitationsRoute,
+  OnboardingNavigation,
+} from './types';
 
 export const toInitialBalance = ({ navigate }: OnboardingNavigation) => {
   return navigate(initialBalanceRoute);

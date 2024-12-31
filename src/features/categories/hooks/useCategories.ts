@@ -1,28 +1,32 @@
 import { CategoriesClient } from '@api/clients';
-import { CategoriesFilter as ApiCategoriesFilter } from '@api/clients/categories/types';
+import { CategoriesFilter, CategoriesSort } from '@api/clients/categories/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectCategoriesLastUpdated } from '../selectors';
-import { CategoriesFilter } from '../types';
 
-export const getQueryKey = (filter: ApiCategoriesFilter, lastUpdated: number) => {
-  return ['categories', filter, lastUpdated];
+export const getQueryKey = (
+  filter: CategoriesFilter,
+  sort: CategoriesSort,
+  lastUpdated: number,
+  paging?: Paging,
+) => {
+  return ['categories', filter, sort, lastUpdated, paging];
 };
 
 interface Options {
-  accountId: number;
   filter: CategoriesFilter;
+  sort: CategoriesSort;
+  paging: Paging;
 }
 
-const useCategories = (options: Options) => {
-  const { filter, accountId } = options;
+const useCategories = ({ filter, sort, paging }: Options) => {
   const lastUpdated = useAppSelector(selectCategoriesLastUpdated);
-  const apiFilter = { ...filter, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => CategoriesClient.getCategories({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
+    queryFn: () => CategoriesClient.getCategories({ filter, sort, paging }),
   });
 
   return {

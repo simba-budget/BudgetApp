@@ -1,4 +1,7 @@
-import { AccountNavigation, toTransactionEdit } from '@navigation/navigators/account';
+import {
+  AccountNavigation,
+  toTransactionEdit,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 

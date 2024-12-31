@@ -1,7 +1,7 @@
 import { Invitation } from '@api/clients/invitations/types';
-import { gap, padding } from '@styles/lightTheme';
+import { FlatList } from '@common/v2/components';
 import React, { useCallback } from 'react';
-import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import InvitationsListItem from './InvitationsListItem';
 
@@ -12,6 +12,8 @@ export interface InvitationsListProps {
   onRefresh: () => void;
   invitations: Invitation[];
   onInvitationPress: (invitation: Invitation) => void;
+  isFetchingMore: boolean;
+  onFetchMore: () => void;
 }
 
 const InvitationsList = ({
@@ -21,17 +23,24 @@ const InvitationsList = ({
   style,
   onRefresh,
   isRefreshing,
+  onFetchMore,
+  isFetchingMore,
 }: InvitationsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Invitation>) => (
-      <InvitationsListItem onPress={() => onInvitationPress(item)} invitation={item} />
+      <InvitationsListItem
+        onPress={() => onInvitationPress(item)}
+        invitation={item}
+      />
     ),
     [onInvitationPress],
   );
 
   return (
     <FlatList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
+      isSafeBottomArea
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}
       style={style}
       data={invitations}

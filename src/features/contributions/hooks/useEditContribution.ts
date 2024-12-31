@@ -1,5 +1,8 @@
 import { ContributionsClient } from '@api/clients';
-import { Contribution, SaveContributionRequest } from '@api/clients/contributions/types';
+import {
+  Contribution,
+  SaveContributionRequest,
+} from '@api/clients/contributions/types';
 import { useAppDispatch } from '@core/store/store';
 import { showSuccessToast } from '@core/toasts/actions';
 import { useContributionsTranslations } from '@i18n/hooks';
@@ -16,7 +19,10 @@ const useEditContribution = (options: Options) => {
   const dispatch = useAppDispatch();
   const { t } = useContributionsTranslations();
 
-  const mutationFn = ({ id, ...request }: SaveContributionRequest & { id: number }) => {
+  const mutationFn = ({
+    id,
+    ...request
+  }: SaveContributionRequest & { id: number }) => {
     return ContributionsClient.editContribution(id, request);
   };
 

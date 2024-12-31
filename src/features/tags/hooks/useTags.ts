@@ -1,28 +1,33 @@
 import { TagsClient } from '@api/clients';
-import { TagsFilter as ApiTagsFilter } from '@api/clients/tags/types';
+import { TagsFilter, TagsSort } from '@api/clients/tags/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectTagsLastUpdated } from '../selectors';
-import { TagsFilter } from '../types';
 
-export const getQueryKey = (filter: ApiTagsFilter, lastUpdated: number) => {
-  return ['tags', filter, lastUpdated];
+export const getQueryKey = (
+  filter: TagsFilter,
+  sort: TagsSort,
+  lastUpdated: number,
+  paging?: Paging,
+) => {
+  return ['tags', filter, sort, lastUpdated, paging];
 };
 
 interface Options {
-  accountId: number;
   filter: TagsFilter;
+  sort: TagsSort;
+  paging: Paging;
 }
 
 const useTags = (options: Options) => {
-  const { filter, accountId } = options;
+  const { filter, sort, paging } = options;
   const lastUpdated = useAppSelector(selectTagsLastUpdated);
-  const apiFilter = { ...filter, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => TagsClient.getTags({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
+    queryFn: () => TagsClient.getTags({ filter, sort, paging }),
   });
 
   return {

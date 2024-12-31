@@ -12,6 +12,8 @@ export interface SubscriptionsListProps {
   onRefresh: () => void;
   subscriptions: Subscription[];
   onSubscriptionPress: (subscription: Subscription) => void;
+  isFetchingMore: boolean;
+  onFetchMore: () => void;
 }
 
 const SubscriptionsList = ({
@@ -21,16 +23,23 @@ const SubscriptionsList = ({
   style,
   onRefresh,
   isRefreshing,
+  onFetchMore,
+  isFetchingMore,
 }: SubscriptionsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Subscription>) => (
-      <SubscriptionsListItem onPress={() => onSubscriptionPress(item)} subscription={item} />
+      <SubscriptionsListItem
+        onPress={() => onSubscriptionPress(item)}
+        subscription={item}
+      />
     ),
     [onSubscriptionPress],
   );
 
   return (
     <FlatList
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}
       style={style}
       data={subscriptions}

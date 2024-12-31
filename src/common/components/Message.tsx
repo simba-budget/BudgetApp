@@ -18,7 +18,10 @@ export interface MessageProps {
 const Message: FC<MessageProps> = (props) => {
   const { style, variant, message } = props;
 
-  const textColor = useMemo<keyof ThemeTextColors>(() => textColorMap[variant], [variant]);
+  const textColor = useMemo<keyof ThemeTextColors>(
+    () => textColorMap[variant],
+    [variant],
+  );
 
   return (
     <View

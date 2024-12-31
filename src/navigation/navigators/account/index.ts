@@ -1,6 +1,9 @@
 import { CategoriesActions } from '@features/categories/containers';
 import { TagsActions } from '@features/tags/containers';
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationOptions,
+} from '@react-navigation/stack';
 import {
   CategoriesScreen,
   CategoryAddScreen,

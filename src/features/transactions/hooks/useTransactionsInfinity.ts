@@ -1,5 +1,8 @@
 import { TransactionsClient } from '@api/clients';
-import { TransactionsFilter, TransactionsSort } from '@api/clients/transactions/types';
+import {
+  TransactionsFilter,
+  TransactionsSort,
+} from '@api/clients/transactions/types';
 import { useAppSelector } from '@core/store/store';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getNextPageParam, getPaging, parseData } from '@utils/paging';

@@ -1,7 +1,17 @@
 import welcomeImage from '@assets/images/welcome/welcome.jpg';
-import { Button, TextBody, TransTextBody, TransTextHeading, View } from '@common/components';
+import {
+  Button,
+  TextBody,
+  TransTextBody,
+  TransTextHeading,
+  View,
+} from '@common/components';
 import { useWelcomeTranslations } from '@i18n/hooks';
-import { AuthNavigation, toRegistration, toSendOtp } from '@navigation/navigators/auth';
+import {
+  AuthNavigation,
+  toRegistration,
+  toSendOtp,
+} from '@navigation/navigators/auth';
 import { useNavigation } from '@react-navigation/native';
 import { flex1, justifyEnd } from '@styles/common';
 import { colors, sizes } from '@styles/lightTheme';
@@ -28,7 +38,9 @@ const Welcome = () => {
                 i18nKey="The Budget App That Makes You Look Your Best"
               />
               <TextBody size="s" color="secondary" textAlign="center">
-                {t('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod')}
+                {t(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                )}
               </TextBody>
             </View>
             <View gap="s">

@@ -11,7 +11,10 @@ export const mapNotificationsToMonthsSections = (
   notifications: Notification[],
 ): Section<ListItem>[] => {
   return map(
-    groupBy(orderBy(notifications, 'date', 'desc'), (notification) => notification.date),
+    groupBy(
+      orderBy(notifications, 'date', 'desc'),
+      (notification) => notification.date,
+    ),
     (notificationsForMonth, month) => ({
       title: month,
       data: notificationsForMonth.map(mapNotificationToListItem),

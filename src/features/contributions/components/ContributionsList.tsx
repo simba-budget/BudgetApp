@@ -1,7 +1,7 @@
 import { Contribution } from '@api/clients/contributions/types';
-import { gap, padding } from '@styles/lightTheme';
+import { FlatList } from '@common/v2/components';
 import React, { useCallback } from 'react';
-import { FlatList, ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import ContributionsListItem from './ContributionsListItem';
 
@@ -12,6 +12,8 @@ export interface ContributionsListProps {
   onRefresh: () => void;
   contributions: Contribution[];
   onContributionPress: (contribution: Contribution) => void;
+  isFetchingMore: boolean;
+  onFetchMore: () => void;
 }
 
 const ContributionsList = ({
@@ -21,17 +23,24 @@ const ContributionsList = ({
   style,
   onRefresh,
   isRefreshing,
+  onFetchMore,
+  isFetchingMore,
 }: ContributionsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Contribution>) => (
-      <ContributionsListItem onPress={() => onContributionPress(item)} contribution={item} />
+      <ContributionsListItem
+        onPress={() => onContributionPress(item)}
+        contribution={item}
+      />
     ),
     [onContributionPress],
   );
 
   return (
     <FlatList
-      contentContainerStyle={[padding('horizontal')('m'), gap('row')('s')]}
+      isSafeBottomArea
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}
       style={style}
       data={contributions}

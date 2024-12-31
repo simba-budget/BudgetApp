@@ -9,7 +9,7 @@ import ProfileItem from './ProfileItem';
 
 const ProfileSection = ({ title, items }: ProfileSectionProps) => (
   <View style={gap('row')('xs')}>
-    <Text weight="semiBold" size="s" color="tertiary">
+    <Text weight="semiBold" size="xs" color="tertiary">
       {title}
     </Text>
     {items.map((item, index) => (

@@ -8,10 +8,11 @@ interface Options {
 const useCreateInstitutionLink = (options: Options = {}) => {
   const { onSuccess } = options;
 
-  const { mutateAsync: createInstitutionLink, isPending: isSubmitting } = useMutation({
-    mutationFn: OpenBankingClient.createInstitutionLink,
-    onSuccess,
-  });
+  const { mutateAsync: createInstitutionLink, isPending: isSubmitting } =
+    useMutation({
+      mutationFn: OpenBankingClient.createInstitutionLink,
+      onSuccess,
+    });
 
   return { createInstitutionLink, isSubmitting };
 };

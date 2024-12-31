@@ -10,18 +10,21 @@ import { useDebounce } from 'use-debounce';
 
 import { GoalsList, GoalsSearch } from '../components';
 import { useGoalsInfinity } from '../hooks';
-import { selectApiGoalsFilter } from '../selectors';
+import { selectApiGoalsFilter, selectGoalsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Goals = () => {
   const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiGoalsFilter);
+  const sort = useAppSelector(selectGoalsSort);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
-  const { goals, isLoading, isRefetching, refetch } = useGoalsInfinity({
-    filter: debouncedFilter,
-  });
+  const { goals, isLoading, isRefetching, refetch, isFetchingMore, fetchMore } =
+    useGoalsInfinity({
+      filter: debouncedFilter,
+      sort,
+    });
 
   const handleOnKeywordChange = useCallback(
     (keyword: string) => dispatch(updateKeyword({ keyword })),
@@ -35,8 +38,13 @@ const Goals = () => {
 
   return (
     <View style={flex1}>
-      <GoalsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
+      <GoalsSearch
+        onKeywordChange={handleOnKeywordChange}
+        keyword={filter?.keyword}
+      />
       <GoalsList
+        isFetchingMore={isFetchingMore}
+        onFetchMore={fetchMore}
         isLoading={isLoading}
         isRefreshing={isRefetching}
         onRefresh={refetch}

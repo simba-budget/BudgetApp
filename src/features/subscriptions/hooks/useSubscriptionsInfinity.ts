@@ -1,5 +1,8 @@
 import { SubscriptionsClient } from '@api/clients';
-import { SubscriptionsFilter } from '@api/clients/subscriptions/types';
+import {
+  SubscriptionsFilter,
+  SubscriptionsSort,
+} from '@api/clients/subscriptions/types';
 import { useAppSelector } from '@core/store/store';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getNextPageParam, getPaging, parseData } from '@utils/paging';
@@ -10,14 +13,15 @@ import { getQueryKey } from './useSubscriptions';
 
 interface Options {
   filter: SubscriptionsFilter;
+  sort: SubscriptionsSort;
 }
 
-const useSubscriptionsInfinity = ({ filter }: Options) => {
+const useSubscriptionsInfinity = ({ filter, sort }: Options) => {
   const lastUpdated = useAppSelector(selectSubscriptionsLastUpdated);
 
   const queryFn = ({ pageParam }: { pageParam: number }) => {
     const paging = getPaging(pageParam);
-    return SubscriptionsClient.getSubscriptions({ filter, paging });
+    return SubscriptionsClient.getSubscriptions({ filter, sort, paging });
   };
 
   const {
@@ -29,7 +33,7 @@ const useSubscriptionsInfinity = ({ filter }: Options) => {
     hasNextPage,
     fetchNextPage,
   } = useInfiniteQuery({
-    queryKey: getQueryKey(filter, lastUpdated),
+    queryKey: getQueryKey(filter, sort, lastUpdated),
     queryFn,
     initialPageParam: 0,
     getNextPageParam,

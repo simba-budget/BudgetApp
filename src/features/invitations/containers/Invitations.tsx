@@ -2,7 +2,6 @@ import { Invitation } from '@api/clients/invitations/types';
 import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import {
   AccountNavigation,
   toInvitation,
@@ -16,20 +15,27 @@ import { SafeAreaView, View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { InvitationsList, InvitationsSearch } from '../components';
-import { useInvitations } from '../hooks';
-import { selectInvitationsFilter } from '../selectors';
+import { useInvitationsInfinity } from '../hooks';
+import { selectApiInvitationsFilter, selectInvitationsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Invitations = () => {
   const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
-  const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const filter = useAppSelector(selectInvitationsFilter);
+  const filter = useAppSelector(selectApiInvitationsFilter);
+  const sort = useAppSelector(selectInvitationsSort);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
-  const { invitations, isLoading, isRefetching, refetch } = useInvitations({
-    accountId,
+  const {
+    invitations,
+    isLoading,
+    isRefetching,
+    refetch,
+    isFetchingMore,
+    fetchMore,
+  } = useInvitationsInfinity({
     filter: debouncedFilter,
+    sort,
   });
 
   const handleOnKeywordChange = useCallback(
@@ -47,8 +53,13 @@ const Invitations = () => {
       <View style={padding('horizontal')('m')}>
         <Button onPress={() => toInvitationAdd(navigation)} title="Add" />
       </View>
-      <InvitationsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
+      <InvitationsSearch
+        onKeywordChange={handleOnKeywordChange}
+        keyword={filter?.keyword}
+      />
       <InvitationsList
+        isFetchingMore={isFetchingMore}
+        onFetchMore={fetchMore}
         isLoading={isLoading}
         isRefreshing={isRefetching}
         onRefresh={refetch}

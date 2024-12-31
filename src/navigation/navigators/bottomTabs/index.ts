@@ -51,9 +51,15 @@ const BottomTabs = createBottomTabNavigator<BottomTabsParams>({
   screenOptions: bottomTabsOptions,
   screens: {
     [homeRoute]: { screen: HomeScreen, options: homeOptions },
-    [transactionsRoute]: { screen: TransactionsScreen, options: transactionsOptions },
+    [transactionsRoute]: {
+      screen: TransactionsScreen,
+      options: transactionsOptions,
+    },
     [goalsRoute]: { screen: GoalsScreen, options: goalsOptions },
-    [subscriptionsRoute]: { screen: SubscriptionsScreen, options: subscriptionsOptions },
+    [subscriptionsRoute]: {
+      screen: SubscriptionsScreen,
+      options: subscriptionsOptions,
+    },
     [profileRoute]: { screen: ProfileScreen, options: profileOptions },
   },
 });

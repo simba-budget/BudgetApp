@@ -16,7 +16,14 @@ export interface FormContainerProps {
 }
 
 const FormContainer: FC<FormContainerProps> = (props) => {
-  const { style, isDisabled = false, onSubmit, isSubmitting, children, onCancel } = props;
+  const {
+    style,
+    isDisabled = false,
+    onSubmit,
+    isSubmitting,
+    children,
+    onCancel,
+  } = props;
   const { t } = useCommonTranslations();
 
   return (

@@ -1,5 +1,5 @@
 import { GoalsClient } from '@api/clients';
-import { GoalsFilter } from '@api/clients/goals/types';
+import { GoalsFilter, GoalsSort } from '@api/clients/goals/types';
 import { useAppSelector } from '@core/store/store';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getNextPageParam, getPaging, parseData } from '@utils/paging';
@@ -10,14 +10,15 @@ import { getQueryKey } from './useGoals';
 
 interface Options {
   filter: GoalsFilter;
+  sort: GoalsSort;
 }
 
-const useGoalsInfinity = ({ filter }: Options) => {
+const useGoalsInfinity = ({ filter, sort }: Options) => {
   const lastUpdated = useAppSelector(selectGoalsLastUpdated);
 
   const queryFn = ({ pageParam }: { pageParam: number }) => {
     const paging = getPaging(pageParam);
-    return GoalsClient.getGoals({ filter, paging });
+    return GoalsClient.getGoals({ filter, sort, paging });
   };
 
   const {
@@ -29,7 +30,7 @@ const useGoalsInfinity = ({ filter }: Options) => {
     hasNextPage,
     fetchNextPage,
   } = useInfiniteQuery({
-    queryKey: getQueryKey(filter, lastUpdated),
+    queryKey: getQueryKey(filter, sort, lastUpdated),
     queryFn,
     initialPageParam: 0,
     getNextPageParam,

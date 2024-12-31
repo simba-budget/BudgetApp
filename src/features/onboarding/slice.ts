@@ -20,7 +20,10 @@ const onboardingSlice = createSlice({
     updateNameFormData: (state, action: PayloadAction<NameFormData>) => {
       state.nameFormData = action.payload;
     },
-    updateInitialBalanceFormData: (state, action: PayloadAction<InitialBalanceFormData>) => {
+    updateInitialBalanceFormData: (
+      state,
+      action: PayloadAction<InitialBalanceFormData>,
+    ) => {
       state.initialBalanceFormData = action.payload;
     },
   },
@@ -29,5 +32,6 @@ const onboardingSlice = createSlice({
   },
 });
 
-export const { updateNameFormData, updateInitialBalanceFormData } = onboardingSlice.actions;
+export const { updateNameFormData, updateInitialBalanceFormData } =
+  onboardingSlice.actions;
 export const { reducer } = onboardingSlice;

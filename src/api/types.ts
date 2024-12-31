@@ -6,7 +6,10 @@ export interface ListResponse<T> extends DataResponse<T[]> {
   total: number;
 }
 
-export interface ListRequest<TFilter = undefined, TSort extends Sort | undefined = undefined> {
+export interface ListRequest<
+  TFilter = undefined,
+  TSort extends Sort | undefined = undefined,
+> {
   paging?: Paging;
   filter?: TFilter;
   sort?: TSort;

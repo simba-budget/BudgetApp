@@ -12,10 +12,10 @@ export interface TransactionsSectionsProps {
   style?: StyleProp<ViewStyle>;
   isLoading: boolean;
   isRefreshing: boolean;
-  isFetchingMore: boolean;
   onRefresh: () => void;
   transactions: Transaction[];
   onTransactionPress: (transaction: Transaction) => void;
+  isFetchingMore: boolean;
   onFetchMore: () => void;
 }
 
@@ -36,7 +36,10 @@ const TransactionsSections = ({
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Transaction>) => (
-      <TransactionsListItem onPress={() => onTransactionPress(item)} transaction={item} />
+      <TransactionsListItem
+        onPress={() => onTransactionPress(item)}
+        transaction={item}
+      />
     ),
     [onTransactionPress],
   );

@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { SaveTagRequest, Tag, TagsFilter } from './types';
+import { ListTagsRequest, SaveTagRequest, Tag } from './types';
 
 const url = '/tags';
 
-export const getTags = (request: ListRequest<TagsFilter>) => {
-  const params = { ...request.filter };
+export const getTags = (request: ListTagsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Tag>>(url, { params });
 };
 

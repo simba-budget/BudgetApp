@@ -1,4 +1,7 @@
-import { DocumentTranslation, Document as DocumentType } from '@api/clients/documents/types';
+import {
+  DocumentTranslation,
+  Document as DocumentType,
+} from '@api/clients/documents/types';
 import { Markdown, ScrollView } from '@common/components';
 import { getTranslation } from '@utils/translations';
 import React, { FC, useMemo } from 'react';

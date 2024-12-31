@@ -11,7 +11,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { scrollIndicatorInsets } from '../../constants';
 
-export interface ScrollViewProps extends Omit<RNScrollViewProps, 'scrollIndicatorInsets'> {
+export interface ScrollViewProps
+  extends Omit<RNScrollViewProps, 'scrollIndicatorInsets'> {
   isSafeBottomArea?: boolean;
   refreshing?: boolean;
   onRefresh?: () => void;
@@ -34,7 +35,11 @@ const ScrollView = ({
   return (
     <RNScrollView
       scrollIndicatorInsets={scrollIndicatorInsets}
-      contentContainerStyle={[styles.container, contentContainerStyle, { paddingBottom }]}
+      contentContainerStyle={[
+        styles.container,
+        contentContainerStyle,
+        { paddingBottom },
+      ]}
       refreshControl={
         <RefreshControl
           refreshing={refreshing || false}

@@ -14,7 +14,11 @@ const GoalAdd = () => {
   const { addGoal, isSubmitting } = useAddGoal({ onSuccess: goBack, accountId });
 
   return (
-    <GoalForm onSubmit={handleSubmit(addGoal)} isSubmitting={isSubmitting} control={control} />
+    <GoalForm
+      onSubmit={handleSubmit(addGoal)}
+      isSubmitting={isSubmitting}
+      control={control}
+    />
   );
 };
 

@@ -1,28 +1,32 @@
 import { InvitationsClient } from '@api/clients';
-import { InvitationsFilter as ApiInvitationsFilter } from '@api/clients/invitations/types';
+import { InvitationsFilter, InvitationsSort } from '@api/clients/invitations/types';
+import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
 import { selectInvitationsLastUpdated } from '../selectors';
-import { InvitationsFilter } from '../types';
 
-export const getQueryKey = (filter: ApiInvitationsFilter, lastUpdated: number) => {
-  return ['invitations', filter, lastUpdated];
+export const getQueryKey = (
+  filter: InvitationsFilter,
+  sort: InvitationsSort,
+  lastUpdated: number,
+  paging?: Paging,
+) => {
+  return ['invitations', filter, sort, lastUpdated, paging];
 };
 
 interface Options {
-  accountId: number;
   filter: InvitationsFilter;
+  sort: InvitationsSort;
+  paging: Paging;
 }
 
-const useInvitations = (options: Options) => {
-  const { filter, accountId } = options;
+const useInvitations = ({ filter, sort, paging }: Options) => {
   const lastUpdated = useAppSelector(selectInvitationsLastUpdated);
-  const apiFilter = { ...filter, accountId };
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(apiFilter, lastUpdated),
-    queryFn: () => InvitationsClient.getInvitations({ filter: apiFilter }),
+    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
+    queryFn: () => InvitationsClient.getInvitations({ filter, sort, paging }),
   });
 
   return {

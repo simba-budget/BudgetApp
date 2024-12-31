@@ -1,5 +1,8 @@
 import { useAppDispatch } from '@core/store/store';
-import { OnboardingNavigation, toInitialInvitations } from '@navigation/navigators/onboarding';
+import {
+  OnboardingNavigation,
+  toInitialInvitations,
+} from '@navigation/navigators/onboarding';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -18,7 +21,9 @@ const InitialBalance = () => {
     toInitialInvitations(navigation);
   };
 
-  return <InitialBalanceForm onSubmit={handleSubmit(handleOnSubmit)} control={control} />;
+  return (
+    <InitialBalanceForm onSubmit={handleSubmit(handleOnSubmit)} control={control} />
+  );
 };
 
 export default InitialBalance;

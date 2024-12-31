@@ -29,7 +29,10 @@ const MemberDetails = ({
     <ScrollView
       style={style}
       refreshControl={
-        <RefreshControl onRefresh={onRefresh} refreshing={isLoading || isRefreshing} />
+        <RefreshControl
+          onRefresh={onRefresh}
+          refreshing={isLoading || isRefreshing}
+        />
       }
       contentContainerStyle={padding('full')('m')}>
       <Text>{JSON.stringify(member, null, 2)}</Text>

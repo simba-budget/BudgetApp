@@ -46,7 +46,11 @@ const TransTextHeading: FC<TransTextHeadingProps> = (props) => {
 
   return (
     <TextHeading {...rest}>
-      <Trans ns={ns} i18nKey={i18nKey} components={{ highlighted: memoizedHighlightedText }} />
+      <Trans
+        ns={ns}
+        i18nKey={i18nKey}
+        components={{ highlighted: memoizedHighlightedText }}
+      />
     </TextHeading>
   );
 };

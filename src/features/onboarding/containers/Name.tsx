@@ -1,5 +1,8 @@
 import { useAppDispatch } from '@core/store/store';
-import { OnboardingNavigation, toInitialBalance } from '@navigation/navigators/onboarding';
+import {
+  OnboardingNavigation,
+  toInitialBalance,
+} from '@navigation/navigators/onboarding';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 

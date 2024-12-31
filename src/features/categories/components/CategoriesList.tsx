@@ -12,6 +12,8 @@ export interface CategoriesListProps {
   onRefresh: () => void;
   categories: Category[];
   onCategoryPress: (category: Category) => void;
+  isFetchingMore: boolean;
+  onFetchMore: () => void;
 }
 
 const CategoriesList = ({
@@ -21,6 +23,8 @@ const CategoriesList = ({
   style,
   onRefresh,
   isRefreshing,
+  onFetchMore,
+  isFetchingMore,
 }: CategoriesListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Category>) => (
@@ -31,6 +35,8 @@ const CategoriesList = ({
 
   return (
     <FlatList
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
       isSafeBottomArea
       onRefresh={onRefresh}
       style={style}

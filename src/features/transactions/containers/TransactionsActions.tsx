@@ -8,7 +8,10 @@ import { View } from 'react-native';
 
 const TransactionsActions = () => {
   const navigation = useNavigation<AccountNavigation>();
-  const handleOnAddPress = useCallback(() => toTransactionAdd(navigation), [navigation]);
+  const handleOnAddPress = useCallback(
+    () => toTransactionAdd(navigation),
+    [navigation],
+  );
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>

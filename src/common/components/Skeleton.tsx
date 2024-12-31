@@ -20,7 +20,10 @@ const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 const Skeleton: FC<SkeletonProps> = (props) => {
   const { style, width, height, borderRadius, isDark = false, mv } = props;
 
-  const shimmerColors = useMemo<string[]>(() => (isDark ? darkColors : lightColors), [isDark]);
+  const shimmerColors = useMemo<string[]>(
+    () => (isDark ? darkColors : lightColors),
+    [isDark],
+  );
 
   const containerStyle = useMemo<ViewStyle>(
     () => ({

@@ -14,7 +14,11 @@ const TagAdd = () => {
   const { addTag, isSubmitting } = useAddTag({ onSuccess: goBack, accountId });
 
   return (
-    <TagForm onSubmit={handleSubmit(addTag)} isSubmitting={isSubmitting} control={control} />
+    <TagForm
+      onSubmit={handleSubmit(addTag)}
+      isSubmitting={isSubmitting}
+      control={control}
+    />
   );
 };
 

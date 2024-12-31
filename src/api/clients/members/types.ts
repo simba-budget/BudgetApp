@@ -1,4 +1,4 @@
-import { BaseModel } from '@api/types';
+import { BaseModel, ListRequest, Sort } from '@api/types';
 
 export type MemberRole = 'OWNER' | 'MEMBER';
 
@@ -19,3 +19,6 @@ export interface MembersFilter {
   accountId: number;
   roles?: MemberRole[] | null;
 }
+
+export type MembersSort = Sort<'email' | 'fullName'>;
+export type ListMembersRequest = ListRequest<MembersFilter, MembersSort>;

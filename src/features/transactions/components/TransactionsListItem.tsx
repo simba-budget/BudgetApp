@@ -6,7 +6,13 @@ import { colors } from '@styles/v2/urbanistTheme';
 import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -14,7 +20,11 @@ export interface TransactionsListItemProps {
   onPress: () => void;
 }
 
-const TransactionsListItem = ({ style, transaction, onPress }: TransactionsListItemProps) => (
+const TransactionsListItem = ({
+  style,
+  transaction,
+  onPress,
+}: TransactionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <IconButton iconName="card" />
     <View style={flex1}>

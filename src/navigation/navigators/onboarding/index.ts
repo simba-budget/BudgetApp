@@ -1,5 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { InitialBalanceScreen, InitialInvitationsScreen, NameScreen } from '@screens';
+import {
+  InitialBalanceScreen,
+  InitialInvitationsScreen,
+  NameScreen,
+} from '@screens';
 
 import { stackOptions } from '../../options';
 

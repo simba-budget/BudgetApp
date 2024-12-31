@@ -84,7 +84,10 @@ export const toGoalEdit = (
   return navigate(goalEditRoute, params);
 };
 
-export const toGoal = ({ navigate }: AccountNavigation, params: AccountParams[GoalRoute]) => {
+export const toGoal = (
+  { navigate }: AccountNavigation,
+  params: AccountParams[GoalRoute],
+) => {
   return navigate(goalRoute, params);
 };
 
@@ -161,7 +164,10 @@ export const toMemberEdit = (
   return navigate(memberEditRoute, params);
 };
 
-export const toTag = ({ navigate }: AccountNavigation, params: AccountParams[TagRoute]) => {
+export const toTag = (
+  { navigate }: AccountNavigation,
+  params: AccountParams[TagRoute],
+) => {
   return navigate(tagRoute, params);
 };
 

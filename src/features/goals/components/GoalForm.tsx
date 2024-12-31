@@ -30,7 +30,11 @@ const GoalForm = ({
         name="initialAmount"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Initial amount')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Initial amount')} />
+            <Input
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Initial amount')}
+            />
           </FormControl>
         )}
       />
@@ -39,7 +43,11 @@ const GoalForm = ({
         name="targetAmount"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Target amount')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Target amount')} />
+            <Input
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Target amount')}
+            />
           </FormControl>
         )}
       />
@@ -88,7 +96,11 @@ const GoalForm = ({
           </FormControl>
         )}
       />
-      <Button onPress={onSubmit} isDisabled={isSubmitting || isDisabled} title={t('Save')} />
+      <Button
+        onPress={onSubmit}
+        isDisabled={isSubmitting || isDisabled}
+        title={t('Save')}
+      />
     </View>
   );
 };

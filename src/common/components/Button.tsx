@@ -57,7 +57,11 @@ const Button: FC<ButtonProps> = (props) => {
       ]}
       disabled={isDisabled || isLoading}>
       {!!iconName && (
-        <Svg size={iconSizeMap[size]} color={textColorMap[variant]} name={iconName} />
+        <Svg
+          size={iconSizeMap[size]}
+          color={textColorMap[variant]}
+          name={iconName}
+        />
       )}
       <TextBody
         weight={textWeightMap[variant]}

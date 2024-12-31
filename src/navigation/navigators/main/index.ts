@@ -1,5 +1,8 @@
 import { AccountsActions } from '@features/accounts/containers';
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationOptions,
+} from '@react-navigation/stack';
 import { AccountAddScreen, AccountEditScreen, AccountsScreen } from '@screens';
 
 import { useIsNotOnboarded } from '../../hooks';
@@ -32,6 +35,11 @@ const MainStack = createStackNavigator<MainParams>({
   },
 });
 
-export { type MainParams, type AccountEditScreenProps, type MainNavigation, mainRoute };
+export {
+  type MainParams,
+  type AccountEditScreenProps,
+  type MainNavigation,
+  mainRoute,
+};
 export * from './actions';
 export default MainStack;

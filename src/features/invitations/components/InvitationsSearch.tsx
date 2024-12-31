@@ -10,12 +10,20 @@ export interface InvitationsSearchProps {
   onKeywordChange: (keyword: string) => void;
 }
 
-const InvitationsSearch = ({ style, keyword, onKeywordChange }: InvitationsSearchProps) => {
+const InvitationsSearch = ({
+  style,
+  keyword,
+  onKeywordChange,
+}: InvitationsSearchProps) => {
   const { t } = useInvitationsTranslations();
 
   return (
     <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
-      <Input onChange={onKeywordChange} value={keyword} placeholder={t('Search....')} />
+      <Input
+        onChange={onKeywordChange}
+        value={keyword}
+        placeholder={t('Search....')}
+      />
     </View>
   );
 };

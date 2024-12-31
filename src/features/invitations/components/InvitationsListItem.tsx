@@ -11,7 +11,11 @@ export interface InvitationsListItemProps {
   onPress: () => void;
 }
 
-const InvitationsListItem = ({ style, invitation, onPress }: InvitationsListItemProps) => (
+const InvitationsListItem = ({
+  style,
+  invitation,
+  onPress,
+}: InvitationsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <Text>{JSON.stringify(invitation, null, 2)}</Text>
   </TouchableOpacity>

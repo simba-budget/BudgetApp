@@ -35,5 +35,6 @@ const transactionsSlice = createSlice({
   },
 });
 
-export const { updateFilter, updateTransactions, updateSort } = transactionsSlice.actions;
+export const { updateFilter, updateTransactions, updateSort } =
+  transactionsSlice.actions;
 export const { reducer } = transactionsSlice;

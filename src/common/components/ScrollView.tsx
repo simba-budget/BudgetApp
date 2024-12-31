@@ -25,7 +25,14 @@ export interface ScrollViewProps
 }
 
 const ScrollView = forwardRef<RNScrollView, ScrollViewProps>((props, ref) => {
-  const { gap = 'm', ph = 'l', pv, bottomSafe, contentContainerStyle, ...rest } = props;
+  const {
+    gap = 'm',
+    ph = 'l',
+    pv,
+    bottomSafe,
+    contentContainerStyle,
+    ...rest
+  } = props;
   const { bottom } = useSafeAreaInsets();
 
   const bottomSafePadding = useMemo<number>(() => {
@@ -37,7 +44,10 @@ const ScrollView = forwardRef<RNScrollView, ScrollViewProps>((props, ref) => {
     () => ({
       gap: sizes[gap],
       paddingHorizontal: sizes[ph],
-      ...(pv && { paddingTop: sizes[pv], paddingBottom: sizes[pv] + bottomSafePadding }),
+      ...(pv && {
+        paddingTop: sizes[pv],
+        paddingBottom: sizes[pv] + bottomSafePadding,
+      }),
     }),
     [gap, ph, pv, bottomSafePadding],
   );

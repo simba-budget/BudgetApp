@@ -36,14 +36,20 @@ const SendOtpForm: FC<SignInFormProps> = (props) => {
         <View gap="s">
           <TextHeading size="xxl">{t('Welcome Back')}</TextHeading>
           <TextBody>
-            {t('We happy to see you again! to use your account, you should sign in first')}
+            {t(
+              'We happy to see you again! to use your account, you should sign in first',
+            )}
           </TextBody>
         </View>
         <Controller
           control={control}
           name="email"
           render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-            <FormControl style={flex1} error={error?.message} isRequired label={t('Email')}>
+            <FormControl
+              style={flex1}
+              error={error?.message}
+              isRequired
+              label={t('Email')}>
               <Input
                 {...rest}
                 isError={!!error}

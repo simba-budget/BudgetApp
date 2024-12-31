@@ -12,6 +12,8 @@ export interface TagsListProps {
   onRefresh: () => void;
   tags: Tag[];
   onTagPress: (tag: Tag) => void;
+  isFetchingMore: boolean;
+  onFetchMore: () => void;
 }
 
 const TagsList = ({
@@ -21,6 +23,8 @@ const TagsList = ({
   style,
   onRefresh,
   isRefreshing,
+  isFetchingMore,
+  onFetchMore,
 }: TagsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Tag>) => (
@@ -31,6 +35,8 @@ const TagsList = ({
 
   return (
     <FlatList
+      onEndReached={onFetchMore}
+      isFetchingMore={isFetchingMore}
       isSafeBottomArea
       onRefresh={onRefresh}
       style={style}

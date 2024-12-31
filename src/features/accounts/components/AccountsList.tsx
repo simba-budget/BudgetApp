@@ -9,10 +9,10 @@ export interface AccountsListProps {
   style?: StyleProp<ViewStyle>;
   isLoading: boolean;
   isRefreshing: boolean;
-  isFetchingMore: boolean;
   onRefresh: () => void;
   accounts: Account[];
   onAccountPress: (account: Account) => void;
+  isFetchingMore: boolean;
   onFetchMore: () => void;
 }
 

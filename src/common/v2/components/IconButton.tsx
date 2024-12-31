@@ -13,7 +13,12 @@ export interface IconButtonProps {
   iconName: IconName;
 }
 
-const IconButton = ({ onPress, style, iconName, isDisabled = false }: IconButtonProps) => (
+const IconButton = ({
+  onPress,
+  style,
+  iconName,
+  isDisabled = false,
+}: IconButtonProps) => (
   <TouchableOpacity
     onPress={onPress}
     style={[styles.container, isDisabled && styles.disabledContainer, style]}

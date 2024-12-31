@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { Invitation, InvitationsFilter, SaveInvitationRequest } from './types';
+import { Invitation, ListInvitationsRequest, SaveInvitationRequest } from './types';
 
 const url = '/invitations';
 
-export const getInvitations = (request: ListRequest<InvitationsFilter>) => {
-  const params = { ...request.filter };
+export const getInvitations = (request: ListInvitationsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Invitation>>(url, { params });
 };
 

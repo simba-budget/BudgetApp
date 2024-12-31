@@ -1,12 +1,16 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { Contribution, ContributionsFilter, SaveContributionRequest } from './types';
+import {
+  Contribution,
+  ListContributionsRequest,
+  SaveContributionRequest,
+} from './types';
 
 const url = '/contributions';
 
-export const getContributions = (request: ListRequest<ContributionsFilter>) => {
-  const params = { ...request.filter };
+export const getContributions = (request: ListContributionsRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Contribution>>(url, { params });
 };
 

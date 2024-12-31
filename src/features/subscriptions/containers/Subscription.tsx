@@ -1,4 +1,7 @@
-import { AccountNavigation, toSubscriptionEdit } from '@navigation/navigators/account';
+import {
+  AccountNavigation,
+  toSubscriptionEdit,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 

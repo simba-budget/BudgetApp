@@ -15,7 +15,11 @@ const GoalsSearch = ({ style, keyword, onKeywordChange }: GoalsSearchProps) => {
 
   return (
     <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
-      <Input onChange={onKeywordChange} value={keyword} placeholder={t('Search....')} />
+      <Input
+        onChange={onKeywordChange}
+        value={keyword}
+        placeholder={t('Search....')}
+      />
     </View>
   );
 };

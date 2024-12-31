@@ -2,9 +2,7 @@ import { RootState } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectTransactions = (state: RootState) => {
-  return state.transactions;
-};
+export const selectTransactions = (state: RootState) => state.transactions;
 
 export const selectTransactionsLastUpdated = createSelector(
   selectTransactions,

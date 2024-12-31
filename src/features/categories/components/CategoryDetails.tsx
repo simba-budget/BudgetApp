@@ -29,7 +29,10 @@ const CategoryDetails = ({
     <ScrollView
       style={style}
       refreshControl={
-        <RefreshControl onRefresh={onRefresh} refreshing={isLoading || isRefreshing} />
+        <RefreshControl
+          onRefresh={onRefresh}
+          refreshing={isLoading || isRefreshing}
+        />
       }
       contentContainerStyle={padding('full')('m')}>
       <Text>{JSON.stringify(category, null, 2)}</Text>

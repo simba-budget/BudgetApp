@@ -1,5 +1,8 @@
 import { TransactionsClient } from '@api/clients';
-import { TransactionsFilter, TransactionsSort } from '@api/clients/transactions/types';
+import {
+  TransactionsFilter,
+  TransactionsSort,
+} from '@api/clients/transactions/types';
 import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';

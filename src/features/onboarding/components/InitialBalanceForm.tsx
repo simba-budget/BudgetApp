@@ -40,7 +40,11 @@ const InitialBalanceForm = ({
           name="initialBalance"
           render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
             <FormControl error={error?.message} label={t('Initial balance')}>
-              <Input {...rest} readOnly={isDisabled} placeholder={t('Initial balance')} />
+              <Input
+                {...rest}
+                readOnly={isDisabled}
+                placeholder={t('Initial balance')}
+              />
             </FormControl>
           )}
         />

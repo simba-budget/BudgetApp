@@ -1,12 +1,12 @@
 import httpClient from '@api/httpClient';
-import { DataResponse, ListRequest, ListResponse } from '@api/types';
+import { DataResponse, ListResponse } from '@api/types';
 
-import { Member, MembersFilter, SaveMemberRequest } from './types';
+import { ListMembersRequest, Member, SaveMemberRequest } from './types';
 
 const url = '/members';
 
-export const getMembers = (request: ListRequest<MembersFilter>) => {
-  const params = { ...request.filter };
+export const getMembers = (request: ListMembersRequest) => {
+  const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Member>>(url, { params });
 };
 

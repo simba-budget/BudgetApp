@@ -1,3 +1,4 @@
+import { CategoriesSort } from '@api/clients/categories/types';
 import { logoutAction } from '@features/auth/actions';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -5,11 +6,13 @@ import { CategoriesFilter } from './types';
 
 export interface CategoriesState {
   filter: CategoriesFilter;
+  sort: CategoriesSort;
   lastUpdated: number;
 }
 
 const initialState: CategoriesState = {
   filter: {},
+  sort: { column: 'name', direction: 'asc' },
   lastUpdated: Date.now(),
 };
 
@@ -23,6 +26,9 @@ const categoriesSlice = createSlice({
     updateFilter: (state, action: PayloadAction<{ filter: CategoriesFilter }>) => {
       state.filter = action.payload.filter;
     },
+    updateSort: (state, action: PayloadAction<{ sort: CategoriesSort }>) => {
+      state.sort = action.payload.sort;
+    },
     updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
       state.filter.keyword = action.payload.keyword;
     },
@@ -32,5 +38,7 @@ const categoriesSlice = createSlice({
   },
 });
 
-export const { updateFilter, updateCategories, updateKeyword } = categoriesSlice.actions;
+export const { updateFilter, updateCategories, updateKeyword, updateSort } =
+  categoriesSlice.actions;
+
 export const { reducer } = categoriesSlice;

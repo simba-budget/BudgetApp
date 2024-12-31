@@ -4,7 +4,10 @@ import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccount } from '@features/accounts/selectors';
 import { useProfile } from '@features/profile/hooks';
 import { AccountNavigation, toTransaction } from '@navigation/navigators/account';
-import { BottomTabsNavigation, toTransactions } from '@navigation/navigators/bottomTabs';
+import {
+  BottomTabsNavigation,
+  toTransactions,
+} from '@navigation/navigators/bottomTabs';
 import { MainNavigation, toAccounts } from '@navigation/navigators/main';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
@@ -14,7 +17,11 @@ import React, { useCallback, useMemo } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 
 import { TransactionsSection } from '../components';
-import { useRecentGoals, useRecentTransactions, useUpcomingSubscriptions } from '../hooks';
+import {
+  useRecentGoals,
+  useRecentTransactions,
+  useUpcomingSubscriptions,
+} from '../hooks';
 
 const Home = () => {
   const mainNavigation = useNavigation<MainNavigation>();
@@ -52,8 +59,16 @@ const Home = () => {
 
   const isLoading = useMemo(
     () =>
-      isProfileLoading || isTransactionsLoading || isGoalsLoading || isSubscriptionsLoading,
-    [isProfileLoading, isTransactionsLoading, isGoalsLoading, isSubscriptionsLoading],
+      isProfileLoading ||
+      isTransactionsLoading ||
+      isGoalsLoading ||
+      isSubscriptionsLoading,
+    [
+      isProfileLoading,
+      isTransactionsLoading,
+      isGoalsLoading,
+      isSubscriptionsLoading,
+    ],
   );
 
   const isRefetching = useMemo(
@@ -82,7 +97,8 @@ const Home = () => {
   );
 
   const handleOnTransactionPress = useCallback(
-    (transaction: Transaction) => toTransaction(accountNavigation, { id: transaction.id }),
+    (transaction: Transaction) =>
+      toTransaction(accountNavigation, { id: transaction.id }),
     [accountNavigation],
   );
 

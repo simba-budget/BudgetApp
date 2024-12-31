@@ -1,7 +1,11 @@
 import { padding } from '@styles/lightTheme';
 import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { TextInputProps as RNTextInputProps, StyleSheet, TextInput } from 'react-native';
+import {
+  TextInputProps as RNTextInputProps,
+  StyleSheet,
+  TextInput,
+} from 'react-native';
 
 export interface InputProps
   extends Omit<RNTextInputProps, 'onChange' | 'onChangeText' | 'value'> {

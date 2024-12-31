@@ -70,7 +70,12 @@ const RegistrationForm: FC<SignInFormProps> = (props) => {
                   isRequired
                   style={flex1}
                   label={t('First name')}>
-                  <Input {...rest} isError={!!error} iconName="profile" placeholder="John" />
+                  <Input
+                    {...rest}
+                    isError={!!error}
+                    iconName="profile"
+                    placeholder="John"
+                  />
                 </FormControl>
               )}
             />
@@ -83,7 +88,12 @@ const RegistrationForm: FC<SignInFormProps> = (props) => {
                   isRequired
                   style={flex1}
                   label={t('Last name')}>
-                  <Input {...rest} isError={!!error} iconName="profile" placeholder="Doe" />
+                  <Input
+                    {...rest}
+                    isError={!!error}
+                    iconName="profile"
+                    placeholder="Doe"
+                  />
                 </FormControl>
               )}
             />

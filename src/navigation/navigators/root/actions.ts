@@ -1,4 +1,8 @@
-import { privacyPolicyRoute, RootNavigation, termsAndConditionsRoute } from './types';
+import {
+  privacyPolicyRoute,
+  RootNavigation,
+  termsAndConditionsRoute,
+} from './types';
 
 export const toPrivacyPolicy = ({ navigate }: RootNavigation) => {
   return navigate(privacyPolicyRoute);

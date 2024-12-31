@@ -2,7 +2,6 @@ import { Contribution } from '@api/clients/contributions/types';
 import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import {
   AccountNavigation,
   toContribution,
@@ -16,8 +15,8 @@ import { SafeAreaView, View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { ContributionsList, ContributionsSearch } from '../components';
-import { useContributions } from '../hooks';
-import { selectContributionsFilter } from '../selectors';
+import { useContributionsInfinity } from '../hooks';
+import { selectApiContributionsFilter, selectContributionsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 export interface ContributionsProps {
@@ -27,14 +26,20 @@ export interface ContributionsProps {
 const Contributions = ({ goalId }: ContributionsProps) => {
   const navigation = useNavigation<AccountNavigation>();
   const dispatch = useAppDispatch();
-  const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const filter = useAppSelector(selectContributionsFilter);
+  const filter = useAppSelector(selectApiContributionsFilter);
+  const sort = useAppSelector(selectContributionsSort);
   const [debouncedFilter] = useDebounce(filter, debounceTime);
 
-  const { contributions, isLoading, isRefetching, refetch } = useContributions({
-    goalId,
-    accountId,
-    filter: debouncedFilter,
+  const {
+    contributions,
+    isLoading,
+    isRefetching,
+    refetch,
+    fetchMore,
+    isFetchingMore,
+  } = useContributionsInfinity({
+    filter: { ...debouncedFilter, goalId },
+    sort,
   });
 
   const handleOnKeywordChange = useCallback(
@@ -43,17 +48,26 @@ const Contributions = ({ goalId }: ContributionsProps) => {
   );
 
   const handleOnContributionPress = useCallback(
-    (contribution: Contribution) => toContribution(navigation, { id: contribution.id }),
+    (contribution: Contribution) =>
+      toContribution(navigation, { id: contribution.id }),
     [navigation],
   );
 
   return (
     <SafeAreaView style={flex1}>
       <View style={padding('horizontal')('m')}>
-        <Button onPress={() => toContributionAdd(navigation, { goalId })} title="Add" />
+        <Button
+          onPress={() => toContributionAdd(navigation, { goalId })}
+          title="Add"
+        />
       </View>
-      <ContributionsSearch onKeywordChange={handleOnKeywordChange} keyword={filter?.keyword} />
+      <ContributionsSearch
+        onKeywordChange={handleOnKeywordChange}
+        keyword={filter?.keyword}
+      />
       <ContributionsList
+        isFetchingMore={isFetchingMore}
+        onFetchMore={fetchMore}
         isLoading={isLoading}
         isRefreshing={isRefetching}
         onRefresh={refetch}

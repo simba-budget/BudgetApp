@@ -1,16 +1,22 @@
 import { RootState } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectGoalsLastUpdated = (state: RootState) => {
-  return state.goals.lastUpdated;
-};
+export const selectGoals = (state: RootState) => state.goals;
 
-export const selectGoalsFilter = (state: RootState) => {
-  return state.goals.filter;
-};
+export const selectGoalsLastUpdated = createSelector(
+  selectGoals,
+  (state) => state.lastUpdated,
+);
 
-export const selectApiGoalsFilter = (state: RootState) => {
-  const filter = selectGoalsFilter(state);
-  const accountId = selectSelectedAccountIdStrict(state);
-  return { ...filter, accountId };
-};
+export const selectGoalsFilter = createSelector(
+  selectGoals,
+  (state) => state.filter,
+);
+export const selectGoalsSort = createSelector(selectGoals, (state) => state.sort);
+
+export const selectApiGoalsFilter = createSelector(
+  selectGoalsFilter,
+  selectSelectedAccountIdStrict,
+  (filter, accountId) => ({ ...filter, accountId }),
+);

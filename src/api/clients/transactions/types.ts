@@ -43,4 +43,7 @@ export interface TransactionsFilter {
 }
 
 export type TransactionsSort = Sort<'date'>;
-export type ListTransactionsRequest = ListRequest<TransactionsFilter, TransactionsSort>;
+export type ListTransactionsRequest = ListRequest<
+  TransactionsFilter,
+  TransactionsSort
+>;

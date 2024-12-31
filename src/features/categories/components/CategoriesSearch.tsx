@@ -10,12 +10,20 @@ export interface CategoriesSearchProps {
   onKeywordChange: (keyword: string) => void;
 }
 
-const CategoriesSearch = ({ style, keyword, onKeywordChange }: CategoriesSearchProps) => {
+const CategoriesSearch = ({
+  style,
+  keyword,
+  onKeywordChange,
+}: CategoriesSearchProps) => {
   const { t } = useCategoriesTranslations();
 
   return (
     <View style={[margin('vertical')('l'), padding('horizontal')('m'), style]}>
-      <Input onChange={onKeywordChange} value={keyword} placeholder={t('Search....')} />
+      <Input
+        onChange={onKeywordChange}
+        value={keyword}
+        placeholder={t('Search....')}
+      />
     </View>
   );
 };
