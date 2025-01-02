@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
   container: {
     ...center,
     borderWidth: 1,
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 46,
+    height: 46,
+    borderRadius: 23,
     position: 'relative',
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,

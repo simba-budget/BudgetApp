@@ -166,11 +166,13 @@ const Home = () => {
       contentContainerStyle={styles.container}
       onRefresh={handleOnRefetch}
       refreshing={isLoading || isRefetching}>
-      <ProfileSection
-        onNotificationsPress={handleOnNotificationsPress}
-        onProfilePress={handleOnProfilePress}
-        profile={profile}
-      />
+      {profile && (
+        <ProfileSection
+          onNotificationsPress={handleOnNotificationsPress}
+          onProfilePress={handleOnProfilePress}
+          profile={profile}
+        />
+      )}
       <AccountSection
         onAccountPress={handleOnAccountsPress}
         account={selectedAccount}

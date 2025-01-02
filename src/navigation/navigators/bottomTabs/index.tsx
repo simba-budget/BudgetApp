@@ -12,7 +12,9 @@ import {
   SubscriptionsScreen,
   TransactionsScreen,
 } from '@screens';
+import React from 'react';
 
+import { TabBarIcon } from '../../components';
 import { bottomTabsOptions } from '../../options';
 
 import {
@@ -28,22 +30,27 @@ import {
 
 const homeOptions: BottomTabNavigationOptions = {
   headerShown: false,
+  tabBarIcon: (props) => <TabBarIcon iconName="home" {...props} />,
 };
 
 const transactionsOptions: BottomTabNavigationOptions = {
   headerRight: TransactionsActions,
+  tabBarIcon: (props) => <TabBarIcon iconName="card" {...props} />,
 };
 
 const goalsOptions: BottomTabNavigationOptions = {
   headerRight: GoalsActions,
+  tabBarIcon: (props) => <TabBarIcon iconName="chart" {...props} />,
 };
 
 const subscriptionsOptions: BottomTabNavigationOptions = {
   headerRight: SubscriptionsActions,
+  tabBarIcon: (props) => <TabBarIcon iconName="card" {...props} />,
 };
 
 const profileOptions: BottomTabNavigationOptions = {
   headerTitleAlign: 'center',
+  tabBarIcon: (props) => <TabBarIcon iconName="profile" {...props} />,
 };
 
 const BottomTabs = createBottomTabNavigator<BottomTabsParams>({

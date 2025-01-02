@@ -41,7 +41,7 @@ const GoalsSection = ({
         goal={item}
       />
     ),
-    [onGoalPress],
+    [onGoalPress, width],
   );
 
   return (

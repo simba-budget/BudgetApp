@@ -9,10 +9,14 @@ import { SaveSubscriptionRequest } from '../types';
 const initialFormData: SaveSubscriptionRequest = {
   name: '',
   day: 15,
+  amount: 0,
+  currency: 'EUR',
 };
 
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
+    amount: yup.number().required(t('Amount is required')),
+    currency: yup.string().required(t('Currency is required')),
     name: yup.string().required(t('Name is required')),
     day: yup.number().required(t('Day is required')),
   });
