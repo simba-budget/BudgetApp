@@ -37,6 +37,7 @@ const TransactionsSections = ({
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Transaction>) => (
       <TransactionsListItem
+        isDateHidden
         onPress={() => onTransactionPress(item)}
         transaction={item}
       />

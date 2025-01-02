@@ -3,7 +3,7 @@ import { ProgressBar, Svg, Text } from '@common/v2/components';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import { formatPriceRange, formatShortPrice } from '@utils/price';
+import { formatPrice } from '@utils/price';
 import React from 'react';
 import {
   StyleProp,
@@ -42,12 +42,12 @@ const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
       color="tertiary">
       {goal.description}
     </Text>
-    <View style={[rowCenter, margin('bottom')('xxs')]}>
+    <View style={[rowCenter, margin('bottom')('xs')]}>
       <Text style={flex1} weight="semiBold" size="xs" color="primary">
-        {formatShortPrice(0, goal.currency)}
+        {formatPrice(goal.amount, goal.currency)}
       </Text>
       <Text weight="semiBold" size="xs" color="primary">
-        {formatPriceRange(goal.amount, goal.targetAmount, goal.currency)}
+        {formatPrice(goal.targetAmount, goal.currency)}
       </Text>
     </View>
     <ProgressBar total={goal.targetAmount} current={goal.amount} />

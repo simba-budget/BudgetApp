@@ -18,12 +18,14 @@ export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
   transaction: Transaction;
   onPress: () => void;
+  isDateHidden?: boolean;
 }
 
 const TransactionsListItem = ({
   style,
   transaction,
   onPress,
+  isDateHidden = false,
 }: TransactionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <View style={styles.iconContainer}>
@@ -44,9 +46,11 @@ const TransactionsListItem = ({
         color={transaction.amount < 0 ? 'error' : 'success'}>
         {formatPrice(transaction.amount, transaction.currency)}
       </Text>
-      <Text weight="medium" size="xs" color="tertiary">
-        {formatDate(transaction.date)}
-      </Text>
+      {!isDateHidden && (
+        <Text weight="medium" size="xs" color="tertiary">
+          {formatDate(transaction.date)}
+        </Text>
+      )}
     </View>
   </TouchableOpacity>
 );

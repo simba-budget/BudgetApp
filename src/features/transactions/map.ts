@@ -3,7 +3,7 @@ import {
   Transaction,
 } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
-import { getCurrentDate } from '@utils/date';
+import { formatDate, getCurrentDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import groupBy from 'lodash/groupBy';
 import map from 'lodash/map';
@@ -19,7 +19,7 @@ export const mapTransactionsToDaySections = (
       (transaction) => transaction.date,
     ),
     (dateTransactions, date) => ({
-      title: date,
+      title: formatDate(date),
       subtitle: formatPrice(sumBy(dateTransactions, 'amount'), 'EUR'),
       data: dateTransactions,
     }),

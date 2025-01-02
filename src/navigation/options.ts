@@ -9,7 +9,6 @@ import {
   headerStyle,
   headerTitleContainerStyle,
   headerTitleStyle,
-  tabBarIconStyle,
   tabBarStyle,
 } from './styles';
 
@@ -39,5 +38,4 @@ export const bottomTabsOptions: BottomTabNavigationOptions = {
   headerStyle,
   tabBarStyle,
   tabBarShowLabel: false,
-  tabBarIconStyle: tabBarIconStyle,
 };

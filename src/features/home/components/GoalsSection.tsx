@@ -3,7 +3,7 @@ import { Text } from '@common/v2/components';
 import { GoalsListItem } from '@features/goals/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
-import { gap, padding, sizes } from '@styles/lightTheme';
+import { gap, margin, padding, sizes } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import {
   FlatList,
@@ -45,21 +45,21 @@ const GoalsSection = ({
   );
 
   return (
-    <View style={[gap('row')('s'), style]}>
-      <View style={[rowCenter, padding('horizontal')('m')]}>
-        <Text style={flex1} color="primary" size="m" weight="semiBold">
-          {t('Goals')}
+    <View style={style}>
+      <View style={[rowCenter, padding('horizontal')('m'), margin('bottom')('xs')]}>
+        <Text style={flex1} color="primary" size="s" weight="semiBold">
+          {t('Recent Goals')}
         </Text>
         <TouchableOpacity
           style={[rowCenter, gap('column')('xxs')]}
           onPress={onViewAllPress}>
-          <Text color="tertiary" size="s" weight="bold">
+          <Text color="tertiary" size="s" weight="medium">
             {`${t('See All')} (${total})`}
           </Text>
         </TouchableOpacity>
       </View>
       <FlatList
-        contentContainerStyle={[gap('column')('m'), padding('horizontal')('m')]}
+        contentContainerStyle={[gap('column')('s'), padding('horizontal')('m')]}
         pagingEnabled
         keyExtractor={(goal) => goal.id.toString()}
         horizontal
