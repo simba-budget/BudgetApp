@@ -1,6 +1,6 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { Svg, Text } from '@common/v2/components';
-import { alignEnd, center, flex1, rowCenter } from '@styles/common';
+import { IconButton, Text } from '@common/v2/components';
+import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { formatDate } from '@utils/date';
@@ -28,9 +28,7 @@ const TransactionsListItem = ({
   isDateHidden = false,
 }: TransactionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={20} name="card" />
-    </View>
+    <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
     <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
         {transaction.category.name}
@@ -64,13 +62,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border.primary,
     borderRadius: 16,
-  },
-  iconContainer: {
-    ...center,
-    backgroundColor: colors.background.tertiary,
-    width: 42,
-    height: 42,
-    borderRadius: 21,
   },
 });
 

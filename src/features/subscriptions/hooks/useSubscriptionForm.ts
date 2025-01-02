@@ -11,6 +11,7 @@ const initialFormData: SaveSubscriptionRequest = {
   day: 15,
   amount: 0,
   currency: 'EUR',
+  merchantId: 0,
 };
 
 const getSchema = (t: TFunction) => {
@@ -19,6 +20,7 @@ const getSchema = (t: TFunction) => {
     currency: yup.string().required(t('Currency is required')),
     name: yup.string().required(t('Name is required')),
     day: yup.number().required(t('Day is required')),
+    merchantId: yup.number().required('Merchant is required'),
   });
 };
 

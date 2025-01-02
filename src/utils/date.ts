@@ -8,6 +8,10 @@ export const formatDate = (date: string | number | Dayjs | Date) => {
   return dayjs(date).format('MMM D, YYYY');
 };
 
+export const formatWeekDay = (date: string | number | Dayjs | Date) => {
+  return dayjs(date).format('ddd');
+};
+
 export const formatRelevantDate = (date: string) => {
   return dayjs(date).fromNow();
 };

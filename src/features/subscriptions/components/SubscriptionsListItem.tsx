@@ -1,6 +1,7 @@
 import { Subscription } from '@api/clients/subscriptions/types';
-import { Svg, Text } from '@common/v2/components';
-import { alignEnd, center, flex1, rowCenter } from '@styles/common';
+import { Avatar, Text } from '@common/v2/components';
+import { getMerchantLogoUrl } from '@features/merchants/utils';
+import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { getNextMonthDay } from '@utils/date';
@@ -26,15 +27,13 @@ const SubscriptionsListItem = ({
   onPress,
 }: SubscriptionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={20} name="card" />
-    </View>
+    <Avatar uri={getMerchantLogoUrl(subscription.merchant.logo)} />
     <View style={[flex1, gap('row')('xxxs')]}>
       <Text weight="semiBold" size="s" color="primary">
-        {subscription.name}
+        {subscription.merchant.name}
       </Text>
       <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
-        {subscription.description}
+        {subscription.name}
       </Text>
     </View>
     <View style={[alignEnd, gap('row')('xxxs')]}>
@@ -57,13 +56,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border.primary,
     borderRadius: 16,
-  },
-  iconContainer: {
-    ...center,
-    backgroundColor: colors.background.tertiary,
-    width: 42,
-    height: 42,
-    borderRadius: 21,
   },
 });
 

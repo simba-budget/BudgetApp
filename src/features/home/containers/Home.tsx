@@ -29,12 +29,14 @@ import {
   ProfileSection,
   SubscriptionsSection,
   TransactionsSection,
+  WeekStatistic,
 } from '../components';
 import {
   useQuickActionItems,
   useRecentGoals,
   useRecentTransactions,
   useUpcomingSubscriptions,
+  useWeekStatistic,
 } from '../hooks';
 
 const Home = () => {
@@ -43,6 +45,7 @@ const Home = () => {
   const bottomTabsNavigation = useNavigation<BottomTabsNavigation>();
   const selectedAccount = useAppSelector(selectSelectedAccountStrict);
   const quickActions = useQuickActionItems();
+  const weekStatistic = useWeekStatistic();
 
   const {
     profile,
@@ -178,6 +181,7 @@ const Home = () => {
         account={selectedAccount}
         quickActions={quickActions}
       />
+      <WeekStatistic data={weekStatistic} />
       <GoalsSection
         total={totalGoals}
         goals={goals}

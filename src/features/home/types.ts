@@ -5,3 +5,10 @@ export interface QuickActionItem {
   iconName: IconName;
   onPress: () => void;
 }
+
+export interface DayStatistic {
+  date: string;
+  incomes: number;
+  expenses: number;
+  currency: string;
+}

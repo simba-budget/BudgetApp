@@ -10,7 +10,7 @@ export interface TabBarIconProps {
 
 const TabBarIcon = ({ focused, iconName }: TabBarIconProps) => (
   <Svg
-    color={focused ? colors.text.secondary : colors.text.tertiary}
+    color={focused ? colors.text.accent : colors.text.tertiary}
     size={24}
     name={iconName}
   />

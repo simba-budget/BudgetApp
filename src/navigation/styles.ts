@@ -40,3 +40,8 @@ export const tabBarStyle: ViewStyle = {
   borderTopColor: colors.border.primary,
   borderTopWidth: 1,
 };
+
+export const tabBarLabelStyle: TextStyle = {
+  fontFamily: fonts.urbanist.medium.fontFamily,
+  fontSize: fontSizes.xxs.fontSize,
+};

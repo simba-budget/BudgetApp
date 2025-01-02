@@ -29,7 +29,7 @@ const ProfileSection = ({
         <IconButton onPress={onProfilePress} iconName="profile" />
         <View>
           <Text color="primary" size="m" weight="bold">
-            {t('Welcome, {{firstName}}', { firstName: profile.firstName })}
+            {t('Welcome, {{firstName}}!', { firstName: profile.firstName })}
           </Text>
           <Text color="tertiary" size="s" weight="medium">
             {profile.email}

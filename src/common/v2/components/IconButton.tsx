@@ -1,5 +1,6 @@
 import { IconName } from '@icons';
 import { center } from '@styles/common';
+import { Colors } from '@styles/v2/types';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
@@ -11,6 +12,10 @@ export interface IconButtonProps {
   isDisabled?: boolean;
   style?: StyleProp<ViewStyle>;
   iconName: IconName;
+  size?: number;
+  color?: keyof Colors['text'];
+  backgroundColor?: keyof Colors['background'];
+  iconSize?: number;
 }
 
 const IconButton = ({
@@ -18,12 +23,25 @@ const IconButton = ({
   style,
   iconName,
   isDisabled = false,
+  size = 46,
+  iconSize = 20,
+  color = 'primary',
+  backgroundColor = 'secondary',
 }: IconButtonProps) => (
   <TouchableOpacity
     onPress={onPress}
-    style={[styles.container, isDisabled && styles.disabledContainer, style]}
+    style={[
+      styles.container,
+      {
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        backgroundColor: colors.background[backgroundColor],
+      },
+      style,
+    ]}
     disabled={isDisabled}>
-    <Svg color={colors.text.primary} size={20} name={iconName} />
+    <Svg color={colors.text[color]} size={iconSize} name={iconName} />
   </TouchableOpacity>
 );
 
@@ -31,15 +49,8 @@ const styles = StyleSheet.create({
   container: {
     ...center,
     borderWidth: 1,
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    position: 'relative',
-    backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,
-  },
-  disabledContainer: {
-    opacity: 0.5,
+    position: 'relative',
   },
 });
 

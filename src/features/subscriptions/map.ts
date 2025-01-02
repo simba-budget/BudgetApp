@@ -9,4 +9,5 @@ export const mapSaveSubscriptionRequest = (
   amount: subscription?.amount ?? 0,
   currency: subscription?.currency ?? 'EUR',
   day: subscription?.day ?? 15,
+  merchantId: subscription?.merchant?.id ?? 0,
 });
