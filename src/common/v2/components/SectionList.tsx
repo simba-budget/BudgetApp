@@ -18,7 +18,11 @@ import SectionHeader from './SectionHeader';
 export interface SectionListProps<T>
   extends Omit<
     RNSectionListProps<T, Section<T>>,
-    'scrollIndicatorInsets' | 'renderSectionHeader' | 'ListFooterComponent'
+    | 'scrollIndicatorInsets'
+    | 'renderSectionHeader'
+    | 'ListFooterComponent'
+    | 'showsVerticalScrollIndicator'
+    | 'stickySectionHeadersEnabled'
   > {
   isSafeBottomArea?: boolean;
   isFetchingMore?: boolean;
@@ -41,6 +45,7 @@ const SectionList = <T,>({
 
   return (
     <RNSectionList<T, Section<T>>
+      showsVerticalScrollIndicator={false}
       stickySectionHeadersEnabled={false}
       scrollIndicatorInsets={scrollIndicatorInsets}
       renderSectionHeader={SectionHeader}

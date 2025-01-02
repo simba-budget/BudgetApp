@@ -15,7 +15,10 @@ import { scrollIndicatorInsets } from '../../constants';
 export interface FlatListProps<T>
   extends Omit<
     RNFlatListProps<T>,
-    'scrollIndicatorInsets' | 'refreshControl' | 'ListFooterComponent'
+    | 'scrollIndicatorInsets'
+    | 'refreshControl'
+    | 'ListFooterComponent'
+    | 'showsVerticalScrollIndicator'
   > {
   isSafeBottomArea?: boolean;
   isFetchingMore?: boolean;
@@ -38,6 +41,7 @@ const FlatList = <T,>({
 
   return (
     <RNFlatList<T>
+      showsVerticalScrollIndicator={false}
       scrollIndicatorInsets={scrollIndicatorInsets}
       contentContainerStyle={[
         styles.container,

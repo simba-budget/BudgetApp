@@ -12,7 +12,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scrollIndicatorInsets } from '../../constants';
 
 export interface ScrollViewProps
-  extends Omit<RNScrollViewProps, 'scrollIndicatorInsets'> {
+  extends Omit<
+    RNScrollViewProps,
+    'scrollIndicatorInsets' | 'showsVerticalScrollIndicator'
+  > {
   isSafeBottomArea?: boolean;
   refreshing?: boolean;
   onRefresh?: () => void;
@@ -34,6 +37,7 @@ const ScrollView = ({
 
   return (
     <RNScrollView
+      showsVerticalScrollIndicator={false}
       scrollIndicatorInsets={scrollIndicatorInsets}
       contentContainerStyle={[
         styles.container,
