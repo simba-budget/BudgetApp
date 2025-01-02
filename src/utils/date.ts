@@ -5,7 +5,7 @@ export const getCurrentDate = () => {
 };
 
 export const formatDate = (date: string | number | Dayjs | Date) => {
-  return dayjs(date).format('YYYY-MM-DD');
+  return dayjs(date).format('MMM D, YYYY');
 };
 
 export const formatRelevantDate = (date: string) => {
@@ -17,4 +17,8 @@ export const getRemainingSeconds = (date: string) => {
   const currentDate = dayjs();
   const differenceMilliseconds = givenDate.diff(currentDate);
   return Math.ceil(differenceMilliseconds / 1000);
+};
+
+export const getNextMonthDay = (day: number) => {
+  return formatDate(dayjs().set('date', day).add(1, 'month'));
 };

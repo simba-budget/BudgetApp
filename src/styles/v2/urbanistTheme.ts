@@ -14,14 +14,17 @@ export const colors: Colors = {
     accent: '#CFF008',
   },
   text: {
-    accent: '#CFF008',
+    accent: '#70820A',
     primary: '#FFFFFF',
     secondary: '#06080D',
     tertiary: '#8C8C8C',
     placeholder: '#8F8F8F',
+    success: '#24F07D',
+    error: '#FF4545',
+    warning: '#FF9800',
   },
   border: {
-    primary: hexToRgba('#FFFFFF', 0.05),
+    primary: hexToRgba('#FFFFFF', 0.075),
   },
 };
 
@@ -55,5 +58,5 @@ export const fontSizes: FontSizes = {
   m: { fontSize: 16, lineHeight: 24 },
   l: { fontSize: 18, lineHeight: 28 },
   xl: { fontSize: 20, lineHeight: 30 },
-  xxl: { fontSize: 24, lineHeight: 36 },
+  xxl: { fontSize: 32, lineHeight: 44 },
 };

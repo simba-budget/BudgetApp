@@ -23,7 +23,7 @@ const IconButton = ({
     onPress={onPress}
     style={[styles.container, isDisabled && styles.disabledContainer, style]}
     disabled={isDisabled}>
-    <Svg color={colors.text.primary} size={18} name={iconName} />
+    <Svg color={colors.text.primary} size={20} name={iconName} />
   </TouchableOpacity>
 );
 
@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
   container: {
     ...center,
     borderWidth: 1,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     position: 'relative',
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,

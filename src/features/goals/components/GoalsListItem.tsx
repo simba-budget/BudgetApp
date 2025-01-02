@@ -1,9 +1,17 @@
 import { Goal } from '@api/clients/goals/types';
-import { Text } from '@common/v2/components';
-import { padding } from '@styles/lightTheme';
+import { ProgressBar, Svg, Text } from '@common/v2/components';
+import { center, flex1, rowCenter } from '@styles/common';
+import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
+import { formatPriceRange, formatShortPrice } from '@utils/price';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 export interface GoalsListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -13,7 +21,36 @@ export interface GoalsListItemProps {
 
 const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <Text>{JSON.stringify(goal, null, 2)}</Text>
+    <View style={[rowCenter, gap('column')('s'), margin('bottom')('s')]}>
+      <View style={styles.iconContainer}>
+        <Svg color={colors.text.primary} size={22} name="card" />
+      </View>
+      <View style={flex1}>
+        <Text weight="semiBold" size="m" color="primary">
+          {goal.name}
+        </Text>
+        <Text weight="semiBold" size="xs" color="tertiary">
+          {`${goal.startedAt} - ${goal.endAt}`}
+        </Text>
+      </View>
+    </View>
+    <Text
+      numberOfLines={3}
+      style={margin('bottom')('l')}
+      weight="medium"
+      size="s"
+      color="tertiary">
+      {goal.description}
+    </Text>
+    <View style={[rowCenter, margin('bottom')('xxs')]}>
+      <Text style={flex1} weight="semiBold" size="xs" color="primary">
+        {formatShortPrice(0, goal.currency)}
+      </Text>
+      <Text weight="semiBold" size="xs" color="primary">
+        {formatPriceRange(goal.amount, goal.targetAmount, goal.currency)}
+      </Text>
+    </View>
+    <ProgressBar total={goal.targetAmount} current={goal.amount} />
   </TouchableOpacity>
 );
 
@@ -23,7 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.secondary,
     borderWidth: 1,
     borderColor: colors.border.primary,
-    borderRadius: 12,
+    borderRadius: 16,
+  },
+  iconContainer: {
+    ...center,
+    backgroundColor: colors.background.tertiary,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
   },
 });
 

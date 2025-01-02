@@ -35,6 +35,7 @@ const TagsList = ({
 
   return (
     <FlatList
+      keyExtractor={(tag) => tag.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
       isSafeBottomArea

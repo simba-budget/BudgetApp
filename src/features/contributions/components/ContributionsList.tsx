@@ -38,6 +38,7 @@ const ContributionsList = ({
 
   return (
     <FlatList
+      keyExtractor={(contribution) => contribution.id.toString()}
       isSafeBottomArea
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}

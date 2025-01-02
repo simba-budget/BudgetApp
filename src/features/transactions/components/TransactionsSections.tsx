@@ -46,6 +46,7 @@ const TransactionsSections = ({
 
   return (
     <SectionList
+      keyExtractor={(transaction) => transaction.id.toString()}
       onRefresh={onRefresh}
       style={style}
       sections={sections}

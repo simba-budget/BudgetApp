@@ -38,6 +38,7 @@ const SubscriptionsList = ({
 
   return (
     <FlatList
+      keyExtractor={(subscription) => subscription.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}

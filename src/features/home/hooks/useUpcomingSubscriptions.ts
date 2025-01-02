@@ -8,7 +8,7 @@ import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { useSubscriptions } from '@features/subscriptions/hooks';
 
 const sort: SubscriptionsSort = { column: 'name', direction: 'asc' };
-const paging: Paging = { limit: 1, offset: 0 };
+const paging: Paging = { limit: 3, offset: 0 };
 
 const useUpcomingSubscriptions = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);

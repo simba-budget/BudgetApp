@@ -15,6 +15,9 @@ export interface Colors {
     secondary: string;
     tertiary: string;
     placeholder: string;
+    success: string;
+    error: string;
+    warning: string;
   };
   border: {
     primary: string;

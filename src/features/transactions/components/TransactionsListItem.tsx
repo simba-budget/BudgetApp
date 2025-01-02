@@ -3,6 +3,7 @@ import { Svg, Text } from '@common/v2/components';
 import { alignEnd, center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
+import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import React from 'react';
 import {
@@ -12,8 +13,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-
-import { getRandomIcon } from '../utils';
 
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -28,19 +27,25 @@ const TransactionsListItem = ({
 }: TransactionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={18} name={getRandomIcon()} />
+      <Svg color={colors.text.primary} size={20} name="card" />
     </View>
-    <View style={flex1}>
+    <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
         {transaction.category.name}
       </Text>
-      <Text weight="medium" size="xs" color="tertiary">
+      <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
         {transaction.description}
       </Text>
     </View>
-    <View style={alignEnd}>
-      <Text weight="semiBold" size="s" color="primary">
+    <View style={[alignEnd, gap('row')('xxs')]}>
+      <Text
+        weight="bold"
+        size="s"
+        color={transaction.amount < 0 ? 'error' : 'success'}>
         {formatPrice(transaction.amount, transaction.currency)}
+      </Text>
+      <Text weight="medium" size="xs" color="tertiary">
+        {formatDate(transaction.date)}
       </Text>
     </View>
   </TouchableOpacity>
@@ -48,20 +53,20 @@ const TransactionsListItem = ({
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('xs'),
+    ...padding('full')('s'),
     ...gap('column')('s'),
     ...rowCenter,
     backgroundColor: colors.background.secondary,
     borderWidth: 1,
     borderColor: colors.border.primary,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   iconContainer: {
     ...center,
     backgroundColor: colors.background.tertiary,
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
   },
 });
 

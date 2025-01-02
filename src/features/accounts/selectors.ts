@@ -38,3 +38,12 @@ export const selectSelectedAccountIdStrict = createSelector(
     return accountId;
   },
 );
+
+export const selectSelectedAccountStrict = createSelector(
+  selectAccounts,
+  (state) => {
+    const selectedAccount = state.selectedAccount;
+    if (!selectedAccount) throw new Error('Selected account is not set');
+    return selectedAccount;
+  },
+);

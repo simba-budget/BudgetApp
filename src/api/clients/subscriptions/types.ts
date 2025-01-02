@@ -4,13 +4,18 @@ import { Member } from '../members/types';
 
 export interface Subscription extends BaseModel {
   name: string;
+  description: string | null;
   day: number;
+  amount: number;
+  currency: string;
   createdBy: Member;
 }
 
 export interface SaveSubscriptionRequest {
   name: string;
   day: number;
+  amount: number;
+  currency: string;
   accountId: number;
 }
 

@@ -5,6 +5,7 @@ export type AccountType = 'PERSONAL' | 'BUSINESS';
 export interface Account extends BaseModel {
   name: string;
   initialBalance: number;
+  balance: number;
   type: AccountType;
   currency: string;
 }

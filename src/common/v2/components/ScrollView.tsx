@@ -55,7 +55,7 @@ const ScrollView = ({
 const styles = StyleSheet.create({
   container: {
     ...padding('full')('m'),
-    ...gap('row')('s'),
+    ...gap('row')('xl'),
     flexGrow: 1,
   },
 });

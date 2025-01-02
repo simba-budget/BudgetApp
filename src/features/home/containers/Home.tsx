@@ -1,23 +1,37 @@
+import { Goal } from '@api/clients/goals/types';
+import { Subscription } from '@api/clients/subscriptions/types';
 import { Transaction } from '@api/clients/transactions/types';
-import { Button, ScrollView, Text } from '@common/v2/components';
+import { ScrollView } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
-import { selectSelectedAccount } from '@features/accounts/selectors';
+import { selectSelectedAccountStrict } from '@features/accounts/selectors';
 import { useProfile } from '@features/profile/hooks';
-import { AccountNavigation, toTransaction } from '@navigation/navigators/account';
+import {
+  AccountNavigation,
+  toGoal,
+  toSubscription,
+  toTransaction,
+} from '@navigation/navigators/account';
 import {
   BottomTabsNavigation,
+  toGoals,
+  toProfile,
+  toSubscriptions,
   toTransactions,
 } from '@navigation/navigators/bottomTabs';
 import { MainNavigation, toAccounts } from '@navigation/navigators/main';
 import { useNavigation } from '@react-navigation/native';
-import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
-import { colors } from '@styles/v2/urbanistTheme';
 import React, { useCallback, useMemo } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { TransactionsSection } from '../components';
 import {
+  AccountSection,
+  GoalsSection,
+  ProfileSection,
+  SubscriptionsSection,
+  TransactionsSection,
+} from '../components';
+import {
+  useQuickActionItems,
   useRecentGoals,
   useRecentTransactions,
   useUpcomingSubscriptions,
@@ -27,7 +41,8 @@ const Home = () => {
   const mainNavigation = useNavigation<MainNavigation>();
   const accountNavigation = useNavigation<AccountNavigation>();
   const bottomTabsNavigation = useNavigation<BottomTabsNavigation>();
-  const selectedAccount = useAppSelector(selectSelectedAccount);
+  const selectedAccount = useAppSelector(selectSelectedAccountStrict);
+  const quickActions = useQuickActionItems();
 
   const {
     profile,
@@ -41,6 +56,7 @@ const Home = () => {
     isLoading: isGoalsLoading,
     refetch: refetchGoals,
     isRefetching: isGoalsRefetching,
+    total: totalGoals,
   } = useRecentGoals();
 
   const {
@@ -48,6 +64,7 @@ const Home = () => {
     isLoading: isSubscriptionsLoading,
     refetch: refetchSubscriptions,
     isRefetching: isSubscriptionsRefetching,
+    total: totalSubscriptions,
   } = useUpcomingSubscriptions();
 
   const {
@@ -55,6 +72,7 @@ const Home = () => {
     isLoading: isTransactionsLoading,
     refetch: refetchTransactions,
     isRefetching: isTransactionsRefetching,
+    total: totalTransactions,
   } = useRecentTransactions();
 
   const isLoading = useMemo(
@@ -96,6 +114,11 @@ const Home = () => {
     [refetchTransactions, refetchProfile, refetchGoals, refetchSubscriptions],
   );
 
+  const handleOnAccountsPress = useCallback(
+    () => toAccounts(mainNavigation),
+    [mainNavigation],
+  );
+
   const handleOnTransactionPress = useCallback(
     (transaction: Transaction) =>
       toTransaction(accountNavigation, { id: transaction.id }),
@@ -107,51 +130,77 @@ const Home = () => {
     [bottomTabsNavigation],
   );
 
+  const handleOnSubscriptionPress = useCallback(
+    (subscription: Subscription) =>
+      toSubscription(accountNavigation, { id: subscription.id }),
+    [accountNavigation],
+  );
+
+  const handleOnViewAllSubscriptionsPress = useCallback(
+    () => toSubscriptions(bottomTabsNavigation),
+    [bottomTabsNavigation],
+  );
+
+  const handleOnGoalPress = useCallback(
+    (goal: Goal) => toGoal(accountNavigation, { id: goal.id }),
+    [accountNavigation],
+  );
+
+  const handleOnViewAllGoalsPress = useCallback(
+    () => toGoals(bottomTabsNavigation),
+    [bottomTabsNavigation],
+  );
+
+  const handleOnNotificationsPress = useCallback(
+    () => toAccounts(mainNavigation),
+    [mainNavigation],
+  );
+
+  const handleOnProfilePress = useCallback(
+    () => toProfile(bottomTabsNavigation),
+    [bottomTabsNavigation],
+  );
+
   return (
-    <SafeAreaView style={flex1}>
-      <ScrollView onRefresh={handleOnRefetch} refreshing={isLoading || isRefetching}>
-        <Button onPress={() => toAccounts(mainNavigation)} title="Accounts" />
-        <Text weight="semiBold" size="m" color="primary">
-          Profile
-        </Text>
-        <View style={styles.section}>
-          <Text>{JSON.stringify(profile, null, 2)}</Text>
-        </View>
-        <Text weight="semiBold" size="m" color="primary">
-          Account
-        </Text>
-        <View style={styles.section}>
-          <Text>{JSON.stringify(selectedAccount, null, 2)}</Text>
-        </View>
-        <Text weight="semiBold" size="m" color="primary">
-          Goals
-        </Text>
-        <View style={styles.section}>
-          <Text>{JSON.stringify(goals, null, 2)}</Text>
-        </View>
-        <Text weight="semiBold" size="m" color="primary">
-          Subscriptions
-        </Text>
-        <View style={styles.section}>
-          <Text>{JSON.stringify(subscriptions, null, 2)}</Text>
-        </View>
-        <TransactionsSection
-          transactions={transactions}
-          onViewAllPress={handleOnViewAllTransactionsPress}
-          onTransactionPress={handleOnTransactionPress}
-        />
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      onRefresh={handleOnRefetch}
+      refreshing={isLoading || isRefetching}>
+      <ProfileSection
+        onNotificationsPress={handleOnNotificationsPress}
+        onProfilePress={handleOnProfilePress}
+        profile={profile}
+      />
+      <AccountSection
+        onAccountPress={handleOnAccountsPress}
+        account={selectedAccount}
+        quickActions={quickActions}
+      />
+      <GoalsSection
+        total={totalGoals}
+        goals={goals}
+        onGoalPress={handleOnGoalPress}
+        onViewAllPress={handleOnViewAllGoalsPress}
+      />
+      <SubscriptionsSection
+        total={totalSubscriptions}
+        subscriptions={subscriptions}
+        onSubscriptionPress={handleOnSubscriptionPress}
+        onViewAllPress={handleOnViewAllSubscriptionsPress}
+      />
+      <TransactionsSection
+        total={totalTransactions}
+        transactions={transactions}
+        onViewAllPress={handleOnViewAllTransactionsPress}
+        onTransactionPress={handleOnTransactionPress}
+      />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  section: {
-    ...padding('full')('m'),
-    backgroundColor: colors.background.secondary,
-    borderWidth: 1,
-    borderColor: colors.border.primary,
-    borderRadius: 12,
+  container: {
+    paddingHorizontal: 0,
   },
 });
 

@@ -9,3 +9,4 @@ export { default as IconButton } from './IconButton';
 export { default as FlatList } from './FlatList';
 export { default as SectionList } from './SectionList';
 export { default as ScrollView } from './ScrollView';
+export { default as ProgressBar } from './ProgressBar';

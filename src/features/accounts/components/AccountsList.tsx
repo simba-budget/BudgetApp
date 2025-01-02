@@ -35,6 +35,7 @@ const AccountsList = ({
 
   return (
     <FlatList
+      keyExtractor={(account) => account.id.toString()}
       isFetchingMore={isFetchingMore}
       onEndReached={onFetchMore}
       isSafeBottomArea

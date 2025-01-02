@@ -1,5 +1,6 @@
 import { Goal } from '@api/clients/goals/types';
 import { FlatList } from '@common/v2/components';
+import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -35,6 +36,8 @@ const GoalsList = ({
 
   return (
     <FlatList
+      contentContainerStyle={gap('row')('m')}
+      keyExtractor={(goal) => goal.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}

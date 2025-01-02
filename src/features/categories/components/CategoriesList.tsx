@@ -35,6 +35,7 @@ const CategoriesList = ({
 
   return (
     <FlatList
+      keyExtractor={(category) => category.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
       isSafeBottomArea

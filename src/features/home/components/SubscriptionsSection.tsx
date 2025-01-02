@@ -1,34 +1,34 @@
-import { Transaction } from '@api/clients/transactions/types';
+import { Subscription } from '@api/clients/subscriptions/types';
 import { Text } from '@common/v2/components';
-import { TransactionsListItem } from '@features/transactions/components';
+import { SubscriptionsListItem } from '@features/subscriptions/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import React from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
 
-export interface TransactionsSectionProps {
+export interface SubscriptionsSectionProps {
   style?: StyleProp<ViewStyle>;
   total: number;
-  transactions: Transaction[];
-  onTransactionPress: (transaction: Transaction) => void;
+  subscriptions: Subscription[];
+  onSubscriptionPress: (subscription: Subscription) => void;
   onViewAllPress: () => void;
 }
 
-const TransactionsSection = ({
+const SubscriptionsSection = ({
   style,
   total,
-  onTransactionPress,
-  transactions,
+  onSubscriptionPress,
+  subscriptions,
   onViewAllPress,
-}: TransactionsSectionProps) => {
+}: SubscriptionsSectionProps) => {
   const { t } = useHomeTranslations();
 
   return (
     <View style={[gap('row')('s'), padding('horizontal')('m'), style]}>
       <View style={rowCenter}>
         <Text style={flex1} color="primary" size="m" weight="semiBold">
-          {t('Recent Transactions')}
+          {t('Upcoming Subscriptions')}
         </Text>
         <TouchableOpacity
           style={[rowCenter, gap('column')('xxs')]}
@@ -39,11 +39,11 @@ const TransactionsSection = ({
         </TouchableOpacity>
       </View>
       <View style={gap('row')('s')}>
-        {transactions.map((transaction) => (
-          <TransactionsListItem
-            key={transaction.id}
-            transaction={transaction}
-            onPress={() => onTransactionPress(transaction)}
+        {subscriptions.map((subscription) => (
+          <SubscriptionsListItem
+            key={subscription.id}
+            subscription={subscription}
+            onPress={() => onSubscriptionPress(subscription)}
           />
         ))}
       </View>
@@ -51,4 +51,4 @@ const TransactionsSection = ({
   );
 };
 
-export default TransactionsSection;
+export default SubscriptionsSection;

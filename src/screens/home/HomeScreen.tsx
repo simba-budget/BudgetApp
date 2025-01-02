@@ -4,7 +4,7 @@ import React from 'react';
 
 const HomeScreen = () => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
+    <StatusBar barStyle="light-content" />
     <Home />
   </ScreenContainer>
 );
