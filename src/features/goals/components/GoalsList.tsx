@@ -4,6 +4,7 @@ import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
+import GoalsEmpty from './GoalsEmpty';
 import GoalsListItem from './GoalsListItem';
 
 export interface GoalsListProps {
@@ -15,6 +16,7 @@ export interface GoalsListProps {
   onGoalPress: (goal: Goal) => void;
   isFetchingMore: boolean;
   onFetchMore: () => void;
+  onGoalAddPress: () => void;
 }
 
 const GoalsList = ({
@@ -26,6 +28,7 @@ const GoalsList = ({
   isRefreshing,
   onFetchMore,
   isFetchingMore,
+  onGoalAddPress,
 }: GoalsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Goal>) => (
@@ -36,6 +39,7 @@ const GoalsList = ({
 
   return (
     <FlatList
+      ListEmptyComponent={<GoalsEmpty onAddPress={onGoalAddPress} />}
       contentContainerStyle={gap('row')('m')}
       keyExtractor={(goal) => goal.id.toString()}
       onEndReached={onFetchMore}

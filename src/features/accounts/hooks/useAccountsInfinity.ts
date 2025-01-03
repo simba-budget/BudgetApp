@@ -29,6 +29,7 @@ const useAccountsInfinity = ({ filter, sort }: Options) => {
     isFetchingNextPage: isFetchingMore,
     hasNextPage,
     fetchNextPage,
+    error,
   } = useInfiniteQuery({
     queryKey: getQueryKey(filter, sort, lastUpdated),
     queryFn,

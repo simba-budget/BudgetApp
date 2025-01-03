@@ -6,6 +6,7 @@ export const colors: Colors = {
   common: {
     black: '#000000',
     white: '#FFFFFF',
+    transparent: 'transparent',
   },
   background: {
     primary: '#131313',
@@ -25,6 +26,7 @@ export const colors: Colors = {
   },
   border: {
     primary: hexToRgba('#FFFFFF', 0.075),
+    accent: '#CFF008',
   },
 };
 

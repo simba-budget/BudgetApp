@@ -5,10 +5,12 @@ import { removeAccount } from '@features/accounts/storage';
 import { defaultLocale } from '@i18n/constants';
 import { changeLanguage } from '@i18n/utils';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import * as Sentry from '@sentry/react-native';
 import { OneSignal } from 'react-native-onesignal';
 
 export const logoutAction = createAsyncThunk('logout', async () => {
   queryClient.clear();
+  Sentry.setUser(null);
 
   await Promise.all([
     removeLoggedUser(),
@@ -23,6 +25,7 @@ export const loginAction = createAsyncThunk<LoggedUser, LoggedUser>(
   async (loggedUser) => {
     await saveLoggedUser(loggedUser);
     await OneSignal.Notifications.requestPermission(true);
+    Sentry.setUser({ id: loggedUser.id, email: loggedUser.email });
     OneSignal.User.addEmail(loggedUser.email);
     OneSignal.login(loggedUser.id.toString());
     return loggedUser;

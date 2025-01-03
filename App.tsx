@@ -1,4 +1,5 @@
 import { CachedResourcesLoader } from '@common/hoc';
+import setupLogging from '@core/logging/setup';
 import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
@@ -21,6 +22,7 @@ dayjs.extend(relativeTime);
 dayjs.extend(minMax);
 setupTranslations();
 setupNotifications();
+setupLogging();
 
 const App = () => {
   return (

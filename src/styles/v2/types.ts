@@ -2,6 +2,7 @@ export interface Colors {
   common: {
     white: string;
     black: string;
+    transparent: string;
   };
   background: {
     primary: string;
@@ -20,6 +21,7 @@ export interface Colors {
     warning: string;
   };
   border: {
+    accent: string;
     primary: string;
   };
 }

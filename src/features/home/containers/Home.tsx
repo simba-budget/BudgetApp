@@ -8,7 +8,10 @@ import { useProfile } from '@features/profile/hooks';
 import {
   AccountNavigation,
   toGoal,
+  toGoalAdd,
+  toInvitationAdd,
   toSubscription,
+  toSubscriptionAdd,
   toTransaction,
 } from '@navigation/navigators/account';
 import {
@@ -26,6 +29,7 @@ import { StyleSheet } from 'react-native';
 import {
   AccountSection,
   GoalsSection,
+  InvitationsAddSection,
   ProfileSection,
   SubscriptionsSection,
   TransactionsSection,
@@ -139,6 +143,11 @@ const Home = () => {
     [accountNavigation],
   );
 
+  const handleOnSubscriptionAddPress = useCallback(
+    () => toSubscriptionAdd(accountNavigation),
+    [accountNavigation],
+  );
+
   const handleOnViewAllSubscriptionsPress = useCallback(
     () => toSubscriptions(bottomTabsNavigation),
     [bottomTabsNavigation],
@@ -146,6 +155,11 @@ const Home = () => {
 
   const handleOnGoalPress = useCallback(
     (goal: Goal) => toGoal(accountNavigation, { id: goal.id }),
+    [accountNavigation],
+  );
+
+  const handleOnGoalAddPress = useCallback(
+    () => toGoalAdd(accountNavigation),
     [accountNavigation],
   );
 
@@ -162,6 +176,11 @@ const Home = () => {
   const handleOnProfilePress = useCallback(
     () => toProfile(bottomTabsNavigation),
     [bottomTabsNavigation],
+  );
+
+  const handleOnInvitationAddPress = useCallback(
+    () => toInvitationAdd(accountNavigation),
+    [accountNavigation],
   );
 
   return (
@@ -183,17 +202,22 @@ const Home = () => {
       />
       <WeekStatistic data={weekStatistic} />
       <GoalsSection
+        onGoalAddPress={handleOnGoalAddPress}
         total={totalGoals}
         goals={goals}
+        isLoading={isGoalsLoading}
         onGoalPress={handleOnGoalPress}
         onViewAllPress={handleOnViewAllGoalsPress}
       />
       <SubscriptionsSection
+        isLoading={isSubscriptionsLoading}
+        onSubscriptionAddPress={handleOnSubscriptionAddPress}
         total={totalSubscriptions}
         subscriptions={subscriptions}
         onSubscriptionPress={handleOnSubscriptionPress}
         onViewAllPress={handleOnViewAllSubscriptionsPress}
       />
+      <InvitationsAddSection onInvitationAddPress={handleOnInvitationAddPress} />
       <TransactionsSection
         total={totalTransactions}
         transactions={transactions}
