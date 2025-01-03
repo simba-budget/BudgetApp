@@ -1,10 +1,7 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
-import { Member } from '../members/types';
-
 export interface Tag extends BaseModel {
   name: string;
-  createdBy: Member;
 }
 
 export interface SaveTagRequest {

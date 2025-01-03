@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useValidationsTranslations } from '@i18n/hooks';
+import { getCurrentDate } from '@utils/date';
 import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -8,10 +9,13 @@ import { SaveSubscriptionRequest } from '../types';
 
 const initialFormData: SaveSubscriptionRequest = {
   name: '',
-  day: 15,
+  startedAt: getCurrentDate(),
   amount: 0,
   currency: 'EUR',
-  merchantId: 0,
+  merchantId: null,
+  frequency: 'MONTHLY',
+  description: null,
+  categoryId: null,
 };
 
 const getSchema = (t: TFunction) => {
@@ -19,8 +23,14 @@ const getSchema = (t: TFunction) => {
     amount: yup.number().required(t('Amount is required')),
     currency: yup.string().required(t('Currency is required')),
     name: yup.string().required(t('Name is required')),
-    day: yup.number().required(t('Day is required')),
-    merchantId: yup.number().required('Merchant is required'),
+    startedAt: yup.string().required(t('Started at is required')),
+    merchantId: yup.number().nullable().defined(),
+    categoryId: yup.number().nullable().defined(),
+    description: yup.string().nullable().defined(),
+    frequency: yup
+      .string()
+      .oneOf(['MONTHLY', 'ANNUALLY'], t('Frequency is invalid'))
+      .required(t('Frequency is required')),
   });
 };
 

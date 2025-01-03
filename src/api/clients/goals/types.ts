@@ -1,7 +1,5 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
-import { Member } from '../members/types';
-
 export interface Goal extends BaseModel {
   name: string;
   description: string | null;
@@ -11,7 +9,6 @@ export interface Goal extends BaseModel {
   currency: string;
   startedAt: string;
   endAt: string | null;
-  createdBy: Member;
 }
 
 export interface SaveGoalRequest {

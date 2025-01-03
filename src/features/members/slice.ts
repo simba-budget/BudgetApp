@@ -12,7 +12,7 @@ export interface MembersState {
 
 const initialState: MembersState = {
   filter: {},
-  sort: { column: 'email', direction: 'asc' },
+  sort: { column: 'createdAt', direction: 'asc' },
   lastUpdated: Date.now(),
 };
 

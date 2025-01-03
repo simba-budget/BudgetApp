@@ -29,6 +29,12 @@ import {
   MemberRoute,
   memberRoute,
   membersRoute,
+  merchantAddRoute,
+  merchantEditRoute,
+  MerchantEditRoute,
+  merchantRoute,
+  MerchantRoute,
+  merchantsRoute,
   subscriptionAddRoute,
   SubscriptionEditRoute,
   subscriptionEditRoute,
@@ -202,4 +208,26 @@ export const toSubscriptionEdit = (
 
 export const toSubscriptionAdd = ({ navigate }: AccountNavigation) => {
   return navigate(subscriptionAddRoute);
+};
+
+export const toMerchant = (
+  { navigate }: AccountNavigation,
+  params: AccountParams[MerchantRoute],
+) => {
+  return navigate(merchantRoute, params);
+};
+
+export const toMerchantEdit = (
+  { navigate }: AccountNavigation,
+  params: AccountParams[MerchantEditRoute],
+) => {
+  return navigate(merchantEditRoute, params);
+};
+
+export const toMerchantAdd = ({ navigate }: AccountNavigation) => {
+  return navigate(merchantAddRoute);
+};
+
+export const toMerchants = ({ navigate }: AccountNavigation) => {
+  return navigate(merchantsRoute);
 };

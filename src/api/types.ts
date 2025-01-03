@@ -27,8 +27,6 @@ export interface Sort<T = string> {
 
 export interface BaseModel {
   id: number;
-  updatedAt: string | null;
-  createdAt: string;
 }
 
 export interface Translation {

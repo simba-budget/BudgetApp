@@ -10,6 +10,7 @@ import {
   headerStyle,
   headerTitleContainerStyle,
   headerTitleStyle,
+  sceneStyle,
   tabBarLabelStyle,
   tabBarStyle,
 } from './styles';
@@ -38,6 +39,7 @@ export const bottomTabsOptions: BottomTabNavigationOptions = {
   headerRightContainerStyle,
   headerTitleStyle,
   headerStyle,
+  sceneStyle,
   tabBarStyle,
   tabBarLabelStyle,
   tabBarActiveTintColor: colors.text.accent,

@@ -4,7 +4,7 @@ import { getMerchantLogoUrl } from '@features/merchants/utils';
 import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import { getNextMonthDay } from '@utils/date';
+import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import React from 'react';
 import {
@@ -27,13 +27,13 @@ const SubscriptionsListItem = ({
   onPress,
 }: SubscriptionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <Avatar uri={getMerchantLogoUrl(subscription.merchant.logo)} />
+    <Avatar uri={getMerchantLogoUrl(subscription.merchant?.logo || null)} />
     <View style={[flex1, gap('row')('xxxs')]}>
       <Text weight="semiBold" size="s" color="primary">
-        {subscription.merchant.name}
+        {subscription.name}
       </Text>
       <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
-        {subscription.name}
+        {subscription.description}
       </Text>
     </View>
     <View style={[alignEnd, gap('row')('xxxs')]}>
@@ -41,7 +41,7 @@ const SubscriptionsListItem = ({
         {formatPrice(subscription.amount, subscription.currency)}
       </Text>
       <Text weight="medium" size="xs" color="tertiary">
-        {getNextMonthDay(subscription.day)}
+        {formatDate(subscription.startedAt)}
       </Text>
     </View>
   </TouchableOpacity>

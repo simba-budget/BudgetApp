@@ -34,6 +34,10 @@ export const cardStyle: ViewStyle = {
   backgroundColor: colors.background.primary,
 };
 
+export const sceneStyle: ViewStyle = {
+  backgroundColor: colors.background.primary,
+};
+
 export const tabBarStyle: ViewStyle = {
   elevation: 0,
   backgroundColor: colors.background.secondary,

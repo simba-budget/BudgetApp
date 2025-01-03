@@ -1,4 +1,5 @@
 import { CategoriesActions } from '@features/categories/containers';
+import { MerchantsActions } from '@features/merchants/containers';
 import { TagsActions } from '@features/tags/containers';
 import {
   createStackNavigator,
@@ -22,6 +23,10 @@ import {
   MemberEditScreen,
   MemberScreen,
   MembersScreen,
+  MerchantAddScreen,
+  MerchantEditScreen,
+  MerchantScreen,
+  MerchantsScreen,
   SubscriptionAddScreen,
   SubscriptionEditScreen,
   SubscriptionScreen,
@@ -70,6 +75,12 @@ import {
   memberRoute,
   MemberScreenProps,
   membersRoute,
+  merchantAddRoute,
+  merchantEditRoute,
+  MerchantEditScreenProps,
+  merchantRoute,
+  MerchantScreenProps,
+  merchantsRoute,
   openBankingRoute,
   subscriptionAddRoute,
   subscriptionEditRoute,
@@ -95,6 +106,10 @@ const categoriesOptions: StackNavigationOptions = {
 
 const tagsOptions: StackNavigationOptions = {
   headerRight: TagsActions,
+};
+
+const merchantsOptions: StackNavigationOptions = {
+  headerRight: MerchantsActions,
 };
 
 const AccountStack = createStackNavigator<AccountParams>({
@@ -144,6 +159,12 @@ const AccountStack = createStackNavigator<AccountParams>({
     [subscriptionEditRoute]: SubscriptionEditScreen,
     [subscriptionRoute]: SubscriptionScreen,
 
+    // Tags
+    [merchantsRoute]: { screen: MerchantsScreen, options: merchantsOptions },
+    [merchantAddRoute]: MerchantAddScreen,
+    [merchantEditRoute]: MerchantEditScreen,
+    [merchantRoute]: MerchantScreen,
+
     [openBankingRoute]: View,
     [bottomTabsRoute]: { screen: BottomTabs, options: headerHiddenOptions },
   },
@@ -169,6 +190,8 @@ export {
   type MemberScreenProps,
   type MemberEditScreenProps,
   type SubscriptionScreenProps,
+  type MerchantEditScreenProps,
+  type MerchantScreenProps,
   accountRoute,
 };
 

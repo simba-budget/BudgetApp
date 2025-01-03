@@ -1,5 +1,5 @@
 import { Tag } from '@api/clients/tags/types';
-import { Svg, Text } from '@common/v2/components';
+import { IconButton, Text } from '@common/v2/components';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -20,9 +20,7 @@ export interface TagsListItemProps {
 
 const TagsListItem = ({ style, tag, onPress }: TagsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={18} name="card" />
-    </View>
+    <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
         {tag.name}
@@ -33,21 +31,13 @@ const TagsListItem = ({ style, tag, onPress }: TagsListItemProps) => (
 
 const styles = StyleSheet.create({
   container: {
-    ...rowCenter,
+    ...padding('full')('s'),
     ...gap('column')('s'),
-    ...padding('vertical')('xs'),
-    ...padding('horizontal')('xs'),
-    borderRadius: 12,
+    ...rowCenter,
     backgroundColor: colors.background.secondary,
-    borderColor: colors.border.primary,
     borderWidth: 1,
-  },
-  iconContainer: {
-    ...center,
-    backgroundColor: colors.background.tertiary,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    borderColor: colors.border.primary,
+    borderRadius: 16,
   },
 });
 

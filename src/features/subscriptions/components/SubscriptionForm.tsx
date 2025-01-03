@@ -36,10 +36,10 @@ const SubscriptionForm = ({
       />
       <Controller
         control={control}
-        name="day"
+        name="startedAt"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl error={error?.message} label={t('Day')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Day')} />
+          <FormControl error={error?.message} label={t('Started at')}>
+            <Input {...rest} readOnly={isDisabled} placeholder={t('Started at')} />
           </FormControl>
         )}
       />

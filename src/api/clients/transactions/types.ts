@@ -1,7 +1,6 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Category } from '../categories/types';
-import { Member } from '../members/types';
 import { Merchant } from '../merchants/types';
 import { Subscription } from '../subscriptions/types';
 import { Tag } from '../tags/types';
@@ -15,7 +14,6 @@ export interface Transaction extends BaseModel {
   merchant: Merchant | null;
   tags: Tag[];
   date: string;
-  createdBy: Member;
 }
 
 export interface SaveTransactionRequest {

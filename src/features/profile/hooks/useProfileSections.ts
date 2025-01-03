@@ -5,6 +5,7 @@ import {
   toCategories,
   toInvitations,
   toMembers,
+  toMerchants,
   toTags,
 } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
@@ -41,6 +42,11 @@ const useProfileSections = () => {
             title: t('Categories'),
             iconName: 'card',
             onPress: () => toCategories(navigation),
+          },
+          {
+            title: t('Merchants'),
+            iconName: 'card',
+            onPress: () => toMerchants(navigation),
           },
           {
             title: t('Invitations'),

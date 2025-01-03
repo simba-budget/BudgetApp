@@ -14,3 +14,4 @@ export * from './members';
 export * from './tags';
 export * from './subscriptions';
 export * from './onboarding';
+export * from './merchants';

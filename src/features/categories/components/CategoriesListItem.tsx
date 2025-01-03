@@ -3,7 +3,6 @@ import { Svg, Text } from '@common/v2/components';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import { formatPrice } from '@utils/price';
 import React from 'react';
 import {
   StyleProp,
@@ -33,9 +32,6 @@ const CategoriesListItemProps = ({
         {category.name}
       </Text>
     </View>
-    <Text weight="semiBold" size="s" color="tertiary">
-      {formatPrice(category.balance, 'EUR')}
-    </Text>
   </TouchableOpacity>
 );
 

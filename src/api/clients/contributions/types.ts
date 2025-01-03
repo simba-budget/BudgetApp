@@ -1,13 +1,10 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
-import { Member } from '../members/types';
-
 export interface Contribution extends BaseModel {
   amount: number;
   currency: string;
   description: string | null;
   date: string;
-  createdBy: Member;
   goalId: number;
 }
 

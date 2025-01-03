@@ -16,3 +16,4 @@ export { default as useTagsTranslations } from './useTagsTranslations';
 export { default as useOnboardingTranslations } from './useOnboardingTranslations';
 export { default as useProfileTranslations } from './useProfileTranslations';
 export { default as useHomeTranslations } from './useHomeTranslations';
+export { default as useMerchantsTranslations } from './useMerchantsTranslations';

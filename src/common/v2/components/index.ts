@@ -12,3 +12,4 @@ export { default as ScrollView } from './ScrollView';
 export { default as ProgressBar } from './ProgressBar';
 export { default as Avatar } from './Avatar';
 export { default as BarChart } from './BarChart';
+export { default as Badge } from './Badge';

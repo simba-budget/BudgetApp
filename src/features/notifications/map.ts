@@ -24,8 +24,6 @@ export const mapNotificationsToMonthsSections = (
 
 export const mapNotificationToListItem = (notification: Notification): ListItem => ({
   id: notification.id,
-  updatedAt: notification.updatedAt,
-  createdAt: notification.createdAt,
   iconName: notificationTypeIconMap[notification.type],
   leftTitle: notification.title,
   leftSubtitle: notification.description,

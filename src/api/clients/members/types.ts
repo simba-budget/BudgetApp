@@ -6,7 +6,7 @@ export interface Member extends BaseModel {
   email: string;
   firstName: string;
   lastName: string;
-  role: MemberRole;
+  roles: MemberRole[];
 }
 
 export interface SaveMemberRequest {
@@ -20,5 +20,5 @@ export interface MembersFilter {
   roles?: MemberRole[] | null;
 }
 
-export type MembersSort = Sort<'email' | 'fullName'>;
+export type MembersSort = Sort<'createdAt'>;
 export type ListMembersRequest = ListRequest<MembersFilter, MembersSort>;
