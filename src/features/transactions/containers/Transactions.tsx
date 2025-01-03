@@ -1,7 +1,13 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { useAppSelector } from '@core/store/store';
-import { AccountNavigation, toTransaction } from '@navigation/navigators/account';
+import {
+  AccountNavigation,
+  toTransaction,
+  toTransactionAdd,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
+import { justifyCenter } from '@styles/common';
+import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 
 import { TransactionsSections } from '../components';
@@ -20,6 +26,7 @@ const Transactions = () => {
     refetch,
     fetchMore,
     isFetchingMore,
+    total,
   } = useTransactionsInfinity({
     filter,
     sort,
@@ -32,6 +39,8 @@ const Transactions = () => {
 
   return (
     <TransactionsSections
+      total={total}
+      onTransactionAddPress={() => toTransactionAdd(navigation)}
       onFetchMore={fetchMore}
       isFetchingMore={isFetchingMore}
       isLoading={isLoading}

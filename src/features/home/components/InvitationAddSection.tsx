@@ -1,20 +1,19 @@
 import { Button, Text } from '@common/v2/components';
 import { useHomeTranslations } from '@i18n/hooks';
-import { center } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-export interface InvitationsAddSectionProps {
+export interface InvitationAddSectionProps {
   style?: StyleProp<ViewStyle>;
   onInvitationAddPress: () => void;
 }
 
-const InvitationsAddSection = ({
+const InvitationAddSection = ({
   style,
   onInvitationAddPress,
-}: InvitationsAddSectionProps) => {
+}: InvitationAddSectionProps) => {
   const { t } = useHomeTranslations();
 
   return (
@@ -56,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InvitationsAddSection;
+export default InvitationAddSection;

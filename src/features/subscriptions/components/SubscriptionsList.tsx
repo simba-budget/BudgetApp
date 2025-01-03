@@ -1,5 +1,6 @@
 import { Subscription } from '@api/clients/subscriptions/types';
 import { FlatList } from '@common/v2/components';
+import { justifyCenter } from '@styles/common';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -16,6 +17,7 @@ export interface SubscriptionsListProps {
   isFetchingMore: boolean;
   onFetchMore: () => void;
   onSubscriptionAddPress: () => void;
+  total: number;
 }
 
 const SubscriptionsList = ({
@@ -28,6 +30,7 @@ const SubscriptionsList = ({
   onFetchMore,
   isFetchingMore,
   onSubscriptionAddPress,
+  total,
 }: SubscriptionsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Subscription>) => (
@@ -41,6 +44,7 @@ const SubscriptionsList = ({
 
   return (
     <FlatList
+      contentContainerStyle={[total === 0 && justifyCenter]}
       ListEmptyComponent={<SubscriptionsEmpty onAddPress={onSubscriptionAddPress} />}
       keyExtractor={(subscription) => subscription.id.toString()}
       onEndReached={onFetchMore}

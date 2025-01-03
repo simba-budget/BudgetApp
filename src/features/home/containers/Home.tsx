@@ -1,6 +1,3 @@
-import { Goal } from '@api/clients/goals/types';
-import { Subscription } from '@api/clients/subscriptions/types';
-import { Transaction } from '@api/clients/transactions/types';
 import { ScrollView } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountStrict } from '@features/accounts/selectors';
@@ -9,10 +6,10 @@ import {
   AccountNavigation,
   toGoal,
   toGoalAdd,
-  toInvitationAdd,
   toSubscription,
   toSubscriptionAdd,
   toTransaction,
+  toTransactionAdd,
 } from '@navigation/navigators/account';
 import {
   BottomTabsNavigation,
@@ -29,7 +26,6 @@ import { StyleSheet } from 'react-native';
 import {
   AccountSection,
   GoalsSection,
-  InvitationsAddSection,
   ProfileSection,
   SubscriptionsSection,
   TransactionsSection,
@@ -121,68 +117,6 @@ const Home = () => {
     [refetchTransactions, refetchProfile, refetchGoals, refetchSubscriptions],
   );
 
-  const handleOnAccountsPress = useCallback(
-    () => toAccounts(mainNavigation),
-    [mainNavigation],
-  );
-
-  const handleOnTransactionPress = useCallback(
-    (transaction: Transaction) =>
-      toTransaction(accountNavigation, { id: transaction.id }),
-    [accountNavigation],
-  );
-
-  const handleOnViewAllTransactionsPress = useCallback(
-    () => toTransactions(bottomTabsNavigation),
-    [bottomTabsNavigation],
-  );
-
-  const handleOnSubscriptionPress = useCallback(
-    (subscription: Subscription) =>
-      toSubscription(accountNavigation, { id: subscription.id }),
-    [accountNavigation],
-  );
-
-  const handleOnSubscriptionAddPress = useCallback(
-    () => toSubscriptionAdd(accountNavigation),
-    [accountNavigation],
-  );
-
-  const handleOnViewAllSubscriptionsPress = useCallback(
-    () => toSubscriptions(bottomTabsNavigation),
-    [bottomTabsNavigation],
-  );
-
-  const handleOnGoalPress = useCallback(
-    (goal: Goal) => toGoal(accountNavigation, { id: goal.id }),
-    [accountNavigation],
-  );
-
-  const handleOnGoalAddPress = useCallback(
-    () => toGoalAdd(accountNavigation),
-    [accountNavigation],
-  );
-
-  const handleOnViewAllGoalsPress = useCallback(
-    () => toGoals(bottomTabsNavigation),
-    [bottomTabsNavigation],
-  );
-
-  const handleOnNotificationsPress = useCallback(
-    () => toAccounts(mainNavigation),
-    [mainNavigation],
-  );
-
-  const handleOnProfilePress = useCallback(
-    () => toProfile(bottomTabsNavigation),
-    [bottomTabsNavigation],
-  );
-
-  const handleOnInvitationAddPress = useCallback(
-    () => toInvitationAdd(accountNavigation),
-    [accountNavigation],
-  );
-
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -190,39 +124,40 @@ const Home = () => {
       refreshing={isLoading || isRefetching}>
       {profile && (
         <ProfileSection
-          onNotificationsPress={handleOnNotificationsPress}
-          onProfilePress={handleOnProfilePress}
+          onNotificationsPress={() => toAccounts(mainNavigation)}
+          onProfilePress={() => toProfile(bottomTabsNavigation)}
           profile={profile}
         />
       )}
       <AccountSection
-        onAccountPress={handleOnAccountsPress}
+        onAccountPress={() => toAccounts(mainNavigation)}
         account={selectedAccount}
         quickActions={quickActions}
       />
       <WeekStatistic data={weekStatistic} />
       <GoalsSection
-        onGoalAddPress={handleOnGoalAddPress}
+        onGoalAddPress={() => toGoalAdd(accountNavigation)}
         total={totalGoals}
         goals={goals}
         isLoading={isGoalsLoading}
-        onGoalPress={handleOnGoalPress}
-        onViewAllPress={handleOnViewAllGoalsPress}
+        onGoalPress={({ id }) => toGoal(accountNavigation, { id })}
+        onViewAllPress={() => toGoals(bottomTabsNavigation)}
       />
       <SubscriptionsSection
         isLoading={isSubscriptionsLoading}
-        onSubscriptionAddPress={handleOnSubscriptionAddPress}
+        onSubscriptionAddPress={() => toSubscriptionAdd(accountNavigation)}
         total={totalSubscriptions}
         subscriptions={subscriptions}
-        onSubscriptionPress={handleOnSubscriptionPress}
-        onViewAllPress={handleOnViewAllSubscriptionsPress}
+        onSubscriptionPress={({ id }) => toSubscription(accountNavigation, { id })}
+        onViewAllPress={() => toSubscriptions(bottomTabsNavigation)}
       />
-      <InvitationsAddSection onInvitationAddPress={handleOnInvitationAddPress} />
       <TransactionsSection
+        isLoading={isTransactionsLoading}
+        onTransactionAddPress={() => toTransactionAdd(accountNavigation)}
         total={totalTransactions}
         transactions={transactions}
-        onViewAllPress={handleOnViewAllTransactionsPress}
-        onTransactionPress={handleOnTransactionPress}
+        onViewAllPress={() => toTransactions(bottomTabsNavigation)}
+        onTransactionPress={({ id }) => toTransaction(accountNavigation, { id })}
       />
     </ScrollView>
   );

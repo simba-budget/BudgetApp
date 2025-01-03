@@ -1,7 +1,11 @@
 import { Subscription } from '@api/clients/subscriptions/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { AccountNavigation, toSubscription } from '@navigation/navigators/account';
+import {
+  AccountNavigation,
+  toSubscription,
+  toSubscriptionAdd,
+} from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -27,10 +31,13 @@ const Subscriptions = () => {
     refetch,
     isFetchingMore,
     fetchMore,
+    total,
   } = useSubscriptionsInfinity({
     filter: debouncedFilter,
     sort,
   });
+
+  const isSubscriptionsEmpty = total === 0 && !filter?.keyword;
 
   const handleOnKeywordChange = useCallback(
     (keyword: string) => dispatch(updateKeyword({ keyword })),
@@ -45,11 +52,15 @@ const Subscriptions = () => {
 
   return (
     <View style={flex1}>
-      <SubscriptionsSearch
-        onKeywordChange={handleOnKeywordChange}
-        keyword={filter?.keyword}
-      />
+      {!isSubscriptionsEmpty && (
+        <SubscriptionsSearch
+          onKeywordChange={handleOnKeywordChange}
+          keyword={filter?.keyword}
+        />
+      )}
       <SubscriptionsList
+        total={total}
+        onSubscriptionAddPress={() => toSubscriptionAdd(navigation)}
         isFetchingMore={isFetchingMore}
         onFetchMore={fetchMore}
         isLoading={isLoading}

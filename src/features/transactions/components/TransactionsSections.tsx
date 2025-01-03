@@ -1,11 +1,14 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
 import { SectionList } from '@common/v2/components';
+import { justifyCenter } from '@styles/common';
+import { gap } from '@styles/lightTheme';
 import React, { useCallback, useMemo } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
 import { mapTransactionsToDaySections } from '../map';
 
+import TransactionsEmpty from './TransactionsEmpty';
 import TransactionsListItem from './TransactionsListItem';
 
 export interface TransactionsSectionsProps {
@@ -17,6 +20,8 @@ export interface TransactionsSectionsProps {
   onTransactionPress: (transaction: Transaction) => void;
   isFetchingMore: boolean;
   onFetchMore: () => void;
+  onTransactionAddPress: () => void;
+  total: number;
 }
 
 const TransactionsSections = ({
@@ -28,6 +33,8 @@ const TransactionsSections = ({
   isRefreshing,
   isFetchingMore,
   onFetchMore,
+  onTransactionAddPress,
+  total,
 }: TransactionsSectionsProps) => {
   const sections = useMemo<Section<Transaction>[]>(
     () => mapTransactionsToDaySections(transactions),
@@ -47,6 +54,8 @@ const TransactionsSections = ({
 
   return (
     <SectionList
+      contentContainerStyle={[total === 0 && justifyCenter, gap('row')('m')]}
+      ListEmptyComponent={<TransactionsEmpty onAddPress={onTransactionAddPress} />}
       keyExtractor={(transaction) => transaction.id.toString()}
       onRefresh={onRefresh}
       style={style}

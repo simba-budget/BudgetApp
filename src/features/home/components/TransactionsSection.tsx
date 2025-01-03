@@ -1,6 +1,9 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { Text } from '@common/v2/components';
-import { TransactionsListItem } from '@features/transactions/components';
+import {
+  TransactionsEmpty,
+  TransactionsListItem,
+} from '@features/transactions/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
@@ -13,6 +16,8 @@ export interface TransactionsSectionProps {
   transactions: Transaction[];
   onTransactionPress: (transaction: Transaction) => void;
   onViewAllPress: () => void;
+  isLoading: boolean;
+  onTransactionAddPress: () => void;
 }
 
 const TransactionsSection = ({
@@ -21,8 +26,11 @@ const TransactionsSection = ({
   onTransactionPress,
   transactions,
   onViewAllPress,
+  onTransactionAddPress,
+  isLoading,
 }: TransactionsSectionProps) => {
   const { t } = useHomeTranslations();
+  const isTransactionsEmpty = !isLoading && transactions.length === 0;
 
   return (
     <View style={[padding('horizontal')('m'), style]}>
@@ -30,23 +38,29 @@ const TransactionsSection = ({
         <Text style={flex1} color="primary" size="s" weight="semiBold">
           {t('Recent Transactions')}
         </Text>
-        <TouchableOpacity
-          style={[rowCenter, gap('column')('xxs')]}
-          onPress={onViewAllPress}>
-          <Text color="tertiary" size="s" weight="medium">
-            {`${t('See All')} (${total})`}
-          </Text>
-        </TouchableOpacity>
+        {!isTransactionsEmpty && (
+          <TouchableOpacity
+            style={[rowCenter, gap('column')('xxs')]}
+            onPress={onViewAllPress}>
+            <Text color="tertiary" size="s" weight="medium">
+              {`${t('See All')} (${total})`}
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
-      <View style={gap('row')('xs')}>
-        {transactions.map((transaction) => (
-          <TransactionsListItem
-            key={transaction.id}
-            transaction={transaction}
-            onPress={() => onTransactionPress(transaction)}
-          />
-        ))}
-      </View>
+      {isTransactionsEmpty ? (
+        <TransactionsEmpty onAddPress={onTransactionAddPress} />
+      ) : (
+        <View style={gap('row')('xs')}>
+          {transactions.map((transaction) => (
+            <TransactionsListItem
+              key={transaction.id}
+              transaction={transaction}
+              onPress={() => onTransactionPress(transaction)}
+            />
+          ))}
+        </View>
+      )}
     </View>
   );
 };

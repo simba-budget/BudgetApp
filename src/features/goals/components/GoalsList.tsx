@@ -1,5 +1,6 @@
 import { Goal } from '@api/clients/goals/types';
 import { FlatList } from '@common/v2/components';
+import { justifyCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
@@ -17,6 +18,7 @@ export interface GoalsListProps {
   isFetchingMore: boolean;
   onFetchMore: () => void;
   onGoalAddPress: () => void;
+  total: number;
 }
 
 const GoalsList = ({
@@ -29,6 +31,7 @@ const GoalsList = ({
   onFetchMore,
   isFetchingMore,
   onGoalAddPress,
+  total,
 }: GoalsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Goal>) => (
@@ -39,8 +42,8 @@ const GoalsList = ({
 
   return (
     <FlatList
+      contentContainerStyle={[total === 0 && justifyCenter, gap('row')('m')]}
       ListEmptyComponent={<GoalsEmpty onAddPress={onGoalAddPress} />}
-      contentContainerStyle={gap('row')('m')}
       keyExtractor={(goal) => goal.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
