@@ -1,6 +1,6 @@
 import { Tag } from '@api/clients/tags/types';
 import { IconButton, Text } from '@common/v2/components';
-import { center, flex1, rowCenter } from '@styles/common';
+import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';

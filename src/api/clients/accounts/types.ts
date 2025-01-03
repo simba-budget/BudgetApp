@@ -8,6 +8,7 @@ export interface Account extends BaseModel {
   balance: number;
   type: AccountType;
   currency: string;
+  membersCount: number;
 }
 
 export interface SaveAccountRequest {

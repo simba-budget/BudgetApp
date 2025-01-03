@@ -5,7 +5,7 @@ import { colors } from '@styles/v2/urbanistTheme';
 import hexToRgba from 'hex-to-rgba';
 import React, { useMemo } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { Bar, CartesianChart, useChartPressState } from 'victory-native';
+import { Bar, CartesianChart } from 'victory-native';
 
 export interface BarChartItem extends Record<string, unknown> {
   label: string | number;
@@ -16,7 +16,6 @@ export interface BarChartProps {
   style?: StyleProp<ViewStyle>;
   height?: number;
   data: BarChartItem[];
-  initialState: BarChartItem;
   formatYLabel: (value: number) => string;
   formatXLabel: (label: number | string) => string;
 }
@@ -25,16 +24,10 @@ const BarChart = ({
   style,
   height = 175,
   data,
-  initialState,
   formatXLabel,
   formatYLabel,
 }: BarChartProps) => {
   const font = useFont(urbanistMedium, 12);
-
-  const { state } = useChartPressState({
-    x: initialState.label,
-    y: { value: initialState.value },
-  });
 
   const yAxis = useMemo(
     () => [
@@ -65,7 +58,6 @@ const BarChart = ({
         domainPadding={domainPadding}
         yAxis={yAxis}
         xAxis={xAxis}
-        chartPressState={state}
         data={data}
         xKey="label"
         yKeys={['value']}>

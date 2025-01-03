@@ -37,7 +37,6 @@ const WeekStatistic = ({ style, data }: WeekStatisticProps) => {
         <BarChart
           formatYLabel={formatYLabel}
           formatXLabel={formatWeekDay}
-          initialState={{ label: '2025-01-02', value: 0 }}
           data={data}
         />
       </View>

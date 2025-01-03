@@ -53,6 +53,10 @@ export type AccountParams = {
   [merchantEditRoute]: { id: number };
   [merchantAddRoute]: undefined;
 
+  // External Accounts
+  [externalAccountsRoute]: undefined;
+  [externalAccountRoute]: { id: number };
+
   [openBankingRoute]: undefined;
   [bottomTabsRoute]: NavigatorScreenParams<BottomTabsParams>;
 };
@@ -202,6 +206,16 @@ export type MerchantEditScreenProps = StackScreenProps<
 export type MerchantRoute = 'Merchant';
 export const merchantRoute: MerchantRoute = 'Merchant';
 export type MerchantScreenProps = StackScreenProps<AccountParams, MerchantRoute>;
+
+export type ExternalAccountsRoute = 'ExternalAccounts';
+export const externalAccountsRoute: ExternalAccountsRoute = 'ExternalAccounts';
+
+export type ExternalAccountRoute = 'ExternalAccount';
+export const externalAccountRoute: ExternalAccountRoute = 'ExternalAccount';
+export type ExternalAccountScreenProps = StackScreenProps<
+  AccountParams,
+  ExternalAccountRoute
+>;
 
 export type OpenBankingRoute = 'OpenBanking';
 export const openBankingRoute: OpenBankingRoute = 'OpenBanking';

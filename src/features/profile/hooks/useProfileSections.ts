@@ -3,6 +3,7 @@ import { useProfileTranslations } from '@i18n/hooks';
 import {
   AccountNavigation,
   toCategories,
+  toExternalAccounts,
   toInvitations,
   toMembers,
   toMerchants,
@@ -47,6 +48,11 @@ const useProfileSections = () => {
             title: t('Merchants'),
             iconName: 'card',
             onPress: () => toMerchants(navigation),
+          },
+          {
+            title: t('External Accounts'),
+            iconName: 'card',
+            onPress: () => toExternalAccounts(navigation),
           },
           {
             title: t('Invitations'),

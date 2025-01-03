@@ -1,8 +1,9 @@
-import { Merchant } from '@api/clients/merchants/types';
-import { Avatar, Text } from '@common/v2/components';
+import { ExternalAccount } from '@api/clients/externalAccounts/types';
+import { IconButton, Text } from '@common/v2/components';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
+import { formatMask } from '@utils/card';
 import React from 'react';
 import {
   StyleProp,
@@ -12,22 +13,25 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { getMerchantLogoUrl } from '../utils';
-
-export interface MerchantsListItemProps {
+export interface ExternalAccountsListItemProps {
   style?: StyleProp<ViewStyle>;
-  merchant: Merchant;
+  externalAccount: ExternalAccount;
   onPress: () => void;
 }
 
-const MerchantsListItem = ({ style, merchant, onPress }: MerchantsListItemProps) => (
+const ExternalAccountsListItem = ({
+  style,
+  externalAccount,
+  onPress,
+}: ExternalAccountsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <Avatar
-      uri={merchant.externalLogoUrl ?? getMerchantLogoUrl(merchant?.logo || null)}
-    />
-    <View style={flex1}>
+    <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
+    <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
-        {merchant.name}
+        {externalAccount.name}
+      </Text>
+      <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
+        {formatMask(externalAccount.mask)}
       </Text>
     </View>
   </TouchableOpacity>
@@ -45,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MerchantsListItem;
+export default ExternalAccountsListItem;

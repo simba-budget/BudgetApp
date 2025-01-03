@@ -3,6 +3,7 @@ import * as AuthClient from './auth';
 import * as CategoriesClient from './categories';
 import * as ContributionsClient from './contributions';
 import * as DocumentsClient from './documents';
+import * as ExternalAccountsClient from './externalAccounts';
 import * as GoalsClient from './goals';
 import * as InvitationsClient from './invitations';
 import * as MembersClient from './members';
@@ -15,19 +16,20 @@ import * as TagsClient from './tags';
 import * as TransactionsClient from './transactions';
 
 export {
-  AuthClient,
-  DocumentsClient,
-  NotificationsClient,
-  CategoriesClient,
-  TransactionsClient,
   AccountsClient,
-  MembersClient,
-  InvitationsClient,
-  GoalsClient,
+  AuthClient,
+  CategoriesClient,
   ContributionsClient,
+  DocumentsClient,
+  ExternalAccountsClient,
+  GoalsClient,
+  InvitationsClient,
+  MembersClient,
+  MerchantsClient,
+  NotificationsClient,
   OpenBankingClient,
+  ProfileClient,
   SubscriptionsClient,
   TagsClient,
-  MerchantsClient,
-  ProfileClient,
+  TransactionsClient,
 };

@@ -15,6 +15,9 @@ import {
   contributionRoute,
   ContributionsRoute,
   contributionsRoute,
+  externalAccountRoute,
+  ExternalAccountRoute,
+  externalAccountsRoute,
   goalAddRoute,
   GoalEditRoute,
   goalEditRoute,
@@ -230,4 +233,15 @@ export const toMerchantAdd = ({ navigate }: AccountNavigation) => {
 
 export const toMerchants = ({ navigate }: AccountNavigation) => {
   return navigate(merchantsRoute);
+};
+
+export const toExternalAccount = (
+  { navigate }: AccountNavigation,
+  params: AccountParams[ExternalAccountRoute],
+) => {
+  return navigate(externalAccountRoute, params);
+};
+
+export const toExternalAccounts = ({ navigate }: AccountNavigation) => {
+  return navigate(externalAccountsRoute);
 };

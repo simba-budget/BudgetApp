@@ -1,5 +1,6 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { IconButton, Text } from '@common/v2/components';
+import { useTransactionsTranslations } from '@i18n/hooks';
 import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -26,32 +27,36 @@ const TransactionsListItem = ({
   transaction,
   onPress,
   isDateHidden = false,
-}: TransactionsListItemProps) => (
-  <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
-    <View style={[flex1, gap('row')('xxs')]}>
-      <Text weight="semiBold" size="s" color="primary">
-        {transaction.category.name}
-      </Text>
-      <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
-        {transaction.description}
-      </Text>
-    </View>
-    <View style={[alignEnd, gap('row')('xxs')]}>
-      <Text
-        weight="bold"
-        size="s"
-        color={transaction.amount < 0 ? 'error' : 'success'}>
-        {formatPrice(transaction.amount, transaction.currency)}
-      </Text>
-      {!isDateHidden && (
-        <Text weight="medium" size="xs" color="tertiary">
-          {formatDate(transaction.date)}
+}: TransactionsListItemProps) => {
+  const { t } = useTransactionsTranslations();
+
+  return (
+    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+      <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
+      <View style={[flex1, gap('row')('xxs')]}>
+        <Text weight="semiBold" size="s" color="primary">
+          {transaction.category?.name ?? t('Other')}
         </Text>
-      )}
-    </View>
-  </TouchableOpacity>
-);
+        <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
+          {transaction.description}
+        </Text>
+      </View>
+      <View style={[alignEnd, gap('row')('xxs')]}>
+        <Text
+          weight="bold"
+          size="s"
+          color={transaction.amount < 0 ? 'error' : 'success'}>
+          {formatPrice(transaction.amount, transaction.currency)}
+        </Text>
+        {!isDateHidden && (
+          <Text weight="medium" size="xs" color="tertiary">
+            {formatDate(transaction.date)}
+          </Text>
+        )}
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

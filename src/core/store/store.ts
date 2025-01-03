@@ -2,6 +2,7 @@ import { reducer as accountsReducer } from '@features/accounts/slice';
 import { reducer as authReducer } from '@features/auth/slice';
 import { reducer as categoriesReducer } from '@features/categories/slice';
 import { reducer as contributionsReducer } from '@features/contributions/slice';
+import { reducer as externalAccountsReducer } from '@features/externalAccounts/slice';
 import { reducer as goalsReducer } from '@features/goals/slice';
 import { reducer as invitationsReducer } from '@features/invitations/slice';
 import { reducer as membersReducer } from '@features/members/slice';
@@ -31,6 +32,7 @@ export const rootReducer = combineReducers({
   onboarding: onboardingReducer,
   profile: profileReducer,
   merchants: merchantsReducer,
+  externalAccounts: externalAccountsReducer,
 });
 
 export const store = configureStore({

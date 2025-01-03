@@ -9,7 +9,7 @@ export interface Transaction extends BaseModel {
   amount: number;
   currency: string;
   description: string | null;
-  category: Category;
+  category: Category | null;
   subscription: Subscription | null;
   merchant: Merchant | null;
   tags: Tag[];
@@ -20,7 +20,7 @@ export interface SaveTransactionRequest {
   amount: number;
   currency: string;
   description: string | null;
-  categoryId: number;
+  categoryId: number | null;
   subscriptionId: number | null;
   merchantId: number | null;
   tagsIds: number[] | null;

@@ -13,6 +13,7 @@ const initialFormData: Partial<SaveTransactionRequest> = {
   date: getCurrentDate(),
   subscriptionId: null,
   merchantId: null,
+  categoryId: null,
   tagsIds: null,
 };
 
@@ -21,7 +22,7 @@ const getSchema = (t: TFunction) => {
     amount: yup.number().required(t('Amount is required')),
     currency: yup.string().required(t('Currency is required')),
     description: yup.string().nullable().defined(),
-    categoryId: yup.number().required(t('Category is required')),
+    categoryId: yup.number().nullable().defined(),
     subscriptionId: yup.number().nullable().defined(),
     merchantId: yup.number().nullable().defined(),
     date: yup.string().required(t('Date is required')),

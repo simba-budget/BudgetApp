@@ -14,6 +14,8 @@ import {
   ContributionEditScreen,
   ContributionScreen,
   ContributionsScreen,
+  ExternalAccountScreen,
+  ExternalAccountsScreen,
   GoalAddScreen,
   GoalEditScreen,
   GoalScreen,
@@ -61,6 +63,9 @@ import {
   ContributionScreenProps,
   contributionsRoute,
   ContributionsScreenProps,
+  externalAccountRoute,
+  ExternalAccountScreenProps,
+  externalAccountsRoute,
   goalAddRoute,
   goalEditRoute,
   GoalEditScreenProps,
@@ -165,6 +170,10 @@ const AccountStack = createStackNavigator<AccountParams>({
     [merchantEditRoute]: MerchantEditScreen,
     [merchantRoute]: MerchantScreen,
 
+    // External Accounts
+    [externalAccountsRoute]: ExternalAccountsScreen,
+    [externalAccountRoute]: ExternalAccountScreen,
+
     [openBankingRoute]: View,
     [bottomTabsRoute]: { screen: BottomTabs, options: headerHiddenOptions },
   },
@@ -192,6 +201,7 @@ export {
   type SubscriptionScreenProps,
   type MerchantEditScreenProps,
   type MerchantScreenProps,
+  type ExternalAccountScreenProps,
   accountRoute,
 };
 
