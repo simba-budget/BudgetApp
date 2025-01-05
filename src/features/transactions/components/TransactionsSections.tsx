@@ -54,7 +54,7 @@ const TransactionsSections = ({
 
   return (
     <SectionList
-      contentContainerStyle={[total === 0 && justifyCenter, gap('row')('m')]}
+      contentContainerStyle={[total === 0 && justifyCenter]}
       ListEmptyComponent={<TransactionsEmpty onAddPress={onTransactionAddPress} />}
       keyExtractor={(transaction) => transaction.id.toString()}
       onRefresh={onRefresh}

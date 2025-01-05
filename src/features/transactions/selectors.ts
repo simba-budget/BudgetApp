@@ -9,6 +9,11 @@ export const selectTransactionsLastUpdated = createSelector(
   (state) => state.lastUpdated,
 );
 
+export const selectTransaction = createSelector(
+  selectTransactions,
+  (state) => state.transaction,
+);
+
 export const selectTransactionsFilter = createSelector(
   selectTransactions,
   (state) => state.filter,

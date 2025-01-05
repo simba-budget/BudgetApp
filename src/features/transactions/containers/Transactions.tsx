@@ -1,13 +1,8 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { useAppSelector } from '@core/store/store';
-import {
-  AccountNavigation,
-  toTransaction,
-  toTransactionAdd,
-} from '@navigation/navigators/account';
+import { useAppDispatch, useAppSelector } from '@core/store/store';
+import { setTransaction } from '@features/transactions/slice';
+import { AccountNavigation, toTransactionAdd } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
-import { justifyCenter } from '@styles/common';
-import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 
 import { TransactionsSections } from '../components';
@@ -15,6 +10,7 @@ import { useTransactionsInfinity } from '../hooks';
 import { selectApiTransactionsFilter, selectTransactionsSort } from '../selectors';
 
 const Transactions = () => {
+  const dispatch = useAppDispatch();
   const navigation = useNavigation<AccountNavigation>();
   const filter = useAppSelector(selectApiTransactionsFilter);
   const sort = useAppSelector(selectTransactionsSort);
@@ -33,8 +29,8 @@ const Transactions = () => {
   });
 
   const handleOnTransactionPress = useCallback(
-    (transaction: Transaction) => toTransaction(navigation, { id: transaction.id }),
-    [navigation],
+    (transaction: Transaction) => dispatch(setTransaction({ transaction })),
+    [dispatch],
   );
 
   return (

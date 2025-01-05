@@ -27,8 +27,11 @@ const SubscriptionsListItem = ({
   onPress,
 }: SubscriptionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <Avatar uri={getMerchantLogoUrl(subscription.merchant?.logo || null)} />
-    <View style={[flex1, gap('row')('xxxs')]}>
+    <Avatar
+      size={40}
+      uri={getMerchantLogoUrl(subscription.merchant?.logo || null)}
+    />
+    <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
         {subscription.name}
       </Text>
@@ -36,7 +39,7 @@ const SubscriptionsListItem = ({
         {subscription.description}
       </Text>
     </View>
-    <View style={[alignEnd, gap('row')('xxxs')]}>
+    <View style={[alignEnd, gap('row')('xxs')]}>
       <Text weight="bold" size="s" color="primary">
         {formatPrice(subscription.amount, subscription.currency)}
       </Text>
@@ -49,13 +52,13 @@ const SubscriptionsListItem = ({
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('s'),
-    ...gap('column')('s'),
     ...rowCenter,
-    backgroundColor: colors.background.secondary,
-    borderWidth: 1,
-    borderColor: colors.border.primary,
+    ...gap('column')('s'),
+    ...padding('full')('s'),
     borderRadius: 16,
+    backgroundColor: colors.background.secondary,
+    borderColor: colors.border.primary,
+    borderWidth: 1,
   },
 });
 

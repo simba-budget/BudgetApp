@@ -60,5 +60,5 @@ export const fontSizes: FontSizes = {
   m: { fontSize: 16, lineHeight: 24 },
   l: { fontSize: 18, lineHeight: 28 },
   xl: { fontSize: 20, lineHeight: 30 },
-  xxl: { fontSize: 32, lineHeight: 44 },
+  xxl: { fontSize: 32, lineHeight: 40 },
 };

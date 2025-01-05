@@ -51,7 +51,6 @@ import {
   tagsRoute,
   transactionAddRoute,
   transactionEditRoute,
-  transactionRoute,
 } from './types';
 
 export const toContributionAdd = (
@@ -131,13 +130,6 @@ export const toTransactionEdit = (
   params: AccountParams[CategoryEditRoute],
 ) => {
   return navigate(transactionEditRoute, params);
-};
-
-export const toTransaction = (
-  { navigate }: AccountNavigation,
-  params: AccountParams[CategoryRoute],
-) => {
-  return navigate(transactionRoute, params);
 };
 
 export const toInvitations = ({ navigate }: AccountNavigation) => {

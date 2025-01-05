@@ -4,6 +4,7 @@ import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
 import ToastProvider from '@core/toasts/ToastProvider';
+import { Transaction } from '@features/transactions/containers';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setupTranslations } from '@i18n/setup';
 import linking from '@navigation/linking';
@@ -34,6 +35,7 @@ const App = () => {
               <ToastProvider>
                 <BottomSheetModalProvider>
                   <Navigation linking={linking} />
+                  <Transaction />
                 </BottomSheetModalProvider>
               </ToastProvider>
             </SafeAreaProvider>

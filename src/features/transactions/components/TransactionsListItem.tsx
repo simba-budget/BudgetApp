@@ -32,7 +32,13 @@ const TransactionsListItem = ({
 
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
+      <IconButton
+        backgroundColor="tertiary"
+        iconSize={20}
+        size={40}
+        iconName="card"
+        isDisabled
+      />
       <View style={[flex1, gap('row')('xxs')]}>
         <Text weight="semiBold" size="s" color="primary">
           {transaction.category?.name ?? t('Other')}
@@ -60,13 +66,13 @@ const TransactionsListItem = ({
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('s'),
-    ...gap('column')('s'),
     ...rowCenter,
-    backgroundColor: colors.background.secondary,
-    borderWidth: 1,
-    borderColor: colors.border.primary,
+    ...gap('column')('s'),
+    ...padding('full')('s'),
     borderRadius: 16,
+    backgroundColor: colors.background.secondary,
+    borderColor: colors.border.primary,
+    borderWidth: 1,
   },
 });
 

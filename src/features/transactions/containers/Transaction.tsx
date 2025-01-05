@@ -1,34 +1,27 @@
-import {
-  AccountNavigation,
-  toTransactionEdit,
-} from '@navigation/navigators/account';
-import { useNavigation } from '@react-navigation/native';
+import { BottomSheet } from '@common/v2/components';
+import { useAppDispatch, useAppSelector } from '@core/store/store';
+import { setTransaction } from '@features/transactions/slice';
+import { BottomSheetView } from '@gorhom/bottom-sheet';
 import React, { useCallback } from 'react';
 
 import { TransactionDetails } from '../components';
-import { useTransaction } from '../hooks';
+import { selectTransaction } from '../selectors';
 
-export interface TransactionProps {
-  id: number;
-}
+const Transaction = () => {
+  const dispatch = useAppDispatch();
+  const transaction = useAppSelector(selectTransaction);
 
-const Transaction = ({ id }: TransactionProps) => {
-  const navigation = useNavigation<AccountNavigation>();
-  const { transaction, refetch, isRefetching, isLoading } = useTransaction(id);
-
-  const handleOnEditPress = useCallback(
-    () => toTransactionEdit(navigation, { id }),
-    [navigation, id],
+  const handleOnClose = useCallback(
+    () => dispatch(setTransaction({ transaction: null })),
+    [dispatch],
   );
 
   return (
-    <TransactionDetails
-      transaction={transaction}
-      isLoading={isLoading}
-      isRefreshing={isRefetching}
-      onRefresh={refetch}
-      onEditPress={handleOnEditPress}
-    />
+    <BottomSheet isOpen={!!transaction} onClose={handleOnClose}>
+      <BottomSheetView>
+        {transaction && <TransactionDetails transaction={transaction} />}
+      </BottomSheetView>
+    </BottomSheet>
   );
 };
 

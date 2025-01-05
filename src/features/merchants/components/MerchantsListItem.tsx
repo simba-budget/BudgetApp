@@ -22,9 +22,7 @@ export interface MerchantsListItemProps {
 
 const MerchantsListItem = ({ style, merchant, onPress }: MerchantsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <Avatar
-      uri={merchant.externalLogoUrl ?? getMerchantLogoUrl(merchant?.logo || null)}
-    />
+    <Avatar uri={merchant.externalLogoUrl ?? getMerchantLogoUrl(merchant.logo)} />
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
         {merchant.name}
@@ -35,13 +33,13 @@ const MerchantsListItem = ({ style, merchant, onPress }: MerchantsListItemProps)
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('s'),
-    ...gap('column')('s'),
     ...rowCenter,
+    ...gap('column')('s'),
+    ...padding('full')('xs'),
+    borderRadius: 12,
     backgroundColor: colors.background.secondary,
-    borderWidth: 1,
     borderColor: colors.border.primary,
-    borderRadius: 16,
+    borderWidth: 1,
   },
 });
 

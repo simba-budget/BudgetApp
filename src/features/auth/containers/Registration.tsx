@@ -1,11 +1,11 @@
 import { AuthNavigation, toVerifyOtp } from '@navigation/navigators/auth';
 import { useNavigation } from '@react-navigation/native';
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import { RegistrationForm } from '../components';
 import { useRegister, useRegistrationForm } from '../hooks';
 
-const Registration: FC = () => {
+const Registration = () => {
   const navigation = useNavigation<AuthNavigation>();
 
   const onSuccess = useCallback(

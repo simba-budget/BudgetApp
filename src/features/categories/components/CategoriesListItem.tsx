@@ -1,6 +1,6 @@
 import { Category } from '@api/clients/categories/types';
-import { Svg, Text } from '@common/v2/components';
-import { center, flex1, rowCenter } from '@styles/common';
+import { IconButton, Text } from '@common/v2/components';
+import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
@@ -24,9 +24,7 @@ const CategoriesListItemProps = ({
   onPress,
 }: CategoriesListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={18} name="card" />
-    </View>
+    <IconButton iconName="card" size={36} iconSize={18} isDisabled />
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
         {category.name}
@@ -44,13 +42,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,
     borderWidth: 1,
-  },
-  iconContainer: {
-    ...center,
-    backgroundColor: colors.background.tertiary,
-    width: 36,
-    height: 36,
-    borderRadius: 18,
   },
 });
 

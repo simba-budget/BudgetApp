@@ -9,9 +9,8 @@ const SendOtp = () => {
   const navigation = useNavigation<AuthNavigation>();
 
   const onSuccess = useCallback(
-    (expirationDate: string, email: string) => {
-      toVerifyOtp(navigation, { email, expirationDate });
-    },
+    (expirationDate: string, email: string) =>
+      toVerifyOtp(navigation, { email, expirationDate }),
     [navigation],
   );
 

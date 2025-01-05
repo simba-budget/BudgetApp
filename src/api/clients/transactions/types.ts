@@ -1,6 +1,8 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Category } from '../categories/types';
+import { ExternalAccount } from '../externalAccounts/types';
+import { Member } from '../members/types';
 import { Merchant } from '../merchants/types';
 import { Subscription } from '../subscriptions/types';
 import { Tag } from '../tags/types';
@@ -8,12 +10,16 @@ import { Tag } from '../tags/types';
 export interface Transaction extends BaseModel {
   amount: number;
   currency: string;
+  externalAccount: ExternalAccount | null;
   description: string | null;
   category: Category | null;
   subscription: Subscription | null;
   merchant: Merchant | null;
   tags: Tag[];
   date: string;
+  createdBy: Member | null;
+  updatedAt: string | null;
+  createdAt: string | null;
 }
 
 export interface SaveTransactionRequest {

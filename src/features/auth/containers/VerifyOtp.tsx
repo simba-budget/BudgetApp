@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { VerifyOtpForm } from '../components';
 import { useSendOtp, useVerifyOtp, useVerifyOtpForm } from '../hooks';
@@ -8,8 +8,7 @@ export interface VerifyOtpProps {
   expirationDate: string;
 }
 
-const VerifyOtp: FC<VerifyOtpProps> = (props) => {
-  const { email, expirationDate } = props;
+const VerifyOtp = ({ email, expirationDate }: VerifyOtpProps) => {
   const [newExpirationDate, setNewExpirationDate] = useState<string>(expirationDate);
   const { verifyOtp, isSubmitting } = useVerifyOtp(email);
   const { control, handleSubmit } = useVerifyOtpForm();

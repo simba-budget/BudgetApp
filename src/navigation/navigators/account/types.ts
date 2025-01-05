@@ -24,7 +24,6 @@ export type AccountParams = {
   // Transactions
   [transactionAddRoute]: undefined;
   [transactionEditRoute]: { id: number };
-  [transactionRoute]: { id: number };
 
   // Invitations
   [invitationsRoute]: undefined;
@@ -129,13 +128,6 @@ export const transactionEditRoute: TransactionEditRoute = 'TransactionEdit';
 export type TransactionEditScreenProps = StackScreenProps<
   AccountParams,
   TransactionEditRoute
->;
-
-export type TransactionRoute = 'Transaction';
-export const transactionRoute: TransactionRoute = 'Transaction';
-export type TransactionScreenProps = StackScreenProps<
-  AccountParams,
-  TransactionRoute
 >;
 
 export type InvitationsRoute = 'Invitations';

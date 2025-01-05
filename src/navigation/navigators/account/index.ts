@@ -38,7 +38,6 @@ import {
   TagsScreen,
   TransactionAddScreen,
   TransactionEditScreen,
-  TransactionScreen,
 } from '@screens';
 import { View } from 'react-native';
 
@@ -101,8 +100,6 @@ import {
   transactionAddRoute,
   transactionEditRoute,
   TransactionEditScreenProps,
-  transactionRoute,
-  TransactionScreenProps,
 } from './types';
 
 const categoriesOptions: StackNavigationOptions = {
@@ -141,7 +138,6 @@ const AccountStack = createStackNavigator<AccountParams>({
     // Transactions
     [transactionAddRoute]: TransactionAddScreen,
     [transactionEditRoute]: TransactionEditScreen,
-    [transactionRoute]: TransactionScreen,
 
     // Invitations
     [invitationsRoute]: InvitationsScreen,
@@ -182,7 +178,6 @@ const AccountStack = createStackNavigator<AccountParams>({
 export {
   type AccountNavigation,
   type AccountParams,
-  type TransactionScreenProps,
   type SubscriptionEditScreenProps,
   type CategoryEditScreenProps,
   type TransactionEditScreenProps,

@@ -1,5 +1,6 @@
 import { Button, Text } from '@common/v2/components';
 import { useHomeTranslations } from '@i18n/hooks';
+import { flex1, rowCenter } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
@@ -18,25 +19,26 @@ const InvitationAddSection = ({
 
   return (
     <View style={[padding('horizontal')('m'), style]}>
+      <View style={[rowCenter, margin('bottom')('xs')]}>
+        <Text style={flex1} color="primary" size="s" weight="semiBold">
+          {t('Invite other members')}
+        </Text>
+      </View>
       <View style={styles.container}>
         <Text
           style={margin('bottom')('xs')}
           weight="semiBold"
-          color="primary"
+          color="secondary"
           size="m">
           {t('Expand Your Circle')}
         </Text>
-        <Text
-          style={margin('bottom')('m')}
-          color="tertiary"
-          size="s"
-          weight="medium">
+        <Text style={margin('bottom')('m')} color="accent" size="s" weight="medium">
           {t('Invite others to manage finances and collaborate seamlessly.')}
         </Text>
         <Button
           size="small"
           onPress={onInvitationAddPress}
-          color="primary"
+          color="secondary"
           title={t('Invite')}
         />
       </View>
@@ -48,10 +50,10 @@ const styles = StyleSheet.create({
   container: {
     ...padding('full')('l'),
     alignItems: 'flex-start',
-    backgroundColor: colors.background.secondary,
+    borderRadius: 16,
     borderWidth: 1,
     borderColor: colors.border.primary,
-    borderRadius: 30,
+    backgroundColor: colors.background.accent,
   },
 });
 
