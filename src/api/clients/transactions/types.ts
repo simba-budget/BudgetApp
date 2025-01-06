@@ -22,6 +22,11 @@ export interface Transaction extends BaseModel {
   createdAt: string | null;
 }
 
+export interface TransactionsStats {
+  date: string;
+  amount: number;
+}
+
 export interface SaveTransactionRequest {
   amount: number;
   currency: string;
@@ -31,6 +36,12 @@ export interface SaveTransactionRequest {
   merchantId: number | null;
   tagsIds: number[] | null;
   date: string;
+}
+
+export interface TransactionsStatsFilter {
+  accountId: number;
+  dateFrom: string;
+  dateTo: string;
 }
 
 export interface TransactionsFilter {

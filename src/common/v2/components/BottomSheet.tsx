@@ -1,7 +1,7 @@
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { ReactNode, useEffect, useRef } from 'react';
-import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import React, { ReactNode, useEffect, useMemo, useRef } from 'react';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetBackdrop from './BottomSheetBackdrop';
@@ -11,11 +11,26 @@ export interface BottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  isSafeBottomArea?: boolean;
+  isHandleHidden?: boolean;
 }
 
-const BottomSheet = ({ style, onClose, isOpen, children }: BottomSheetProps) => {
+const BottomSheet = ({
+  style,
+  onClose,
+  isOpen,
+  children,
+  isSafeBottomArea = false,
+  isHandleHidden = false,
+}: BottomSheetProps) => {
+  const { bottom } = useSafeAreaInsets();
   const ref = useRef<BottomSheetModal>(null);
   const { top } = useSafeAreaInsets();
+
+  const paddingBottom = useMemo<number>(
+    () => (isSafeBottomArea ? bottom : 0),
+    [isSafeBottomArea, bottom],
+  );
 
   useEffect(() => {
     if (!ref.current) return;
@@ -30,11 +45,14 @@ const BottomSheet = ({ style, onClose, isOpen, children }: BottomSheetProps) => 
       style={style}
       ref={ref}
       enablePanDownToClose
+      enableOverDrag={false}
       backgroundStyle={styles.container}
-      handleIndicatorStyle={styles.indicator}
+      handleIndicatorStyle={[styles.handle, isHandleHidden && styles.hiddenHandle]}
       backdropComponent={BottomSheetBackdrop}
       index={0}>
-      {children}
+      <BottomSheetView>
+        <View style={{ paddingBottom }}>{children}</View>
+      </BottomSheetView>
     </BottomSheetModal>
   );
 };
@@ -47,8 +65,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 24,
     borderTopLeftRadius: 24,
   },
-  indicator: {
+  handle: {
     backgroundColor: colors.text.tertiary,
+  },
+  hiddenHandle: {
+    display: 'none',
   },
 });
 

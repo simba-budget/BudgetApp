@@ -24,7 +24,7 @@ const IconButton = ({
   style,
   iconName,
   isDisabled = false,
-  size = 46,
+  size = 42,
   iconSize = 20,
   color = 'primary',
 }: IconButtonProps) => (

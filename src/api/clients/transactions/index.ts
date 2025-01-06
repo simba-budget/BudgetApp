@@ -5,6 +5,8 @@ import {
   ListTransactionsRequest,
   SaveTransactionRequest,
   Transaction,
+  TransactionsStats,
+  TransactionsStatsFilter,
 } from './types';
 
 const url = '/transactions';
@@ -12,6 +14,13 @@ const url = '/transactions';
 export const getTransactions = (request: ListTransactionsRequest) => {
   const params = { ...request.filter, ...request.sort, ...request.paging };
   return httpClient.get<void, ListResponse<Transaction>>(url, { params });
+};
+
+export const getTransactionsStats = (filter: TransactionsStatsFilter) => {
+  const params = { ...filter };
+  return httpClient.get<void, DataResponse<TransactionsStats[]>>(`${url}/stats`, {
+    params,
+  });
 };
 
 export const getTransaction = (id: number) => {

@@ -1,13 +1,16 @@
-import { padding } from '@styles/lightTheme';
+import { IconName } from '@icons';
+import { rowCenter } from '@styles/common';
+import { gap, padding } from '@styles/lightTheme';
 import { Colors, FontSizes } from '@styles/v2/types';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 
+import Svg from './Svg';
 import Text from './Text';
 
 export type ButtonSize = 'small' | 'medium';
-export type ButtonColor = 'primary' | 'secondary';
+export type ButtonColor = 'primary' | 'secondary' | 'tertiary';
 
 export interface ButtonProps {
   onPress?: () => void;
@@ -16,6 +19,7 @@ export interface ButtonProps {
   title: string;
   size?: ButtonSize;
   color?: ButtonColor;
+  iconName?: IconName;
 }
 
 const Button = ({
@@ -23,6 +27,7 @@ const Button = ({
   style,
   isDisabled = false,
   title,
+  iconName,
   size = 'medium',
   color = 'primary',
 }: ButtonProps) => (
@@ -38,6 +43,9 @@ const Button = ({
       style,
     ]}
     disabled={isDisabled}>
+    {!!iconName && (
+      <Svg size={20} color={colors.text[titleColorMap[color]]} name={iconName} />
+    )}
     <Text size={titleSizeMap[size]} color={titleColorMap[color]} weight="medium">
       {title}
     </Text>
@@ -47,16 +55,19 @@ const Button = ({
 const titleColorMap: Record<ButtonColor, keyof Colors['text']> = {
   primary: 'secondary',
   secondary: 'primary',
+  tertiary: 'primary',
 };
 
 const borderColorMap: Record<ButtonColor, keyof Colors['border']> = {
   primary: 'accent',
   secondary: 'primary',
+  tertiary: 'primary',
 };
 
 const backgroundColorMap: Record<ButtonColor, keyof Colors['background']> = {
   primary: 'accent',
-  secondary: 'tertiary',
+  secondary: 'secondary',
+  tertiary: 'tertiary',
 };
 
 const titleSizeMap: Record<ButtonSize, keyof FontSizes> = {
@@ -72,13 +83,15 @@ const containerSizeMap: Record<ButtonSize, ViewStyle> = {
   },
   medium: {
     ...padding('horizontal')('xl'),
-    height: 52,
-    borderRadius: 26,
+    height: 48,
+    borderRadius: 24,
   },
 };
 
 const styles = StyleSheet.create({
   container: {
+    ...rowCenter,
+    ...gap('column')('xs'),
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',

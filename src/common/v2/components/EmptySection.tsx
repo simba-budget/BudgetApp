@@ -22,7 +22,13 @@ const EmptySection = ({
     <Text style={margin('bottom')('m')} color="tertiary" textAlign="center" size="s">
       {description}
     </Text>
-    <Button size="small" color="secondary" onPress={onPress} title={ctaTitle} />
+    <Button
+      iconName="plus"
+      size="small"
+      color="tertiary"
+      onPress={onPress}
+      title={ctaTitle}
+    />
   </View>
 );
 
