@@ -1,8 +1,7 @@
 import { API_URL } from '@env';
 import { LinkingOptions } from '@react-navigation/native';
 
-import { openBankingRoute } from './navigators/account/types';
-import { accountsRoute, mainRoute } from './navigators/main/types';
+import { mainRoute } from './navigators/main/types';
 import { RootParams } from './navigators/root';
 
 const linking: LinkingOptions<RootParams> = {
@@ -10,11 +9,7 @@ const linking: LinkingOptions<RootParams> = {
   config: {
     screens: {
       [mainRoute]: {
-        screens: {
-          [accountsRoute]: {
-            screens: { [openBankingRoute]: 'open-banking' },
-          },
-        },
+        screens: {},
       },
     },
   },

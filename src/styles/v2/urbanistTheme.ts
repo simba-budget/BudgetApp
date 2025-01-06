@@ -12,7 +12,8 @@ export const colors: Colors = {
     primary: '#131313',
     secondary: '#1A1A1A',
     tertiary: '#252525',
-    accent: '#CFF008',
+    accent: '#DAFC08',
+    accentSecondary: '#CFF008',
   },
   text: {
     accent: '#70820A',
@@ -26,7 +27,7 @@ export const colors: Colors = {
   },
   border: {
     primary: hexToRgba('#FFFFFF', 0.075),
-    accent: '#CFF008',
+    accent: '#CAEA08',
   },
 };
 

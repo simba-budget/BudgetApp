@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { PrivacyPolicyScreen, TermsAndConditionsScreen } from '@screens';
 
 import { useIsLoggedIn, useIsLoggedOut } from '../../hooks';
-import { headerHiddenOptions } from '../../options';
+import { hiddenOptions } from '../../options';
 import AuthStack, { authRoute } from '../auth';
 import MainStack, { mainRoute } from '../main';
 
@@ -14,7 +14,7 @@ import {
 } from './types';
 
 const RootStack = createStackNavigator<RootParams>({
-  screenOptions: headerHiddenOptions,
+  screenOptions: hiddenOptions,
   screens: {
     [authRoute]: { if: useIsLoggedOut, screen: AuthStack },
     [mainRoute]: { if: useIsLoggedIn, screen: MainStack },

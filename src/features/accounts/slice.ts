@@ -1,21 +1,19 @@
-import { Account, AccountsFilter, AccountsSort } from '@api/clients/accounts/types';
+import { Account } from '@api/clients/accounts/types';
 import { logoutAction } from '@features/auth/actions';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { selectAccountAction } from './actions';
 
 export interface AccountsState {
-  filter: AccountsFilter;
-  sort: AccountsSort;
   selectedAccount: Account | null;
   lastUpdated: number;
+  isSelectAccountVisible: boolean;
 }
 
 const initialState: AccountsState = {
-  filter: {},
-  sort: { direction: 'asc', column: 'name' },
   selectedAccount: null,
   lastUpdated: Date.now(),
+  isSelectAccountVisible: false,
 };
 
 const accountsSlice = createSlice({
@@ -25,14 +23,11 @@ const accountsSlice = createSlice({
     updateAccounts: (state) => {
       state.lastUpdated = Date.now();
     },
-    updateFilter: (state, action: PayloadAction<{ filter: AccountsFilter }>) => {
-      state.filter = action.payload.filter;
-    },
-    updateSort: (state, action: PayloadAction<{ sort: AccountsSort }>) => {
-      state.sort = action.payload.sort;
-    },
-    updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
-      state.filter.keyword = action.payload.keyword;
+    setIsSelectAccountVisible: (
+      state,
+      action: PayloadAction<{ isSelectAccountVisible: boolean }>,
+    ) => {
+      state.isSelectAccountVisible = action.payload.isSelectAccountVisible;
     },
   },
   extraReducers: (builder) => {
@@ -43,7 +38,5 @@ const accountsSlice = createSlice({
   },
 });
 
-export const { updateAccounts, updateKeyword, updateFilter, updateSort } =
-  accountsSlice.actions;
-
+export const { updateAccounts, setIsSelectAccountVisible } = accountsSlice.actions;
 export const { reducer } = accountsSlice;

@@ -1,9 +1,8 @@
-import { Transaction } from '@api/clients/transactions/types';
 import { ScrollView } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { selectSelectedAccountStrict } from '@features/accounts/selectors';
+import { setIsSelectAccountVisible } from '@features/accounts/slice';
 import { useProfile } from '@features/profile/hooks';
-import { setTransaction } from '@features/transactions/slice';
 import {
   AccountNavigation,
   toGoal,
@@ -20,7 +19,7 @@ import {
   toSubscriptions,
   toTransactions,
 } from '@navigation/navigators/bottomTabs';
-import { MainNavigation, toAccounts } from '@navigation/navigators/main';
+import { MainNavigation, toNotifications } from '@navigation/navigators/main';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
@@ -121,8 +120,8 @@ const Home = () => {
     [refetchTransactions, refetchProfile, refetchGoals, refetchSubscriptions],
   );
 
-  const handleOnTransactionPress = useCallback(
-    (transaction: Transaction) => dispatch(setTransaction({ transaction })),
+  const handleOnAccountPress = useCallback(
+    () => dispatch(setIsSelectAccountVisible({ isSelectAccountVisible: true })),
     [dispatch],
   );
 
@@ -133,13 +132,13 @@ const Home = () => {
       refreshing={isLoading || isRefetching}>
       {profile && (
         <ProfileSection
-          onNotificationsPress={() => toAccounts(mainNavigation)}
+          onNotificationsPress={() => toNotifications(mainNavigation)}
           onProfilePress={() => toProfile(bottomTabsNavigation)}
           profile={profile}
         />
       )}
       <AccountSection
-        onAccountPress={() => toAccounts(mainNavigation)}
+        onAccountPress={handleOnAccountPress}
         account={selectedAccount}
         quickActions={quickActions}
       />
@@ -169,7 +168,6 @@ const Home = () => {
         total={totalTransactions}
         transactions={transactions}
         onViewAllPress={() => toTransactions(bottomTabsNavigation)}
-        onTransactionPress={handleOnTransactionPress}
       />
     </ScrollView>
   );

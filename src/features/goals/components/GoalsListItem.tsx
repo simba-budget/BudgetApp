@@ -16,7 +16,7 @@ export interface GoalsListItemProps {
 const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
   <View style={[styles.container, style]}>
     <View style={[rowCenter, gap('column')('s'), margin('bottom')('s')]}>
-      <IconButton backgroundColor="tertiary" isDisabled iconName="card" />
+      <IconButton isDisabled iconName="card" />
       <View style={flex1}>
         <Text weight="semiBold" size="m" color="primary">
           {goal.name}
@@ -25,11 +25,7 @@ const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
           {`${goal.startedAt} - ${goal.endAt}`}
         </Text>
       </View>
-      <IconButton
-        backgroundColor="tertiary"
-        onPress={onPress}
-        iconName="arrowRight"
-      />
+      <IconButton onPress={onPress} iconName="arrowRight" />
     </View>
     <Text
       numberOfLines={3}

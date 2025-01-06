@@ -1,9 +1,10 @@
 import { Member, MemberRole } from '@api/clients/members/types';
-import { Badge, IconButton, Text } from '@common/v2/components';
+import { Avatar, Badge, Text } from '@common/v2/components';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { Colors } from '@styles/v2/types';
 import { colors } from '@styles/v2/urbanistTheme';
+import { getInitials } from '@utils/string';
 import React from 'react';
 import {
   StyleProp,
@@ -21,7 +22,10 @@ export interface MembersListItemProps {
 
 const MembersListItem = ({ style, member, onPress }: MembersListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <IconButton backgroundColor="tertiary" size={42} iconName="userAdd" isDisabled />
+    <Avatar
+      size={40}
+      initials={getInitials(`${member.firstName} ${member.lastName}`)}
+    />
     <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
         {`${member.firstName} ${member.lastName}`}

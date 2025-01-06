@@ -1,35 +1,46 @@
+import { center } from '@styles/common';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
+import Text from './Text';
+
 export interface AvatarProps {
   style?: StyleProp<ViewStyle>;
+  initials: string;
   size?: number;
-  uri: string | null;
+  uri?: string | null;
 }
 
-const Avatar = ({ style, size = 42, uri }: AvatarProps) => (
+const Avatar = ({ style, size = 46, uri, initials }: AvatarProps) => (
   <View
     style={[
       styles.container,
       { width: size, height: size, borderRadius: size / 2 },
       style,
     ]}>
-    <FastImage
-      style={[styles.image, { borderRadius: size / 2 }]}
-      resizeMode="cover"
-      source={{ uri: uri ?? undefined }}
-    />
+    {uri ? (
+      <FastImage
+        style={[styles.image, { borderRadius: size / 2 }]}
+        resizeMode="cover"
+        source={{ uri }}
+      />
+    ) : (
+      <Text size="m" textAlign="center" weight="bold" color="secondary">
+        {initials}
+      </Text>
+    )}
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
+    ...center,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: colors.border.primary,
-    backgroundColor: colors.background.tertiary,
+    backgroundColor: colors.text.primary,
   },
   image: {
     width: '100%',

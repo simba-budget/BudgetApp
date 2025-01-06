@@ -10,7 +10,7 @@ const BottomSheetBackdrop = ({ style, ...rest }: BottomSheetBackdropProps) => (
   <RNBottomSheetBackdrop
     {...rest}
     style={[styles.container, style]}
-    opacity={0.4}
+    opacity={1}
     disappearsOnIndex={-1}
     pressBehavior="close"
   />
@@ -19,8 +19,6 @@ const BottomSheetBackdrop = ({ style, ...rest }: BottomSheetBackdropProps) => (
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.common.black,
-    borderColor: 'red',
-    borderWidth: 1,
   },
 });
 

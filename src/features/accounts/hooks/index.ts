@@ -4,4 +4,3 @@ export { default as useAddAccount } from './useAddAccount';
 export { default as useEditAccount } from './useEditAccount';
 export { default as useDeleteAccount } from './useDeleteAccount';
 export { default as useAccountForm } from './useAccountForm';
-export { default as useAccountsInfinity } from './useAccountsInfinity';

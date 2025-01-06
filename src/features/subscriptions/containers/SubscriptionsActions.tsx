@@ -18,7 +18,7 @@ const SubscriptionsActions = () => {
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>
-      <IconButton onPress={handleOnAddPress} iconName="userAdd" />
+      <IconButton onPress={handleOnAddPress} iconName="plus" />
     </View>
   );
 };

@@ -15,7 +15,7 @@ import {
   tabBarStyle,
 } from './styles';
 
-export const headerHiddenOptions = {
+export const hiddenOptions = {
   headerShown: false,
 };
 

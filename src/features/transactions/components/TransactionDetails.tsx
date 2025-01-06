@@ -38,12 +38,7 @@ const TransactionDetails = ({ transaction, style }: TransactionDetailsProps) => 
     <View style={[{ paddingBottom: bottom }, style]}>
       <View style={styles.container}>
         <View style={[center, gap('row')('xs')]}>
-          <IconButton
-            backgroundColor="tertiary"
-            size={56}
-            iconSize={28}
-            iconName="card"
-          />
+          <IconButton size={56} iconSize={28} iconName="card" />
           <Text textAlign="center" weight="semiBold" size="m" color="primary">
             {transaction.category?.name ?? t('Other')}
           </Text>
@@ -129,8 +124,7 @@ const TransactionDetails = ({ transaction, style }: TransactionDetailsProps) => 
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('horizontal')('m'),
-    ...padding('vertical')('l'),
+    ...padding('full')('l'),
     ...gap('row')('l'),
   },
   details: {
@@ -138,7 +132,7 @@ const styles = StyleSheet.create({
     ...gap('row')('s'),
     borderWidth: 1,
     borderColor: colors.border.primary,
-    backgroundColor: colors.background.tertiary,
+    backgroundColor: colors.background.secondary,
     borderRadius: 16,
   },
 });

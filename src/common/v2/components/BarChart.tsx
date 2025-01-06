@@ -1,11 +1,10 @@
-import urbanistMedium from '@assets/fonts/Urbanist/Urbanist-Medium.ttf';
-import { LinearGradient, useFont, vec } from '@shopify/react-native-skia';
-import { sizes } from '@styles/lightTheme';
-import { colors } from '@styles/v2/urbanistTheme';
+import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import hexToRgba from 'hex-to-rgba';
 import React, { useMemo } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
-import { Bar, CartesianChart } from 'victory-native';
+import { ViewStyle } from 'react-native';
+import { BarChart as RNBarChart } from 'react-native-chart-kit';
+import { AbstractChartConfig } from 'react-native-chart-kit/dist/AbstractChart';
+import { ChartData } from 'react-native-chart-kit/dist/HelperTypes';
 
 export interface BarChartItem extends Record<string, unknown> {
   label: string | number;
@@ -13,79 +12,57 @@ export interface BarChartItem extends Record<string, unknown> {
 }
 
 export interface BarChartProps {
-  style?: StyleProp<ViewStyle>;
-  height?: number;
-  data: BarChartItem[];
-  formatYLabel: (value: number) => string;
-  formatXLabel: (label: number | string) => string;
+  style?: Partial<ViewStyle>;
+  height: number;
+  width: number;
+  data: ChartData;
+  formatYLabel: (label: string) => string;
 }
 
-const BarChart = ({
-  style,
-  height = 175,
-  data,
-  formatXLabel,
-  formatYLabel,
-}: BarChartProps) => {
-  const font = useFont(urbanistMedium, 12);
-
-  const yAxis = useMemo(
-    () => [
-      {
-        lineColor: colors.text.tertiary,
-        font,
-        labelColor: colors.text.tertiary,
-        formatYLabel,
-      },
-    ],
-    [font, formatYLabel],
-  );
-
-  const xAxis = useMemo(
-    () => ({
-      lineColor: colors.background.secondary,
-      font,
-      tickCount: data.length,
-      labelColor: colors.text.tertiary,
-      formatXLabel,
-    }),
-    [font, formatXLabel, data.length],
+const BarChart = ({ style, width, height, data, formatYLabel }: BarChartProps) => {
+  const chartConfig = useMemo<AbstractChartConfig>(
+    () => ({ ...baseChartConfig, formatYLabel }),
+    [formatYLabel],
   );
 
   return (
-    <View style={[style, { height }]}>
-      <CartesianChart
-        domainPadding={domainPadding}
-        yAxis={yAxis}
-        xAxis={xAxis}
-        data={data}
-        xKey="label"
-        yKeys={['value']}>
-        {({ points, chartBounds }) => (
-          <Bar
-            innerPadding={innerPadding}
-            barCount={data.length}
-            points={points.value}
-            chartBounds={chartBounds}
-            roundedCorners={roundedCorners}
-            animate={{ type: 'timing', duration: 300 }}>
-            <LinearGradient
-              start={vec(0, 0)}
-              end={vec(0, 400)}
-              colors={[
-                colors.background.accent,
-                hexToRgba(colors.background.accent, 0.3),
-              ]}
-            />
-          </Bar>
-        )}
-      </CartesianChart>
-    </View>
+    <RNBarChart
+      style={style}
+      fromZero
+      showBarTops={false}
+      chartConfig={chartConfig}
+      yAxisLabel=""
+      yAxisSuffix=""
+      data={data}
+      width={width}
+      height={height}
+    />
   );
 };
 
-const innerPadding = 0.8;
-const domainPadding = { left: sizes.s, right: sizes.s };
-const roundedCorners = { topLeft: 2, topRight: 2 };
+const baseChartConfig: AbstractChartConfig = {
+  backgroundGradientFrom: colors.background.secondary,
+  backgroundGradientTo: colors.background.secondary,
+  decimalPlaces: 0,
+  color: (opacity) => hexToRgba(colors.background.accent, opacity),
+  labelColor: () => colors.text.tertiary,
+  strokeWidth: 2,
+  barPercentage: 0.25,
+  fillShadowGradientOpacity: 1,
+  fillShadowGradientToOpacity: 0.3,
+  barRadius: 2,
+  propsForHorizontalLabels: {
+    translateY: 4,
+    translateX: -4,
+  },
+  propsForLabels: {
+    fontSize: fontSizes.xs.fontSize,
+    fontFamily: fonts.urbanist.medium.fontFamily,
+  },
+  propsForBackgroundLines: {
+    stroke: hexToRgba(colors.text.tertiary, 0.3),
+    translateX: 56,
+  },
+};
 
 export default BarChart;

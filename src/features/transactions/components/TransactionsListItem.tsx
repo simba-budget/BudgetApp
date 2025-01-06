@@ -1,12 +1,14 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { IconButton, Text } from '@common/v2/components';
+import { useAppDispatch } from '@core/store/store';
+import { setTransaction } from '@features/transactions/slice';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -18,27 +20,25 @@ import {
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
   transaction: Transaction;
-  onPress: () => void;
   isDateHidden?: boolean;
 }
 
 const TransactionsListItem = ({
   style,
   transaction,
-  onPress,
   isDateHidden = false,
 }: TransactionsListItemProps) => {
+  const dispatch = useAppDispatch();
   const { t } = useTransactionsTranslations();
 
+  const handleOnPress = useCallback(
+    () => dispatch(setTransaction({ transaction })),
+    [dispatch, transaction],
+  );
+
   return (
-    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <IconButton
-        backgroundColor="tertiary"
-        iconSize={20}
-        size={40}
-        iconName="card"
-        isDisabled
-      />
+    <TouchableOpacity style={[styles.container, style]} onPress={handleOnPress}>
+      <IconButton iconSize={20} size={40} iconName="card" isDisabled />
       <View style={[flex1, gap('row')('xxs')]}>
         <Text weight="semiBold" size="s" color="primary">
           {transaction.category?.name ?? t('Other')}

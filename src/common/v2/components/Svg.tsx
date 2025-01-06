@@ -16,12 +16,14 @@ import StarFilled from '@assets/svg/star-filled.svg';
 import User from '@assets/svg/user.svg';
 import ArrowDown from '@assets/svg/v2/arrow-down.svg';
 import ArrowLeft from '@assets/svg/v2/arrow-left.svg';
+import ArrowRightLeft from '@assets/svg/v2/arrow-right-left.svg';
 import ArrowRight from '@assets/svg/v2/arrow-right.svg';
 import Calendar from '@assets/svg/v2/calendar.svg';
 import Call from '@assets/svg/v2/call.svg';
 import Card from '@assets/svg/v2/card.svg';
 import Chart from '@assets/svg/v2/chart.svg';
 import Chat from '@assets/svg/v2/chat.svg';
+import ChevronDown from '@assets/svg/v2/chevron-down.svg';
 import Clear from '@assets/svg/v2/clear.svg';
 import Delete from '@assets/svg/v2/delete.svg';
 import DocumentAdd from '@assets/svg/v2/document-add.svg';
@@ -41,9 +43,11 @@ import Profile from '@assets/svg/v2/profile.svg';
 import Search from '@assets/svg/v2/search.svg';
 import Settings from '@assets/svg/v2/settings.svg';
 import Show from '@assets/svg/v2/show.svg';
+import SquaresPlus from '@assets/svg/v2/squares-plus.svg';
 import Star from '@assets/svg/v2/star.svg';
-import UserAdd from '@assets/svg/v2/user-add.svg';
+import UserPlus from '@assets/svg/v2/user-plus.svg';
 import Users from '@assets/svg/v2/users.svg';
+import Wallet from '@assets/svg/v2/wallet.svg';
 import Warning from '@assets/svg/v2/warning.svg';
 import Work from '@assets/svg/v2/work.svg';
 import { IconName } from '@icons';
@@ -95,10 +99,14 @@ const icons: Record<IconName, FC<SvgProps>> = {
   warning: Warning,
   more: More,
   clear: Clear,
-  userAdd: UserAdd,
+  userPlus: UserPlus,
   documentAdd: DocumentAdd,
   star: Star,
   pin: Pin,
+  chevronDown: ChevronDown,
+  wallet: Wallet,
+  arrowRightLeft: ArrowRightLeft,
+  squaresPlus: SquaresPlus,
 };
 
 export interface SvgIconProps

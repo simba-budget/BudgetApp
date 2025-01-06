@@ -20,7 +20,7 @@ export interface TagsListItemProps {
 
 const TagsListItem = ({ style, tag, onPress }: TagsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
+    <IconButton iconSize={20} size={40} iconName="card" isDisabled />
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
         {tag.name}

@@ -25,7 +25,7 @@ const ExternalAccountsListItem = ({
   onPress,
 }: ExternalAccountsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <IconButton backgroundColor="tertiary" size={42} iconName="card" isDisabled />
+    <IconButton size={40} iconSize={20} iconName="card" isDisabled />
     <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
         {externalAccount.name}

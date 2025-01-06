@@ -2,7 +2,6 @@ import { Transaction } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
 import { SectionList } from '@common/v2/components';
 import { justifyCenter } from '@styles/common';
-import { gap } from '@styles/lightTheme';
 import React, { useCallback, useMemo } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -17,15 +16,13 @@ export interface TransactionsSectionsProps {
   isRefreshing: boolean;
   onRefresh: () => void;
   transactions: Transaction[];
-  onTransactionPress: (transaction: Transaction) => void;
   isFetchingMore: boolean;
   onFetchMore: () => void;
-  onTransactionAddPress: () => void;
   total: number;
+  onTransactionAddPress: () => void;
 }
 
 const TransactionsSections = ({
-  onTransactionPress,
   transactions,
   isLoading,
   style,
@@ -33,8 +30,8 @@ const TransactionsSections = ({
   isRefreshing,
   isFetchingMore,
   onFetchMore,
-  onTransactionAddPress,
   total,
+  onTransactionAddPress,
 }: TransactionsSectionsProps) => {
   const sections = useMemo<Section<Transaction>[]>(
     () => mapTransactionsToDaySections(transactions),
@@ -43,13 +40,9 @@ const TransactionsSections = ({
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Transaction>) => (
-      <TransactionsListItem
-        isDateHidden
-        onPress={() => onTransactionPress(item)}
-        transaction={item}
-      />
+      <TransactionsListItem isDateHidden transaction={item} />
     ),
-    [onTransactionPress],
+    [],
   );
 
   return (

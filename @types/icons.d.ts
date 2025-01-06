@@ -44,8 +44,12 @@ declare module '@icons' {
     | 'warning'
     | 'more'
     | 'clear'
-    | 'userAdd'
     | 'documentAdd'
     | 'star'
-    | 'pin';
+    | 'pin'
+    | 'chevronDown'
+    | 'wallet'
+    | 'userPlus'
+    | 'arrowRightLeft'
+    | 'squaresPlus';
 }

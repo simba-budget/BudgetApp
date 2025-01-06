@@ -7,15 +7,16 @@ import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native
 
 import Svg from './Svg';
 
+export type IconButtonColor = 'primary' | 'secondary' | 'accent';
+
 export interface IconButtonProps {
   onPress?: () => void;
   isDisabled?: boolean;
   style?: StyleProp<ViewStyle>;
   iconName: IconName;
   size?: number;
-  color?: keyof Colors['text'];
-  backgroundColor?: keyof Colors['background'];
   iconSize?: number;
+  color?: IconButtonColor;
 }
 
 const IconButton = ({
@@ -26,7 +27,6 @@ const IconButton = ({
   size = 46,
   iconSize = 20,
   color = 'primary',
-  backgroundColor = 'secondary',
 }: IconButtonProps) => (
   <TouchableOpacity
     onPress={onPress}
@@ -36,20 +36,38 @@ const IconButton = ({
         width: size,
         height: size,
         borderRadius: size / 2,
-        backgroundColor: colors.background[backgroundColor],
+        borderColor: colors.border[borderColorMap[color]],
+        backgroundColor: colors.background[backgroundColorMap[color]],
       },
       style,
     ]}
     disabled={isDisabled}>
-    <Svg color={colors.text[color]} size={iconSize} name={iconName} />
+    <Svg color={colors.text[iconColorMap[color]]} size={iconSize} name={iconName} />
   </TouchableOpacity>
 );
+
+const iconColorMap: Record<IconButtonColor, keyof Colors['text']> = {
+  primary: 'primary',
+  secondary: 'primary',
+  accent: 'secondary',
+};
+
+const borderColorMap: Record<IconButtonColor, keyof Colors['border']> = {
+  primary: 'primary',
+  secondary: 'primary',
+  accent: 'accent',
+};
+
+const backgroundColorMap: Record<IconButtonColor, keyof Colors['background']> = {
+  primary: 'tertiary',
+  secondary: 'secondary',
+  accent: 'accentSecondary',
+};
 
 const styles = StyleSheet.create({
   container: {
     ...center,
     borderWidth: 1,
-    borderColor: colors.border.primary,
     position: 'relative',
   },
 });

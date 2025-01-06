@@ -14,7 +14,6 @@ export interface TransactionsSectionProps {
   style?: StyleProp<ViewStyle>;
   total: number;
   transactions: Transaction[];
-  onTransactionPress: (transaction: Transaction) => void;
   onViewAllPress: () => void;
   isLoading: boolean;
   onTransactionAddPress: () => void;
@@ -23,7 +22,6 @@ export interface TransactionsSectionProps {
 const TransactionsSection = ({
   style,
   total,
-  onTransactionPress,
   transactions,
   onViewAllPress,
   onTransactionAddPress,
@@ -53,11 +51,7 @@ const TransactionsSection = ({
       ) : (
         <View style={gap('row')('xs')}>
           {transactions.map((transaction) => (
-            <TransactionsListItem
-              key={transaction.id}
-              transaction={transaction}
-              onPress={() => onTransactionPress(transaction)}
-            />
+            <TransactionsListItem key={transaction.id} transaction={transaction} />
           ))}
         </View>
       )}

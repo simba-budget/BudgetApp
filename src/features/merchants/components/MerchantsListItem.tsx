@@ -22,7 +22,10 @@ export interface MerchantsListItemProps {
 
 const MerchantsListItem = ({ style, merchant, onPress }: MerchantsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <Avatar uri={merchant.externalLogoUrl ?? getMerchantLogoUrl(merchant.logo)} />
+    <Avatar
+      initials={merchant.name}
+      uri={merchant.externalLogoUrl ?? getMerchantLogoUrl(merchant.logo)}
+    />
     <View style={flex1}>
       <Text weight="semiBold" size="s" color="primary">
         {merchant.name}

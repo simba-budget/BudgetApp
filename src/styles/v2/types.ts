@@ -9,6 +9,7 @@ export interface Colors {
     secondary: string;
     tertiary: string;
     accent: string;
+    accentSecondary: string;
   };
   text: {
     accent: string;

@@ -1,16 +1,13 @@
-import { Transaction } from '@api/clients/transactions/types';
-import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { setTransaction } from '@features/transactions/slice';
+import { useAppSelector } from '@core/store/store';
 import { AccountNavigation, toTransactionAdd } from '@navigation/navigators/account';
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { TransactionsSections } from '../components';
 import { useTransactionsInfinity } from '../hooks';
 import { selectApiTransactionsFilter, selectTransactionsSort } from '../selectors';
 
 const Transactions = () => {
-  const dispatch = useAppDispatch();
   const navigation = useNavigation<AccountNavigation>();
   const filter = useAppSelector(selectApiTransactionsFilter);
   const sort = useAppSelector(selectTransactionsSort);
@@ -28,11 +25,6 @@ const Transactions = () => {
     sort,
   });
 
-  const handleOnTransactionPress = useCallback(
-    (transaction: Transaction) => dispatch(setTransaction({ transaction })),
-    [dispatch],
-  );
-
   return (
     <TransactionsSections
       total={total}
@@ -43,7 +35,6 @@ const Transactions = () => {
       isRefreshing={isRefetching}
       onRefresh={refetch}
       transactions={transactions}
-      onTransactionPress={handleOnTransactionPress}
     />
   );
 };

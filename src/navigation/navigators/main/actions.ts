@@ -8,6 +8,7 @@ import {
   accountEditRoute,
   MainNavigation,
   MainParams,
+  notificationsRoute,
 } from './types';
 
 export const toAccounts = ({ popToTop }: MainNavigation) => {
@@ -16,6 +17,10 @@ export const toAccounts = ({ popToTop }: MainNavigation) => {
 
 export const toAccountAdd = ({ navigate }: MainNavigation) => {
   return navigate(accountAddRoute);
+};
+
+export const toNotifications = ({ navigate }: MainNavigation) => {
+  return navigate(notificationsRoute);
 };
 
 export const toAccountEdit = (

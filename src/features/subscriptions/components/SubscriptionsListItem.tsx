@@ -28,6 +28,7 @@ const SubscriptionsListItem = ({
 }: SubscriptionsListItemProps) => (
   <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <Avatar
+      initials={subscription.name}
       size={40}
       uri={getMerchantLogoUrl(subscription.merchant?.logo || null)}
     />

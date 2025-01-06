@@ -1,12 +1,13 @@
-import { AccountsActions } from '@features/accounts/containers';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
-  createStackNavigator,
-  StackNavigationOptions,
-} from '@react-navigation/stack';
-import { AccountAddScreen, AccountEditScreen, AccountsScreen } from '@screens';
+  AccountAddScreen,
+  AccountEditScreen,
+  AccountsLoadingScreen,
+  NotificationsScreen,
+} from '@screens';
 
 import { useIsNotOnboarded } from '../../hooks';
-import { headerHiddenOptions, stackOptions } from '../../options';
+import { hiddenOptions, stackOptions } from '../../options';
 import AccountStack, { accountRoute } from '../account';
 import OnboardingStack, { onboardingRoute } from '../onboarding';
 
@@ -14,24 +15,25 @@ import {
   accountAddRoute,
   accountEditRoute,
   AccountEditScreenProps,
-  accountsRoute,
+  accountsLoadingRoute,
   MainNavigation,
   MainParams,
   mainRoute,
+  notificationsRoute,
 } from './types';
-
-const accountsOptions: StackNavigationOptions = {
-  headerRight: AccountsActions,
-};
 
 const MainStack = createStackNavigator<MainParams>({
   screenOptions: stackOptions,
   screens: {
     [onboardingRoute]: { if: useIsNotOnboarded, screen: OnboardingStack },
-    [accountsRoute]: { screen: AccountsScreen, options: accountsOptions },
-    [accountRoute]: { screen: AccountStack, options: headerHiddenOptions },
+    [accountsLoadingRoute]: {
+      screen: AccountsLoadingScreen,
+      options: hiddenOptions,
+    },
+    [accountRoute]: { screen: AccountStack, options: hiddenOptions },
     [accountAddRoute]: AccountAddScreen,
     [accountEditRoute]: AccountEditScreen,
+    [notificationsRoute]: NotificationsScreen,
   },
 });
 

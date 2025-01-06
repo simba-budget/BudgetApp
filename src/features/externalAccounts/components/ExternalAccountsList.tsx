@@ -1,6 +1,5 @@
 import { ExternalAccount } from '@api/clients/externalAccounts/types';
 import { FlatList } from '@common/v2/components';
-import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 

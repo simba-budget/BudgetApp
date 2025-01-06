@@ -41,7 +41,7 @@ import {
 } from '@screens';
 import { View } from 'react-native';
 
-import { headerHiddenOptions, stackOptions } from '../../options';
+import { hiddenOptions, stackOptions } from '../../options';
 import BottomTabs, { bottomTabsRoute } from '../bottomTabs';
 
 import {
@@ -171,7 +171,7 @@ const AccountStack = createStackNavigator<AccountParams>({
     [externalAccountRoute]: ExternalAccountScreen,
 
     [openBankingRoute]: View,
-    [bottomTabsRoute]: { screen: BottomTabs, options: headerHiddenOptions },
+    [bottomTabsRoute]: { screen: BottomTabs, options: hiddenOptions },
   },
 });
 

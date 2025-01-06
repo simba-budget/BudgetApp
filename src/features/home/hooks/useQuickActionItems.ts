@@ -1,7 +1,7 @@
 import { useHomeTranslations } from '@i18n/hooks';
 import {
   AccountNavigation,
-  toCategories,
+  toCategoryAdd,
   toInvitationAdd,
   toMembers,
   toTransactionAdd,
@@ -18,22 +18,22 @@ const useQuickActionItems = () => {
   return useMemo<QuickActionItem[]>(
     () => [
       {
-        title: t('Invitation'),
-        iconName: 'document',
+        title: t('Invite\nMember'),
+        iconName: 'userPlus',
         onPress: () => toInvitationAdd(navigation),
       },
       {
-        title: t('Transaction'),
-        iconName: 'card',
+        title: t('Create\nTransaction'),
+        iconName: 'arrowRightLeft',
         onPress: () => toTransactionAdd(navigation),
       },
       {
-        title: t('Categories'),
-        iconName: 'chart',
-        onPress: () => toCategories(navigation),
+        title: t('Create\nCategory'),
+        iconName: 'squaresPlus',
+        onPress: () => toCategoryAdd(navigation),
       },
       {
-        title: t('Members'),
+        title: t('View\nMembers'),
         iconName: 'users',
         onPress: () => toMembers(navigation),
       },
