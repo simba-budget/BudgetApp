@@ -13,12 +13,18 @@ import {
 } from 'react-native';
 import { ChartData } from 'react-native-chart-kit/dist/HelperTypes';
 
-export interface WeekStatisticProps {
+export interface TransactionsWeekStatsProps {
   style?: StyleProp<ViewStyle>;
   data: ChartData;
+  totalAmount: number;
+  isLoading: boolean;
 }
 
-const WeekStatistic = ({ style, data }: WeekStatisticProps) => {
+const TransactionsWeekStats = ({
+  style,
+  data,
+  totalAmount,
+}: TransactionsWeekStatsProps) => {
   const { t } = useHomeTranslations();
   const { width } = useWindowDimensions();
 
@@ -35,7 +41,7 @@ const WeekStatistic = ({ style, data }: WeekStatisticProps) => {
             {t('Weekly Expenses')}
           </Text>
           <Text size="xxl" weight="medium" color="primary">
-            {formatPrice(4754.4, 'EUR')}
+            {formatPrice(totalAmount, 'EUR')}
           </Text>
         </View>
         <BarChart
@@ -60,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WeekStatistic;
+export default TransactionsWeekStats;

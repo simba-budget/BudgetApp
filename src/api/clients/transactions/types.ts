@@ -1,4 +1,4 @@
-import { BaseModel, ListRequest, Sort } from '@api/types';
+import { BaseModel, ListRequest, ListResponse, Sort } from '@api/types';
 
 import { Category } from '../categories/types';
 import { ExternalAccount } from '../externalAccounts/types';
@@ -22,10 +22,12 @@ export interface Transaction extends BaseModel {
   createdAt: string | null;
 }
 
-export interface TransactionsStats {
+export interface TransactionDateStats {
   date: string;
   amount: number;
 }
+
+export type TransactionsStatsResponse = ListResponse<TransactionDateStats>;
 
 export interface SaveTransactionRequest {
   amount: number;
@@ -36,12 +38,6 @@ export interface SaveTransactionRequest {
   merchantId: number | null;
   tagsIds: number[] | null;
   date: string;
-}
-
-export interface TransactionsStatsFilter {
-  accountId: number;
-  dateFrom: string;
-  dateTo: string;
 }
 
 export interface TransactionsFilter {

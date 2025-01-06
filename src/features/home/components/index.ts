@@ -3,5 +3,5 @@ export { default as SubscriptionsSection } from './SubscriptionsSection';
 export { default as GoalsSection } from './GoalsSection';
 export { default as AccountSection } from './AccountSection';
 export { default as ProfileSection } from './ProfileSection';
-export { default as WeekStatistic } from './WeekStatistic';
+export { default as TransactionsWeekStats } from './TransactionsWeekStats';
 export { default as InvitationAddSection } from './InvitationAddSection';

@@ -5,8 +5,8 @@ import {
   ListTransactionsRequest,
   SaveTransactionRequest,
   Transaction,
-  TransactionsStats,
-  TransactionsStatsFilter,
+  TransactionsFilter,
+  TransactionsStatsResponse,
 } from './types';
 
 const url = '/transactions';
@@ -16,11 +16,9 @@ export const getTransactions = (request: ListTransactionsRequest) => {
   return httpClient.get<void, ListResponse<Transaction>>(url, { params });
 };
 
-export const getTransactionsStats = (filter: TransactionsStatsFilter) => {
+export const getTransactionsStats = (filter: TransactionsFilter) => {
   const params = { ...filter };
-  return httpClient.get<void, DataResponse<TransactionsStats[]>>(`${url}/stats`, {
-    params,
-  });
+  return httpClient.get<void, TransactionsStatsResponse>(`${url}/stats`, { params });
 };
 
 export const getTransaction = (id: number) => {

@@ -1,5 +1,3 @@
-import { Category } from '@api/clients/categories/types';
-import CategoriesListItem from '@features/categories/components/CategoriesListItem';
 import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { IconName } from '@icons';
 import { gap, margin, padding, sizes } from '@styles/lightTheme';
@@ -51,7 +49,7 @@ const Select = ({ isOpen, onClose, options, title }: SelectProps) => {
           contentContainerStyle={[
             gap('row')('xs'),
             padding('horizontal')('m'),
-            { paddingBottom: bottom + sizes.m, flexGrow: 1 },
+            { paddingBottom: bottom + sizes.m },
           ]}
           data={options}
           renderItem={renderItem}

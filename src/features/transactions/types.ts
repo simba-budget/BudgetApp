@@ -1,9 +1,3 @@
-import {
-  TransactionsFilter as ApiTransactionsFilter,
-  TransactionsStatsFilter as ApiTransactionsStatsFilter,
-} from '@api/clients/transactions/types';
-
-export type TransactionOptionKey = 'edit' | 'delete' | 'view';
+import { TransactionsFilter as ApiTransactionsFilter } from '@api/clients/transactions/types';
 
 export type TransactionsFilter = Omit<ApiTransactionsFilter, 'accountId'>;
-export type TransactionsStatsFilter = Omit<ApiTransactionsStatsFilter, 'accountId'>;

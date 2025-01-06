@@ -31,14 +31,14 @@ import {
   ProfileSection,
   SubscriptionsSection,
   TransactionsSection,
-  WeekStatistic,
+  TransactionsWeekStats,
 } from '../components';
 import {
   useQuickActionItems,
   useRecentGoals,
   useRecentTransactions,
+  useTransactionsWeekStats,
   useUpcomingSubscriptions,
-  useWeekStatistic,
 } from '../hooks';
 
 const Home = () => {
@@ -48,7 +48,12 @@ const Home = () => {
   const bottomTabsNavigation = useNavigation<BottomTabsNavigation>();
   const selectedAccount = useAppSelector(selectSelectedAccountStrict);
   const quickActions = useQuickActionItems();
-  const weekStatistic = useWeekStatistic();
+
+  const {
+    data: transactionsStats,
+    isLoading: isTransactionsStatsLoading,
+    totalAmount,
+  } = useTransactionsWeekStats();
 
   const {
     profile,
@@ -142,7 +147,11 @@ const Home = () => {
         account={selectedAccount}
         quickActions={quickActions}
       />
-      <WeekStatistic data={weekStatistic} />
+      <TransactionsWeekStats
+        isLoading={isTransactionsStatsLoading}
+        totalAmount={totalAmount}
+        data={transactionsStats}
+      />
       <GoalsSection
         onGoalAddPress={() => toGoalAdd(accountNavigation)}
         total={totalGoals}
