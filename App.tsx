@@ -4,8 +4,10 @@ import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
 import ToastProvider from '@core/toasts/ToastProvider';
+import { Transaction } from '@features/transactions/containers';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setupTranslations } from '@i18n/setup';
+import { PickerProvider } from '@libs/picker';
 import linking from '@navigation/linking';
 import Navigation from '@navigation/navigation';
 import { flex1 } from '@styles/common';
@@ -33,7 +35,10 @@ const App = () => {
             <SafeAreaProvider>
               <ToastProvider>
                 <BottomSheetModalProvider>
-                  <Navigation linking={linking} />
+                  <PickerProvider>
+                    <Navigation linking={linking} />
+                  </PickerProvider>
+                  <Transaction />
                 </BottomSheetModalProvider>
               </ToastProvider>
             </SafeAreaProvider>

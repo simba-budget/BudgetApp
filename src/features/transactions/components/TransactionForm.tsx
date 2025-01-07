@@ -1,6 +1,5 @@
 import { SaveTransactionRequest } from '@api/clients/transactions/types';
-import { Button, FormControl, Input, Picker } from '@common/v2/components';
-import { PickerOption } from '@common/v2/components/Picker';
+import { Button, FormControl, Input } from '@common/v2/components';
 import { CategoriesSelect } from '@features/categories/containers';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { padding } from '@styles/lightTheme';
@@ -59,41 +58,8 @@ const TransactionForm = ({
         isDisabled={isSubmitting || isDisabled}
         title={t('Save')}
       />
-      <Picker
-        title={t('Quick Actions')}
-        isOpen
-        onClose={console.log}
-        options={options}
-      />
     </View>
   );
 };
-
-const options: PickerOption[] = [
-  {
-    title: 'Create Transaction',
-    description: 'Lorem Ipsum is simply dummy text of the printing and',
-    iconName: 'arrowRightLeft',
-    onPress: console.log,
-  },
-  {
-    title: 'Create Category',
-    description: 'Lorem Ipsum is simply dummy text of the printing and',
-    iconName: 'squaresPlus',
-    onPress: console.log,
-  },
-  {
-    title: 'Create Subscription',
-    description: 'Lorem Ipsum is simply dummy text of the printing and',
-    iconName: 'squaresPlus',
-    onPress: console.log,
-  },
-  {
-    title: 'Invite Member',
-    description: 'Lorem Ipsum is simply dummy text of the printing and',
-    iconName: 'userPlus',
-    onPress: console.log,
-  },
-];
 
 export default TransactionForm;

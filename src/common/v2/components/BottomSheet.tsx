@@ -35,6 +35,7 @@ const BottomSheet = ({
   useEffect(() => {
     if (!ref.current) return;
     if (isOpen) ref.current.present();
+    else ref.current.close();
   }, [isOpen]);
 
   return (

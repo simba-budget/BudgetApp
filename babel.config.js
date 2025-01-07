@@ -11,7 +11,7 @@ module.exports = {
           '@core': './src/core',
           '@features': './src/features',
           '@i18n': './src/i18n',
-          '@lib': './src/lib',
+          '@libs': './src/libs',
           '@navigation': './src/navigation',
           '@screens': './src/screens',
           '@styles': './src/styles',

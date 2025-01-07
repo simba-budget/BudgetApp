@@ -12,6 +12,7 @@
       "@core/*": ["src/core/*"],
       "@features/*": ["src/features/*"],
       "@i18n/*": ["src/i18n/*"],
+      "@libs/*": ["src/libs/*"],
       "@navigation/*": ["src/navigation/*"],
       "@screens": ["src/screens"],
       "@styles/*": ["src/styles/*"],
