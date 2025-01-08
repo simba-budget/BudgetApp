@@ -11,7 +11,6 @@ import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import React, { useCallback } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface TransactionDetailsProps {
   style?: StyleProp<ViewStyle>;
@@ -20,7 +19,6 @@ export interface TransactionDetailsProps {
 
 const TransactionDetails = ({ transaction, style }: TransactionDetailsProps) => {
   const { t } = useTransactionsTranslations();
-  const { bottom } = useSafeAreaInsets();
   const isPlaidTransaction = !transaction.createdBy;
 
   const formatTags = useCallback(
@@ -35,7 +33,7 @@ const TransactionDetails = ({ transaction, style }: TransactionDetailsProps) => 
   );
 
   return (
-    <View style={[{ paddingBottom: bottom }, style]}>
+    <View style={style}>
       <View style={styles.container}>
         <View style={[center, gap('row')('xs')]}>
           <IconButton size={56} iconSize={28} iconName="card" />

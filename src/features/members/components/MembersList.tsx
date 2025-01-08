@@ -36,7 +36,6 @@ const MembersList = ({
   return (
     <FlatList
       keyExtractor={(member) => member.id.toString()}
-      isSafeBottomArea
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}

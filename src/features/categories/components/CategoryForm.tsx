@@ -1,5 +1,6 @@
 import { Button, FormControl, Input } from '@common/v2/components';
 import { useCategoriesTranslations } from '@i18n/hooks';
+import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
@@ -24,7 +25,7 @@ const CategoryForm = ({
   const { t } = useCategoriesTranslations();
 
   return (
-    <View style={style}>
+    <View style={[padding('horizontal')('m'), style]}>
       <Controller
         control={control}
         name="name"
