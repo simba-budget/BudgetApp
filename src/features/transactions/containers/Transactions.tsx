@@ -1,5 +1,5 @@
 import { useAppSelector } from '@core/store/store';
-import { AccountNavigation, toTransactionAdd } from '@navigation/navigators/account';
+import { RootNavigation, toTransactionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -8,7 +8,7 @@ import { useTransactionsInfinity } from '../hooks';
 import { selectApiTransactionsFilter, selectTransactionsSort } from '../selectors';
 
 const Transactions = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const filter = useAppSelector(selectApiTransactionsFilter);
   const sort = useAppSelector(selectTransactionsSort);
 

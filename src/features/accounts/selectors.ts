@@ -10,11 +10,6 @@ export const selectAccountsLastUpdated = createSelector(
   (state) => state.lastUpdated,
 );
 
-export const selectIsSelectAccountVisible = createSelector(
-  selectAccounts,
-  (state) => state.isSelectAccountVisible,
-);
-
 export const selectSelectedAccount = createSelector(
   selectAccounts,
   (state) => state.selectedAccount,

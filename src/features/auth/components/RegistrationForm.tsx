@@ -11,7 +11,7 @@ import {
   View,
 } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
-import { sendOtpRoute } from '@navigation/navigators/auth/types';
+import { sendOtpRoute } from '@navigation/navigators/root';
 import { RootNavigation, toTermsAndConditions } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';

@@ -1,7 +1,4 @@
-import {
-  AccountNavigation,
-  toContributionEdit,
-} from '@navigation/navigators/account';
+import { RootNavigation, toContributionEdit } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -13,7 +10,7 @@ export interface ContributionProps {
 }
 
 const Contribution = ({ id }: ContributionProps) => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { contribution, refetch, isRefetching, isLoading } = useContribution(id);
 
   const handleOnEditPress = useCallback(

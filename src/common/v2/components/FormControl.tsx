@@ -1,6 +1,8 @@
 import { gap } from '@styles/lightTheme';
 import React, { ReactNode } from 'react';
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
+
+import Text from './Text';
 
 export interface FormControlProps {
   style?: StyleProp<ViewStyle>;
@@ -17,22 +19,24 @@ const FormControl = ({
   error,
   isRequired = false,
 }: FormControlProps) => (
-  <View style={[gap('row')('xxs'), style]}>
+  <View style={[gap('row')('xxxs'), style]}>
     {!!label && (
-      <Text>
+      <Text color="primary" weight="medium" size="s">
         {label}
-        {isRequired && <Text style={styles.error}>{' *'}</Text>}
+        {isRequired && (
+          <Text color="error" size="s">
+            {' *'}
+          </Text>
+        )}
       </Text>
     )}
     {children}
-    {error && <Text style={styles.error}>{error}</Text>}
+    {error && (
+      <Text weight="medium" color="error" size="xs">
+        {error}
+      </Text>
+    )}
   </View>
 );
-
-const styles = StyleSheet.create({
-  error: {
-    color: '#FF0000',
-  },
-});
 
 export default FormControl;

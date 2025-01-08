@@ -5,8 +5,11 @@ import {
   TransTextBody,
   View,
 } from '@common/components';
-import { AuthNavigation } from '@navigation/navigators/auth';
-import { RegistrationRoute, SendOtpRoute } from '@navigation/navigators/auth/types';
+import {
+  RegistrationRoute,
+  RootNavigation,
+  SendOtpRoute,
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
@@ -20,7 +23,7 @@ export interface AuthFooterProps {
 
 const SocialLogins: FC<AuthFooterProps> = (props) => {
   const { style, label, dividerText, route } = props;
-  const navigation = useNavigation<AuthNavigation>();
+  const navigation = useNavigation<RootNavigation>();
 
   return (
     <View gap="xl" style={style}>

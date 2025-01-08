@@ -1,33 +1,25 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { useAppDispatch } from '@core/store/store';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { PickerOption, usePicker } from '@libs/picker';
 import {
-  AccountNavigation,
+  RootNavigation,
+  toTransaction,
   toTransactionEdit,
-} from '@navigation/navigators/account';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import { useCallback, useMemo } from 'react';
-
-import { setTransaction } from '../slice';
+import { useMemo } from 'react';
 
 const useTransactionActions = (transaction: Transaction) => {
-  const dispatch = useAppDispatch();
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { t } = useTransactionsTranslations();
   const { onOpen } = usePicker();
-
-  const handleOnViewPress = useCallback(
-    () => dispatch(setTransaction({ transaction })),
-    [dispatch, transaction],
-  );
 
   const options = useMemo<PickerOption[]>(
     () => [
       {
         iconName: 'eye',
         title: t('View'),
-        onPress: handleOnViewPress,
+        onPress: () => toTransaction(navigation, { id: transaction.id }),
       },
       {
         iconName: 'edit',
@@ -41,12 +33,12 @@ const useTransactionActions = (transaction: Transaction) => {
         color: 'error',
       },
     ],
-    [transaction.id, t, navigation, handleOnViewPress],
+    [transaction.id, t, navigation],
   );
 
   return {
     onLongPress: () => onOpen(options),
-    onPress: handleOnViewPress,
+    onPress: () => toTransaction(navigation, { id: transaction.id }),
   };
 };
 

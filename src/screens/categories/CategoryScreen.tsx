@@ -1,7 +1,9 @@
 import { ScreenContainer } from '@common/v2/components';
 import { Category } from '@features/categories/containers';
-import { CategoryScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type CategoryScreenProps = StaticScreenProps<{ id: number }>;
 
 const CategoryScreen = ({ route }: CategoryScreenProps) => (
   <ScreenContainer>

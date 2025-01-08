@@ -1,13 +1,14 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { SheetScreenContainer } from '@common/v2/components';
 import { Subscription } from '@features/subscriptions/containers';
-import { SubscriptionScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
 
+export type SubscriptionScreenProps = StaticScreenProps<{ id: number }>;
+
 const SubscriptionScreen = ({ route }: SubscriptionScreenProps) => (
-  <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
+  <SheetScreenContainer>
     <Subscription id={route.params.id} />
-  </ScreenContainer>
+  </SheetScreenContainer>
 );
 
 export default SubscriptionScreen;

@@ -1,13 +1,14 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { SheetScreenContainer } from '@common/v2/components';
 import { Tag } from '@features/tags/containers';
-import { TagScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
 
+export type TagScreenProps = StaticScreenProps<{ id: number }>;
+
 const TagScreen = ({ route }: TagScreenProps) => (
-  <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
+  <SheetScreenContainer>
     <Tag id={route.params.id} />
-  </ScreenContainer>
+  </SheetScreenContainer>
 );
 
 export default TagScreen;

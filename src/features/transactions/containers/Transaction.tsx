@@ -1,28 +1,18 @@
-import { BottomSheet } from '@common/v2/components';
-import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { setTransaction } from '@features/transactions/slice';
-import { BottomSheetView } from '@gorhom/bottom-sheet';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { TransactionDetails } from '../components';
-import { selectTransaction } from '../selectors';
+import { useTransaction } from '../hooks';
 
-const Transaction = () => {
-  const dispatch = useAppDispatch();
-  const transaction = useAppSelector(selectTransaction);
+export interface TransactionProps {
+  id: number;
+}
 
-  const handleOnClose = useCallback(
-    () => dispatch(setTransaction({ transaction: null })),
-    [dispatch],
-  );
+const Transaction = ({ id }: TransactionProps) => {
+  const { transaction } = useTransaction(id);
 
-  return (
-    <BottomSheet isOpen={!!transaction} onClose={handleOnClose}>
-      <BottomSheetView>
-        {transaction && <TransactionDetails transaction={transaction} />}
-      </BottomSheetView>
-    </BottomSheet>
-  );
+  if (!transaction) return null;
+
+  return <TransactionDetails transaction={transaction} />;
 };
 
 export default Transaction;

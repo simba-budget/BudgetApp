@@ -3,10 +3,10 @@ import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import {
-  AccountNavigation,
+  RootNavigation,
   toContribution,
   toContributionAdd,
-} from '@navigation/navigators/account';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
@@ -24,7 +24,7 @@ export interface ContributionsProps {
 }
 
 const Contributions = ({ goalId }: ContributionsProps) => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiContributionsFilter);
   const sort = useAppSelector(selectContributionsSort);

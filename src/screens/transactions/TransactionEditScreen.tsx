@@ -1,7 +1,9 @@
 import { ScreenContainer } from '@common/v2/components';
 import { TransactionEdit } from '@features/transactions/containers';
-import { TransactionEditScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type TransactionEditScreenProps = StaticScreenProps<{ id: number }>;
 
 const TransactionEditScreen = ({ route }: TransactionEditScreenProps) => (
   <ScreenContainer>

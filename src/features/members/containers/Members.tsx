@@ -1,11 +1,9 @@
 import { Member } from '@api/clients/members/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { AccountNavigation, toMember } from '@navigation/navigators/account';
+import { RootNavigation, toMember } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
-import { SafeAreaView } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
 import { MembersList, MembersSearch } from '../components';
@@ -14,7 +12,7 @@ import { selectApiMembersFilter, selectMembersSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Members = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiMembersFilter);
   const sort = useAppSelector(selectMembersSort);
@@ -37,7 +35,7 @@ const Members = () => {
   );
 
   return (
-    <SafeAreaView style={flex1}>
+    <>
       <MembersSearch
         onKeywordChange={handleOnKeywordChange}
         keyword={filter?.keyword}
@@ -51,7 +49,7 @@ const Members = () => {
         members={members}
         onMemberPress={handleOnMemberPress}
       />
-    </SafeAreaView>
+    </>
   );
 };
 

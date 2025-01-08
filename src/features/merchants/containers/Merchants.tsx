@@ -1,7 +1,7 @@
 import { Merchant } from '@api/clients/merchants/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { AccountNavigation, toMerchant } from '@navigation/navigators/account';
+import { RootNavigation, toMerchant } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -14,7 +14,7 @@ import { selectApiMerchantsFilter, selectMerchantsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Merchants = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiMerchantsFilter);
   const sort = useAppSelector(selectMerchantsSort);

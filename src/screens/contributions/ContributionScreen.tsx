@@ -1,11 +1,12 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { ScreenContainer } from '@common/v2/components';
 import { Contribution } from '@features/contributions/containers';
-import { ContributionScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type ContributionScreenProps = StaticScreenProps<{ id: number }>;
 
 const ContributionScreen = ({ route }: ContributionScreenProps) => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
     <Contribution id={route.params.id} />
   </ScreenContainer>
 );

@@ -8,7 +8,6 @@ import { reducer as invitationsReducer } from '@features/invitations/slice';
 import { reducer as membersReducer } from '@features/members/slice';
 import { reducer as merchantsReducer } from '@features/merchants/slice';
 import { reducer as notificationsReducer } from '@features/notifications/slice';
-import { reducer as onboardingReducer } from '@features/onboarding/slice';
 import { reducer as profileReducer } from '@features/profile/slice';
 import { reducer as subscriptionsReducer } from '@features/subscriptions/slice';
 import { reducer as tagsReducer } from '@features/tags/slice';
@@ -29,7 +28,6 @@ export const rootReducer = combineReducers({
   members: membersReducer,
   tags: tagsReducer,
   subscriptions: subscriptionsReducer,
-  onboarding: onboardingReducer,
   profile: profileReducer,
   merchants: merchantsReducer,
   externalAccounts: externalAccountsReducer,

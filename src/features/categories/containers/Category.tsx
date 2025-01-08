@@ -1,4 +1,4 @@
-import { AccountNavigation, toCategoryEdit } from '@navigation/navigators/account';
+import { RootNavigation, toCategoryEdit } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -10,7 +10,7 @@ export interface CategoryProps {
 }
 
 const Category = ({ id }: CategoryProps) => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { category, refetch, isRefetching, isLoading } = useCategory(id);
 
   const handleOnEditPress = useCallback(

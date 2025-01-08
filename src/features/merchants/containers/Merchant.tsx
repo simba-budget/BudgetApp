@@ -1,4 +1,4 @@
-import { AccountNavigation, toMerchantEdit } from '@navigation/navigators/account';
+import { RootNavigation, toMerchantEdit } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -10,7 +10,7 @@ export interface MerchantProps {
 }
 
 const Merchant = ({ id }: MerchantProps) => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { merchant, refetch, isRefetching, isLoading } = useMerchant(id);
   const handleOnEditPress = useCallback(
     () => toMerchantEdit(navigation, { id }),

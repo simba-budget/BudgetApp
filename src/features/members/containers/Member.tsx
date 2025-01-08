@@ -1,4 +1,4 @@
-import { AccountNavigation, toMemberEdit } from '@navigation/navigators/account';
+import { RootNavigation, toMemberEdit } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -10,7 +10,7 @@ export interface MemberProps {
 }
 
 const Member = ({ id }: MemberProps) => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { member, refetch, isRefetching, isLoading } = useMember(id);
 
   const handleOnEditPress = useCallback(

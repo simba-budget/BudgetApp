@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { AccountNavigation } from '@navigation/navigators/account';
+import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 
@@ -15,7 +15,7 @@ export interface MemberEditProps {
 
 const MemberEdit = ({ id }: MemberEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<AccountNavigation>();
+  const { goBack } = useNavigation<RootNavigation>();
   const { member, isLoading } = useMember(id);
   const { handleSubmit, control, reset } = useMemberForm();
   const { editMember, isSubmitting } = useEditMember({ onSuccess: goBack });

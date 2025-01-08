@@ -1,11 +1,12 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { ScreenContainer } from '@common/v2/components';
 import { Invitation } from '@features/invitations/containers';
-import { InvitationScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type InvitationScreenProps = StaticScreenProps<{ id: number }>;
 
 const InvitationScreen = ({ route }: InvitationScreenProps) => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
     <Invitation id={route.params.id} />
   </ScreenContainer>
 );

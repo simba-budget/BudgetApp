@@ -1,11 +1,12 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { ScreenContainer } from '@common/v2/components';
 import { ExternalAccount } from '@features/externalAccounts/containers';
-import { ExternalAccountScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type ExternalAccountScreenProps = StaticScreenProps<{ id: number }>;
 
 const ExternalAccountScreen = ({ route }: ExternalAccountScreenProps) => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
     <ExternalAccount id={route.params.id} />
   </ScreenContainer>
 );

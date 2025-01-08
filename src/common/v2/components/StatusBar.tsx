@@ -6,13 +6,18 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export type StatusBarProps = RNStatusBarProps;
 
 const StatusBar: FC<StatusBarProps> = (props) => {
-  const { translucent, ...rest } = props;
+  const { translucent, barStyle = 'light-content', ...rest } = props;
   const { top } = useSafeAreaInsets();
   const height = translucent ? 0 : top;
 
   return (
     <View style={{ height }}>
-      <RNStatusBar translucent backgroundColor="transparent" {...rest} />
+      <RNStatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle={barStyle}
+        {...rest}
+      />
     </View>
   );
 };

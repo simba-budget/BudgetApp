@@ -1,11 +1,14 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { ScreenContainer } from '@common/v2/components';
 import { Member } from '@features/members/containers';
-import { MemberScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type MemberScreenProps = StaticScreenProps<{
+  id: number;
+}>;
 
 const MemberScreen = ({ route }: MemberScreenProps) => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
     <Member id={route.params.id} />
   </ScreenContainer>
 );

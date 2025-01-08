@@ -1,4 +1,4 @@
-import { MainNavigation } from '@navigation/navigators/main';
+import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -10,7 +10,7 @@ export interface ContributionAddProps {
 }
 
 const ContributionAdd = ({ goalId }: ContributionAddProps) => {
-  const { goBack } = useNavigation<MainNavigation>();
+  const { goBack } = useNavigation<RootNavigation>();
   const { handleSubmit, control } = useContributionForm();
 
   const { addContribution, isSubmitting } = useAddContribution({

@@ -1,5 +1,5 @@
 import { SaveTransactionRequest } from '@api/clients/transactions/types';
-import { AccountNavigation } from '@navigation/navigators/account';
+import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 
@@ -12,7 +12,7 @@ export interface TransactionEditProps {
 }
 
 const TransactionEdit = ({ id }: TransactionEditProps) => {
-  const { goBack } = useNavigation<AccountNavigation>();
+  const { goBack } = useNavigation<RootNavigation>();
   const { transaction, isLoading } = useTransaction(id);
   const { handleSubmit, control, reset } = useTransactionForm();
   const { editTransaction, isSubmitting } = useEditTransaction({

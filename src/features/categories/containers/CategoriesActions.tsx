@@ -1,5 +1,5 @@
 import { IconButton } from '@common/v2/components';
-import { AccountNavigation, toCategoryAdd } from '@navigation/navigators/account';
+import { RootNavigation, toCategoryAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
@@ -7,7 +7,7 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 
 const CategoriesActions = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const handleOnAddPress = useCallback(
     () => toCategoryAdd(navigation),
     [navigation],

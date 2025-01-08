@@ -1,17 +1,7 @@
 import { ScrollView } from '@common/v2/components';
-import { useAppDispatch, useAppSelector } from '@core/store/store';
+import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountStrict } from '@features/accounts/selectors';
-import { setIsSelectAccountVisible } from '@features/accounts/slice';
 import { useProfile } from '@features/profile/hooks';
-import {
-  AccountNavigation,
-  toGoal,
-  toGoalAdd,
-  toInvitationAdd,
-  toSubscription,
-  toSubscriptionAdd,
-  toTransactionAdd,
-} from '@navigation/navigators/account';
 import {
   BottomTabsNavigation,
   toGoals,
@@ -19,7 +9,17 @@ import {
   toSubscriptions,
   toTransactions,
 } from '@navigation/navigators/bottomTabs';
-import { MainNavigation, toNotifications } from '@navigation/navigators/main';
+import {
+  RootNavigation,
+  toAccountSelect,
+  toGoal,
+  toGoalAdd,
+  toInvitationAdd,
+  toNotifications,
+  toSubscription,
+  toSubscriptionAdd,
+  toTransactionAdd,
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
@@ -42,9 +42,7 @@ import {
 } from '../hooks';
 
 const Home = () => {
-  const dispatch = useAppDispatch();
-  const mainNavigation = useNavigation<MainNavigation>();
-  const accountNavigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const bottomTabsNavigation = useNavigation<BottomTabsNavigation>();
   const selectedAccount = useAppSelector(selectSelectedAccountStrict);
   const quickActions = useQuickActionItems();
@@ -125,11 +123,6 @@ const Home = () => {
     [refetchTransactions, refetchProfile, refetchGoals, refetchSubscriptions],
   );
 
-  const handleOnAccountPress = useCallback(
-    () => dispatch(setIsSelectAccountVisible({ isSelectAccountVisible: true })),
-    [dispatch],
-  );
-
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -137,13 +130,13 @@ const Home = () => {
       refreshing={isLoading || isRefetching}>
       {profile && (
         <ProfileSection
-          onNotificationsPress={() => toNotifications(mainNavigation)}
+          onNotificationsPress={() => toNotifications(navigation)}
           onProfilePress={() => toProfile(bottomTabsNavigation)}
           profile={profile}
         />
       )}
       <AccountSection
-        onAccountPress={handleOnAccountPress}
+        onAccountPress={() => toAccountSelect(navigation)}
         account={selectedAccount}
         quickActions={quickActions}
       />
@@ -153,27 +146,27 @@ const Home = () => {
         data={transactionsStats}
       />
       <GoalsSection
-        onGoalAddPress={() => toGoalAdd(accountNavigation)}
+        onGoalAddPress={() => toGoalAdd(navigation)}
         total={totalGoals}
         goals={goals}
         isLoading={isGoalsLoading}
-        onGoalPress={({ id }) => toGoal(accountNavigation, { id })}
+        onGoalPress={({ id }) => toGoal(navigation, { id })}
         onViewAllPress={() => toGoals(bottomTabsNavigation)}
       />
       <SubscriptionsSection
         isLoading={isSubscriptionsLoading}
-        onSubscriptionAddPress={() => toSubscriptionAdd(accountNavigation)}
+        onSubscriptionAddPress={() => toSubscriptionAdd(navigation)}
         total={totalSubscriptions}
         subscriptions={subscriptions}
-        onSubscriptionPress={({ id }) => toSubscription(accountNavigation, { id })}
+        onSubscriptionPress={({ id }) => toSubscription(navigation, { id })}
         onViewAllPress={() => toSubscriptions(bottomTabsNavigation)}
       />
       <InvitationAddSection
-        onInvitationAddPress={() => toInvitationAdd(accountNavigation)}
+        onInvitationAddPress={() => toInvitationAdd(navigation)}
       />
       <TransactionsSection
         isLoading={isTransactionsLoading}
-        onTransactionAddPress={() => toTransactionAdd(accountNavigation)}
+        onTransactionAddPress={() => toTransactionAdd(navigation)}
         total={totalTransactions}
         transactions={transactions}
         onViewAllPress={() => toTransactions(bottomTabsNavigation)}

@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { AccountNavigation } from '@navigation/navigators/account';
+import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 
@@ -15,7 +15,7 @@ export interface CategoryEditProps {
 
 const CategoryEdit = ({ id }: CategoryEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<AccountNavigation>();
+  const { goBack } = useNavigation<RootNavigation>();
   const { category, isLoading } = useCategory(id);
   const { handleSubmit, control, reset } = useCategoryForm();
   const { editCategory, isSubmitting } = useEditCategory({ onSuccess: goBack });

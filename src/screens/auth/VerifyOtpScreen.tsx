@@ -1,11 +1,15 @@
-import { ScreenContainer, StatusBar } from '@common/v2/components';
+import { ScreenContainer } from '@common/v2/components';
 import { VerifyOtp } from '@features/auth/containers';
-import { VerifyOtpScreenProps } from '@navigation/navigators/auth';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type VerifyOtpScreenProps = StaticScreenProps<{
+  email: string;
+  expirationDate: string;
+}>;
 
 const VerifyOtpScreen = ({ route }: VerifyOtpScreenProps) => (
   <ScreenContainer>
-    <StatusBar translucent barStyle="light-content" />
     <VerifyOtp {...route.params} />
   </ScreenContainer>
 );

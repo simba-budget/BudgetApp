@@ -8,10 +8,10 @@ import {
 } from '@common/components';
 import { useWelcomeTranslations } from '@i18n/hooks';
 import {
-  AuthNavigation,
+  RootNavigation,
   toRegistration,
   toSendOtp,
-} from '@navigation/navigators/auth';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1, justifyEnd } from '@styles/common';
 import { colors, sizes } from '@styles/lightTheme';
@@ -20,7 +20,7 @@ import { ImageBackground, StyleSheet } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 
 const Welcome = () => {
-  const navigation = useNavigation<AuthNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { t } = useWelcomeTranslations();
 
   return (

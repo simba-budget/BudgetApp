@@ -1,6 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { AccountNavigation } from '@navigation/navigators/account';
+import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
@@ -9,7 +9,7 @@ import { useAddCategory, useCategoryForm } from '../hooks';
 
 const CategoryAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<AccountNavigation>();
+  const { goBack } = useNavigation<RootNavigation>();
   const { handleSubmit, control } = useCategoryForm();
   const { addCategory, isSubmitting } = useAddCategory({
     onSuccess: goBack,

@@ -1,11 +1,7 @@
 import { Goal } from '@api/clients/goals/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import {
-  AccountNavigation,
-  toGoal,
-  toGoalAdd,
-} from '@navigation/navigators/account';
+import { RootNavigation, toGoal, toGoalAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -18,7 +14,7 @@ import { selectApiGoalsFilter, selectGoalsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Goals = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiGoalsFilter);
   const sort = useAppSelector(selectGoalsSort);

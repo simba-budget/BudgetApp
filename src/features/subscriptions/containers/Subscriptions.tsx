@@ -2,10 +2,10 @@ import { Subscription } from '@api/clients/subscriptions/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import {
-  AccountNavigation,
+  RootNavigation,
   toSubscription,
   toSubscriptionAdd,
-} from '@navigation/navigators/account';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -18,7 +18,7 @@ import { selectApiSubscriptionsFilter, selectSubscriptionsSort } from '../select
 import { updateKeyword } from '../slice';
 
 const Subscriptions = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiSubscriptionsFilter);
   const sort = useAppSelector(selectSubscriptionsSort);

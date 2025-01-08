@@ -1,7 +1,11 @@
 import { ScreenContainer } from '@common/v2/components';
 import { AccountEdit } from '@features/accounts/containers';
-import { AccountEditScreenProps } from '@navigation/navigators/main';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type AccountEditScreenProps = StaticScreenProps<{
+  id: number;
+}>;
 
 const AccountEditScreen = ({ route }: AccountEditScreenProps) => (
   <ScreenContainer>

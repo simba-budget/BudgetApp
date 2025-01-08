@@ -1,8 +1,5 @@
 import { IconButton } from '@common/v2/components';
-import {
-  AccountNavigation,
-  toSubscriptionAdd,
-} from '@navigation/navigators/account';
+import { RootNavigation, toSubscriptionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
@@ -10,7 +7,7 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 
 const SubscriptionsActions = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const handleOnAddPress = useCallback(
     () => toSubscriptionAdd(navigation),
     [navigation],

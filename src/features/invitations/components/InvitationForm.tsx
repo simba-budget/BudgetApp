@@ -1,5 +1,6 @@
 import { Button, FormControl, Input } from '@common/v2/components';
 import { useGoalsTranslations } from '@i18n/hooks';
+import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
@@ -24,12 +25,12 @@ const InvitationForm = ({
   const { t } = useGoalsTranslations();
 
   return (
-    <View style={style}>
+    <View style={[padding('horizontal')('m'), style]}>
       <Controller
         control={control}
         name="email"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl error={error?.message} label={t('Email')}>
+          <FormControl isRequired error={error?.message} label={t('Email')}>
             <Input {...rest} readOnly={isDisabled} placeholder={t('Email')} />
           </FormControl>
         )}
@@ -38,7 +39,7 @@ const InvitationForm = ({
         control={control}
         name="role"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl error={error?.message} label={t('Role')}>
+          <FormControl isRequired error={error?.message} label={t('Role')}>
             <Input {...rest} readOnly={isDisabled} placeholder={t('Role')} />
           </FormControl>
         )}

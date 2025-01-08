@@ -1,5 +1,5 @@
 import { IconButton } from '@common/v2/components';
-import { AccountNavigation, toTransactionAdd } from '@navigation/navigators/account';
+import { RootNavigation, toTransactionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
@@ -7,7 +7,7 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 
 const TransactionsActions = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const handleOnAddPress = useCallback(
     () => toTransactionAdd(navigation),
     [navigation],

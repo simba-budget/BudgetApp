@@ -1,5 +1,5 @@
+import { BottomTabsNavigation } from './navigator';
 import {
-  BottomTabsNavigation,
   goalsRoute,
   profileRoute,
   subscriptionsRoute,

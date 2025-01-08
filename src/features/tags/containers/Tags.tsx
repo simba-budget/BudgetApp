@@ -1,7 +1,7 @@
 import { Tag } from '@api/clients/tags/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { AccountNavigation, toTag } from '@navigation/navigators/account';
+import { RootNavigation, toTag } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -14,7 +14,7 @@ import { selectApiTagsFilter, selectTagsSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Tags = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiTagsFilter);
   const sort = useAppSelector(selectTagsSort);

@@ -1,7 +1,9 @@
 import { ScreenContainer } from '@common/v2/components';
 import { ContributionEdit } from '@features/contributions/containers';
-import { ContributionEditScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type ContributionEditScreenProps = StaticScreenProps<{ id: number }>;
 
 const ContributionEditScreen = ({ route }: ContributionEditScreenProps) => (
   <ScreenContainer>

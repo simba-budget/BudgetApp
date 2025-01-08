@@ -1,14 +1,14 @@
 import { useLogout } from '@features/auth/hooks';
 import { useProfileTranslations } from '@i18n/hooks';
 import {
-  AccountNavigation,
+  RootNavigation,
   toCategories,
   toExternalAccounts,
   toInvitations,
   toMembers,
   toMerchants,
   toTags,
-} from '@navigation/navigators/account';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { useMemo } from 'react';
 
@@ -16,7 +16,7 @@ import { ProfileSectionProps } from '../types';
 
 const useProfileSections = () => {
   const { logout } = useLogout();
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const { t } = useProfileTranslations();
 
   return useMemo<ProfileSectionProps[]>(
@@ -53,16 +53,6 @@ const useProfileSections = () => {
             title: t('External Accounts'),
             iconName: 'card',
             onPress: () => toExternalAccounts(navigation),
-          },
-          {
-            title: t('Invitations'),
-            iconName: 'card',
-            onPress: () => toInvitations(navigation),
-          },
-          {
-            title: t('Members'),
-            iconName: 'users',
-            onPress: () => toMembers(navigation),
           },
           {
             title: t('Tags'),

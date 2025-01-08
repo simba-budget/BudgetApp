@@ -1,16 +1,5 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-
-export type BottomTabsParams = {
-  [homeRoute]: undefined;
-  [transactionsRoute]: undefined;
-  [goalsRoute]: undefined;
-  [subscriptionsRoute]: undefined;
-  [profileRoute]: undefined;
-};
-
 export type BottomTabsRoute = 'BottomTabs';
 export const bottomTabsRoute: BottomTabsRoute = 'BottomTabs';
-export type BottomTabsNavigation = BottomTabNavigationProp<BottomTabsParams>;
 
 export type HomeRoute = 'Home';
 export const homeRoute: HomeRoute = 'Home';

@@ -19,8 +19,16 @@ export const hiddenOptions = {
   headerShown: false,
 };
 
+export const bottomSheetOptions: StackNavigationOptions = {
+  gestureEnabled: false,
+  presentation: 'transparentModal',
+  detachPreviousScreen: false,
+};
+
 export const stackOptions: StackNavigationOptions = {
   headerTitleAlign: 'center',
+  presentation: 'card',
+  headerShown: true,
   headerShadowVisible: false,
   headerLeft: StackHeaderLeft,
   headerTitleContainerStyle,

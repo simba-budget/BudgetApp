@@ -1,10 +1,7 @@
 import { ExternalAccount } from '@api/clients/externalAccounts/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import {
-  AccountNavigation,
-  toExternalAccount,
-} from '@navigation/navigators/account';
+import { RootNavigation, toExternalAccount } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -20,7 +17,7 @@ import {
 import { updateKeyword } from '../slice';
 
 const ExternalAccounts = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiExternalAccountsFilter);
   const sort = useAppSelector(selectExternalAccountsSort);

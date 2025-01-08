@@ -3,10 +3,10 @@ import { debounceTime } from '@common/constants';
 import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import {
-  AccountNavigation,
+  RootNavigation,
   toInvitation,
   toInvitationAdd,
-} from '@navigation/navigators/account';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
@@ -20,7 +20,7 @@ import { selectApiInvitationsFilter, selectInvitationsSort } from '../selectors'
 import { updateKeyword } from '../slice';
 
 const Invitations = () => {
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiInvitationsFilter);
   const sort = useAppSelector(selectInvitationsSort);

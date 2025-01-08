@@ -23,9 +23,8 @@ const BottomSheet = ({
   isSafeBottomArea = false,
   isHandleHidden = false,
 }: BottomSheetProps) => {
-  const { bottom } = useSafeAreaInsets();
+  const { bottom, top } = useSafeAreaInsets();
   const ref = useRef<BottomSheetModal>(null);
-  const { top } = useSafeAreaInsets();
 
   const paddingBottom = useMemo<number>(
     () => (isSafeBottomArea ? bottom : 0),

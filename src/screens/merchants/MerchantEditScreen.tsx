@@ -1,7 +1,11 @@
 import { ScreenContainer } from '@common/v2/components';
 import { MerchantEdit } from '@features/merchants/containers';
-import { MerchantEditScreenProps } from '@navigation/navigators/account';
+import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+
+export type MerchantEditScreenProps = StaticScreenProps<{
+  id: number;
+}>;
 
 const MerchantEditScreen = ({ route }: MerchantEditScreenProps) => (
   <ScreenContainer>

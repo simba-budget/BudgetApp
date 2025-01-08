@@ -1,11 +1,11 @@
 import { useHomeTranslations } from '@i18n/hooks';
 import {
-  AccountNavigation,
+  RootNavigation,
   toCategoryAdd,
   toInvitationAdd,
   toMembers,
   toTransactionAdd,
-} from '@navigation/navigators/account';
+} from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { useMemo } from 'react';
 
@@ -13,7 +13,7 @@ import { QuickActionItem } from '../types';
 
 const useQuickActionItems = () => {
   const { t } = useHomeTranslations();
-  const navigation = useNavigation<AccountNavigation>();
+  const navigation = useNavigation<RootNavigation>();
 
   return useMemo<QuickActionItem[]>(
     () => [

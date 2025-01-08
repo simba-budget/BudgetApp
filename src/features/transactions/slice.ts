@@ -8,14 +8,12 @@ export interface TransactionsState {
   filter: TransactionsFilter;
   sort: TransactionsSort;
   lastUpdated: number;
-  transaction: Transaction | null;
 }
 
 const initialState: TransactionsState = {
   filter: {},
   sort: { column: 'date', direction: 'desc' },
   lastUpdated: Date.now(),
-  transaction: null,
 };
 
 const transactionsSlice = createSlice({
@@ -31,19 +29,13 @@ const transactionsSlice = createSlice({
     updateSort: (state, action: PayloadAction<{ sort: TransactionsSort }>) => {
       state.sort = action.payload.sort;
     },
-    setTransaction: (
-      state,
-      action: PayloadAction<{ transaction: Transaction | null }>,
-    ) => {
-      state.transaction = action.payload.transaction;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(logoutAction.fulfilled, () => initialState);
   },
 });
 
-export const { updateFilter, updateTransactions, updateSort, setTransaction } =
+export const { updateFilter, updateTransactions, updateSort } =
   transactionsSlice.actions;
 
 export const { reducer } = transactionsSlice;
