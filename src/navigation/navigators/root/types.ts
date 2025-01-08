@@ -153,3 +153,6 @@ export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
 // Bottom Sheet
 export type AccountSelectRoute = 'AccountSelect';
 export const accountSelectRoute: AccountSelectRoute = 'AccountSelect';
+
+export type TransactionDeleteRoute = 'TransactionDelete';
+export const transactionDeleteRoute: TransactionDeleteRoute = 'TransactionDelete';

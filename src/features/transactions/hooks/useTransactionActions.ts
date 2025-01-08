@@ -4,6 +4,7 @@ import { PickerOption, usePicker } from '@libs/picker';
 import {
   RootNavigation,
   toTransaction,
+  toTransactionDelete,
   toTransactionEdit,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
@@ -29,7 +30,7 @@ const useTransactionActions = (transaction: Transaction) => {
       {
         iconName: 'delete',
         title: t('Delete'),
-        onPress: () => toTransactionEdit(navigation, { id: transaction.id }),
+        onPress: () => toTransactionDelete(navigation, { id: transaction.id }),
         color: 'error',
       },
     ],

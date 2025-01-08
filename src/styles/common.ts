@@ -1,6 +1,10 @@
 import { colors } from '@styles/lightTheme';
 import { FlexStyle, ViewStyle } from 'react-native';
 
+export const fullWidth: FlexStyle = {
+  width: '100%',
+};
+
 export const flex1: FlexStyle = {
   flex: 1,
 };

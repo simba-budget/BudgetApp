@@ -11,6 +11,7 @@ const InvitationAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<RootNavigation>();
   const { handleSubmit, control } = useInvitationForm();
+
   const { addInvitation, isSubmitting } = useAddInvitation({
     onSuccess: goBack,
     accountId,
@@ -18,6 +19,7 @@ const InvitationAdd = () => {
 
   return (
     <InvitationForm
+      onClose={goBack}
       onSubmit={handleSubmit(addInvitation)}
       isSubmitting={isSubmitting}
       control={control}

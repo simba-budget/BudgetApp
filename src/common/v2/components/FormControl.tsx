@@ -12,24 +12,8 @@ export interface FormControlProps {
   children: ReactNode;
 }
 
-const FormControl = ({
-  style,
-  label,
-  children,
-  error,
-  isRequired = false,
-}: FormControlProps) => (
+const FormControl = ({ style, children, error }: FormControlProps) => (
   <View style={[gap('row')('xxxs'), style]}>
-    {!!label && (
-      <Text color="primary" weight="medium" size="s">
-        {label}
-        {isRequired && (
-          <Text color="error" size="s">
-            {' *'}
-          </Text>
-        )}
-      </Text>
-    )}
     {children}
     {error && (
       <Text weight="medium" color="error" size="xs">

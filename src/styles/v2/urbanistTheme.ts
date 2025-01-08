@@ -14,6 +14,7 @@ export const colors: Colors = {
     tertiary: '#252525',
     accent: '#DAFC08',
     accentSecondary: '#CFF008',
+    error: '#FF4545',
   },
   text: {
     accent: '#70820A',
@@ -28,6 +29,7 @@ export const colors: Colors = {
   border: {
     primary: hexToRgba('#FFFFFF', 0.075),
     accent: '#CAEA08',
+    error: '#FF4545',
   },
 };
 

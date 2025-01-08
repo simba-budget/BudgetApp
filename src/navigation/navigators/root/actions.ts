@@ -60,6 +60,8 @@ import {
   tagsRoute,
   termsAndConditionsRoute,
   transactionAddRoute,
+  transactionDeleteRoute,
+  TransactionDeleteRoute,
   TransactionEditRoute,
   transactionEditRoute,
   transactionRoute,
@@ -313,4 +315,11 @@ export const toExternalAccounts = ({ navigate }: RootNavigation) => {
 // bottom sheet
 export const toAccountSelect = ({ navigate }: RootNavigation) => {
   return navigate(accountSelectRoute);
+};
+
+export const toTransactionDelete = (
+  { navigate }: RootNavigation,
+  params: RootParams[TransactionDeleteRoute],
+) => {
+  return navigate(transactionDeleteRoute, params);
 };

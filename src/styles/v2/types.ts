@@ -10,6 +10,7 @@ export interface Colors {
     tertiary: string;
     accent: string;
     accentSecondary: string;
+    error: string;
   };
   text: {
     accent: string;
@@ -24,6 +25,7 @@ export interface Colors {
   border: {
     accent: string;
     primary: string;
+    error: string;
   };
 }
 

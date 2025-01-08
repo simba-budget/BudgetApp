@@ -10,7 +10,7 @@ import Svg from './Svg';
 import Text from './Text';
 
 export type ButtonSize = 'small' | 'medium';
-export type ButtonColor = 'primary' | 'secondary' | 'tertiary';
+export type ButtonColor = 'primary' | 'secondary' | 'tertiary' | 'error';
 
 export interface ButtonProps {
   onPress?: () => void;
@@ -56,18 +56,21 @@ const titleColorMap: Record<ButtonColor, keyof Colors['text']> = {
   primary: 'secondary',
   secondary: 'primary',
   tertiary: 'primary',
+  error: 'primary',
 };
 
 const borderColorMap: Record<ButtonColor, keyof Colors['border']> = {
   primary: 'accent',
   secondary: 'primary',
   tertiary: 'primary',
+  error: 'error',
 };
 
 const backgroundColorMap: Record<ButtonColor, keyof Colors['background']> = {
   primary: 'accent',
   secondary: 'secondary',
   tertiary: 'tertiary',
+  error: 'error',
 };
 
 const titleSizeMap: Record<ButtonSize, keyof FontSizes> = {

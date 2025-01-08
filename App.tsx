@@ -22,7 +22,7 @@ dayjs.extend(relativeTime);
 dayjs.extend(minMax);
 setupTranslations();
 setupNotifications();
-setupLogging();
+// setupLogging();
 
 const App = () => {
   return (
