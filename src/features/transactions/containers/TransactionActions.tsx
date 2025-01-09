@@ -23,10 +23,22 @@ const TransactionActions = ({ id }: TransactionActionsProps) => {
   const actionItems = useMemo<ActionItem[]>(
     () => [
       {
-        title: t('View'),
-        iconName: 'eye',
-        description: t('View transaction details'),
-        onPress: () => navigation.push(transactionRoute, { id }),
+        title: t('Change Category'),
+        iconName: 'squaresPlus',
+        description: t('Change transaction category'),
+        onPress: () => navigation.push(transactionEditRoute, { id }),
+      },
+      {
+        title: t('Update Tags'),
+        iconName: 'chart',
+        description: t('Add or remove category tags'),
+        onPress: () => navigation.push(transactionEditRoute, { id }),
+      },
+      {
+        title: t('Mark as Subscription'),
+        iconName: 'chart',
+        description: t('Make similar transactions as subscription'),
+        onPress: () => navigation.push(transactionEditRoute, { id }),
       },
       {
         title: t('Edit'),

@@ -117,8 +117,8 @@ export const toAccountEdit = (
   return navigate(accountEditRoute, params);
 };
 
-export const toHome = ({ navigate }: RootNavigation) => {
-  return navigate(bottomTabsRoute, { screen: homeRoute });
+export const toHome = ({ replace }: RootNavigation) => {
+  return replace(bottomTabsRoute, { screen: homeRoute });
 };
 
 // account
