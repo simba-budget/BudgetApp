@@ -1,5 +1,11 @@
 import { Tag } from '@api/clients/tags/types';
 import { IconButton, Text } from '@common/v2/components';
+import {
+  RootNavigation,
+  tagActionsRoute,
+  tagRoute,
+} from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -15,30 +21,36 @@ import {
 export interface TagsListItemProps {
   style?: StyleProp<ViewStyle>;
   tag: Tag;
-  onPress: () => void;
 }
 
-const TagsListItem = ({ style, tag, onPress }: TagsListItemProps) => (
-  <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <IconButton iconSize={20} size={40} iconName="card" isDisabled />
-    <View style={flex1}>
-      <Text weight="semiBold" size="s" color="primary">
-        {tag.name}
-      </Text>
-    </View>
-  </TouchableOpacity>
-);
+const TagsListItemProps = ({ style, tag }: TagsListItemProps) => {
+  const { navigate } = useNavigation<RootNavigation>();
+
+  return (
+    <TouchableOpacity
+      style={[style, styles.container]}
+      onLongPress={() => navigate(tagActionsRoute, { id: tag.id })}
+      onPress={() => navigate(tagRoute, { id: tag.id })}>
+      <IconButton iconName="card" size={36} iconSize={18} isDisabled />
+      <View style={flex1}>
+        <Text weight="semiBold" size="s" color="primary">
+          {tag.name}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('s'),
-    ...gap('column')('s'),
     ...rowCenter,
+    ...gap('column')('s'),
+    ...padding('full')('xs'),
+    borderRadius: 12,
     backgroundColor: colors.background.secondary,
-    borderWidth: 1,
     borderColor: colors.border.primary,
-    borderRadius: 16,
+    borderWidth: 1,
   },
 });
 
-export default TagsListItem;
+export default TagsListItemProps;

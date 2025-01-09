@@ -1,6 +1,6 @@
 import { Button, FormControl, IconButton, Input, Text } from '@common/v2/components';
 import { useInvitationsTranslations } from '@i18n/hooks';
-import { center, selfCenter } from '@styles/common';
+import { selfCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';

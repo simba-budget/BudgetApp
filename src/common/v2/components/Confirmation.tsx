@@ -1,6 +1,6 @@
 import IconButton from '@common/v2/components/IconButton';
 import { useCommonTranslations } from '@i18n/hooks';
-import { center, flex1, rowCenter, selfCenter } from '@styles/common';
+import { selfCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React, { FC } from 'react';
 import { View } from 'react-native';

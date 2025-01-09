@@ -4,6 +4,7 @@ import {
   toCategoryAdd,
   toInvitationAdd,
   toMembers,
+  toTagAdd,
   toTransactionAdd,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
@@ -31,6 +32,11 @@ const useQuickActionItems = () => {
         title: t('Create\nCategory'),
         iconName: 'squaresPlus',
         onPress: () => toCategoryAdd(navigation),
+      },
+      {
+        title: t('Create\nTag'),
+        iconName: 'squaresPlus',
+        onPress: () => toTagAdd(navigation),
       },
       {
         title: t('View\nMembers'),

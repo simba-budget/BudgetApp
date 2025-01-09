@@ -21,7 +21,7 @@ const useAddTag = (options: Options) => {
   const { mutateAsync, isPending: isSubmitting } = useMutation({
     mutationFn: TagsClient.addTag,
     onSuccess: (response) => {
-      showSuccessToast(t('Tag is successfully added!'));
+      showSuccessToast(t('Tag is successfully created!'));
       onSuccess(response.data);
       dispatch(updateTags());
     },

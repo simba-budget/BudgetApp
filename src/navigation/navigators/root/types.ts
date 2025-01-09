@@ -165,3 +165,9 @@ export const categoryActionsRoute: CategoryActionsRoute = 'CategoryActions';
 
 export type CategoryDeleteRoute = 'CategoryDelete';
 export const categoryDeleteRoute: CategoryDeleteRoute = 'CategoryDelete';
+
+export type TagActionsRoute = 'TagActions';
+export const tagActionsRoute: TagActionsRoute = 'TagActions';
+
+export type TagDeleteRoute = 'TagDelete';
+export const tagDeleteRoute: TagDeleteRoute = 'TagDelete';

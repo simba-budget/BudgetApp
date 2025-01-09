@@ -17,7 +17,11 @@ const CategoriesSelect = ({ style, value }: CategoriesSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useCategoriesTranslations();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { categories } = useCategories({ filter: { accountId } });
+
+  const { categories } = useCategories({
+    filter: { accountId },
+    sort: { column: 'name', direction: 'asc' },
+  });
 
   const options = useMemo<SelectOption[]>(
     () => categories.map(mapCategoryToOption),
