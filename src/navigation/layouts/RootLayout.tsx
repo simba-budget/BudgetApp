@@ -1,5 +1,4 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { PickerProvider } from '@libs/picker';
 import React, { ReactNode } from 'react';
 
 export interface RootLayoutProps {
@@ -7,9 +6,7 @@ export interface RootLayoutProps {
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => (
-  <BottomSheetModalProvider>
-    <PickerProvider>{children}</PickerProvider>
-  </BottomSheetModalProvider>
+  <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
 );
 
 export default RootLayout;
