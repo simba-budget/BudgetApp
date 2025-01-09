@@ -151,11 +151,9 @@ export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
 
 // Bottom Sheet
 // ---------------------------------------------------------------------------------
+// acounts
 export type AccountSelectRoute = 'AccountSelect';
 export const accountSelectRoute: AccountSelectRoute = 'AccountSelect';
-
-export type SuccessRoute = 'Success';
-export const successRoute: SuccessRoute = 'Success';
 
 // categories
 export type CategoryActionsRoute = 'CategoryActions';

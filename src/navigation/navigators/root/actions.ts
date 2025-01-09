@@ -21,8 +21,6 @@ import {
   goalAddRoute,
   GoalEditRoute,
   goalEditRoute,
-  GoalRoute,
-  goalRoute,
   invitationAddRoute,
   InvitationRoute,
   invitationRoute,
@@ -42,8 +40,6 @@ import {
   subscriptionAddRoute,
   subscriptionEditRoute,
   SubscriptionEditRoute,
-  SuccessRoute,
-  successRoute,
   tagsRoute,
   termsAndConditionsRoute,
   transactionAddRoute,
@@ -123,13 +119,6 @@ export const toGoalEdit = (
   params: RootParams[GoalEditRoute],
 ) => {
   return navigate(goalEditRoute, params);
-};
-
-export const toGoal = (
-  { navigate }: RootNavigation,
-  params: RootParams[GoalRoute],
-) => {
-  return navigate(goalRoute, params);
 };
 
 export const toCategories = ({ navigate }: RootNavigation) => {
@@ -224,11 +213,4 @@ export const toExternalAccounts = ({ navigate }: RootNavigation) => {
 // bottom sheet
 export const toAccountSelect = ({ navigate }: RootNavigation) => {
   return navigate(accountSelectRoute);
-};
-
-export const toSuccess = (
-  { replace }: RootNavigation,
-  params: RootParams[SuccessRoute],
-) => {
-  return replace(successRoute, params);
 };

@@ -1,5 +1,5 @@
-import { Action, Text } from '@common/v2/components';
-import { ActionItem } from '@common/v2/components/Action';
+import { Actions } from '@common/v2/components';
+import { ActionItem } from '@common/v2/components/Actions';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import {
   RootNavigation,
@@ -7,9 +7,7 @@ import {
   transactionEditRoute,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import { gap, margin, padding } from '@styles/lightTheme';
 import React, { useMemo } from 'react';
-import { View } from 'react-native';
 
 export interface TransactionActionsProps {
   id: number;
@@ -19,7 +17,7 @@ const TransactionActions = ({ id }: TransactionActionsProps) => {
   const navigation = useNavigation<RootNavigation>();
   const { t } = useTransactionsTranslations();
 
-  const actionItems = useMemo<ActionItem[]>(
+  const items = useMemo<ActionItem[]>(
     () => [
       {
         title: t('Change Category'),
@@ -55,22 +53,7 @@ const TransactionActions = ({ id }: TransactionActionsProps) => {
     [t, navigation, id],
   );
 
-  return (
-    <View
-      style={[padding('horizontal')('m'), padding('top')('m'), gap('row')('xs')]}>
-      <Text
-        style={margin('bottom')('s')}
-        textAlign="center"
-        color="primary"
-        size="m"
-        weight="semiBold">
-        {t('Transaction Actions')}
-      </Text>
-      {actionItems.map((item, index) => (
-        <Action key={index} item={item} />
-      ))}
-    </View>
-  );
+  return <Actions items={items} title={t('Transaction Actions')} />;
 };
 
 export default TransactionActions;

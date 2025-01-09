@@ -1,4 +1,3 @@
-import { IconName } from '@icons';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -11,16 +10,10 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { ActionItem } from './Actions';
 import IconButton from './IconButton';
 import Svg from './Svg';
 import Text from './Text';
-
-export interface ActionItem {
-  onPress: () => void;
-  title: string;
-  description?: string;
-  iconName: IconName;
-}
 
 export interface ActionProps {
   style?: StyleProp<ViewStyle>;

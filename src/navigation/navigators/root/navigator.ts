@@ -41,7 +41,6 @@ import {
   SubscriptionDeleteScreen,
   SubscriptionEditScreen,
   SubscriptionScreen,
-  SuccessScreen,
   TagActionsScreen,
   TagAddScreen,
   TagDeleteScreen,
@@ -111,7 +110,6 @@ import {
   subscriptionDeleteRoute,
   subscriptionEditRoute,
   subscriptionRoute,
-  successRoute,
   tagActionsRoute,
   tagAddRoute,
   tagDeleteRoute,
@@ -184,7 +182,6 @@ const RootStack = createStackNavigator({
       screenOptions: bottomSheetOptions,
       screens: {
         [accountSelectRoute]: AccountSelectScreen,
-        [successRoute]: SuccessScreen,
         [membersRoute]: MembersScreen,
         [subscriptionRoute]: SubscriptionScreen,
         [invitationAddRoute]: InvitationAddScreen,
