@@ -1,47 +1,44 @@
 import { Action, Text } from '@common/v2/components';
 import { ActionItem } from '@common/v2/components/Action';
-import { useCategoriesTranslations } from '@i18n/hooks';
+import { useTransactionsTranslations } from '@i18n/hooks';
 import {
-  categoryDeleteRoute,
-  categoryEditRoute,
-  categoryRoute,
   RootNavigation,
+  transactionDeleteRoute,
+  transactionEditRoute,
+  transactionRoute,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
 
-export interface CategoryActionsProps {
+export interface TransactionActionsProps {
   id: number;
 }
 
-const CategoryActions = ({ id }: CategoryActionsProps) => {
+const TransactionActions = ({ id }: TransactionActionsProps) => {
   const navigation = useNavigation<RootNavigation>();
-  const { t } = useCategoriesTranslations();
+  const { t } = useTransactionsTranslations();
 
   const actionItems = useMemo<ActionItem[]>(
     () => [
       {
         title: t('View'),
         iconName: 'eye',
-        description: t('View category details'),
-        onPress: () => {
-          navigation.pop();
-          setTimeout(() => navigation.navigate(categoryRoute, { id }));
-        },
+        description: t('View transaction details'),
+        onPress: () => navigation.push(transactionRoute, { id }),
       },
       {
         title: t('Edit'),
         iconName: 'edit',
-        description: t('Edit category details'),
-        onPress: () => navigation.push(categoryEditRoute, { id }),
+        description: t('Edit transaction details'),
+        onPress: () => navigation.push(transactionEditRoute, { id }),
       },
       {
         title: t('Delete'),
         iconName: 'delete',
-        description: t('Delete category'),
-        onPress: () => navigation.push(categoryDeleteRoute, { id }),
+        description: t('Delete transaction'),
+        onPress: () => navigation.push(transactionDeleteRoute, { id }),
       },
     ],
     [t, navigation, id],
@@ -56,7 +53,7 @@ const CategoryActions = ({ id }: CategoryActionsProps) => {
         color="primary"
         size="m"
         weight="semiBold">
-        {t('Category Actions')}
+        {t('Transaction Actions')}
       </Text>
       {actionItems.map((item, index) => (
         <Action key={index} item={item} />
@@ -65,4 +62,4 @@ const CategoryActions = ({ id }: CategoryActionsProps) => {
   );
 };
 
-export default CategoryActions;
+export default TransactionActions;

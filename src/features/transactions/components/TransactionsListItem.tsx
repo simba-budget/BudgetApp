@@ -1,5 +1,11 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { IconButton, Text } from '@common/v2/components';
+import {
+  RootNavigation,
+  transactionActionsRoute,
+  transactionRoute,
+} from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -14,8 +20,6 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { useTransactionActions } from '../hooks';
-
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
   transaction: Transaction;
@@ -27,13 +31,13 @@ const TransactionsListItem = ({
   transaction,
   isDateHidden = false,
 }: TransactionsListItemProps) => {
-  const { onPress, onLongPress } = useTransactionActions(transaction);
+  const { navigate } = useNavigation<RootNavigation>();
 
   return (
     <TouchableOpacity
       style={[styles.container, style]}
-      onLongPress={onLongPress}
-      onPress={onPress}>
+      onLongPress={() => navigate(transactionActionsRoute, { id: transaction.id })}
+      onPress={() => navigate(transactionRoute, { id: transaction.id })}>
       <IconButton iconSize={20} size={40} iconName="card" isDisabled />
       <View style={[flex1, gap('row')('xxs')]}>
         <Text weight="semiBold" size="s" color="primary">

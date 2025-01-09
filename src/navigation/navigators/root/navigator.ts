@@ -45,6 +45,7 @@ import {
   TagScreen,
   TagsScreen,
   TermsAndConditionsScreen,
+  TransactionActionsScreen,
   TransactionAddScreen,
   TransactionDeleteScreen,
   TransactionEditScreen,
@@ -110,6 +111,7 @@ import {
   tagRoute,
   tagsRoute,
   termsAndConditionsRoute,
+  transactionActionsRoute,
   transactionAddRoute,
   transactionDeleteRoute,
   transactionEditRoute,
@@ -184,6 +186,7 @@ const RootStack = createStackNavigator({
         [invitationAddRoute]: InvitationAddScreen,
 
         // transactions
+        [transactionActionsRoute]: TransactionActionsScreen,
         [transactionRoute]: TransactionScreen,
         [transactionDeleteRoute]: TransactionDeleteScreen,
         [transactionAddRoute]: TransactionAddScreen,

@@ -11,33 +11,23 @@ export interface MembersListProps {
   isRefreshing: boolean;
   onRefresh: () => void;
   members: Member[];
-  onMemberPress: (member: Member) => void;
-  isFetchingMore: boolean;
-  onFetchMore: () => void;
 }
 
 const MembersList = ({
-  onMemberPress,
   members,
   isLoading,
   style,
   onRefresh,
   isRefreshing,
-  onFetchMore,
-  isFetchingMore,
 }: MembersListProps) => {
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<Member>) => (
-      <MembersListItem onPress={() => onMemberPress(item)} member={item} />
-    ),
-    [onMemberPress],
+    ({ item }: ListRenderItemInfo<Member>) => <MembersListItem member={item} />,
+    [],
   );
 
   return (
     <FlatList
       keyExtractor={(member) => member.id.toString()}
-      onEndReached={onFetchMore}
-      isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}
       style={style}
       data={members}

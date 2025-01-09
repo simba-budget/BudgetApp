@@ -19,9 +19,9 @@ export const parseData = <T>(data?: InfiniteData<ListResponse<T>>) => {
 
 export const getNextPageParam = <T>(
   lastPage: ListResponse<T>,
-  allPages: ListResponse<T>[],
+  allPages: ListResponse<T>[] = [],
 ) => {
-  const total = lastPage.total;
+  const total = lastPage?.total ?? 0;
   const fetched = allPages.map((page) => page.data).flat().length;
   return fetched >= total ? null : getNextPage(fetched, 20);
 };

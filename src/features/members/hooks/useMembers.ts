@@ -1,6 +1,5 @@
 import { MembersClient } from '@api/clients';
 import { MembersFilter, MembersSort } from '@api/clients/members/types';
-import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
@@ -10,23 +9,21 @@ export const getQueryKey = (
   filter: MembersFilter,
   sort: MembersSort,
   lastUpdated: number,
-  paging?: Paging,
 ) => {
-  return ['members', filter, sort, lastUpdated, paging];
+  return ['members', filter, sort, lastUpdated];
 };
 
 interface Options {
   filter: MembersFilter;
   sort: MembersSort;
-  paging: Paging;
 }
 
-const useMembers = ({ filter, sort, paging }: Options) => {
+const useMembers = ({ filter, sort }: Options) => {
   const lastUpdated = useAppSelector(selectMembersLastUpdated);
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
-    queryFn: () => MembersClient.getMembers({ filter, sort, paging }),
+    queryKey: getQueryKey(filter, sort, lastUpdated),
+    queryFn: () => MembersClient.getMembers({ filter, sort }),
   });
 
   return {

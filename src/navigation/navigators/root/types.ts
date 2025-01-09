@@ -1,4 +1,5 @@
 // Groups
+// ---------------------------------------------------------------------------------
 export type AuthRoute = 'Auth';
 export const authRoute: AuthRoute = 'Auth';
 
@@ -15,6 +16,7 @@ export type BottomSheetRoute = 'BottomSheet';
 export const bottomSheetRoute: BottomSheetRoute = 'BottomSheet';
 
 // Public
+// ---------------------------------------------------------------------------------
 export type PrivacyPolicyRoute = 'PrivacyPolicy';
 export const privacyPolicyRoute: PrivacyPolicyRoute = 'PrivacyPolicy';
 
@@ -22,6 +24,7 @@ export type TermsAndConditionsRoute = 'TermsAndConditions';
 export const termsAndConditionsRoute: TermsAndConditionsRoute = 'TermsAndConditions';
 
 // Auth
+// ---------------------------------------------------------------------------------
 export type WelcomeRoute = 'Welcome';
 export const welcomeRoute: WelcomeRoute = 'Welcome';
 
@@ -35,6 +38,7 @@ export type RegistrationRoute = 'Registration';
 export const registrationRoute: RegistrationRoute = 'Registration';
 
 // Protected
+// ---------------------------------------------------------------------------------
 export type AccountsLoadingRoute = 'AccountsLoading';
 export const accountsLoadingRoute: AccountsLoadingRoute = 'AccountsLoading';
 
@@ -48,6 +52,7 @@ export type AccountEditRoute = 'AccountEdit';
 export const accountEditRoute: AccountEditRoute = 'AccountEdit';
 
 // Account
+// ---------------------------------------------------------------------------------
 export type ContributionsRoute = 'Contributions';
 export const contributionsRoute: ContributionsRoute = 'Contributions';
 
@@ -151,23 +156,30 @@ export type OpenBankingRoute = 'OpenBanking';
 export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
 
 // Bottom Sheet
+// ---------------------------------------------------------------------------------
 export type AccountSelectRoute = 'AccountSelect';
 export const accountSelectRoute: AccountSelectRoute = 'AccountSelect';
-
-export type TransactionDeleteRoute = 'TransactionDelete';
-export const transactionDeleteRoute: TransactionDeleteRoute = 'TransactionDelete';
 
 export type SuccessRoute = 'Success';
 export const successRoute: SuccessRoute = 'Success';
 
+// categories
 export type CategoryActionsRoute = 'CategoryActions';
 export const categoryActionsRoute: CategoryActionsRoute = 'CategoryActions';
 
 export type CategoryDeleteRoute = 'CategoryDelete';
 export const categoryDeleteRoute: CategoryDeleteRoute = 'CategoryDelete';
 
+// tags
 export type TagActionsRoute = 'TagActions';
 export const tagActionsRoute: TagActionsRoute = 'TagActions';
 
 export type TagDeleteRoute = 'TagDelete';
 export const tagDeleteRoute: TagDeleteRoute = 'TagDelete';
+
+// transactions
+export type TransactionDeleteRoute = 'TransactionDelete';
+export const transactionDeleteRoute: TransactionDeleteRoute = 'TransactionDelete';
+
+export type TransactionActionsRoute = 'TransactionActions';
+export const transactionActionsRoute: TransactionActionsRoute = 'TransactionActions';
