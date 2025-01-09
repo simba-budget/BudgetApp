@@ -1,6 +1,6 @@
-import { RootNavigation, toTagEdit } from '@navigation/navigators/root';
+import { RootNavigation, tagEditRoute } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { TagDetails } from '../components';
 import { useTag } from '../hooks';
@@ -12,10 +12,6 @@ export interface TagProps {
 const Tag = ({ id }: TagProps) => {
   const navigation = useNavigation<RootNavigation>();
   const { tag, refetch, isRefetching, isLoading } = useTag(id);
-  const handleOnEditPress = useCallback(
-    () => toTagEdit(navigation, { id }),
-    [navigation, id],
-  );
 
   return (
     <TagDetails
@@ -23,7 +19,7 @@ const Tag = ({ id }: TagProps) => {
       isLoading={isLoading}
       isRefreshing={isRefetching}
       onRefresh={refetch}
-      onEditPress={handleOnEditPress}
+      onEditPress={() => navigation.push(tagEditRoute, { id })}
     />
   );
 };

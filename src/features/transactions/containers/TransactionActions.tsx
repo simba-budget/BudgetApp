@@ -5,7 +5,6 @@ import {
   RootNavigation,
   transactionDeleteRoute,
   transactionEditRoute,
-  transactionRoute,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { gap, margin, padding } from '@styles/lightTheme';

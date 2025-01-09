@@ -1,7 +1,7 @@
 import { Account } from '@api/clients/accounts/types';
 import { Badge, IconButton, Text } from '@common/v2/components';
 import { useAccountsTranslations } from '@i18n/hooks';
-import { flex1, rowCenter, selfStart } from '@styles/common';
+import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { formatPrice } from '@utils/price';

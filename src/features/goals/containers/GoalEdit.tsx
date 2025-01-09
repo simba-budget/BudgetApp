@@ -15,10 +15,10 @@ export interface GoalEditProps {
 
 const GoalEdit = ({ id }: GoalEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<RootNavigation>();
+  const { pop } = useNavigation<RootNavigation>();
   const { goal, isLoading } = useGoal(id);
   const { handleSubmit, control, reset } = useGoalForm();
-  const { editGoal, isSubmitting } = useEditGoal({ onSuccess: goBack });
+  const { editGoal, isSubmitting } = useEditGoal({ onSuccess: () => pop(2) });
 
   const handleOnSubmit = (request: SaveGoalRequest) => {
     return editGoal({ id, ...request, accountId });

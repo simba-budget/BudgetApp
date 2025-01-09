@@ -68,12 +68,6 @@ export const contributionRoute: ContributionRoute = 'Contribution';
 export type GoalAddRoute = 'GoalAdd';
 export const goalAddRoute: GoalAddRoute = 'GoalAdd';
 
-export type GoalEditRoute = 'GoalEdit';
-export const goalEditRoute: GoalEditRoute = 'GoalEdit';
-
-export type GoalRoute = 'Goal';
-export const goalRoute: GoalRoute = 'Goal';
-
 export type CategoriesRoute = 'Categories';
 export const categoriesRoute: CategoriesRoute = 'Categories';
 
@@ -183,3 +177,24 @@ export const transactionDeleteRoute: TransactionDeleteRoute = 'TransactionDelete
 
 export type TransactionActionsRoute = 'TransactionActions';
 export const transactionActionsRoute: TransactionActionsRoute = 'TransactionActions';
+
+// subscriptions
+export type SubscriptionDeleteRoute = 'SubscriptionDelete';
+export const subscriptionDeleteRoute: SubscriptionDeleteRoute = 'SubscriptionDelete';
+
+export type SubscriptionActionsRoute = 'SubscriptionActions';
+export const subscriptionActionsRoute: SubscriptionActionsRoute =
+  'SubscriptionActions';
+
+// goals
+export type GoalEditRoute = 'GoalEdit';
+export const goalEditRoute: GoalEditRoute = 'GoalEdit';
+
+export type GoalRoute = 'Goal';
+export const goalRoute: GoalRoute = 'Goal';
+
+export type GoalActionsRoute = 'GoalActions';
+export const goalActionsRoute: GoalActionsRoute = 'GoalActions';
+
+export type GoalDeleteRoute = 'GoalDelete';
+export const goalDeleteRoute: GoalDeleteRoute = 'GoalDelete';

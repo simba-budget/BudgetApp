@@ -12,11 +12,9 @@ import {
 import {
   RootNavigation,
   toAccountSelect,
-  toGoal,
   toGoalAdd,
   toInvitationAdd,
   toNotifications,
-  toSubscription,
   toSubscriptionAdd,
   toTransactionAdd,
 } from '@navigation/navigators/root';
@@ -150,7 +148,6 @@ const Home = () => {
         total={totalGoals}
         goals={goals}
         isLoading={isGoalsLoading}
-        onGoalPress={({ id }) => toGoal(navigation, { id })}
         onViewAllPress={() => toGoals(bottomTabsNavigation)}
       />
       <SubscriptionsSection
@@ -158,7 +155,6 @@ const Home = () => {
         onSubscriptionAddPress={() => toSubscriptionAdd(navigation)}
         total={totalSubscriptions}
         subscriptions={subscriptions}
-        onSubscriptionPress={({ id }) => toSubscription(navigation, { id })}
         onViewAllPress={() => toSubscriptions(bottomTabsNavigation)}
       />
       <InvitationAddSection

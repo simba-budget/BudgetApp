@@ -19,7 +19,6 @@ export interface GoalsSectionProps {
   style?: StyleProp<ViewStyle>;
   total: number;
   goals: Goal[];
-  onGoalPress: (goal: Goal) => void;
   onGoalAddPress: () => void;
   onViewAllPress: () => void;
   isLoading: boolean;
@@ -28,7 +27,6 @@ export interface GoalsSectionProps {
 const GoalsSection = ({
   style,
   total,
-  onGoalPress,
   onGoalAddPress,
   goals,
   onViewAllPress,
@@ -42,11 +40,10 @@ const GoalsSection = ({
     ({ item }: ListRenderItemInfo<Goal>) => (
       <GoalsListItem
         style={{ width: width - (goals.length > 1 ? sizes.xxl : sizes.xl) }}
-        onPress={() => onGoalPress(item)}
         goal={item}
       />
     ),
-    [onGoalPress, width, goals.length],
+    [width, goals.length],
   );
 
   return (

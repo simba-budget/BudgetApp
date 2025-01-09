@@ -1,6 +1,12 @@
 import { Subscription } from '@api/clients/subscriptions/types';
 import { Avatar, Text } from '@common/v2/components';
 import { getMerchantLogoUrl } from '@features/merchants/utils';
+import {
+  RootNavigation,
+  subscriptionActionsRoute,
+  subscriptionRoute,
+} from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import { alignEnd, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -18,38 +24,43 @@ import {
 export interface SubscriptionsListItemProps {
   style?: StyleProp<ViewStyle>;
   subscription: Subscription;
-  onPress: () => void;
 }
 
 const SubscriptionsListItem = ({
   style,
   subscription,
-  onPress,
-}: SubscriptionsListItemProps) => (
-  <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-    <Avatar
-      initials={subscription.name}
-      size={40}
-      uri={getMerchantLogoUrl(subscription.merchant)}
-    />
-    <View style={[flex1, gap('row')('xxs')]}>
-      <Text weight="semiBold" size="s" color="primary">
-        {subscription.name || subscription.merchant?.name}
-      </Text>
-      <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
-        {subscription.description}
-      </Text>
-    </View>
-    <View style={[alignEnd, gap('row')('xxs')]}>
-      <Text weight="bold" size="s" color="primary">
-        {formatPrice(subscription.amount, subscription.currency)}
-      </Text>
-      <Text weight="medium" size="xs" color="tertiary">
-        {formatDate(subscription.startedAt)}
-      </Text>
-    </View>
-  </TouchableOpacity>
-);
+}: SubscriptionsListItemProps) => {
+  const { navigate } = useNavigation<RootNavigation>();
+
+  return (
+    <TouchableOpacity
+      style={[styles.container, style]}
+      onLongPress={() => navigate(subscriptionActionsRoute, { id: subscription.id })}
+      onPress={() => navigate(subscriptionRoute, { id: subscription.id })}>
+      <Avatar
+        initials={subscription.name}
+        size={40}
+        uri={getMerchantLogoUrl(subscription.merchant)}
+      />
+      <View style={[flex1, gap('row')('xxs')]}>
+        <Text weight="semiBold" size="s" color="primary">
+          {subscription.name || subscription.merchant?.name}
+        </Text>
+        <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
+          {subscription.description}
+        </Text>
+      </View>
+      <View style={[alignEnd, gap('row')('xxs')]}>
+        <Text weight="bold" size="s" color="primary">
+          {formatPrice(subscription.amount, subscription.currency)}
+        </Text>
+        <Text weight="medium" size="xs" color="tertiary">
+          {formatDate(subscription.startedAt)}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -17,7 +17,9 @@ import {
   ContributionsScreen,
   ExternalAccountScreen,
   ExternalAccountsScreen,
+  GoalActionsScreen,
   GoalAddScreen,
+  GoalDeleteScreen,
   GoalEditScreen,
   GoalScreen,
   InvitationAddScreen,
@@ -34,7 +36,9 @@ import {
   PrivacyPolicyScreen,
   RegistrationScreen,
   SendOtpScreen,
+  SubscriptionActionsScreen,
   SubscriptionAddScreen,
+  SubscriptionDeleteScreen,
   SubscriptionEditScreen,
   SubscriptionScreen,
   SuccessScreen,
@@ -80,7 +84,9 @@ import {
   contributionsRoute,
   externalAccountRoute,
   externalAccountsRoute,
+  goalActionsRoute,
   goalAddRoute,
+  goalDeleteRoute,
   goalEditRoute,
   goalRoute,
   invitationAddRoute,
@@ -100,7 +106,9 @@ import {
   publicRoute,
   registrationRoute,
   sendOtpRoute,
+  subscriptionActionsRoute,
   subscriptionAddRoute,
+  subscriptionDeleteRoute,
   subscriptionEditRoute,
   subscriptionRoute,
   successRoute,
@@ -185,6 +193,10 @@ const RootStack = createStackNavigator({
         [subscriptionRoute]: SubscriptionScreen,
         [invitationAddRoute]: InvitationAddScreen,
 
+        // goals
+        [goalDeleteRoute]: GoalDeleteScreen,
+        [goalActionsRoute]: GoalActionsScreen,
+
         // transactions
         [transactionActionsRoute]: TransactionActionsScreen,
         [transactionRoute]: TransactionScreen,
@@ -204,6 +216,10 @@ const RootStack = createStackNavigator({
         [categoryAddRoute]: CategoryAddScreen,
         [categoryEditRoute]: CategoryEditScreen,
         [categoryDeleteRoute]: CategoryDeleteScreen,
+
+        // subscriptions
+        [subscriptionActionsRoute]: SubscriptionActionsScreen,
+        [subscriptionDeleteRoute]: SubscriptionDeleteScreen,
       },
     },
     [publicRoute]: {

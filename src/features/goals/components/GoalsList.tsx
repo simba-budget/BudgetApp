@@ -14,7 +14,6 @@ export interface GoalsListProps {
   isRefreshing: boolean;
   onRefresh: () => void;
   goals: Goal[];
-  onGoalPress: (goal: Goal) => void;
   isFetchingMore: boolean;
   onFetchMore: () => void;
   onGoalAddPress: () => void;
@@ -22,7 +21,6 @@ export interface GoalsListProps {
 }
 
 const GoalsList = ({
-  onGoalPress,
   goals,
   isLoading,
   style,
@@ -34,10 +32,8 @@ const GoalsList = ({
   total,
 }: GoalsListProps) => {
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<Goal>) => (
-      <GoalsListItem onPress={() => onGoalPress(item)} goal={item} />
-    ),
-    [onGoalPress],
+    ({ item }: ListRenderItemInfo<Goal>) => <GoalsListItem goal={item} />,
+    [],
   );
 
   return (

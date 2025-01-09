@@ -1,18 +1,20 @@
 import { IconButton } from '@common/v2/components';
-import { RootNavigation, toGoalAdd } from '@navigation/navigators/root';
+import { goalAddRoute, RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
 const GoalsActions = () => {
   const navigation = useNavigation<RootNavigation>();
-  const handleOnAddPress = useCallback(() => toGoalAdd(navigation), [navigation]);
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>
-      <IconButton onPress={handleOnAddPress} iconName="plus" />
+      <IconButton
+        onPress={() => navigation.navigate(goalAddRoute)}
+        iconName="plus"
+      />
     </View>
   );
 };

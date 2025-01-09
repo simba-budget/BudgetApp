@@ -11,6 +11,7 @@ const SubscriptionAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<RootNavigation>();
   const { handleSubmit, control } = useSubscriptionForm();
+
   const { addSubscription, isSubmitting } = useAddSubscription({
     onSuccess: goBack,
     accountId,

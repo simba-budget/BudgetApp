@@ -13,7 +13,6 @@ export interface SubscriptionsListProps {
   isRefreshing: boolean;
   onRefresh: () => void;
   subscriptions: Subscription[];
-  onSubscriptionPress: (subscription: Subscription) => void;
   isFetchingMore: boolean;
   onFetchMore: () => void;
   onSubscriptionAddPress: () => void;
@@ -21,7 +20,6 @@ export interface SubscriptionsListProps {
 }
 
 const SubscriptionsList = ({
-  onSubscriptionPress,
   subscriptions,
   isLoading,
   style,
@@ -34,12 +32,9 @@ const SubscriptionsList = ({
 }: SubscriptionsListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Subscription>) => (
-      <SubscriptionsListItem
-        onPress={() => onSubscriptionPress(item)}
-        subscription={item}
-      />
+      <SubscriptionsListItem subscription={item} />
     ),
-    [onSubscriptionPress],
+    [],
   );
 
   return (

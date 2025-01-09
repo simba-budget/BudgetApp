@@ -1,18 +1,17 @@
 import { IconButton } from '@common/v2/components';
-import { RootNavigation, toTagAdd } from '@navigation/navigators/root';
+import { RootNavigation, tagAddRoute } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
 const TagsActions = () => {
   const navigation = useNavigation<RootNavigation>();
-  const handleOnAddPress = useCallback(() => toTagAdd(navigation), [navigation]);
 
   return (
     <View style={[rowCenter, gap('column')('s')]}>
-      <IconButton onPress={handleOnAddPress} iconName="plus" />
+      <IconButton onPress={() => navigation.push(tagAddRoute)} iconName="plus" />
     </View>
   );
 };

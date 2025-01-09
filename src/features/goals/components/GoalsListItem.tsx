@@ -1,5 +1,11 @@
 import { Goal } from '@api/clients/goals/types';
 import { IconButton, ProgressBar, Text } from '@common/v2/components';
+import {
+  goalActionsRoute,
+  goalRoute,
+  RootNavigation,
+} from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -16,41 +22,47 @@ import {
 export interface GoalsListItemProps {
   style?: StyleProp<ViewStyle>;
   goal: Goal;
-  onPress: () => void;
 }
 
-const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
-  <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
-    <View style={[rowCenter, gap('column')('s'), margin('bottom')('s')]}>
-      <IconButton color="accent" isDisabled iconName="lock" />
-      <View style={[flex1, gap('row')('xxxs')]}>
-        <Text weight="semiBold" size="s" color="primary">
-          {goal.name}
+const GoalsListItem = ({ style, goal }: GoalsListItemProps) => {
+  const { navigate } = useNavigation<RootNavigation>();
+
+  return (
+    <TouchableOpacity
+      style={[styles.container, style]}
+      onLongPress={() => navigate(goalActionsRoute, { id: goal.id })}
+      onPress={() => navigate(goalRoute, { id: goal.id })}>
+      <View style={[rowCenter, gap('column')('s'), margin('bottom')('s')]}>
+        <IconButton color="accent" isDisabled iconName="lock" />
+        <View style={[flex1, gap('row')('xxxs')]}>
+          <Text weight="semiBold" size="s" color="primary">
+            {goal.name}
+          </Text>
+          <Text weight="semiBold" size="xs" color="tertiary">
+            {`${goal.startedAt} - ${goal.endAt}`}
+          </Text>
+        </View>
+      </View>
+      <Text
+        numberOfLines={3}
+        style={margin('bottom')('l')}
+        weight="medium"
+        size="s"
+        color="tertiary">
+        {goal.description}
+      </Text>
+      <View style={[rowCenter, margin('bottom')('xxs')]}>
+        <Text style={flex1} weight="semiBold" size="s" color="primary">
+          {formatPrice(goal.amount, goal.currency)}
         </Text>
-        <Text weight="semiBold" size="xs" color="tertiary">
-          {`${goal.startedAt} - ${goal.endAt}`}
+        <Text weight="semiBold" size="s" color="primary">
+          {formatPrice(goal.targetAmount, goal.currency)}
         </Text>
       </View>
-    </View>
-    <Text
-      numberOfLines={3}
-      style={margin('bottom')('l')}
-      weight="medium"
-      size="s"
-      color="tertiary">
-      {goal.description}
-    </Text>
-    <View style={[rowCenter, margin('bottom')('xxs')]}>
-      <Text style={flex1} weight="semiBold" size="s" color="primary">
-        {formatPrice(goal.amount, goal.currency)}
-      </Text>
-      <Text weight="semiBold" size="s" color="primary">
-        {formatPrice(goal.targetAmount, goal.currency)}
-      </Text>
-    </View>
-    <ProgressBar total={goal.targetAmount} current={goal.amount} />
-  </TouchableOpacity>
-);
+      <ProgressBar total={goal.targetAmount} current={goal.amount} />
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

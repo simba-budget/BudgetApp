@@ -1,11 +1,6 @@
-import { Subscription } from '@api/clients/subscriptions/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import {
-  RootNavigation,
-  toSubscription,
-  toSubscriptionAdd,
-} from '@navigation/navigators/root';
+import { RootNavigation, toSubscriptionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -44,12 +39,6 @@ const Subscriptions = () => {
     [dispatch],
   );
 
-  const handleOnSubscriptionPress = useCallback(
-    (subscription: Subscription) =>
-      toSubscription(navigation, { id: subscription.id }),
-    [navigation],
-  );
-
   return (
     <View style={flex1}>
       {!isSubscriptionsEmpty && (
@@ -67,7 +56,6 @@ const Subscriptions = () => {
         isRefreshing={isRefetching}
         onRefresh={refetch}
         subscriptions={subscriptions}
-        onSubscriptionPress={handleOnSubscriptionPress}
       />
     </View>
   );

@@ -15,11 +15,12 @@ export interface SubscriptionEditProps {
 
 const SubscriptionEdit = ({ id }: SubscriptionEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const { goBack } = useNavigation<RootNavigation>();
+  const { pop } = useNavigation<RootNavigation>();
   const { subscription, isLoading } = useSubscription(id);
   const { handleSubmit, control, reset } = useSubscriptionForm();
+
   const { editSubscription, isSubmitting } = useEditSubscription({
-    onSuccess: goBack,
+    onSuccess: () => pop(2),
   });
 
   const handleOnSubmit = (request: SaveSubscriptionRequest) => {

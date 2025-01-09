@@ -15,7 +15,6 @@ export interface SubscriptionsSectionProps {
   total: number;
   isLoading: boolean;
   subscriptions: Subscription[];
-  onSubscriptionPress: (subscription: Subscription) => void;
   onViewAllPress: () => void;
   onSubscriptionAddPress: () => void;
 }
@@ -23,7 +22,6 @@ export interface SubscriptionsSectionProps {
 const SubscriptionsSection = ({
   style,
   total,
-  onSubscriptionPress,
   subscriptions,
   onViewAllPress,
   isLoading,
@@ -56,7 +54,6 @@ const SubscriptionsSection = ({
             <SubscriptionsListItem
               key={subscription.id}
               subscription={subscription}
-              onPress={() => onSubscriptionPress(subscription)}
             />
           ))}
         </View>

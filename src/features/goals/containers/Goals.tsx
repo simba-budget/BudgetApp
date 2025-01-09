@@ -1,7 +1,6 @@
-import { Goal } from '@api/clients/goals/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { RootNavigation, toGoal, toGoalAdd } from '@navigation/navigators/root';
+import { RootNavigation, toGoalAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
@@ -40,11 +39,6 @@ const Goals = () => {
     [dispatch],
   );
 
-  const handleOnGoalPress = useCallback(
-    (goal: Goal) => toGoal(navigation, { id: goal.id }),
-    [navigation],
-  );
-
   return (
     <View style={flex1}>
       {!isGoalsEmpty && (
@@ -62,7 +56,6 @@ const Goals = () => {
         isRefreshing={isRefetching}
         onRefresh={refetch}
         goals={goals}
-        onGoalPress={handleOnGoalPress}
       />
     </View>
   );

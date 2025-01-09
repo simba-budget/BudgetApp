@@ -2,16 +2,11 @@ import { bottomTabsRoute, homeRoute } from '../bottomTabs';
 
 import { RootNavigation, RootParams } from './navigator';
 import {
-  accountAddRoute,
-  AccountEditRoute,
-  accountEditRoute,
   accountSelectRoute,
   categoriesRoute,
   categoryAddRoute,
   categoryEditRoute,
   CategoryEditRoute,
-  categoryRoute,
-  CategoryRoute,
   ContributionAddRoute,
   contributionAddRoute,
   ContributionEditRoute,
@@ -31,11 +26,8 @@ import {
   invitationAddRoute,
   InvitationRoute,
   invitationRoute,
-  invitationsRoute,
   MemberEditRoute,
   memberEditRoute,
-  MemberRoute,
-  memberRoute,
   membersRoute,
   merchantAddRoute,
   MerchantEditRoute,
@@ -50,24 +42,11 @@ import {
   subscriptionAddRoute,
   subscriptionEditRoute,
   SubscriptionEditRoute,
-  subscriptionRoute,
-  SubscriptionRoute,
   SuccessRoute,
   successRoute,
-  tagAddRoute,
-  TagEditRoute,
-  tagEditRoute,
-  TagRoute,
-  tagRoute,
   tagsRoute,
   termsAndConditionsRoute,
   transactionAddRoute,
-  transactionDeleteRoute,
-  TransactionDeleteRoute,
-  TransactionEditRoute,
-  transactionEditRoute,
-  transactionRoute,
-  TransactionRoute,
   verifyOtpRoute,
   VerifyOtpRoute,
 } from './types';
@@ -98,23 +77,8 @@ export const toVerifyOtp = (
 };
 
 // protected
-export const toAccounts = ({ popToTop }: RootNavigation) => {
-  return popToTop();
-};
-
-export const toAccountAdd = ({ navigate }: RootNavigation) => {
-  return navigate(accountAddRoute);
-};
-
 export const toNotifications = ({ navigate }: RootNavigation) => {
   return navigate(notificationsRoute);
-};
-
-export const toAccountEdit = (
-  { navigate }: RootNavigation,
-  params: RootParams[AccountEditRoute],
-) => {
-  return navigate(accountEditRoute, params);
 };
 
 export const toHome = ({ replace }: RootNavigation) => {
@@ -183,33 +147,8 @@ export const toCategoryEdit = (
   return navigate(categoryEditRoute, params);
 };
 
-export const toCategory = (
-  { navigate }: RootNavigation,
-  params: RootParams[CategoryRoute],
-) => {
-  return navigate(categoryRoute, params);
-};
-
 export const toTransactionAdd = ({ navigate }: RootNavigation) => {
   return navigate(transactionAddRoute);
-};
-
-export const toTransactionEdit = (
-  { navigate }: RootNavigation,
-  params: RootParams[TransactionEditRoute],
-) => {
-  return navigate(transactionEditRoute, params);
-};
-
-export const toTransaction = (
-  { navigate }: RootNavigation,
-  params: RootParams[TransactionRoute],
-) => {
-  return navigate(transactionRoute, params);
-};
-
-export const toInvitations = ({ navigate }: RootNavigation) => {
-  return navigate(invitationsRoute);
 };
 
 export const toInvitationAdd = ({ navigate }: RootNavigation) => {
@@ -227,13 +166,6 @@ export const toMembers = ({ navigate }: RootNavigation) => {
   return navigate(membersRoute);
 };
 
-export const toMember = (
-  { replace }: RootNavigation,
-  params: RootParams[MemberRoute],
-) => {
-  return replace(memberRoute, params);
-};
-
 export const toMemberEdit = (
   { navigate }: RootNavigation,
   params: RootParams[MemberEditRoute],
@@ -241,33 +173,8 @@ export const toMemberEdit = (
   return navigate(memberEditRoute, params);
 };
 
-export const toTag = (
-  { navigate }: RootNavigation,
-  params: RootParams[TagRoute],
-) => {
-  return navigate(tagRoute, params);
-};
-
-export const toTagEdit = (
-  { navigate }: RootNavigation,
-  params: RootParams[TagEditRoute],
-) => {
-  return navigate(tagEditRoute, params);
-};
-
-export const toTagAdd = ({ navigate }: RootNavigation) => {
-  return navigate(tagAddRoute);
-};
-
 export const toTags = ({ navigate }: RootNavigation) => {
   return navigate(tagsRoute);
-};
-
-export const toSubscription = (
-  { navigate }: RootNavigation,
-  params: RootParams[SubscriptionRoute],
-) => {
-  return navigate(subscriptionRoute, params);
 };
 
 export const toSubscriptionEdit = (
@@ -324,11 +231,4 @@ export const toSuccess = (
   params: RootParams[SuccessRoute],
 ) => {
   return replace(successRoute, params);
-};
-
-export const toTransactionDelete = (
-  { navigate }: RootNavigation,
-  params: RootParams[TransactionDeleteRoute],
-) => {
-  return navigate(transactionDeleteRoute, params);
 };

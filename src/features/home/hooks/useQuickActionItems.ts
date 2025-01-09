@@ -1,10 +1,10 @@
 import { useHomeTranslations } from '@i18n/hooks';
 import {
   RootNavigation,
+  tagAddRoute,
   toCategoryAdd,
   toInvitationAdd,
   toMembers,
-  toTagAdd,
   toTransactionAdd,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
@@ -36,7 +36,7 @@ const useQuickActionItems = () => {
       {
         title: t('Create\nTag'),
         iconName: 'squaresPlus',
-        onPress: () => toTagAdd(navigation),
+        onPress: () => navigation.push(tagAddRoute),
       },
       {
         title: t('View\nMembers'),
