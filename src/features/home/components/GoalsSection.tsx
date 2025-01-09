@@ -41,12 +41,12 @@ const GoalsSection = ({
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Goal>) => (
       <GoalsListItem
-        style={{ width: width - sizes.xxl }}
+        style={{ width: width - (goals.length > 1 ? sizes.xxl : sizes.xl) }}
         onPress={() => onGoalPress(item)}
         goal={item}
       />
     ),
-    [onGoalPress, width],
+    [onGoalPress, width, goals.length],
   );
 
   return (
@@ -71,6 +71,7 @@ const GoalsSection = ({
         </View>
       ) : (
         <FlatList
+          scrollEnabled={goals.length > 1}
           contentContainerStyle={[gap('column')('s'), padding('horizontal')('m')]}
           pagingEnabled
           keyExtractor={(goal) => goal.id.toString()}

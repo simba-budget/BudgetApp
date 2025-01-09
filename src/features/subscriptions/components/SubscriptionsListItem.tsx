@@ -30,11 +30,11 @@ const SubscriptionsListItem = ({
     <Avatar
       initials={subscription.name}
       size={40}
-      uri={getMerchantLogoUrl(subscription.merchant?.logo || null)}
+      uri={getMerchantLogoUrl(subscription.merchant)}
     />
     <View style={[flex1, gap('row')('xxs')]}>
       <Text weight="semiBold" size="s" color="primary">
-        {subscription.name}
+        {subscription.name || subscription.merchant?.name}
       </Text>
       <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
         {subscription.description}

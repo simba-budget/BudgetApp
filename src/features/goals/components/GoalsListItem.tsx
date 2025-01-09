@@ -5,7 +5,13 @@ import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { formatPrice } from '@utils/price';
 import React from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 export interface GoalsListItemProps {
   style?: StyleProp<ViewStyle>;
@@ -14,18 +20,17 @@ export interface GoalsListItemProps {
 }
 
 const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
-  <View style={[styles.container, style]}>
+  <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
     <View style={[rowCenter, gap('column')('s'), margin('bottom')('s')]}>
-      <IconButton isDisabled iconName="card" />
-      <View style={flex1}>
-        <Text weight="semiBold" size="m" color="primary">
+      <IconButton color="accent" isDisabled iconName="lock" />
+      <View style={[flex1, gap('row')('xxxs')]}>
+        <Text weight="semiBold" size="s" color="primary">
           {goal.name}
         </Text>
         <Text weight="semiBold" size="xs" color="tertiary">
           {`${goal.startedAt} - ${goal.endAt}`}
         </Text>
       </View>
-      <IconButton onPress={onPress} iconName="arrowRight" />
     </View>
     <Text
       numberOfLines={3}
@@ -35,7 +40,7 @@ const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
       color="tertiary">
       {goal.description}
     </Text>
-    <View style={[rowCenter, margin('bottom')('xs')]}>
+    <View style={[rowCenter, margin('bottom')('xxs')]}>
       <Text style={flex1} weight="semiBold" size="s" color="primary">
         {formatPrice(goal.amount, goal.currency)}
       </Text>
@@ -44,7 +49,7 @@ const GoalsListItem = ({ style, goal, onPress }: GoalsListItemProps) => (
       </Text>
     </View>
     <ProgressBar total={goal.targetAmount} current={goal.amount} />
-  </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({

@@ -10,7 +10,7 @@ import { mapTransactionsStats } from '../map';
 
 const dateFrom = dayjs().subtract(7, 'days').format('YYYY-MM-DD');
 const dateTo = dayjs().format('YYYY-MM-DD');
-const amountTo = 0;
+const amountTo = -0.01;
 
 const useTransactionsWeekStats = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
