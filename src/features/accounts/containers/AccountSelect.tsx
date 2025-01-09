@@ -22,7 +22,7 @@ const AccountSelect = () => {
 
   const handleOnAccountPress = useCallback(
     (account: Account) => {
-      navigation.pop();
+      navigation.goBack();
       dispatch(selectAccountAction(account));
     },
     [navigation, dispatch],

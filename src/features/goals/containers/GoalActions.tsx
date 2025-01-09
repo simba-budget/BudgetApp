@@ -25,7 +25,7 @@ const GoalActions = ({ id }: GoalActionsProps) => {
         iconName: 'eye',
         description: t('View goal details'),
         onPress: () => {
-          navigation.pop();
+          navigation.goBack();
           setTimeout(() => navigation.navigate(goalRoute, { id }));
         },
       },

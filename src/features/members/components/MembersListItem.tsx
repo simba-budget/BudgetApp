@@ -25,7 +25,7 @@ const MembersListItem = ({ style, member }: MembersListItemProps) => {
   const navigation = useNavigation<RootNavigation>();
 
   const handleOnMemberPress = useCallback(() => {
-    navigation.pop();
+    navigation.goBack();
     setTimeout(() => navigation.navigate(memberRoute, { id: member.id }));
   }, [navigation, member.id]);
 

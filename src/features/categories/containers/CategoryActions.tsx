@@ -25,7 +25,7 @@ const CategoryActions = ({ id }: CategoryActionsProps) => {
         iconName: 'eye',
         description: t('View category details'),
         onPress: () => {
-          navigation.pop();
+          navigation.goBack();
           setTimeout(() => navigation.navigate(categoryRoute, { id }));
         },
       },
