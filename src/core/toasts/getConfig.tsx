@@ -1,18 +1,15 @@
-import { Svg, View } from '@common/components';
-import { alignCenter } from '@styles/common';
-import { colors, fonts, fontSizes, gap, padding, sizes } from '@styles/lightTheme';
+import { Svg } from '@common/v2/components';
+import { alignCenter, center } from '@styles/common';
+import { gap, padding, sizes } from '@styles/lightTheme';
+import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { BaseToast } from 'react-native-toast-message';
 import { ToastConfig } from 'react-native-toast-message/lib/src/types';
 
 const renderSuccessIcon = () => (
-  <View
-    style={styles.successIcon}
-    align="center"
-    justify="center"
-    bgColor="success500">
-    <Svg size={14} color="white" name="check" />
+  <View style={styles.successIcon}>
+    <Svg size={14} color={colors.text.secondary} name="check" />
   </View>
 );
 
@@ -32,10 +29,12 @@ const getConfig = (width: number): ToastConfig => ({
 
 const styles = StyleSheet.create({
   container: {
-    ...gap('column')('s'),
+    ...gap('column')('xs'),
     ...padding('horizontal')('m'),
     ...alignCenter,
-    backgroundColor: colors.black500,
+    backgroundColor: colors.background.primary,
+    borderColor: colors.border.primary,
+    borderWidth: 1,
     height: 40,
     borderRadius: 20,
     elevation: 0,
@@ -48,16 +47,18 @@ const styles = StyleSheet.create({
   },
   label: {
     ...fontSizes.xs,
-    ...fonts.spaceGrotesk.medium,
-    color: colors.white,
+    ...fonts.urbanist.medium,
+    color: colors.text.primary,
     marginBottom: 0,
   },
   successIcon: {
+    ...center,
     borderWidth: 1,
     height: 20,
     width: 20,
     borderRadius: 10,
-    borderColor: colors.white,
+    borderColor: colors.border.accent,
+    backgroundColor: colors.background.accent,
   },
   description: {
     display: 'none',

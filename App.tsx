@@ -30,8 +30,8 @@ const App = () => {
         <CachedResourcesLoader>
           <GestureHandlerRootView style={flex1}>
             <SafeAreaProvider>
+              <StatusBar translucent />
               <ToastProvider>
-                <StatusBar translucent />
                 <Navigation linking={linking} />
               </ToastProvider>
             </SafeAreaProvider>

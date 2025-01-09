@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { padding, sizes } from '@styles/lightTheme';
 import { Colors } from '@styles/v2/types';
@@ -17,6 +18,8 @@ export interface BottomSheet2Props {
   backgroundColor?: keyof Colors['background'];
 }
 
+const activeStates = [KeyboardState.OPEN, KeyboardState.OPENING];
+
 const BottomSheet2 = ({
   onClose,
   children,
@@ -24,13 +27,13 @@ const BottomSheet2 = ({
 }: BottomSheet2Props) => {
   const { bottom } = useSafeAreaInsets();
   const { height, state } = useAnimatedKeyboard();
+  const isFocused = useIsFocused();
 
-  const sheetStyle = useAnimatedStyle(() => ({
-    paddingBottom:
-      (state.value === KeyboardState.OPEN || state.value === KeyboardState.OPENING
-        ? height.value
-        : bottom) + sizes.m,
-  }));
+  const sheetStyle = useAnimatedStyle(() => {
+    const isKeyboardActive = activeStates.includes(state.value) && isFocused;
+    const paddingBottom = (isKeyboardActive ? height.value : bottom) + sizes.m;
+    return { paddingBottom };
+  });
 
   return (
     <View style={flex1}>

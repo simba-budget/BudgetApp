@@ -33,6 +33,7 @@ const useCategoriesInfinity = ({ filter, sort }: Options) => {
     queryKey: getQueryKey(filter, sort, lastUpdated),
     queryFn,
     initialPageParam: 0,
+    placeholderData: (prev) => prev,
     getNextPageParam,
   });
 

@@ -11,11 +11,11 @@ export interface CategoryDeleteProps {
 }
 
 const CategoryDelete = ({ id }: CategoryDeleteProps) => {
-  const { goBack } = useNavigation<RootNavigation>();
+  const { goBack, pop } = useNavigation<RootNavigation>();
   const { t } = useCategoriesTranslations();
 
   const { deleteCategory, isSubmitting } = useDeleteCategory({
-    onSuccess: goBack,
+    onSuccess: () => pop(2),
   });
 
   return (

@@ -6,7 +6,7 @@ import React from 'react';
 export type CategoryDeleteScreenProps = StaticScreenProps<{ id: number }>;
 
 const CategoryDeleteScreen = ({ route }: CategoryDeleteScreenProps) => (
-  <SheetScreenContainer backgroundColor="secondary">
+  <SheetScreenContainer>
     <CategoryDelete id={route.params.id} />
   </SheetScreenContainer>
 );

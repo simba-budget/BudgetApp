@@ -1,7 +1,7 @@
 import IconButton from '@common/v2/components/IconButton';
 import { useCommonTranslations } from '@i18n/hooks';
-import { center } from '@styles/common';
-import { gap, padding } from '@styles/lightTheme';
+import { center, flex1, rowCenter, selfCenter } from '@styles/common';
+import { gap, margin, padding } from '@styles/lightTheme';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 
@@ -34,24 +34,24 @@ const Confirmation: FC<ConfirmationProps> = (props) => {
   const { t } = useCommonTranslations();
 
   return (
-    <View
-      style={[padding('horizontal')('m'), padding('top')('m'), gap('row')('xl')]}>
-      <View style={[gap('row')('s'), center, padding('horizontal')('m')]}>
-        <IconButton
-          color="primary"
-          size={56}
-          iconSize={28}
-          iconName="warning"
-          isDisabled
-        />
-        <Text color="primary" weight="semiBold" textAlign="center" size="l">
+    <View style={[padding('horizontal')('l'), padding('top')('m')]}>
+      <IconButton
+        style={[selfCenter, margin('bottom')('s')]}
+        color="primary"
+        size={56}
+        iconSize={28}
+        iconName="warning"
+        isDisabled
+      />
+      <View style={[gap('row')('xxs'), margin('bottom')('xl')]}>
+        <Text color="primary" weight="semiBold" textAlign="center" size="m">
           {title}
         </Text>
-        <Text weight="medium" textAlign="center" color="tertiary" size="m">
+        <Text weight="medium" textAlign="center" color="tertiary" size="s">
           {description}
         </Text>
       </View>
-      <View style={gap('row')('xs')}>
+      <View style={[gap('row')('xs')]}>
         <Button
           isSubmitting={isSubmitting}
           onPress={onConfirm}

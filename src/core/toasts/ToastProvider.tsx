@@ -20,7 +20,7 @@ const ToastProvider: FC<ToastProviderProps> = (props) => {
   return (
     <>
       {children}
-      <Toast topOffset={top + sizes.xs} config={config} />
+      <Toast position="top" topOffset={top + sizes.s} config={config} />
     </>
   );
 };

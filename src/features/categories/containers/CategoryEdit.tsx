@@ -17,10 +17,13 @@ export interface CategoryEditProps {
 const CategoryEdit = ({ id }: CategoryEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { t } = useCategoriesTranslations();
-  const { goBack } = useNavigation<RootNavigation>();
+  const { pop } = useNavigation<RootNavigation>();
   const { category, isLoading } = useCategory(id);
   const { handleSubmit, control, reset } = useCategoryForm();
-  const { editCategory, isSubmitting } = useEditCategory({ onSuccess: goBack });
+
+  const { editCategory, isSubmitting } = useEditCategory({
+    onSuccess: () => pop(2),
+  });
 
   const handleOnSubmit = (request: SaveCategoryRequest) => {
     return editCategory({ id, ...request, accountId });
