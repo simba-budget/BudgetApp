@@ -8,11 +8,13 @@ import { SaveCategoryRequest } from '../types';
 
 const initialFormData: SaveCategoryRequest = {
   name: '',
+  icon: 'card',
 };
 
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
     name: yup.string().required(t('Name is required')),
+    icon: yup.string().required(t('Icon is required')),
   });
 };
 
@@ -22,8 +24,8 @@ const useCategoryForm = () => {
   const { control, handleSubmit, reset } = useForm<SaveCategoryRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onChange',
-    reValidateMode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
   });
 
   return { control, handleSubmit, reset };

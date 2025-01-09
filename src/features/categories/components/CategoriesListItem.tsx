@@ -1,5 +1,11 @@
 import { Category } from '@api/clients/categories/types';
 import { IconButton, Text } from '@common/v2/components';
+import {
+  categoryActionsRoute,
+  categoryRoute,
+  RootNavigation,
+} from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -15,23 +21,25 @@ import {
 export interface CategoriesListItemProps {
   style?: StyleProp<ViewStyle>;
   category: Category;
-  onPress: () => void;
 }
 
-const CategoriesListItemProps = ({
-  style,
-  category,
-  onPress,
-}: CategoriesListItemProps) => (
-  <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <IconButton iconName="card" size={36} iconSize={18} isDisabled />
-    <View style={flex1}>
-      <Text weight="semiBold" size="s" color="primary">
-        {category.name}
-      </Text>
-    </View>
-  </TouchableOpacity>
-);
+const CategoriesListItemProps = ({ style, category }: CategoriesListItemProps) => {
+  const { navigate } = useNavigation<RootNavigation>();
+
+  return (
+    <TouchableOpacity
+      style={[style, styles.container]}
+      onLongPress={() => navigate(categoryActionsRoute, { id: category.id })}
+      onPress={() => navigate(categoryRoute, { id: category.id })}>
+      <IconButton iconName="card" size={36} iconSize={18} isDisabled />
+      <View style={flex1}>
+        <Text weight="semiBold" size="s" color="primary">
+          {category.name}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

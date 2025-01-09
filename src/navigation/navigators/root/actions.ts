@@ -52,6 +52,8 @@ import {
   SubscriptionEditRoute,
   subscriptionRoute,
   SubscriptionRoute,
+  SuccessRoute,
+  successRoute,
   tagAddRoute,
   TagEditRoute,
   tagEditRoute,
@@ -315,6 +317,13 @@ export const toExternalAccounts = ({ navigate }: RootNavigation) => {
 // bottom sheet
 export const toAccountSelect = ({ navigate }: RootNavigation) => {
   return navigate(accountSelectRoute);
+};
+
+export const toSuccess = (
+  { replace }: RootNavigation,
+  params: RootParams[SuccessRoute],
+) => {
+  return replace(successRoute, params);
 };
 
 export const toTransactionDelete = (

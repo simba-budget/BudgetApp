@@ -1,4 +1,4 @@
-import { Transaction, TransactionsSort } from '@api/clients/transactions/types';
+import { TransactionsSort } from '@api/clients/transactions/types';
 import { logoutAction } from '@features/auth/actions';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 

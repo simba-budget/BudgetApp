@@ -31,6 +31,7 @@ const GoalForm = ({
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Initial amount')}>
             <Input
+              iconName="search"
               {...rest}
               readOnly={isDisabled}
               placeholder={t('Initial amount')}
@@ -44,6 +45,7 @@ const GoalForm = ({
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Target amount')}>
             <Input
+              iconName="search"
               {...rest}
               readOnly={isDisabled}
               placeholder={t('Target amount')}
@@ -56,7 +58,12 @@ const GoalForm = ({
         name="currency"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Currency')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Currency')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Currency')}
+            />
           </FormControl>
         )}
       />
@@ -65,7 +72,12 @@ const GoalForm = ({
         name="name"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Name')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Name')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Name')}
+            />
           </FormControl>
         )}
       />
@@ -74,7 +86,12 @@ const GoalForm = ({
         name="description"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Description')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Description')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Description')}
+            />
           </FormControl>
         )}
       />
@@ -83,7 +100,12 @@ const GoalForm = ({
         name="startedAt"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Started at')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Started at')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Started at')}
+            />
           </FormControl>
         )}
       />
@@ -92,7 +114,12 @@ const GoalForm = ({
         name="endAt"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('End at')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('End at')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('End at')}
+            />
           </FormControl>
         )}
       />

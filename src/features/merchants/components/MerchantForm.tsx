@@ -30,7 +30,12 @@ const MerchantForm = ({
         name="name"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Name')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Name')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Name')}
+            />
           </FormControl>
         )}
       />

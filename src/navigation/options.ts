@@ -1,6 +1,10 @@
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
-import { StackNavigationOptions } from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  StackNavigationOptions,
+} from '@react-navigation/stack';
 import { colors } from '@styles/v2/urbanistTheme';
+import { Easing } from 'react-native-reanimated';
 
 import { StackHeaderLeft } from './components';
 import {
@@ -23,6 +27,17 @@ export const bottomSheetOptions: StackNavigationOptions = {
   gestureEnabled: false,
   presentation: 'transparentModal',
   detachPreviousScreen: false,
+  transitionSpec: {
+    open: {
+      animation: 'timing',
+      config: { duration: 500, easing: Easing.inOut(Easing.ease) },
+    },
+    close: {
+      animation: 'timing',
+      config: { duration: 500, easing: Easing.inOut(Easing.ease) },
+    },
+  },
+  cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
 };
 
 export const stackOptions: StackNavigationOptions = {

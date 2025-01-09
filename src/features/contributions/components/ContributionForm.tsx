@@ -30,7 +30,12 @@ const ContributionForm = ({
         name="amount"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Amount')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Amount')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Amount')}
+            />
           </FormControl>
         )}
       />
@@ -39,7 +44,12 @@ const ContributionForm = ({
         name="currency"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Currency')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Currency')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Currency')}
+            />
           </FormControl>
         )}
       />
@@ -48,7 +58,12 @@ const ContributionForm = ({
         name="date"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Date')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Date')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Date')}
+            />
           </FormControl>
         )}
       />
@@ -57,7 +72,12 @@ const ContributionForm = ({
         name="description"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Description')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Description')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Description')}
+            />
           </FormControl>
         )}
       />

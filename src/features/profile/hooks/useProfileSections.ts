@@ -4,8 +4,6 @@ import {
   RootNavigation,
   toCategories,
   toExternalAccounts,
-  toInvitations,
-  toMembers,
   toMerchants,
   toTags,
 } from '@navigation/navigators/root';

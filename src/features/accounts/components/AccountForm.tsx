@@ -29,7 +29,12 @@ const AccountForm = ({
         name="name"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Name')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Name')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Name')}
+            />
           </FormControl>
         )}
       />
@@ -38,7 +43,12 @@ const AccountForm = ({
         name="currency"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Currency')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Currency')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Currency')}
+            />
           </FormControl>
         )}
       />
@@ -47,7 +57,12 @@ const AccountForm = ({
         name="type"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Type')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Type')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Type')}
+            />
           </FormControl>
         )}
       />
@@ -57,6 +72,7 @@ const AccountForm = ({
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Initial balance')}>
             <Input
+              iconName="search"
               {...rest}
               readOnly={isDisabled}
               placeholder={t('Initial balance')}

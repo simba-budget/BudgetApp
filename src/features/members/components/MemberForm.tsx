@@ -30,7 +30,12 @@ const MemberForm = ({
         name="role"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Role')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Role')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Role')}
+            />
           </FormControl>
         )}
       />

@@ -1,5 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { useCategoriesTranslations } from '@i18n/hooks';
 import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
@@ -15,6 +16,7 @@ export interface CategoryEditProps {
 
 const CategoryEdit = ({ id }: CategoryEditProps) => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
+  const { t } = useCategoriesTranslations();
   const { goBack } = useNavigation<RootNavigation>();
   const { category, isLoading } = useCategory(id);
   const { handleSubmit, control, reset } = useCategoryForm();
@@ -30,6 +32,7 @@ const CategoryEdit = ({ id }: CategoryEditProps) => {
 
   return (
     <CategoryForm
+      title={t('Edit Category')}
       onSubmit={handleSubmit(handleOnSubmit)}
       isSubmitting={isSubmitting}
       control={control}

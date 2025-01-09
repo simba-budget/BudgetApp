@@ -20,6 +20,7 @@ const ContributionsSearch = ({
   return (
     <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
       <Input
+        iconName="search"
         onChange={onKeywordChange}
         value={keyword}
         placeholder={t('Search....')}

@@ -1,13 +1,11 @@
+import IconButton from '@common/v2/components/IconButton';
 import { useCommonTranslations } from '@i18n/hooks';
 import { center } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
-import { Colors } from '@styles/v2/types';
-import { colors } from '@styles/v2/urbanistTheme';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 
 import Button, { ButtonColor } from './Button';
-import Svg from './Svg';
 import Text from './Text';
 
 export type ConfirmationType = 'default' | 'danger';
@@ -36,19 +34,26 @@ const Confirmation: FC<ConfirmationProps> = (props) => {
   const { t } = useCommonTranslations();
 
   return (
-    <View style={[padding('horizontal')('m'), padding('top')('m'), gap('row')('l')]}>
-      <View style={[gap('row')('xs'), center, padding('horizontal')('m')]}>
-        <Svg size={56} name="warning" color={colors.text[iconColorMap[type]]} />
+    <View
+      style={[padding('horizontal')('m'), padding('top')('m'), gap('row')('xl')]}>
+      <View style={[gap('row')('s'), center, padding('horizontal')('m')]}>
+        <IconButton
+          color="primary"
+          size={56}
+          iconSize={28}
+          iconName="warning"
+          isDisabled
+        />
         <Text color="primary" weight="semiBold" textAlign="center" size="l">
           {title}
         </Text>
-        <Text weight="medium" textAlign="center" color="tertiary" size="s">
+        <Text weight="medium" textAlign="center" color="tertiary" size="m">
           {description}
         </Text>
       </View>
       <View style={gap('row')('xs')}>
         <Button
-          isDisabled={isSubmitting}
+          isSubmitting={isSubmitting}
           onPress={onConfirm}
           size="medium"
           color={buttonColorMap[type]}
@@ -64,11 +69,6 @@ const Confirmation: FC<ConfirmationProps> = (props) => {
       </View>
     </View>
   );
-};
-
-const iconColorMap: Record<ConfirmationType, keyof Colors['text']> = {
-  default: 'accent',
-  danger: 'error',
 };
 
 const buttonColorMap: Record<ConfirmationType, ButtonColor> = {

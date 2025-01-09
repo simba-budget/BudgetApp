@@ -4,7 +4,13 @@ import { gap, padding } from '@styles/lightTheme';
 import { Colors, FontSizes } from '@styles/v2/types';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import {
+  ActivityIndicator,
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 
 import Svg from './Svg';
 import Text from './Text';
@@ -20,6 +26,7 @@ export interface ButtonProps {
   size?: ButtonSize;
   color?: ButtonColor;
   iconName?: IconName;
+  isSubmitting?: boolean;
 }
 
 const Button = ({
@@ -28,6 +35,7 @@ const Button = ({
   isDisabled = false,
   title,
   iconName,
+  isSubmitting = false,
   size = 'medium',
   color = 'primary',
 }: ButtonProps) => (
@@ -42,13 +50,19 @@ const Button = ({
       containerSizeMap[size],
       style,
     ]}
-    disabled={isDisabled}>
-    {!!iconName && (
-      <Svg size={20} color={colors.text[titleColorMap[color]]} name={iconName} />
+    disabled={isDisabled || isSubmitting}>
+    {isSubmitting ? (
+      <ActivityIndicator size={24} color={colors.text[titleColorMap[color]]} />
+    ) : (
+      <>
+        {!!iconName && (
+          <Svg size={20} color={colors.text[titleColorMap[color]]} name={iconName} />
+        )}
+        <Text size={titleSizeMap[size]} color={titleColorMap[color]} weight="medium">
+          {title}
+        </Text>
+      </>
     )}
-    <Text size={titleSizeMap[size]} color={titleColorMap[color]} weight="medium">
-      {title}
-    </Text>
   </TouchableOpacity>
 );
 

@@ -20,3 +20,4 @@ export { default as Select, type SelectOption } from './Select';
 export { default as SheetScreenContainer } from './SheetScreenContainer';
 export { default as BottomSheet2 } from './BottomSheet2';
 export { default as Confirmation } from './Confirmation';
+export { default as Action } from './Action';

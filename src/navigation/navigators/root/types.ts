@@ -156,3 +156,12 @@ export const accountSelectRoute: AccountSelectRoute = 'AccountSelect';
 
 export type TransactionDeleteRoute = 'TransactionDelete';
 export const transactionDeleteRoute: TransactionDeleteRoute = 'TransactionDelete';
+
+export type SuccessRoute = 'Success';
+export const successRoute: SuccessRoute = 'Success';
+
+export type CategoryActionsRoute = 'CategoryActions';
+export const categoryActionsRoute: CategoryActionsRoute = 'CategoryActions';
+
+export type CategoryDeleteRoute = 'CategoryDelete';
+export const categoryDeleteRoute: CategoryDeleteRoute = 'CategoryDelete';

@@ -43,6 +43,10 @@ export const justifyCenter: FlexStyle = {
   justifyContent: 'center',
 };
 
+export const selfCenter: FlexStyle = {
+  alignSelf: 'center',
+};
+
 export const justifyStart: FlexStyle = {
   justifyContent: 'flex-start',
 };

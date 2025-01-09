@@ -11,13 +11,11 @@ export interface CategoriesListProps {
   isRefreshing: boolean;
   onRefresh: () => void;
   categories: Category[];
-  onCategoryPress: (category: Category) => void;
   isFetchingMore: boolean;
   onFetchMore: () => void;
 }
 
 const CategoriesList = ({
-  onCategoryPress,
   categories,
   isLoading,
   style,
@@ -28,9 +26,9 @@ const CategoriesList = ({
 }: CategoriesListProps) => {
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Category>) => (
-      <CategoriesListItem onPress={() => onCategoryPress(item)} category={item} />
+      <CategoriesListItem category={item} />
     ),
-    [onCategoryPress],
+    [],
   );
 
   return (

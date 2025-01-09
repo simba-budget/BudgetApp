@@ -31,7 +31,12 @@ const TransactionForm = ({
         name="amount"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Amount')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Amount')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Amount')}
+            />
           </FormControl>
         )}
       />
@@ -40,7 +45,12 @@ const TransactionForm = ({
         name="currency"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Currency')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Currency')} />
+            <Input
+              iconName="search"
+              {...rest}
+              readOnly={isDisabled}
+              placeholder={t('Currency')}
+            />
           </FormControl>
         )}
       />

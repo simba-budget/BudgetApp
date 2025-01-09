@@ -2,11 +2,13 @@ import { BaseModel, ListRequest, Sort } from '@api/types';
 
 export interface Category extends BaseModel {
   name: string;
+  icon: string;
 }
 
 export interface SaveCategoryRequest {
   name: string;
   accountId: number;
+  icon: string;
 }
 
 export interface CategoriesFilter {

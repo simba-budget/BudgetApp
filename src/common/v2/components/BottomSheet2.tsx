@@ -4,6 +4,11 @@ import { Colors } from '@styles/v2/types';
 import { colors } from '@styles/v2/urbanistTheme';
 import React, { ReactNode } from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import Animated, {
+  KeyboardState,
+  useAnimatedKeyboard,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export interface BottomSheet2Props {
@@ -15,26 +20,32 @@ export interface BottomSheet2Props {
 const BottomSheet2 = ({
   onClose,
   children,
-  backgroundColor = 'primary',
+  backgroundColor = 'secondary',
 }: BottomSheet2Props) => {
   const { bottom } = useSafeAreaInsets();
+  const { height, state } = useAnimatedKeyboard();
+
+  const sheetStyle = useAnimatedStyle(() => ({
+    paddingBottom:
+      (state.value === KeyboardState.OPEN || state.value === KeyboardState.OPENING
+        ? height.value
+        : bottom) + sizes.m,
+  }));
 
   return (
     <View style={flex1}>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={flex1} />
       </TouchableWithoutFeedback>
-      <View
+      <Animated.View
         style={[
           styles.container,
-          {
-            paddingBottom: bottom + sizes.m,
-            backgroundColor: colors.background[backgroundColor],
-          },
+          sheetStyle,
+          { backgroundColor: colors.background[backgroundColor] },
         ]}>
         <View style={styles.handle} />
         {children}
-      </View>
+      </Animated.View>
     </View>
   );
 };
@@ -42,10 +53,11 @@ const BottomSheet2 = ({
 const styles = StyleSheet.create({
   container: {
     ...padding('top')('s'),
+    ...padding('bottom')('m'),
     borderWidth: 1,
     borderColor: colors.border.primary,
-    borderTopRightRadius: 24,
-    borderTopLeftRadius: 24,
+    borderRadius: 32,
+    backgroundColor: colors.background.secondary,
   },
   handle: {
     alignSelf: 'center',

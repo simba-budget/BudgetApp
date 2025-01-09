@@ -1,8 +1,7 @@
 import { Button, FormControl, IconButton, Input, Text } from '@common/v2/components';
 import { useInvitationsTranslations } from '@i18n/hooks';
-import { center, flex1, rowCenter } from '@styles/common';
-import { gap, padding } from '@styles/lightTheme';
-import { colors } from '@styles/v2/urbanistTheme';
+import { center, selfCenter } from '@styles/common';
+import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
@@ -15,7 +14,6 @@ export interface InvitationFormProps {
   isSubmitting: boolean;
   isDisabled?: boolean;
   control: Control<SaveInvitationRequest>;
-  onClose: () => void;
 }
 
 const InvitationForm = ({
@@ -23,29 +21,23 @@ const InvitationForm = ({
   isSubmitting,
   onSubmit,
   control,
-  onClose,
   isDisabled = false,
 }: InvitationFormProps) => {
   const { t } = useInvitationsTranslations();
 
   return (
-    <View
-      style={[
-        padding('horizontal')('m'),
-        padding('top')('m'),
-        gap('row')('l'),
-        style,
-      ]}>
-      <View style={[gap('row')('xs'), center, padding('horizontal')('m')]}>
-        <IconButton
-          color="primary"
-          size={64}
-          iconSize={32}
-          iconName="userPlus"
-          isDisabled
-        />
-        <Text color="primary" weight="semiBold" textAlign="center" size="l">
-          {t('Invite member')}
+    <View style={[padding('horizontal')('l'), padding('top')('m'), style]}>
+      <IconButton
+        style={[selfCenter, margin('bottom')('s')]}
+        color="primary"
+        size={56}
+        iconSize={28}
+        iconName="userPlus"
+        isDisabled
+      />
+      <View style={[gap('row')('xxs'), margin('bottom')('xl')]}>
+        <Text color="primary" weight="semiBold" textAlign="center" size="m">
+          {t('Invite Member')}
         </Text>
         <Text weight="medium" textAlign="center" color="tertiary" size="s">
           {t(
@@ -57,27 +49,30 @@ const InvitationForm = ({
         control={control}
         name="email"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl isRequired error={error?.message} label={t('Email')}>
-            <Input {...rest} readOnly={isDisabled} placeholder={t('Email')} />
+          <FormControl
+            style={margin('bottom')('s')}
+            isRequired
+            error={error?.message}
+            label={t('Email')}>
+            <Input
+              autoFocus
+              keyboardType="email-address"
+              iconName="email"
+              autoCapitalize="none"
+              readOnly={isDisabled}
+              placeholder={t('Email')}
+              {...rest}
+            />
           </FormControl>
         )}
       />
-      <View style={gap('row')('xs')}>
-        <Button
-          isDisabled={isSubmitting}
-          onPress={onSubmit}
-          size="medium"
-          color="primary"
-          title={t('Invite')}
-        />
-        <Button
-          isDisabled={isSubmitting}
-          onPress={onClose}
-          size="medium"
-          color="tertiary"
-          title={t('Cancel')}
-        />
-      </View>
+      <Button
+        isSubmitting={isSubmitting}
+        onPress={onSubmit}
+        size="medium"
+        color="primary"
+        title={t('Invite')}
+      />
     </View>
   );
 };

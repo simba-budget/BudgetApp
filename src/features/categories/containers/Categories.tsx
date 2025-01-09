@@ -1,8 +1,5 @@
-import { Category } from '@api/clients/categories/types';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
-import { RootNavigation, toCategory } from '@navigation/navigators/root';
-import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
@@ -14,7 +11,6 @@ import { selectApiCategoriesFilter, selectCategoriesSort } from '../selectors';
 import { updateKeyword } from '../slice';
 
 const Categories = () => {
-  const navigation = useNavigation<RootNavigation>();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiCategoriesFilter);
   const sort = useAppSelector(selectCategoriesSort);
@@ -31,11 +27,6 @@ const Categories = () => {
     [dispatch],
   );
 
-  const handleOnCategoryPress = useCallback(
-    (category: Category) => toCategory(navigation, { id: category.id }),
-    [navigation],
-  );
-
   return (
     <View style={flex1}>
       <CategoriesSearch
@@ -49,7 +40,6 @@ const Categories = () => {
         isRefreshing={isRefetching}
         onRefresh={refetch}
         categories={categories}
-        onCategoryPress={handleOnCategoryPress}
       />
     </View>
   );

@@ -7,6 +7,7 @@ export const mapSaveCategoryRequest = (
   category?: Category | null,
 ): SaveCategoryRequest => ({
   name: category?.name ?? '',
+  icon: category?.icon ?? '',
 });
 
 export const mapCategoryToOption = (category: Category): SelectOption => ({
