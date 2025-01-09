@@ -1,4 +1,4 @@
-import { ScreenContainer } from '@common/v2/components';
+import { SheetScreenContainer } from '@common/v2/components';
 import { SubscriptionEdit } from '@features/subscriptions/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -8,9 +8,9 @@ export type SubscriptionEditScreenProps = StaticScreenProps<{
 }>;
 
 const SubscriptionEditScreen = ({ route }: SubscriptionEditScreenProps) => (
-  <ScreenContainer>
+  <SheetScreenContainer>
     <SubscriptionEdit id={route.params.id} />
-  </ScreenContainer>
+  </SheetScreenContainer>
 );
 
 export default SubscriptionEditScreen;

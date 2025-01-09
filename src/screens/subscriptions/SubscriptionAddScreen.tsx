@@ -1,11 +1,11 @@
-import { ScreenContainer } from '@common/v2/components';
+import { SheetScreenContainer } from '@common/v2/components';
 import { SubscriptionAdd } from '@features/subscriptions/containers';
 import React from 'react';
 
 const SubscriptionAddScreen = () => (
-  <ScreenContainer>
+  <SheetScreenContainer>
     <SubscriptionAdd />
-  </ScreenContainer>
+  </SheetScreenContainer>
 );
 
 export default SubscriptionAddScreen;

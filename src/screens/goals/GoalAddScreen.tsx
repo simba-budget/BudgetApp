@@ -1,11 +1,11 @@
-import { ScreenContainer } from '@common/v2/components';
+import { SheetScreenContainer } from '@common/v2/components';
 import { GoalAdd } from '@features/goals/containers';
 import React from 'react';
 
 const GoalAddScreen = () => (
-  <ScreenContainer>
+  <SheetScreenContainer>
     <GoalAdd />
-  </ScreenContainer>
+  </SheetScreenContainer>
 );
 
 export default GoalAddScreen;

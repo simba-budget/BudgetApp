@@ -163,8 +163,6 @@ const RootStack = createStackNavigator({
         [contributionEditRoute]: ContributionEditScreen,
         [contributionRoute]: ContributionScreen,
         [contributionsRoute]: ContributionsScreen,
-        [goalAddRoute]: GoalAddScreen,
-        [goalEditRoute]: GoalEditScreen,
         [goalRoute]: GoalScreen,
         [categoriesRoute]: CategoriesScreen,
         [categoryRoute]: CategoryScreen,
@@ -173,8 +171,6 @@ const RootStack = createStackNavigator({
         [tagsRoute]: TagsScreen,
         [memberRoute]: MemberScreen,
         [memberEditRoute]: MemberEditScreen,
-        [subscriptionAddRoute]: SubscriptionAddScreen,
-        [subscriptionEditRoute]: SubscriptionEditScreen,
         [merchantsRoute]: MerchantsScreen,
         [merchantAddRoute]: MerchantAddScreen,
         [merchantEditRoute]: MerchantEditScreen,
@@ -194,6 +190,8 @@ const RootStack = createStackNavigator({
         [invitationAddRoute]: InvitationAddScreen,
 
         // goals
+        [goalAddRoute]: GoalAddScreen,
+        [goalEditRoute]: GoalEditScreen,
         [goalDeleteRoute]: GoalDeleteScreen,
         [goalActionsRoute]: GoalActionsScreen,
 
@@ -218,6 +216,8 @@ const RootStack = createStackNavigator({
         [categoryDeleteRoute]: CategoryDeleteScreen,
 
         // subscriptions
+        [subscriptionAddRoute]: SubscriptionAddScreen,
+        [subscriptionEditRoute]: SubscriptionEditScreen,
         [subscriptionActionsRoute]: SubscriptionActionsScreen,
         [subscriptionDeleteRoute]: SubscriptionDeleteScreen,
       },

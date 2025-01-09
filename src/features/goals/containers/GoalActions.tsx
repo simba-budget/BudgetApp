@@ -26,7 +26,10 @@ const GoalActions = ({ id }: GoalActionsProps) => {
         title: t('View'),
         iconName: 'eye',
         description: t('View goal details'),
-        onPress: () => navigation.replace(goalRoute, { id }),
+        onPress: () => {
+          navigation.pop();
+          setTimeout(() => navigation.navigate(goalRoute, { id }));
+        },
       },
       {
         title: t('Edit'),

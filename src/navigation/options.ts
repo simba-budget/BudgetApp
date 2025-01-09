@@ -52,6 +52,7 @@ export const stackOptions: StackNavigationOptions = {
 
 export const bottomTabsOptions: BottomTabNavigationOptions = {
   headerTitleAlign: 'left',
+  animation: 'shift',
   headerShadowVisible: false,
   headerTitleContainerStyle,
   headerLeftContainerStyle,

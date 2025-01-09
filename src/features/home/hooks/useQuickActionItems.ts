@@ -1,9 +1,8 @@
 import { useHomeTranslations } from '@i18n/hooks';
 import {
+  goalAddRoute,
   RootNavigation,
-  tagAddRoute,
   toCategoryAdd,
-  toInvitationAdd,
   toMembers,
   toTransactionAdd,
 } from '@navigation/navigators/root';
@@ -19,11 +18,6 @@ const useQuickActionItems = () => {
   return useMemo<QuickActionItem[]>(
     () => [
       {
-        title: t('Invite\nMember'),
-        iconName: 'userPlus',
-        onPress: () => toInvitationAdd(navigation),
-      },
-      {
         title: t('Create\nTransaction'),
         iconName: 'arrowRightLeft',
         onPress: () => toTransactionAdd(navigation),
@@ -34,9 +28,9 @@ const useQuickActionItems = () => {
         onPress: () => toCategoryAdd(navigation),
       },
       {
-        title: t('Create\nTag'),
+        title: t('Create\nGoal'),
         iconName: 'squaresPlus',
-        onPress: () => navigation.push(tagAddRoute),
+        onPress: () => navigation.push(goalAddRoute),
       },
       {
         title: t('View\nMembers'),
