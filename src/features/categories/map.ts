@@ -1,5 +1,5 @@
 import { Category } from '@api/clients/categories/types';
-import { SelectOption } from '@common/v2/components';
+import { SelectOption } from 'src/common/components';
 
 import { SaveCategoryRequest } from './types';
 

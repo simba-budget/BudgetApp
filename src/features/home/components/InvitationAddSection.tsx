@@ -1,10 +1,10 @@
-import { Button, Text } from '@common/v2/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { Button, Text } from 'src/common/components';
 
 export interface InvitationAddSectionProps {
   style?: StyleProp<ViewStyle>;

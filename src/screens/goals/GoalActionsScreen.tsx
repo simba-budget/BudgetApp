@@ -1,7 +1,7 @@
-import { SheetScreenContainer } from '@common/v2/components';
 import { GoalActions } from '@features/goals/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+import { SheetScreenContainer } from 'src/common/components';
 
 export type GoalActionsScreenProps = StaticScreenProps<{ id: number }>;
 

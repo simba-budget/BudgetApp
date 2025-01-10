@@ -1,4 +1,3 @@
-import { ScrollView } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountStrict } from '@features/accounts/selectors';
 import { useProfile } from '@features/profile/hooks';
@@ -21,6 +20,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
+import { ScrollView } from 'src/common/components';
 
 import {
   AccountSection,

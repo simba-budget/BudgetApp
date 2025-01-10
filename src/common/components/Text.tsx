@@ -1,40 +1,35 @@
-import { colors, fontSizes, themeTextColors } from '@styles/lightTheme';
-import { FontSizes, ThemeTextColors } from '@styles/types';
-import hexToRgba from 'hex-to-rgba';
-import React, { FC, useMemo } from 'react';
+import { Colors, Fonts, FontSizes } from '@styles/v2/types';
+import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
+import React, { useMemo } from 'react';
 import { Text as RNText, TextProps as RNTextProps, TextStyle } from 'react-native';
 
 export interface TextProps extends RNTextProps {
   size?: keyof FontSizes;
-  color?: keyof ThemeTextColors;
-  opacity?: number;
+  color?: keyof Colors['text'];
   textAlign?: TextStyle['textAlign'];
   textTransform?: TextStyle['textTransform'];
-  textDecorationLine?: TextStyle['textDecorationLine'];
+  weight?: keyof Fonts['urbanist'];
 }
 
-const Text: FC<TextProps> = (props) => {
-  const {
-    size = 's',
-    color = 'primary',
-    textAlign,
-    textTransform,
-    textDecorationLine,
-    style,
-    opacity = 1,
-    children,
-    ...rest
-  } = props;
-
+const Text = ({
+  size = 's',
+  color = 'primary',
+  weight = 'regular',
+  textAlign,
+  textTransform,
+  style,
+  children,
+  ...rest
+}: TextProps) => {
   const dynamicStyle = useMemo<TextStyle>(
     () => ({
-      color: hexToRgba(colors[themeTextColors[color]], opacity),
+      ...fonts.urbanist[weight],
+      ...fontSizes[size],
+      color: colors.text[color],
       textAlign,
       textTransform,
-      textDecorationLine,
-      ...fontSizes[size],
     }),
-    [color, textAlign, size, textTransform, opacity, textDecorationLine],
+    [color, textAlign, textTransform, weight, size],
   );
 
   return (

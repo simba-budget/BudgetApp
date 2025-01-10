@@ -1,4 +1,3 @@
-import { Button, ScreenContainer } from '@common/v2/components';
 import {
   useCreateInstitutionLink,
   useCreateLinkToken,
@@ -12,6 +11,7 @@ import {
   LinkSuccess,
   open,
 } from 'react-native-plaid-link-sdk';
+import { Button, ScreenContainer } from 'src/common/components';
 
 const PlaidScreen = () => {
   const [linkToken, setLinkToken] = useState<string | null>(null);

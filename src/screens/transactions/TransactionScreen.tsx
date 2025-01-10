@@ -1,7 +1,7 @@
-import { SheetScreenContainer } from '@common/v2/components';
 import { Transaction } from '@features/transactions/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+import { SheetScreenContainer } from 'src/common/components';
 
 export type TransactionScreenProps = StaticScreenProps<{ id: number }>;
 

@@ -1,6 +1,6 @@
-import { ScreenContainer } from '@common/v2/components';
 import { Transactions } from '@features/transactions/containers';
 import React from 'react';
+import { ScreenContainer } from 'src/common/components';
 
 const TransactionsScreen = () => (
   <ScreenContainer>

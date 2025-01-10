@@ -1,7 +1,7 @@
-import { ScreenContainer } from '@common/v2/components';
 import { Contributions } from '@features/contributions/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+import { ScreenContainer } from 'src/common/components';
 
 export type ContributionsScreenProps = StaticScreenProps<{ goalId: number }>;
 

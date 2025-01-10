@@ -1,7 +1,7 @@
-import { SheetScreenContainer } from '@common/v2/components';
 import { Subscription } from '@features/subscriptions/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+import { SheetScreenContainer } from 'src/common/components';
 
 export type SubscriptionScreenProps = StaticScreenProps<{ id: number }>;
 

@@ -1,6 +1,6 @@
-import { ScreenContainer } from '@common/v2/components';
 import { Subscriptions } from '@features/subscriptions/containers';
 import React from 'react';
+import { ScreenContainer } from 'src/common/components';
 
 const SubscriptionsScreen = () => (
   <ScreenContainer>

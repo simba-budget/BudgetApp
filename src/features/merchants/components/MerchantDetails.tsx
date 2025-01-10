@@ -1,10 +1,10 @@
 import { Merchant } from '@api/clients/merchants/types';
-import { Button } from '@common/v2/components';
-import { Text } from '@common/v2/components';
 import { useMerchantsTranslations } from '@i18n/hooks';
 import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { RefreshControl, ScrollView, StyleProp, ViewStyle } from 'react-native';
+import { Text } from 'src/common/components';
+import { Button } from 'src/common/components';
 
 export interface MerchantDetailsProps {
   style?: StyleProp<ViewStyle>;

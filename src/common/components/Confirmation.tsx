@@ -1,8 +1,8 @@
-import IconButton from '@common/v2/components/IconButton';
+import IconButton from '@common/components/IconButton';
 import { useCommonTranslations } from '@i18n/hooks';
 import { selfCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
 import Button, { ButtonColor } from './Button';
@@ -20,17 +20,15 @@ export interface ConfirmationProps {
   isSubmitting?: boolean;
 }
 
-const Confirmation: FC<ConfirmationProps> = (props) => {
-  const {
-    onConfirm,
-    description,
-    title,
-    confirmText,
-    isSubmitting = false,
-    type = 'default',
-    onClose,
-  } = props;
-
+const Confirmation = ({
+  onConfirm,
+  description,
+  title,
+  confirmText,
+  isSubmitting = false,
+  type = 'default',
+  onClose,
+}: ConfirmationProps) => {
   const { t } = useCommonTranslations();
 
   return (

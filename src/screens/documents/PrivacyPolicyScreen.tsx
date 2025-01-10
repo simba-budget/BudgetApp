@@ -1,6 +1,6 @@
-import { ScreenContainer } from '@common/v2/components';
 import { PrivacyPolicy } from '@features/documents/hoc';
 import React from 'react';
+import { ScreenContainer } from 'src/common/components';
 
 const PrivacyPolicyScreen = () => (
   <ScreenContainer>

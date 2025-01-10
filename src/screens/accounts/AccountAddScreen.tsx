@@ -1,6 +1,6 @@
-import { ScreenContainer } from '@common/v2/components';
 import { AccountAdd } from '@features/accounts/containers';
 import React from 'react';
+import { ScreenContainer } from 'src/common/components';
 
 const AccountAddScreen = () => (
   <ScreenContainer>

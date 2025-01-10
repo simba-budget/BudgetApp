@@ -1,6 +1,6 @@
-import { SheetScreenContainer } from '@common/v2/components';
 import { TransactionAdd } from '@features/transactions/containers';
 import React from 'react';
+import { SheetScreenContainer } from 'src/common/components';
 
 const TransactionAddScreen = () => (
   <SheetScreenContainer>

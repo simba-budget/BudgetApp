@@ -1,58 +1,57 @@
 import { SendOtpRequest } from '@api/clients/auth/types';
-import {
-  Button,
-  FormControl,
-  Input,
-  ScrollView,
-  TextBody,
-  TextHeading,
-  View,
-} from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
-import { registrationRoute } from '@navigation/navigators/root';
-import { flex1 } from '@styles/common';
-import { margin } from '@styles/lightTheme';
-import React, { FC } from 'react';
+import { registrationRoute, RootNavigation } from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
+import { center, flex1, fullWidth, rowCenter } from '@styles/common';
+import { gap, margin, padding } from '@styles/lightTheme';
+import React from 'react';
 import { Control, Controller } from 'react-hook-form';
-import { StyleProp, ViewStyle } from 'react-native';
-
-import AuthFooter from './AuthFooter';
-import SocialLogins from './SocialLogins';
+import { TouchableOpacity, View } from 'react-native';
+import { Button, FormControl, Input, Text } from 'src/common/components';
 
 export interface SignInFormProps {
-  style?: StyleProp<ViewStyle>;
   control: Control<SendOtpRequest>;
   onSubmit: () => void;
   isSubmitting: boolean;
 }
 
-const SendOtpForm: FC<SignInFormProps> = (props) => {
-  const { style, control, isSubmitting, onSubmit } = props;
+const SendOtpForm = ({ control, isSubmitting, onSubmit }: SignInFormProps) => {
+  const navigation = useNavigation<RootNavigation>();
   const { t } = useAuthTranslations();
 
   return (
-    <View flex1 pt="s" style={style}>
-      <ScrollView gap="xl">
-        <View gap="s">
-          <TextHeading size="xxl">{t('Welcome Back')}</TextHeading>
-          <TextBody>
-            {t(
-              'We happy to see you again! to use your account, you should sign in first',
-            )}
-          </TextBody>
-        </View>
+    <View style={[flex1, padding('horizontal')('m'), padding('top')('l')]}>
+      <View style={[flex1, center]}>
+        <Text
+          textAlign="center"
+          style={margin('bottom')('xs')}
+          color="primary"
+          weight="bold"
+          size="xxl">
+          {t('Welcome Back')}
+        </Text>
+        <Text
+          textAlign="center"
+          color="tertiary"
+          size="m"
+          weight="medium"
+          style={margin('bottom')('xl')}>
+          {t('We happy to see you again! Sign in to continue')}
+        </Text>
         <Controller
           control={control}
           name="email"
           render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
             <FormControl
-              style={flex1}
+              style={fullWidth}
               error={error?.message}
               isRequired
               label={t('Email')}>
               <Input
                 {...rest}
-                isError={!!error}
+                autoComplete="email"
+                autoFocus
+                autoCorrect={false}
                 keyboardType="email-address"
                 iconName="email"
                 autoCapitalize="none"
@@ -61,22 +60,24 @@ const SendOtpForm: FC<SignInFormProps> = (props) => {
             </FormControl>
           )}
         />
-      </ScrollView>
-      <View ph="l" isBottomSafe pb="l" gap="s">
-        <Button
-          onPress={onSubmit}
-          isLoading={isSubmitting}
-          style={margin('bottom')('s')}
-          variant="primary"
-          size="medium"
-          title={t('Sign in')}
-        />
-        <SocialLogins
-          label="Don’t have an account? Sign Up"
-          route={registrationRoute}
-          dividerText={t('Or sign in with')}
-        />
-        <AuthFooter />
+      </View>
+      <Button
+        style={margin('bottom')('s')}
+        onPress={onSubmit}
+        isSubmitting={isSubmitting}
+        color="primary"
+        size="medium"
+        title={t('Sign In')}
+      />
+      <View style={[rowCenter, center, gap('column')('xxs')]}>
+        <Text weight="medium" size="s" color="tertiary" textAlign="center">
+          {t('Don’t have an account?')}
+        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate(registrationRoute)}>
+          <Text weight="semiBold" size="s" color="primary" textAlign="center">
+            {t('Sign Up')}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

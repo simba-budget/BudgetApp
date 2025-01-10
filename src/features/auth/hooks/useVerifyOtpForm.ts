@@ -21,7 +21,7 @@ const useVerifyOtpForm = () => {
   const { control, handleSubmit } = useForm<Pick<VerifyOtpRequest, 'otp'>>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onChange',
+    mode: 'onBlur',
     reValidateMode: 'onChange',
   });
 

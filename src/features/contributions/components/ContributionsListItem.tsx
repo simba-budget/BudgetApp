@@ -1,9 +1,9 @@
 import { Contribution } from '@api/clients/contributions/types';
-import { Text } from '@common/v2/components';
 import { padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import { Text } from 'src/common/components';
 
 export interface ContributionsListItemProps {
   style?: StyleProp<ViewStyle>;

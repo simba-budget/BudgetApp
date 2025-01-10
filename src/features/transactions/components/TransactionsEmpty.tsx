@@ -1,7 +1,7 @@
-import { EmptySection } from '@common/v2/components';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { EmptySection } from 'src/common/components';
 
 export interface TransactionsEmptyProps {
   style?: StyleProp<ViewStyle>;

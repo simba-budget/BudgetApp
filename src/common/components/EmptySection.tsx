@@ -1,4 +1,4 @@
-import { Button, Text } from '@common/v2/components/index';
+import { Button, Text } from '@common/components/index';
 import { center } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';

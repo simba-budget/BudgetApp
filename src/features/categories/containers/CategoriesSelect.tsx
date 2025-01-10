@@ -1,4 +1,3 @@
-import { Select, SelectOption, Text } from '@common/v2/components';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { useCategories } from '@features/categories/hooks';
@@ -6,6 +5,7 @@ import { mapCategoryToOption } from '@features/categories/map';
 import { useCategoriesTranslations } from '@i18n/hooks';
 import React, { useMemo, useState } from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Select, SelectOption, Text } from 'src/common/components';
 
 export interface CategoriesSelectProps {
   style?: StyleProp<ViewStyle>;

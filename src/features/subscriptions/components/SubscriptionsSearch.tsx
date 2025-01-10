@@ -1,8 +1,8 @@
-import { Input } from '@common/v2/components';
 import { useSubscriptionsTranslations } from '@i18n/hooks';
 import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { Input } from 'src/common/components';
 
 export interface SubscriptionsSearchProps {
   style?: StyleProp<ViewStyle>;

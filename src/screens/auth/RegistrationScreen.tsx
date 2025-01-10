@@ -1,11 +1,12 @@
-import { ScreenContainer } from '@common/v2/components';
 import { Registration } from '@features/auth/containers';
 import React from 'react';
+import { FormScreenContainer, StatusBar } from 'src/common/components';
 
 const RegistrationScreen = () => (
-  <ScreenContainer>
+  <FormScreenContainer>
+    <StatusBar translucent={false} />
     <Registration />
-  </ScreenContainer>
+  </FormScreenContainer>
 );
 
 export default RegistrationScreen;

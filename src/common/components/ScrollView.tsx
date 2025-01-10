@@ -1,67 +1,60 @@
-import { sizes } from '@styles/lightTheme';
+import { padding, sizes } from '@styles/lightTheme';
 import { Sizes } from '@styles/types';
-import React, { forwardRef, useMemo } from 'react';
+import { colors } from '@styles/v2/urbanistTheme';
+import React, { useMemo } from 'react';
 import {
+  RefreshControl,
   ScrollView as RNScrollView,
   ScrollViewProps as RNScrollViewProps,
-  ViewStyle,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export type BottomSafeType = 'tabs' | 'default';
+import { scrollIndicatorInsets } from '../constants';
 
 export interface ScrollViewProps
   extends Omit<
     RNScrollViewProps,
-    | 'scrollIndicatorInsets'
-    | 'showsVerticalScrollIndicator'
-    | 'showsHorizontalScrollIndicator'
-    | 'bounces'
+    'scrollIndicatorInsets' | 'showsVerticalScrollIndicator'
   > {
+  isSafeBottomArea?: boolean;
+  refreshing?: boolean;
+  onRefresh?: () => void;
   gap?: keyof Sizes;
-  ph?: keyof Sizes;
-  pv?: keyof Sizes;
-  bottomSafe?: BottomSafeType;
 }
 
-const ScrollView = forwardRef<RNScrollView, ScrollViewProps>((props, ref) => {
-  const {
-    gap = 'm',
-    ph = 'l',
-    pv,
-    bottomSafe,
-    contentContainerStyle,
-    ...rest
-  } = props;
+const ScrollView = ({
+  isSafeBottomArea = false,
+  contentContainerStyle,
+  refreshing,
+  onRefresh,
+  ...rest
+}: ScrollViewProps) => {
   const { bottom } = useSafeAreaInsets();
 
-  const bottomSafePadding = useMemo<number>(() => {
-    if (!bottomSafe) return 0;
-    return bottomSafe === 'tabs' ? 54 + bottom : bottom;
-  }, [bottomSafe, bottom]);
-
-  const contentStyle = useMemo<ViewStyle>(
-    () => ({
-      gap: sizes[gap],
-      paddingHorizontal: sizes[ph],
-      ...(pv && {
-        paddingTop: sizes[pv],
-        paddingBottom: sizes[pv] + bottomSafePadding,
-      }),
-    }),
-    [gap, ph, pv, bottomSafePadding],
+  const paddingBottom = useMemo<number>(
+    () => (isSafeBottomArea ? bottom : 0) + sizes.m,
+    [bottom, isSafeBottomArea],
   );
 
   return (
     <RNScrollView
-      ref={ref}
-      bounces={false}
       showsVerticalScrollIndicator={false}
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={[contentStyle, contentContainerStyle]}
+      scrollIndicatorInsets={scrollIndicatorInsets}
+      contentContainerStyle={[
+        padding('horizontal')('m'),
+        contentContainerStyle,
+        { paddingBottom },
+      ]}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing || false}
+          onRefresh={onRefresh || undefined}
+          tintColor={colors.text.primary}
+        />
+      }
       {...rest}
     />
   );
-});
+};
 
 export default ScrollView;

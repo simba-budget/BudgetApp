@@ -24,8 +24,8 @@ const useSendOtpForm = () => {
   const { control, handleSubmit } = useForm<SendOtpRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onChange',
-    reValidateMode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
   });
 
   return { control, handleSubmit };

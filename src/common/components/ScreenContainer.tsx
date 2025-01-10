@@ -1,6 +1,6 @@
 import { flex1 } from '@styles/common';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 export interface ScreenContainerProps {
@@ -8,11 +8,9 @@ export interface ScreenContainerProps {
   children: ReactNode;
 }
 
-const ScreenContainer: FC<ScreenContainerProps> = (props) => {
-  const { children, style } = props;
-
-  return <View style={[styles.container, style]}>{children}</View>;
-};
+const ScreenContainer = ({ children, style }: ScreenContainerProps) => (
+  <View style={[styles.container, style]}>{children}</View>
+);
 
 const styles = StyleSheet.create({
   container: {

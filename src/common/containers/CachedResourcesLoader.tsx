@@ -1,9 +1,12 @@
 import { useCachedResources } from '@common/hooks';
-import React, { FC, PropsWithChildren, useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 
-const CachedResourcesLoader: FC<PropsWithChildren> = (props) => {
-  const { children } = props;
+export interface CachedResourcesLoader {
+  children: ReactNode;
+}
+
+const CachedResourcesLoader = ({ children }: CachedResourcesLoader) => {
   const { isLoaded } = useCachedResources();
 
   useEffect(() => {

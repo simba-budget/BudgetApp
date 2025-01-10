@@ -1,11 +1,12 @@
-import { ScreenContainer } from '@common/v2/components';
 import { SendOtp } from '@features/auth/containers';
 import React from 'react';
+import { FormScreenContainer, StatusBar } from 'src/common/components';
 
 const SendOtpScreen = () => (
-  <ScreenContainer>
+  <FormScreenContainer>
+    <StatusBar translucent={false} />
     <SendOtp />
-  </ScreenContainer>
+  </FormScreenContainer>
 );
 
 export default SendOtpScreen;

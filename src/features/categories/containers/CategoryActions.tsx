@@ -1,5 +1,4 @@
-import { Actions } from '@common/v2/components';
-import { ActionItem } from '@common/v2/components/Actions';
+import { ActionItem } from '@common/components/Actions';
 import { useCategoriesTranslations } from '@i18n/hooks';
 import {
   categoryDeleteRoute,
@@ -9,6 +8,7 @@ import {
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useMemo } from 'react';
+import { Actions } from 'src/common/components';
 
 export interface CategoryActionsProps {
   id: number;

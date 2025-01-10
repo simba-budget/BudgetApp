@@ -1,5 +1,5 @@
 import { sizes } from '@styles/lightTheme';
-import React, { FC, ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
@@ -11,8 +11,7 @@ export interface ToastProviderProps {
   children: ReactNode;
 }
 
-const ToastProvider: FC<ToastProviderProps> = (props) => {
-  const { children } = props;
+const ToastProvider = ({ children }: ToastProviderProps) => {
   const { top } = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const config = useMemo<ToastConfig>(() => getConfig(width), [width]);

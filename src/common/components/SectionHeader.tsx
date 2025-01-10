@@ -2,7 +2,7 @@ import { flex1, rowCenter } from '@styles/common';
 import React from 'react';
 import { SectionListData, View } from 'react-native';
 
-import { Section } from '../../types';
+import { Section } from '../types';
 
 import Text from './Text';
 

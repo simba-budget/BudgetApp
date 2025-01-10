@@ -1,5 +1,4 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { IconButton, Text } from '@common/v2/components';
 import {
   RootNavigation,
   transactionActionsRoute,
@@ -19,6 +18,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { IconButton, Text } from 'src/common/components';
 
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;

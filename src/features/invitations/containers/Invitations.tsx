@@ -1,6 +1,5 @@
 import { Invitation } from '@api/clients/invitations/types';
 import { debounceTime } from '@common/constants';
-import { Button } from '@common/v2/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import {
   RootNavigation,
@@ -12,6 +11,7 @@ import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { SafeAreaView, View } from 'react-native';
+import { Button } from 'src/common/components';
 import { useDebounce } from 'use-debounce';
 
 import { InvitationsList, InvitationsSearch } from '../components';

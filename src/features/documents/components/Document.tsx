@@ -2,18 +2,16 @@ import {
   DocumentTranslation,
   Document as DocumentType,
 } from '@api/clients/documents/types';
-import { Markdown, ScrollView } from '@common/components';
 import { getTranslation } from '@utils/translations';
-import React, { FC, useMemo } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import React, { useMemo } from 'react';
+import { ScrollView } from 'react-native';
+import { Markdown } from 'src/common/components';
 
 export interface DocumentProps {
-  style?: StyleProp<ViewStyle>;
   document: DocumentType;
 }
 
-const Document: FC<DocumentProps> = (props) => {
-  const { style, document } = props;
+const Document = ({ document }: DocumentProps) => {
   const { translations } = document;
   const locale = 'EN';
 
@@ -23,7 +21,7 @@ const Document: FC<DocumentProps> = (props) => {
   );
 
   return (
-    <ScrollView pv="l" style={style} bottomSafe="default">
+    <ScrollView>
       <Markdown content={translation?.content ?? ''} />
     </ScrollView>
   );

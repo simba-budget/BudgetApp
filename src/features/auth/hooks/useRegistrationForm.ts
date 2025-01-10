@@ -30,8 +30,8 @@ const useRegistrationForm = () => {
   const { control, handleSubmit } = useForm<RegisterRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onChange',
-    reValidateMode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
   });
 
   return { control, handleSubmit };

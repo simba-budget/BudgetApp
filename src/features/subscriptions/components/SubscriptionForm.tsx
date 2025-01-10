@@ -1,8 +1,8 @@
-import { Button, FormControl, Input } from '@common/v2/components';
 import { useSubscriptionsTranslations } from '@i18n/hooks';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { Button, FormControl, Input } from 'src/common/components';
 
 import { SaveSubscriptionRequest } from '../types';
 

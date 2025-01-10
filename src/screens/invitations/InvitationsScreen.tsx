@@ -1,6 +1,6 @@
-import { ScreenContainer } from '@common/v2/components';
 import { Invitations } from '@features/invitations/containers';
 import React from 'react';
+import { ScreenContainer } from 'src/common/components';
 
 const InvitationsScreen = () => (
   <ScreenContainer>

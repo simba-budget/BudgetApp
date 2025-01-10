@@ -1,7 +1,5 @@
 import { Tag } from '@api/clients/tags/types';
 import { Transaction } from '@api/clients/transactions/types';
-import { Badge, DetailsItem, IconButton } from '@common/v2/components';
-import { Text } from '@common/v2/components';
 import { formatExternalAccount } from '@features/externalAccounts/utils';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { center, rowCenter } from '@styles/common';
@@ -11,6 +9,8 @@ import { formatDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import React, { useCallback } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { Text } from 'src/common/components';
+import { Badge, DetailsItem, IconButton } from 'src/common/components';
 
 export interface TransactionDetailsProps {
   style?: StyleProp<ViewStyle>;

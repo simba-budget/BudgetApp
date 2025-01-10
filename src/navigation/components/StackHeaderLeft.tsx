@@ -1,6 +1,6 @@
-import { IconButton } from '@common/v2/components';
 import { HeaderBackButtonProps } from '@react-navigation/elements';
 import React from 'react';
+import { IconButton } from 'src/common/components';
 
 const StackHeaderLeft = ({ onPress }: HeaderBackButtonProps) =>
   onPress ? <IconButton iconName="arrowLeft" onPress={onPress} /> : undefined;

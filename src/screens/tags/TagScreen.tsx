@@ -1,7 +1,7 @@
-import { SheetScreenContainer } from '@common/v2/components';
 import { Tag } from '@features/tags/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
+import { SheetScreenContainer } from 'src/common/components';
 
 export type TagScreenProps = StaticScreenProps<{ id: number }>;
 

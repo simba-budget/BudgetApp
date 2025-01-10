@@ -1,4 +1,3 @@
-import { Svg } from '@common/v2/components';
 import { alignCenter, center } from '@styles/common';
 import { gap, padding, sizes } from '@styles/lightTheme';
 import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
@@ -6,6 +5,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { BaseToast } from 'react-native-toast-message';
 import { ToastConfig } from 'react-native-toast-message/lib/src/types';
+import { Svg } from 'src/common/components';
 
 const renderSuccessIcon = () => (
   <View style={styles.successIcon}>

@@ -1,5 +1,5 @@
-import { ScrollView } from '@common/v2/components';
 import React from 'react';
+import { ScrollView } from 'src/common/components';
 
 import { ProfileHeader, ProfileSection } from '../components';
 import { useProfile, useProfileSections } from '../hooks';

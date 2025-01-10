@@ -1,4 +1,4 @@
-import { Text } from '@common/v2/components/index';
+import { Text } from '@common/components/index';
 import { flex1, rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
 import { Colors } from '@styles/v2/types';

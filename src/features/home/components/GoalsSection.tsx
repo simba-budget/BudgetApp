@@ -1,5 +1,4 @@
 import { Goal } from '@api/clients/goals/types';
-import { Text } from '@common/v2/components';
 import { GoalsEmpty, GoalsListItem } from '@features/goals/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
@@ -14,6 +13,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { Text } from 'src/common/components';
 
 export interface GoalsSectionProps {
   style?: StyleProp<ViewStyle>;

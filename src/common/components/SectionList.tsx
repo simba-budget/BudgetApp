@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { scrollIndicatorInsets } from '../../constants';
-import { Section } from '../../types';
+import { scrollIndicatorInsets } from '../constants';
+import { Section } from '../types';
 
 import ListFooter from './ListFooter';
 import SectionHeader from './SectionHeader';

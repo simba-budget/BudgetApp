@@ -1,4 +1,3 @@
-import { BarChart, Text } from '@common/v2/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -12,6 +11,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { ChartData } from 'react-native-chart-kit/dist/HelperTypes';
+import { BarChart, Text } from 'src/common/components';
 
 export interface TransactionsWeekStatsProps {
   style?: StyleProp<ViewStyle>;

@@ -1,5 +1,5 @@
-import { CachedResourcesLoader } from '@common/hoc';
-import { StatusBar } from '@common/v2/components';
+import { StatusBar } from '@common/components';
+import { CachedResourcesLoader } from '@common/containers';
 import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';

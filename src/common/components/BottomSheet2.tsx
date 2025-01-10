@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
     ...padding('bottom')('m'),
     borderWidth: 1,
     borderColor: colors.border.primary,
-    borderRadius: 32,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
     backgroundColor: colors.background.secondary,
   },
   handle: {

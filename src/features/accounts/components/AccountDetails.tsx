@@ -1,10 +1,10 @@
 import { Profile } from '@api/clients/profile/types';
-import { Avatar, Text } from '@common/v2/components';
 import { center } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
 import { getInitials } from '@utils/string';
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { Avatar, Text } from 'src/common/components';
 
 export interface AccountDetailsProps {
   style?: StyleProp<ViewStyle>;

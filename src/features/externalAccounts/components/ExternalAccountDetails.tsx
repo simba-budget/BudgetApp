@@ -1,8 +1,8 @@
 import { ExternalAccount } from '@api/clients/externalAccounts/types';
-import { Text } from '@common/v2/components';
 import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { RefreshControl, ScrollView, StyleProp, ViewStyle } from 'react-native';
+import { Text } from 'src/common/components';
 
 export interface ExternalAccountDetailsProps {
   style?: StyleProp<ViewStyle>;

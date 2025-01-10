@@ -1,26 +1,20 @@
 import { fonts, fontSizes, margin, themeTextColors } from '@styles/lightTheme';
-import React, { FC } from 'react';
-import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import React from 'react';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { default as RNMarkdown } from 'react-native-markdown-display';
-
-import View from './View';
 
 export interface MarkdownProps {
   style?: StyleProp<ViewStyle>;
   content: string;
 }
 
-const Markdown: FC<MarkdownProps> = (props) => {
-  const { style, content } = props;
-
-  return (
-    <View style={style}>
-      <RNMarkdown style={styles} mergeStyle={false}>
-        {content}
-      </RNMarkdown>
-    </View>
-  );
-};
+const Markdown = ({ style, content }: MarkdownProps) => (
+  <View style={style}>
+    <RNMarkdown style={styles} mergeStyle={false}>
+      {content}
+    </RNMarkdown>
+  </View>
+);
 
 const styles = StyleSheet.create({
   heading1: {

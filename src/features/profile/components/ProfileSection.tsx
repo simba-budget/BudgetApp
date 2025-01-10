@@ -1,7 +1,7 @@
-import { Text } from '@common/v2/components';
 import { gap } from '@styles/lightTheme';
 import React from 'react';
 import { View } from 'react-native';
+import { Text } from 'src/common/components';
 
 import { ProfileSectionProps } from '../types';
 
