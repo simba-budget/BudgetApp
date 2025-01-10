@@ -76,7 +76,7 @@ const SendOtpForm = ({
         <Text weight="medium" size="s" color="tertiary" textAlign="center">
           {t('Don’t have an account?')}
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate(registrationRoute)}>
+        <TouchableOpacity onPress={() => navigation.replace(registrationRoute)}>
           <Text weight="semiBold" size="s" color="primary" textAlign="center">
             {t('Sign Up')}
           </Text>

@@ -6,11 +6,11 @@ import {
   sendOtpRoute,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import { center, flex1, justifyEnd, rowCenter } from '@styles/common';
+import { flex1, justifyEnd } from '@styles/common';
 import { gap, margin, padding, sizes } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Welcome = () => {
@@ -37,22 +37,18 @@ const Welcome = () => {
           </Text>
         </View>
         <Button
-          style={margin('bottom')('s')}
+          style={margin('bottom')('xs')}
           size="medium"
           color="primary"
-          onPress={() => navigation.replace(registrationRoute)}
-          title={t('Let’s Get Started')}
+          onPress={() => navigation.navigate(sendOtpRoute)}
+          title={t('Sign In')}
         />
-        <View style={[rowCenter, center, gap('column')('xxs')]}>
-          <Text weight="medium" size="s" color="tertiary" textAlign="center">
-            {t('Already have an account?')}
-          </Text>
-          <TouchableOpacity onPress={() => navigation.replace(sendOtpRoute)}>
-            <Text weight="semiBold" size="s" color="primary" textAlign="center">
-              {t('Sign In')}
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <Button
+          size="medium"
+          color="tertiary"
+          onPress={() => navigation.navigate(registrationRoute)}
+          title={t('Create an Account')}
+        />
       </View>
     </View>
   );

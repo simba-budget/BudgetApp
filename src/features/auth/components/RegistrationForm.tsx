@@ -133,7 +133,7 @@ const RegistrationForm = ({
         <Text weight="medium" size="s" color="tertiary" textAlign="center">
           {t('Already have an account?')}
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate(sendOtpRoute)}>
+        <TouchableOpacity onPress={() => navigation.replace(sendOtpRoute)}>
           <Text weight="semiBold" size="s" color="primary" textAlign="center">
             {t('Sign In')}
           </Text>

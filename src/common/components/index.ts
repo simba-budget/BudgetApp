@@ -23,3 +23,4 @@ export { default as Actions } from './Actions';
 export { default as Checkbox } from './Checkbox';
 export { default as FormScreenContainer } from './FormScreenContainer';
 export { default as Markdown } from './Markdown';
+export { default as CodeInput } from './CodeInput';

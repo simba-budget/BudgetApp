@@ -1,5 +1,5 @@
 import { VerifyOtpRequest } from '@api/clients/auth/types';
-import { Button, FormControl, Input, Text } from '@common/components';
+import { Button, CodeInput, FormControl, Input, Text } from '@common/components';
 import { useCountdown } from '@common/hooks';
 import { useAuthTranslations } from '@i18n/hooks';
 import { center, flex1, fullWidth } from '@styles/common';
@@ -42,7 +42,7 @@ const VerifyOtpForm = ({
           color="primary"
           weight="bold"
           size="xxl">
-          {t('Verify OTP')}
+          {t('OTP Verification')}
         </Text>
         <Text
           style={margin('bottom')('xl')}
@@ -50,24 +50,14 @@ const VerifyOtpForm = ({
           color="tertiary"
           size="m"
           weight="medium">
-          {t('Please enter the OTP we just sent to provided email: {{email}}', {
-            email,
-          })}
+          {t('Check your inbox. We sent a code to {{email}}', { email })}
         </Text>
         <Controller
           control={control}
           name="otp"
           render={({ field: { ref: _, ...rest } }) => (
             <FormControl style={fullWidth} isRequired label={t('OTP')}>
-              <Input
-                {...rest}
-                autoCorrect={false}
-                autoCapitalize="none"
-                autoFocus
-                keyboardType="number-pad"
-                iconName="lock"
-                placeholder={t('OTP')}
-              />
+              <CodeInput onComplete={onSubmit} autoFocus {...rest} />
             </FormControl>
           )}
         />
