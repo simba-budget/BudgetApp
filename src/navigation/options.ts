@@ -5,27 +5,22 @@ import { Easing } from 'react-native-reanimated';
 
 import { StackHeaderLeft } from './components';
 import {
-  cardStyle,
   headerLeftContainerStyle,
   headerRightContainerStyle,
-  headerStyle,
   headerTitleContainerStyle,
   headerTitleStyle,
-  sceneStyle,
   tabBarLabelStyle,
   tabBarStyle,
 } from './styles';
 
 export const hiddenOptions: StackNavigationOptions = {
   headerShown: false,
-  cardStyle,
 };
 
 export const bottomSheetOptions: StackNavigationOptions = {
   gestureEnabled: false,
   presentation: 'transparentModal',
   detachPreviousScreen: false,
-  cardStyle,
   transitionSpec: {
     open: {
       animation: 'timing',
@@ -48,8 +43,6 @@ export const stackOptions: StackNavigationOptions = {
   headerLeftContainerStyle,
   headerRightContainerStyle,
   headerTitleStyle,
-  headerStyle,
-  cardStyle,
 };
 
 export const bottomTabsOptions: BottomTabNavigationOptions = {
@@ -60,8 +53,6 @@ export const bottomTabsOptions: BottomTabNavigationOptions = {
   headerLeftContainerStyle,
   headerRightContainerStyle,
   headerTitleStyle,
-  headerStyle,
-  sceneStyle,
   tabBarStyle,
   tabBarLabelStyle,
   tabBarActiveTintColor: colors.text.accent,
