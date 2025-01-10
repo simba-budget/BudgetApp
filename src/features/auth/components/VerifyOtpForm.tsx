@@ -57,7 +57,7 @@ const VerifyOtpForm = ({
           name="otp"
           render={({ field: { ref: _, ...rest } }) => (
             <FormControl style={fullWidth} isRequired label={t('OTP')}>
-              <CodeInput onComplete={onSubmit} autoFocus {...rest} />
+              <CodeInput autoFocus {...rest} onBlur={onSubmit} />
             </FormControl>
           )}
         />

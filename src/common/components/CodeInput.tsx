@@ -1,14 +1,15 @@
 import CodeInputCell from '@common/components/CodeInputCell';
-import React, { useEffect } from 'react';
+import { center } from '@styles/common';
+import { gap } from '@styles/lightTheme';
+import React from 'react';
 import { Platform, StyleProp, TextInputProps, ViewStyle } from 'react-native';
-import { CodeField } from 'react-native-confirmation-code-field';
+import { CodeField, useBlurOnFulfill } from 'react-native-confirmation-code-field';
 
 export interface CodeInputProps
   extends Pick<TextInputProps, 'onBlur' | 'onFocus' | 'autoFocus' | 'value'> {
   style?: StyleProp<ViewStyle>;
   onChange: (value: string) => void;
   cellCount?: number;
-  onComplete: () => void;
 }
 
 const autoComplete: TextInputProps['autoComplete'] = Platform.select({
@@ -20,21 +21,19 @@ const CodeInput = ({
   onChange,
   cellCount = 6,
   style,
-  onComplete,
   value,
   ...rest
 }: CodeInputProps) => {
-  useEffect(() => {
-    if (value?.length === cellCount) onComplete();
-  }, [value, cellCount, onComplete]);
+  const ref = useBlurOnFulfill({ value, cellCount });
 
   return (
     <CodeField
+      ref={ref}
       value={value}
       autoCorrect={false}
       onChangeText={onChange}
       cellCount={cellCount}
-      rootStyle={style}
+      rootStyle={[center, gap('column')('xs'), style]}
       keyboardType="number-pad"
       textContentType="oneTimeCode"
       autoComplete={autoComplete}
