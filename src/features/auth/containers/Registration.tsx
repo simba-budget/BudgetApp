@@ -1,4 +1,4 @@
-import { RootNavigation, toVerifyOtp } from '@navigation/navigators/root';
+import { RootNavigation, verifyOtpRoute } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -10,16 +10,17 @@ const Registration = () => {
 
   const onSuccess = useCallback(
     (expirationDate: string, email: string) => {
-      toVerifyOtp(navigation, { email, expirationDate });
+      navigation.navigate(verifyOtpRoute, { email, expirationDate });
     },
     [navigation],
   );
 
-  const { control, handleSubmit } = useRegistrationForm();
+  const { control, handleSubmit, isValid } = useRegistrationForm();
   const { register, isSubmitting } = useRegister({ onSuccess });
 
   return (
     <RegistrationForm
+      isValid={isValid}
       onSubmit={handleSubmit(register)}
       control={control}
       isSubmitting={isSubmitting}

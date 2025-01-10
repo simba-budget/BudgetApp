@@ -18,14 +18,18 @@ const getSchema = (t: TFunction) => {
 const useVerifyOtpForm = () => {
   const { t } = useValidationsTranslations();
 
-  const { control, handleSubmit } = useForm<Pick<VerifyOtpRequest, 'otp'>>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<Pick<VerifyOtpRequest, 'otp'>>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onBlur',
+    mode: 'onChange',
     reValidateMode: 'onChange',
   });
 
-  return { control, handleSubmit };
+  return { control, handleSubmit, isValid };
 };
 
 export default useVerifyOtpForm;

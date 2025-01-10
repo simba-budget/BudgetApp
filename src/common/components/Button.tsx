@@ -43,6 +43,7 @@ const Button = ({
     onPress={onPress}
     style={[
       styles.container,
+      isDisabled && styles.disabledContainer,
       {
         borderColor: colors.border[borderColorMap[color]],
         backgroundColor: colors.background[backgroundColorMap[color]],
@@ -112,6 +113,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  disabledContainer: {
+    opacity: 0.5,
   },
 });
 

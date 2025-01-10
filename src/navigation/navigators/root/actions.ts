@@ -34,43 +34,12 @@ import {
   merchantRoute,
   merchantsRoute,
   notificationsRoute,
-  privacyPolicyRoute,
-  registrationRoute,
-  sendOtpRoute,
   subscriptionAddRoute,
   subscriptionEditRoute,
   SubscriptionEditRoute,
   tagsRoute,
-  termsAndConditionsRoute,
   transactionAddRoute,
-  verifyOtpRoute,
-  VerifyOtpRoute,
 } from './types';
-
-// public
-export const toPrivacyPolicy = ({ navigate }: RootNavigation) => {
-  return navigate(privacyPolicyRoute);
-};
-
-export const toTermsAndConditions = ({ navigate }: RootNavigation) => {
-  return navigate(termsAndConditionsRoute);
-};
-
-// auth
-export const toSendOtp = ({ navigate }: RootNavigation) => {
-  return navigate(sendOtpRoute);
-};
-
-export const toRegistration = ({ navigate }: RootNavigation) => {
-  return navigate(registrationRoute);
-};
-
-export const toVerifyOtp = (
-  { navigate }: RootNavigation,
-  params: RootParams[VerifyOtpRoute],
-) => {
-  return navigate(verifyOtpRoute, params);
-};
 
 // protected
 export const toNotifications = ({ navigate }: RootNavigation) => {

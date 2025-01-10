@@ -1,4 +1,4 @@
-import { RootNavigation, toVerifyOtp } from '@navigation/navigators/root';
+import { RootNavigation, verifyOtpRoute } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 
@@ -10,15 +10,16 @@ const SendOtp = () => {
 
   const onSuccess = useCallback(
     (expirationDate: string, email: string) =>
-      toVerifyOtp(navigation, { email, expirationDate }),
+      navigation.navigate(verifyOtpRoute, { email, expirationDate }),
     [navigation],
   );
 
   const { sendOtp, isSubmitting } = useSendOtp({ onSuccess });
-  const { control, handleSubmit } = useSendOtpForm();
+  const { control, handleSubmit, isValid } = useSendOtpForm();
 
   return (
     <SendOtpForm
+      isValid={isValid}
       onSubmit={handleSubmit(sendOtp)}
       control={control}
       isSubmitting={isSubmitting}

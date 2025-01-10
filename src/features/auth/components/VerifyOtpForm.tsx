@@ -16,6 +16,7 @@ export interface VerifyOtpFormProps {
   isResending: boolean;
   expirationDate: string;
   onResend: () => void;
+  isValid: boolean;
 }
 
 const VerifyOtpForm = ({
@@ -26,6 +27,7 @@ const VerifyOtpForm = ({
   onResend,
   isResending,
   email,
+  isValid,
 }: VerifyOtpFormProps) => {
   const { t } = useAuthTranslations();
   const seconds = useCountdown(expirationDate);
@@ -55,12 +57,8 @@ const VerifyOtpForm = ({
         <Controller
           control={control}
           name="otp"
-          render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-            <FormControl
-              style={fullWidth}
-              error={error?.message}
-              isRequired
-              label={t('OTP')}>
+          render={({ field: { ref: _, ...rest } }) => (
+            <FormControl style={fullWidth} isRequired label={t('OTP')}>
               <Input
                 {...rest}
                 autoCorrect={false}
@@ -79,7 +77,7 @@ const VerifyOtpForm = ({
           <Button
             style={margin('bottom')('s')}
             onPress={onSubmit}
-            isDisabled={isResending}
+            isDisabled={isResending || !isValid}
             isSubmitting={isSubmitting}
             color="primary"
             size="medium"

@@ -14,9 +14,15 @@ export interface SignInFormProps {
   control: Control<RegisterRequest>;
   onSubmit: () => void;
   isSubmitting: boolean;
+  isValid: boolean;
 }
 
-const RegistrationForm = ({ control, isSubmitting, onSubmit }: SignInFormProps) => {
+const RegistrationForm = ({
+  control,
+  isSubmitting,
+  onSubmit,
+  isValid,
+}: SignInFormProps) => {
   const { t } = useAuthTranslations();
   const navigation = useNavigation<RootNavigation>();
 
@@ -115,6 +121,7 @@ const RegistrationForm = ({ control, isSubmitting, onSubmit }: SignInFormProps) 
         />
       </View>
       <Button
+        isDisabled={!isValid}
         style={margin('bottom')('s')}
         onPress={onSubmit}
         isSubmitting={isSubmitting}

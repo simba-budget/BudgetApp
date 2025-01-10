@@ -13,9 +13,15 @@ export interface SignInFormProps {
   control: Control<SendOtpRequest>;
   onSubmit: () => void;
   isSubmitting: boolean;
+  isValid: boolean;
 }
 
-const SendOtpForm = ({ control, isSubmitting, onSubmit }: SignInFormProps) => {
+const SendOtpForm = ({
+  control,
+  isSubmitting,
+  onSubmit,
+  isValid,
+}: SignInFormProps) => {
   const navigation = useNavigation<RootNavigation>();
   const { t } = useAuthTranslations();
 
@@ -41,12 +47,8 @@ const SendOtpForm = ({ control, isSubmitting, onSubmit }: SignInFormProps) => {
         <Controller
           control={control}
           name="email"
-          render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-            <FormControl
-              style={fullWidth}
-              error={error?.message}
-              isRequired
-              label={t('Email')}>
+          render={({ field: { ref: _, ...rest } }) => (
+            <FormControl style={fullWidth} isRequired label={t('Email')}>
               <Input
                 {...rest}
                 autoComplete="email"
@@ -62,6 +64,7 @@ const SendOtpForm = ({ control, isSubmitting, onSubmit }: SignInFormProps) => {
         />
       </View>
       <Button
+        isDisabled={!isValid}
         style={margin('bottom')('s')}
         onPress={onSubmit}
         isSubmitting={isSubmitting}

@@ -21,14 +21,18 @@ const getSchema = (t: TFunction) => {
 const useSendOtpForm = () => {
   const { t } = useValidationsTranslations();
 
-  const { control, handleSubmit } = useForm<SendOtpRequest>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<SendOtpRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onBlur',
-    reValidateMode: 'onBlur',
+    mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
-  return { control, handleSubmit };
+  return { control, handleSubmit, isValid };
 };
 
 export default useSendOtpForm;

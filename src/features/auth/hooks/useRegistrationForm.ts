@@ -27,14 +27,18 @@ const getSchema = (t: TFunction) => {
 const useRegistrationForm = () => {
   const { t } = useValidationsTranslations();
 
-  const { control, handleSubmit } = useForm<RegisterRequest>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<RegisterRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
-    mode: 'onBlur',
-    reValidateMode: 'onBlur',
+    mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
-  return { control, handleSubmit };
+  return { control, handleSubmit, isValid };
 };
 
 export default useRegistrationForm;

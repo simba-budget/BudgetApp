@@ -1,9 +1,9 @@
 import { Button, Text } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
 import {
+  registrationRoute,
   RootNavigation,
   sendOtpRoute,
-  toRegistration,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { center, flex1, justifyEnd, rowCenter } from '@styles/common';
@@ -40,14 +40,14 @@ const Welcome = () => {
           style={margin('bottom')('s')}
           size="medium"
           color="primary"
-          onPress={() => toRegistration(navigation)}
+          onPress={() => navigation.replace(registrationRoute)}
           title={t('Let’s Get Started')}
         />
         <View style={[rowCenter, center, gap('column')('xxs')]}>
           <Text weight="medium" size="s" color="tertiary" textAlign="center">
             {t('Already have an account?')}
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate(sendOtpRoute)}>
+          <TouchableOpacity onPress={() => navigation.replace(sendOtpRoute)}>
             <Text weight="semiBold" size="s" color="primary" textAlign="center">
               {t('Sign In')}
             </Text>

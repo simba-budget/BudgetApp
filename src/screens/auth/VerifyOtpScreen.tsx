@@ -1,4 +1,4 @@
-import { FormScreenContainer, StatusBar } from '@common/components';
+import { FormScreenContainer } from '@common/components';
 import { VerifyOtp } from '@features/auth/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -10,7 +10,6 @@ export type VerifyOtpScreenProps = StaticScreenProps<{
 
 const VerifyOtpScreen = ({ route }: VerifyOtpScreenProps) => (
   <FormScreenContainer>
-    <StatusBar translucent={false} />
     <VerifyOtp {...route.params} />
   </FormScreenContainer>
 );
