@@ -1,4 +1,3 @@
-import { Account } from '@api/clients/accounts/types';
 import { Profile } from '@api/clients/profile/types';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { useProfile } from '@features/profile/hooks';
@@ -8,22 +7,22 @@ import { gap, padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 
-import { selectAccountAction } from '../actions';
+import { selectAccountIdAction } from '../actions';
 import { AccountDetails, AccountsListItem } from '../components';
 import { useAccounts } from '../hooks';
-import { selectSelectedAccountStrict } from '../selectors';
+import { selectSelectedAccountIdStrict } from '../selectors';
 
 const AccountSelect = () => {
   const dispatch = useAppDispatch();
-  const selectedAccount = useAppSelector(selectSelectedAccountStrict);
+  const selectedAccountId = useAppSelector(selectSelectedAccountIdStrict);
   const navigation = useNavigation<RootNavigation>();
   const { profile } = useProfile();
   const { accounts } = useAccounts();
 
   const handleOnAccountPress = useCallback(
-    (account: Account) => {
+    (id: number) => {
       navigation.goBack();
-      dispatch(selectAccountAction(account));
+      dispatch(selectAccountIdAction(id));
     },
     [navigation, dispatch],
   );
@@ -36,8 +35,8 @@ const AccountSelect = () => {
           <AccountsListItem
             key={account.id}
             account={account}
-            isSelected={account.id === selectedAccount.id}
-            onPress={() => handleOnAccountPress(account)}
+            isSelected={account.id === selectedAccountId}
+            onPress={() => handleOnAccountPress(account.id)}
           />
         ))}
       </View>

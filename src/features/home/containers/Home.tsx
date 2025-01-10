@@ -1,6 +1,7 @@
 import { ScrollView } from '@common/components';
 import { useAppSelector } from '@core/store/store';
-import { selectSelectedAccountStrict } from '@features/accounts/selectors';
+import { useAccount } from '@features/accounts/hooks';
+import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
 import { useProfile } from '@features/profile/hooks';
 import {
   BottomTabsNavigation,
@@ -43,12 +44,21 @@ import {
 const Home = () => {
   const navigation = useNavigation<RootNavigation>();
   const bottomTabsNavigation = useNavigation<BottomTabsNavigation>();
-  const selectedAccount = useAppSelector(selectSelectedAccountStrict);
+  const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const quickActions = useQuickActionItems();
 
   const {
+    account,
+    isLoading: isAccountLoading,
+    isRefetching: isAccountRefetching,
+    refetch: refetchAccount,
+  } = useAccount(accountId);
+
+  const {
     data: transactionsStats,
-    isLoading: isTransactionsStatsLoading,
+    isLoading: isTransactionsWeekStatsLoading,
+    refetch: refetchTransactionsWeekStats,
+    isRefetching: isTransactionsWeekStatsRefetching,
     totalAmount,
   } = useTransactionsWeekStats();
 
@@ -88,12 +98,16 @@ const Home = () => {
       isProfileLoading ||
       isTransactionsLoading ||
       isGoalsLoading ||
-      isSubscriptionsLoading,
+      isSubscriptionsLoading ||
+      isAccountLoading ||
+      isTransactionsWeekStatsLoading,
     [
       isProfileLoading,
       isTransactionsLoading,
       isGoalsLoading,
       isSubscriptionsLoading,
+      isAccountLoading,
+      isTransactionsWeekStatsLoading,
     ],
   );
 
@@ -102,12 +116,16 @@ const Home = () => {
       isProfileRefetching ||
       isTransactionsRefetching ||
       isGoalsRefetching ||
-      isSubscriptionsRefetching,
+      isSubscriptionsRefetching ||
+      isAccountRefetching ||
+      isTransactionsWeekStatsRefetching,
     [
       isProfileRefetching,
       isTransactionsRefetching,
       isGoalsRefetching,
       isSubscriptionsRefetching,
+      isAccountRefetching,
+      isTransactionsWeekStatsRefetching,
     ],
   );
 
@@ -118,8 +136,17 @@ const Home = () => {
         refetchProfile(),
         refetchGoals(),
         refetchSubscriptions(),
+        refetchAccount(),
+        refetchTransactionsWeekStats(),
       ]),
-    [refetchTransactions, refetchProfile, refetchGoals, refetchSubscriptions],
+    [
+      refetchTransactions,
+      refetchProfile,
+      refetchGoals,
+      refetchSubscriptions,
+      refetchAccount,
+      refetchTransactionsWeekStats,
+    ],
   );
 
   return (
@@ -134,13 +161,15 @@ const Home = () => {
           profile={profile}
         />
       )}
-      <AccountSection
-        onAccountPress={() => toAccountSelect(navigation)}
-        account={selectedAccount}
-        quickActions={quickActions}
-      />
+      {account && (
+        <AccountSection
+          onAccountPress={() => toAccountSelect(navigation)}
+          account={account}
+          quickActions={quickActions}
+        />
+      )}
       <TransactionsWeekStats
-        isLoading={isTransactionsStatsLoading}
+        isLoading={isTransactionsWeekStatsLoading}
         totalAmount={totalAmount}
         data={transactionsStats}
       />

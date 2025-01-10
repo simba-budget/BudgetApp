@@ -16,14 +16,16 @@ import {
   tabBarStyle,
 } from './styles';
 
-export const hiddenOptions = {
+export const hiddenOptions: StackNavigationOptions = {
   headerShown: false,
+  cardStyle,
 };
 
 export const bottomSheetOptions: StackNavigationOptions = {
   gestureEnabled: false,
   presentation: 'transparentModal',
   detachPreviousScreen: false,
+  cardStyle,
   transitionSpec: {
     open: {
       animation: 'timing',

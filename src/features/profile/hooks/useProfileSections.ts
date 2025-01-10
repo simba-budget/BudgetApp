@@ -13,8 +13,8 @@ import { useMemo } from 'react';
 import { ProfileSectionProps } from '../types';
 
 const useProfileSections = () => {
-  const { logout } = useLogout();
   const navigation = useNavigation<RootNavigation>();
+  const { logout } = useLogout();
   const { t } = useProfileTranslations();
 
   return useMemo<ProfileSectionProps[]>(

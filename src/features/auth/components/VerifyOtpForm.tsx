@@ -1,5 +1,5 @@
 import { VerifyOtpRequest } from '@api/clients/auth/types';
-import { Button, CodeInput, FormControl, Input, Text } from '@common/components';
+import { Button, CodeInput, FormControl, Text } from '@common/components';
 import { useCountdown } from '@common/hooks';
 import { useAuthTranslations } from '@i18n/hooks';
 import { center, flex1, fullWidth } from '@styles/common';

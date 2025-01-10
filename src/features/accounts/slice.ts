@@ -1,16 +1,14 @@
-import { Account } from '@api/clients/accounts/types';
-import { logoutAction } from '@features/auth/actions';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { selectAccountAction } from './actions';
+import { selectAccountIdAction } from './actions';
 
 export interface AccountsState {
-  selectedAccount: Account | null;
+  selectedAccountId: number | null;
   lastUpdated: number;
 }
 
 const initialState: AccountsState = {
-  selectedAccount: null,
+  selectedAccountId: null,
   lastUpdated: Date.now(),
 };
 
@@ -23,10 +21,9 @@ const accountsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(selectAccountAction.fulfilled, (state, action) => {
-      state.selectedAccount = action.payload;
+    builder.addCase(selectAccountIdAction.fulfilled, (state, action) => {
+      state.selectedAccountId = action.payload;
     });
-    builder.addCase(logoutAction.fulfilled, () => initialState);
   },
 });
 

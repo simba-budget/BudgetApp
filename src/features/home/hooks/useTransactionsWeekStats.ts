@@ -15,7 +15,7 @@ const amountTo = -0.01;
 const useTransactionsWeekStats = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
 
-  const { stats, isLoading } = useTransactionsStats({
+  const { stats, isLoading, refetch, isRefetching } = useTransactionsStats({
     accountId,
     dateFrom,
     dateTo,
@@ -24,7 +24,7 @@ const useTransactionsWeekStats = () => {
 
   const data = useMemo<ChartData>(() => mapTransactionsStats(stats), [stats]);
   const totalAmount = useMemo<number>(() => sumBy(stats, 'amount'), [stats]);
-  return { data, isLoading, totalAmount };
+  return { data, isLoading, totalAmount, refetch, isRefetching };
 };
 
 export default useTransactionsWeekStats;

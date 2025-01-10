@@ -1,16 +1,15 @@
-import { Account } from '@api/clients/accounts/types';
 import { readAsync, removeAsync, writeAsync } from '@utils/storage';
 
-const key = 'account';
+const key = 'accountId';
 
-export const getAccount = () => {
-  return readAsync<Account | null>(key);
+export const getSelectedAccountId = () => {
+  return readAsync<number | null>(key);
 };
 
-export const saveAccount = (account: Account) => {
-  return writeAsync<Account>(key, account);
+export const saveSelectedAccountId = (id: number) => {
+  return writeAsync<number>(key, id);
 };
 
-export const removeAccount = () => {
+export const removeSelectedAccountId = () => {
   return removeAsync(key);
 };

@@ -10,30 +10,16 @@ export const selectAccountsLastUpdated = createSelector(
   (state) => state.lastUpdated,
 );
 
-export const selectSelectedAccount = createSelector(
-  selectAccounts,
-  (state) => state.selectedAccount,
-);
-
 export const selectSelectedAccountId = createSelector(
   selectAccounts,
-  (state) => state.selectedAccount?.id || null,
+  (state) => state.selectedAccountId,
 );
 
 export const selectSelectedAccountIdStrict = createSelector(
   selectAccounts,
   (state) => {
-    const accountId = state.selectedAccount?.id;
+    const accountId = state.selectedAccountId;
     if (!accountId) throw new Error('Account ID is not set');
     return accountId;
-  },
-);
-
-export const selectSelectedAccountStrict = createSelector(
-  selectAccounts,
-  (state) => {
-    const selectedAccount = state.selectedAccount;
-    if (!selectedAccount) throw new Error('Selected account is not set');
-    return selectedAccount;
   },
 );

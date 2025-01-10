@@ -1,7 +1,7 @@
 import { getLoggedUser } from '@api/auth/storage';
 import { useAppDispatch } from '@core/store/store';
-import { selectAccountAction } from '@features/accounts/actions';
-import { getAccount } from '@features/accounts/storage';
+import { selectAccountIdAction } from '@features/accounts/actions';
+import { getSelectedAccountId } from '@features/accounts/storage';
 import { loginAction } from '@features/auth/actions';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -10,9 +10,13 @@ const useCachedResources = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const loadCachedResources = useCallback(async () => {
-    const [loggedUser, account] = await Promise.all([getLoggedUser(), getAccount()]);
+    const [loggedUser, selectedAccountId] = await Promise.all([
+      getLoggedUser(),
+      getSelectedAccountId(),
+    ]);
+
     if (loggedUser) await dispatch(loginAction(loggedUser));
-    if (account) await dispatch(selectAccountAction(account));
+    if (selectedAccountId) await dispatch(selectAccountIdAction(selectedAccountId));
   }, [dispatch]);
 
   useEffect(() => {

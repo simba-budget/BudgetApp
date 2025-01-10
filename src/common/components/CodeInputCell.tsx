@@ -15,12 +15,12 @@ export interface CodeInputCellProps {
 const CodeInputCell = ({ style, isFocused, value }: CodeInputCellProps) => (
   <View style={[styles.container, isFocused && styles.activeContainer, style]}>
     {value && (
-      <Text style={styles.label} size="xl" weight="medium" color="primary">
+      <Text style={styles.label} size="l" weight="medium" color="primary">
         {value}
       </Text>
     )}
     {isFocused && (
-      <Text style={styles.cursor} size="xl" weight="medium" color="primary">
+      <Text style={styles.cursor} size="l" weight="medium" color="primary">
         <Cursor />
       </Text>
     )}
@@ -30,9 +30,9 @@ const CodeInputCell = ({ style, isFocused, value }: CodeInputCellProps) => (
 const styles = StyleSheet.create({
   container: {
     ...center,
-    width: 56,
-    height: 56,
-    borderRadius: 8,
+    width: 48,
+    height: 48,
+    borderRadius: 6,
     borderWidth: 1,
     borderColor: colors.border.primary,
     backgroundColor: colors.background.secondary,
