@@ -2,10 +2,10 @@ import {
   DocumentTranslation,
   Document as DocumentType,
 } from '@api/clients/documents/types';
+import { Markdown } from '@common/components';
 import { getTranslation } from '@utils/translations';
 import React, { useMemo } from 'react';
 import { ScrollView } from 'react-native';
-import { Markdown } from 'src/common/components';
 
 export interface DocumentProps {
   document: DocumentType;

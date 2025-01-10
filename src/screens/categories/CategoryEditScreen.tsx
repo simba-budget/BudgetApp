@@ -1,7 +1,7 @@
+import { SheetScreenContainer } from '@common/components';
 import { CategoryEdit } from '@features/categories/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
-import { SheetScreenContainer } from 'src/common/components';
 
 export type CategoryEditScreenProps = StaticScreenProps<{ id: number }>;
 

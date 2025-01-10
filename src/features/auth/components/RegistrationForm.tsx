@@ -1,4 +1,5 @@
 import { RegisterRequest } from '@api/clients/auth/types';
+import { Button, Checkbox, FormControl, Input, Text } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
 import { sendOtpRoute } from '@navigation/navigators/root';
 import { RootNavigation } from '@navigation/navigators/root';
@@ -8,7 +9,6 @@ import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
-import { Button, Checkbox, FormControl, Input, Text } from 'src/common/components';
 
 export interface SignInFormProps {
   control: Control<RegisterRequest>;

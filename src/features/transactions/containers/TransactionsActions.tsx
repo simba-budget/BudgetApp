@@ -1,10 +1,10 @@
+import { IconButton } from '@common/components';
 import { RootNavigation, toTransactionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { rowCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { IconButton } from 'src/common/components';
 
 const TransactionsActions = () => {
   const navigation = useNavigation<RootNavigation>();

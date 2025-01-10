@@ -1,6 +1,6 @@
+import { ScreenContainer, StatusBar } from '@common/components';
 import { Home } from '@features/home/containers';
 import React from 'react';
-import { ScreenContainer, StatusBar } from 'src/common/components';
 
 const HomeScreen = () => (
   <ScreenContainer>

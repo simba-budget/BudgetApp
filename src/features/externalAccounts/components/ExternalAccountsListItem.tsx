@@ -1,4 +1,5 @@
 import { ExternalAccount } from '@api/clients/externalAccounts/types';
+import { IconButton, Text } from '@common/components';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -11,7 +12,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { IconButton, Text } from 'src/common/components';
 
 export interface ExternalAccountsListItemProps {
   style?: StyleProp<ViewStyle>;

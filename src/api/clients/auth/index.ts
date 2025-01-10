@@ -11,7 +11,6 @@ import {
 const url = '/auth';
 
 export const sendOtp = (request: SendOtpRequest) => {
-  console.log('request', request);
   return httpClient.post<void, OtpResponse>(`${url}/send-otp`, request);
 };
 

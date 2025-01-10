@@ -1,7 +1,7 @@
+import { FormScreenContainer, StatusBar } from '@common/components';
 import { VerifyOtp } from '@features/auth/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
-import { FormScreenContainer, StatusBar } from 'src/common/components';
 
 export type VerifyOtpScreenProps = StaticScreenProps<{
   email: string;

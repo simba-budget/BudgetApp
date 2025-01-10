@@ -1,4 +1,5 @@
 import { Account } from '@api/clients/accounts/types';
+import { IconButton, Svg, Text } from '@common/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
@@ -12,7 +13,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { IconButton, Svg, Text } from 'src/common/components';
 
 import { QuickActionItem } from '../types';
 

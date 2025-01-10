@@ -1,7 +1,7 @@
 import { Member } from '@api/clients/members/types';
+import { FlatList } from '@common/components';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
-import { FlatList } from 'src/common/components';
 
 import MembersListItem from './MembersListItem';
 

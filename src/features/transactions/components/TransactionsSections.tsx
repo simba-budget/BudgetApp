@@ -1,9 +1,9 @@
 import { Transaction } from '@api/clients/transactions/types';
+import { SectionList } from '@common/components';
 import { Section } from '@common/types';
 import { justifyCenter } from '@styles/common';
 import React, { useCallback, useMemo } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
-import { SectionList } from 'src/common/components';
 
 import { mapTransactionsToDaySections } from '../map';
 

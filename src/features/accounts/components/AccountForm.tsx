@@ -1,9 +1,9 @@
 import { SaveAccountRequest } from '@api/clients/accounts/types';
+import { Button, FormControl, Input } from '@common/components';
 import { useAccountsTranslations } from '@i18n/hooks';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { Button, FormControl, Input } from 'src/common/components';
 
 export interface AccountFormProps {
   style?: StyleProp<ViewStyle>;

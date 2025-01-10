@@ -1,4 +1,5 @@
 import { Tag } from '@api/clients/tags/types';
+import { IconButton, Text } from '@common/components';
 import {
   RootNavigation,
   tagActionsRoute,
@@ -16,7 +17,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { IconButton, Text } from 'src/common/components';
 
 export interface TagsListItemProps {
   style?: StyleProp<ViewStyle>;

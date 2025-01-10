@@ -1,4 +1,5 @@
 import { Category } from '@api/clients/categories/types';
+import { IconButton, Text } from '@common/components';
 import {
   categoryActionsRoute,
   categoryRoute,
@@ -16,7 +17,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { IconButton, Text } from 'src/common/components';
 
 export interface CategoriesListItemProps {
   style?: StyleProp<ViewStyle>;

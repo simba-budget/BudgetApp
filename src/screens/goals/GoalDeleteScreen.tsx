@@ -1,7 +1,7 @@
+import { SheetScreenContainer } from '@common/components';
 import { GoalDelete } from '@features/goals/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
-import { SheetScreenContainer } from 'src/common/components';
 
 export type GoalDeleteScreenProps = StaticScreenProps<{ id: number }>;
 

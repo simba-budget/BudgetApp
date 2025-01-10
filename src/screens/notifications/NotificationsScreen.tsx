@@ -1,6 +1,6 @@
+import { ScreenContainer } from '@common/components';
 import { Notifications } from '@features/notifications/containers';
 import React from 'react';
-import { ScreenContainer } from 'src/common/components';
 
 const NotificationsScreen = () => (
   <ScreenContainer>

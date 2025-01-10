@@ -132,7 +132,7 @@ const RootStack = createStackNavigator({
   groups: {
     [authRoute]: {
       if: useIsLoggedOut,
-      screenOptions: hiddenOptions,
+      screenOptions: { ...hiddenOptions, keyboardHandlingEnabled: false },
       screens: {
         [welcomeRoute]: WelcomeScreen,
         [sendOtpRoute]: SendOtpScreen,

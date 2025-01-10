@@ -1,4 +1,5 @@
 import { Contribution } from '@api/clients/contributions/types';
+import { Button } from '@common/components';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import {
@@ -11,7 +12,6 @@ import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { SafeAreaView, View } from 'react-native';
-import { Button } from 'src/common/components';
 import { useDebounce } from 'use-debounce';
 
 import { ContributionsList, ContributionsSearch } from '../components';

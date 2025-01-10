@@ -1,4 +1,5 @@
 import { VerifyOtpRequest } from '@api/clients/auth/types';
+import { Button, FormControl, Input, Text } from '@common/components';
 import { useCountdown } from '@common/hooks';
 import { useAuthTranslations } from '@i18n/hooks';
 import { center, flex1, fullWidth } from '@styles/common';
@@ -6,7 +7,6 @@ import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { View } from 'react-native';
-import { Button, FormControl, Input, Text } from 'src/common/components';
 
 export interface VerifyOtpFormProps {
   control: Control<Pick<VerifyOtpRequest, 'otp'>>;
@@ -63,6 +63,9 @@ const VerifyOtpForm = ({
               label={t('OTP')}>
               <Input
                 {...rest}
+                autoCorrect={false}
+                autoCapitalize="none"
+                autoFocus
                 keyboardType="number-pad"
                 iconName="lock"
                 placeholder={t('OTP')}
@@ -71,19 +74,21 @@ const VerifyOtpForm = ({
           )}
         />
       </View>
-      <Button
-        style={margin('bottom')('xs')}
-        onPress={onSubmit}
-        isDisabled={isResending}
-        isSubmitting={isSubmitting}
-        color="primary"
-        size="medium"
-        title={t('Verify')}
-      />
       {seconds > 0 ? (
-        <Text weight="medium" size="s" color="tertiary" textAlign="center">
-          {t('Resend code in {{seconds}}', { seconds: formattedSeconds })}
-        </Text>
+        <>
+          <Button
+            style={margin('bottom')('s')}
+            onPress={onSubmit}
+            isDisabled={isResending}
+            isSubmitting={isSubmitting}
+            color="primary"
+            size="medium"
+            title={t('Verify')}
+          />
+          <Text weight="medium" size="s" color="tertiary" textAlign="center">
+            {t('Resend code in {{seconds}}', { seconds: formattedSeconds })}
+          </Text>
+        </>
       ) : (
         <Button
           onPress={onResend}

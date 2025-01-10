@@ -1,4 +1,5 @@
 import { Transaction } from '@api/clients/transactions/types';
+import { Text } from '@common/components';
 import {
   TransactionsEmpty,
   TransactionsListItem,
@@ -8,7 +9,6 @@ import { flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { Text } from 'src/common/components';
 
 export interface TransactionsSectionProps {
   style?: StyleProp<ViewStyle>;

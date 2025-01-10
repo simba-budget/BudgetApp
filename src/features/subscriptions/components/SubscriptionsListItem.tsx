@@ -1,4 +1,5 @@
 import { Subscription } from '@api/clients/subscriptions/types';
+import { Avatar, Text } from '@common/components';
 import { getMerchantLogoUrl } from '@features/merchants/utils';
 import {
   RootNavigation,
@@ -19,7 +20,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Avatar, Text } from 'src/common/components';
 
 export interface SubscriptionsListItemProps {
   style?: StyleProp<ViewStyle>;

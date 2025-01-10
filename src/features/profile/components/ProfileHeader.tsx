@@ -1,11 +1,11 @@
 import { Profile } from '@api/clients/profile/types';
+import { Text } from '@common/components';
 import { center } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import { getInitials } from '@utils/string';
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { Text } from 'src/common/components';
 
 import { getFullName } from '../utils';
 

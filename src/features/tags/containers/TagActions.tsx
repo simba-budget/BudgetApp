@@ -1,3 +1,4 @@
+import { Actions } from '@common/components';
 import { ActionItem } from '@common/components/Actions';
 import { useTagsTranslations } from '@i18n/hooks';
 import {
@@ -8,7 +9,6 @@ import {
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useMemo } from 'react';
-import { Actions } from 'src/common/components';
 
 export interface TagActionsProps {
   id: number;

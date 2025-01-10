@@ -1,7 +1,7 @@
 import { ExternalAccount } from '@api/clients/externalAccounts/types';
+import { FlatList } from '@common/components';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
-import { FlatList } from 'src/common/components';
 
 import ExternalAccountsListItem from './ExternalAccountsListItem';
 

@@ -1,7 +1,7 @@
+import { EmptySection } from '@common/components';
 import { useGoalsTranslations } from '@i18n/hooks';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { EmptySection } from 'src/common/components';
 
 export interface GoalsEmptyProps {
   style?: StyleProp<ViewStyle>;

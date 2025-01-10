@@ -1,4 +1,5 @@
 import { SendOtpRequest } from '@api/clients/auth/types';
+import { Button, FormControl, Input, Text } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
 import { registrationRoute, RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
@@ -7,7 +8,6 @@ import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
-import { Button, FormControl, Input, Text } from 'src/common/components';
 
 export interface SignInFormProps {
   control: Control<SendOtpRequest>;

@@ -1,4 +1,5 @@
 import { Account } from '@api/clients/accounts/types';
+import { Badge, IconButton, Text } from '@common/components';
 import { useAccountsTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
@@ -12,7 +13,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Badge, IconButton, Text } from 'src/common/components';
 
 export interface AccountsListItemProps {
   style?: StyleProp<ViewStyle>;

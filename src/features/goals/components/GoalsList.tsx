@@ -1,9 +1,9 @@
 import { Goal } from '@api/clients/goals/types';
+import { FlatList } from '@common/components';
 import { justifyCenter } from '@styles/common';
 import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
-import { FlatList } from 'src/common/components';
 
 import GoalsEmpty from './GoalsEmpty';
 import GoalsListItem from './GoalsListItem';

@@ -1,8 +1,8 @@
 import { Subscription } from '@api/clients/subscriptions/types';
+import { FlatList } from '@common/components';
 import { justifyCenter } from '@styles/common';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
-import { FlatList } from 'src/common/components';
 
 import SubscriptionsEmpty from './SubscriptionsEmpty';
 import SubscriptionsListItem from './SubscriptionsListItem';

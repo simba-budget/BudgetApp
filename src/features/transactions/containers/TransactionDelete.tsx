@@ -1,8 +1,8 @@
+import { Confirmation } from '@common/components';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Confirmation } from 'src/common/components';
 
 import { useDeleteTransaction } from '../hooks';
 

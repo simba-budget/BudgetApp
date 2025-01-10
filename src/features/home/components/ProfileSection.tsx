@@ -1,11 +1,11 @@
 import { Profile } from '@api/clients/profile/types';
+import { Avatar, IconButton, Text } from '@common/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { getInitials } from '@utils/string';
 import React from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { Avatar, IconButton, Text } from 'src/common/components';
 
 export interface ProfileSectionProps {
   style?: StyleProp<ViewStyle>;

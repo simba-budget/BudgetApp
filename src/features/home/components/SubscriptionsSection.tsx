@@ -1,4 +1,5 @@
 import { Subscription } from '@api/clients/subscriptions/types';
+import { Text } from '@common/components';
 import {
   SubscriptionsEmpty,
   SubscriptionsListItem,
@@ -8,7 +9,6 @@ import { flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { Text } from 'src/common/components';
 
 export interface SubscriptionsSectionProps {
   style?: StyleProp<ViewStyle>;

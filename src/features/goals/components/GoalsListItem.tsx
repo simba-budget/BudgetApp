@@ -1,4 +1,5 @@
 import { Goal } from '@api/clients/goals/types';
+import { IconButton, ProgressBar, Text } from '@common/components';
 import {
   goalActionsRoute,
   goalRoute,
@@ -17,7 +18,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { IconButton, ProgressBar, Text } from 'src/common/components';
 
 export interface GoalsListItemProps {
   style?: StyleProp<ViewStyle>;

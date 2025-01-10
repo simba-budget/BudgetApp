@@ -1,3 +1,4 @@
+import { Button, Text } from '@common/components';
 import { useAuthTranslations } from '@i18n/hooks';
 import {
   RootNavigation,
@@ -11,7 +12,6 @@ import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Button, Text } from 'src/common/components';
 
 const Welcome = () => {
   const navigation = useNavigation<RootNavigation>();
@@ -31,7 +31,9 @@ const Welcome = () => {
             {t('The Budget App That Makes You')}
           </Text>
           <Text size="s" color="tertiary" textAlign="center">
-            {t('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do')}
+            {t(
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
+            )}
           </Text>
         </View>
         <Button

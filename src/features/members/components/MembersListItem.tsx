@@ -1,4 +1,5 @@
 import { Member, MemberRole } from '@api/clients/members/types';
+import { Avatar, Badge, Text } from '@common/components';
 import { memberRoute, RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1, rowCenter } from '@styles/common';
@@ -14,7 +15,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Avatar, Badge, Text } from 'src/common/components';
 
 export interface MembersListItemProps {
   style?: StyleProp<ViewStyle>;

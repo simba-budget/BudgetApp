@@ -1,6 +1,6 @@
+import { ScreenContainer } from '@common/components';
 import { TermsAndConditions } from '@features/documents/hoc';
 import React from 'react';
-import { ScreenContainer } from 'src/common/components';
 
 const TermsAndConditionsScreen = () => (
   <ScreenContainer>

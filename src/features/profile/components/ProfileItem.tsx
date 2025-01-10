@@ -1,9 +1,9 @@
+import { Svg, Text } from '@common/components';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Svg, Text } from 'src/common/components';
 
 import { ProfileItemProps } from '../types';
 

@@ -1,6 +1,6 @@
+import { FormScreenContainer, StatusBar } from '@common/components';
 import { SendOtp } from '@features/auth/containers';
 import React from 'react';
-import { FormScreenContainer, StatusBar } from 'src/common/components';
 
 const SendOtpScreen = () => (
   <FormScreenContainer>

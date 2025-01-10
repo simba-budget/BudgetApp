@@ -1,6 +1,6 @@
+import { SheetScreenContainer } from '@common/components';
 import { CategoryAdd } from '@features/categories/containers';
 import React from 'react';
-import { SheetScreenContainer } from 'src/common/components';
 
 const CategoryAddScreen = () => (
   <SheetScreenContainer>
