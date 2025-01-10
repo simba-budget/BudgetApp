@@ -10,8 +10,8 @@ export interface VerifyOtpProps {
 
 const VerifyOtp = ({ email, expirationDate }: VerifyOtpProps) => {
   const [newExpirationDate, setNewExpirationDate] = useState<string>(expirationDate);
-  const { verifyOtp, isSubmitting } = useVerifyOtp(email);
-  const { control, handleSubmit, isValid } = useVerifyOtpForm();
+  const { control, handleSubmit, isValid, reset } = useVerifyOtpForm();
+  const { verifyOtp, isSubmitting } = useVerifyOtp(email, { onError: reset });
   const onSuccess = useCallback((data: string) => setNewExpirationDate(data), []);
   const { sendOtp, isSubmitting: isResending } = useSendOtp({ onSuccess });
   const handleOnResend = useCallback(() => sendOtp({ email }), [sendOtp, email]);

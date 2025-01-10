@@ -1,15 +1,25 @@
 import CodeInputCell from '@common/components/CodeInputCell';
 import { center } from '@styles/common';
 import { gap } from '@styles/lightTheme';
-import React from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Platform, StyleProp, TextInputProps, ViewStyle } from 'react-native';
-import { CodeField, useBlurOnFulfill } from 'react-native-confirmation-code-field';
+import { CodeField, RenderCellOptions } from 'react-native-confirmation-code-field';
 
 export interface CodeInputProps
-  extends Pick<TextInputProps, 'onBlur' | 'onFocus' | 'autoFocus' | 'value'> {
+  extends Omit<
+    TextInputProps,
+    | 'style'
+    | 'onChange'
+    | 'onChangeText'
+    | 'autoComplete'
+    | 'autoCorrect'
+    | 'keyboardType'
+    | 'textContentType'
+  > {
   style?: StyleProp<ViewStyle>;
   onChange: (value: string) => void;
   cellCount?: number;
+  onComplete: () => void;
 }
 
 const autoComplete: TextInputProps['autoComplete'] = Platform.select({
@@ -21,14 +31,30 @@ const CodeInput = ({
   onChange,
   cellCount = 6,
   style,
-  value,
+  value = '',
+  onComplete,
   ...rest
 }: CodeInputProps) => {
-  const ref = useBlurOnFulfill({ value, cellCount });
+  const isCompletedRef = useRef(false);
+
+  useEffect(() => {
+    if (value.length === cellCount && !isCompletedRef.current) {
+      onComplete();
+      isCompletedRef.current = true;
+    } else if (value.length !== cellCount) {
+      isCompletedRef.current = false;
+    }
+  }, [value, cellCount, onComplete]);
+
+  const renderCell = useCallback(
+    ({ index, symbol, isFocused }: RenderCellOptions) => (
+      <CodeInputCell isFocused={isFocused} key={index} value={symbol} />
+    ),
+    [],
+  );
 
   return (
     <CodeField
-      ref={ref}
       value={value}
       autoCorrect={false}
       onChangeText={onChange}
@@ -37,9 +63,7 @@ const CodeInput = ({
       keyboardType="number-pad"
       textContentType="oneTimeCode"
       autoComplete={autoComplete}
-      renderCell={({ index, symbol, isFocused }) => (
-        <CodeInputCell isFocused={isFocused} key={index} value={symbol} />
-      )}
+      renderCell={renderCell}
       {...rest}
     />
   );

@@ -5,12 +5,17 @@ import { useMutation } from '@tanstack/react-query';
 
 import { loginAction } from '../actions';
 
-const useVerifyOtp = (email: string) => {
+export interface Options {
+  onError?: () => void;
+}
+
+const useVerifyOtp = (email: string, { onError }: Options = {}) => {
   const dispatch = useAppDispatch();
 
   const { mutateAsync, isPending: isSubmitting } = useMutation({
     mutationFn: AuthClient.verifyOtp,
     onSuccess: (loggedUser) => dispatch(loginAction(loggedUser)),
+    onError,
   });
 
   const verifyOtp = (request: Pick<VerifyOtpRequest, 'otp'>) => {

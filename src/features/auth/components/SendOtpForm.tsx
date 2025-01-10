@@ -58,6 +58,10 @@ const SendOtpForm = ({
                 iconName="email"
                 autoCapitalize="none"
                 placeholder={t('Email')}
+                onSubmitEditing={onSubmit}
+                returnKeyLabel={t('Sign In')}
+                returnKeyType="done"
+                submitBehavior="submit"
               />
             </FormControl>
           )}

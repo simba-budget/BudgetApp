@@ -22,6 +22,7 @@ const useVerifyOtpForm = () => {
     control,
     handleSubmit,
     formState: { isValid },
+    reset,
   } = useForm<Pick<VerifyOtpRequest, 'otp'>>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
@@ -29,7 +30,12 @@ const useVerifyOtpForm = () => {
     reValidateMode: 'onChange',
   });
 
-  return { control, handleSubmit, isValid };
+  return {
+    control,
+    handleSubmit,
+    isValid,
+    reset: () => reset(initialFormData),
+  };
 };
 
 export default useVerifyOtpForm;
