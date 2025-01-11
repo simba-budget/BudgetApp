@@ -1,8 +1,10 @@
-import { BarChart, Text } from '@common/components';
+import { AnimatedNumber, BarChart, Text } from '@common/components';
 import { useHomeTranslations } from '@i18n/hooks';
-import { margin, padding } from '@styles/lightTheme';
+import { rowCenter } from '@styles/common';
+import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import { formatPrice, formatShortPrice } from '@utils/price';
+import { formatShortPrice } from '@utils/price';
+import getSymbolFromCurrency from 'currency-symbol-map';
 import React, { useCallback } from 'react';
 import {
   StyleProp,
@@ -40,9 +42,17 @@ const TransactionsWeekStats = ({
           <Text size="m" weight="medium" color="tertiary">
             {t('Weekly Expenses')}
           </Text>
-          <Text size="xxl" weight="medium" color="primary">
-            {formatPrice(totalAmount, 'EUR')}
-          </Text>
+          <View style={[rowCenter, gap('column')('xxs')]}>
+            <AnimatedNumber
+              size="xxl"
+              color="primary"
+              weight="semiBold"
+              value={totalAmount}
+            />
+            <Text size="xxl" weight="semiBold" color="primary">
+              {getSymbolFromCurrency('EUR')}
+            </Text>
+          </View>
         </View>
         <BarChart
           style={padding('left')('xs')}

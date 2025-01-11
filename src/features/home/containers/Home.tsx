@@ -26,6 +26,7 @@ import { StyleSheet } from 'react-native';
 
 import {
   AccountSection,
+  AccountSectionSkeleton,
   GoalsSection,
   InvitationAddSection,
   ProfileSection,
@@ -161,12 +162,14 @@ const Home = () => {
           profile={profile}
         />
       )}
-      {account && (
+      {account ? (
         <AccountSection
           onAccountPress={() => toAccountSelect(navigation)}
           account={account}
           quickActions={quickActions}
         />
+      ) : (
+        <AccountSectionSkeleton />
       )}
       <TransactionsWeekStats
         isLoading={isTransactionsWeekStatsLoading}

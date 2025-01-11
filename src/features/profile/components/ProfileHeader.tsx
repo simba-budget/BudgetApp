@@ -21,7 +21,7 @@ const ProfileHeader = ({ style, profile }: ProfileHeaderProps) => (
         {getInitials(getFullName(profile))}
       </Text>
     </View>
-    <Text size="m" color="primary" weight="semiBold" textAlign="center">
+    <Text size="l" color="primary" weight="semiBold" textAlign="center">
       {getFullName(profile)}
     </Text>
     <Text size="s" color="tertiary" weight="medium" textAlign="center">

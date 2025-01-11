@@ -6,9 +6,9 @@ import { Text as RNText, TextProps as RNTextProps, TextStyle } from 'react-nativ
 export interface TextProps extends RNTextProps {
   size?: keyof FontSizes;
   color?: keyof Colors['text'];
+  weight?: keyof Fonts['urbanist'];
   textAlign?: TextStyle['textAlign'];
   textTransform?: TextStyle['textTransform'];
-  weight?: keyof Fonts['urbanist'];
 }
 
 const Text = ({

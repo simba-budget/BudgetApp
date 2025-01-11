@@ -1,10 +1,10 @@
 import { Account } from '@api/clients/accounts/types';
-import { IconButton, Svg, Text } from '@common/components';
+import { AnimatedNumber, IconButton, Svg, Text } from '@common/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import { formatPrice } from '@utils/price';
+import getSymbolFromCurrency from 'currency-symbol-map';
 import React from 'react';
 import {
   StyleProp,
@@ -34,26 +34,28 @@ const AccountSection = ({
   return (
     <View style={[padding('horizontal')('m'), style]}>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.accountContainer} onPress={onAccountPress}>
-          <Text weight="medium" size="s" color="secondary">
-            {account.name}
+        <View style={flex1}>
+          <TouchableOpacity style={styles.accountContainer} onPress={onAccountPress}>
+            <Text weight="medium" size="s" color="secondary">
+              {account.name}
+            </Text>
+            <Svg color={colors.text.accent} size={20} name="chevronDown" />
+          </TouchableOpacity>
+          <Text size="m" weight="medium" color="accent">
+            {t('Total Balance')}
           </Text>
-          <Svg color={colors.text.accent} size={20} name="chevronDown" />
-        </TouchableOpacity>
-        <Text
-          style={margin('bottom')('xxs')}
-          size="m"
-          weight="medium"
-          color="accent">
-          {t('Total Balance')}
-        </Text>
-        <Text
-          style={margin('bottom')('l')}
-          size="xxl"
-          weight="semiBold"
-          color="secondary">
-          {formatPrice(account.balance, account.currency)}
-        </Text>
+          <View style={[rowCenter, gap('column')('xxs')]}>
+            <AnimatedNumber
+              size="xxl"
+              color="secondary"
+              weight="semiBold"
+              value={account.balance}
+            />
+            <Text size="xxl" weight="semiBold" color="secondary">
+              {getSymbolFromCurrency(account.currency)}
+            </Text>
+          </View>
+        </View>
         <View style={styles.quickActionContainer}>
           {quickActions.map((quickAction, index) => (
             <View style={[flex1, center, gap('row')('xs')]} key={index}>
@@ -78,6 +80,7 @@ const AccountSection = ({
 const styles = StyleSheet.create({
   container: {
     ...padding('full')('l'),
+    height: 290,
     borderRadius: 30,
     backgroundColor: colors.background.accent,
   },
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     ...rowCenter,
     ...gap('column')('xxs'),
     ...padding('horizontal')('s'),
-    ...margin('bottom')('m'),
+    ...margin('bottom')('l'),
     alignSelf: 'flex-start',
     height: 32,
     borderRadius: 16,
