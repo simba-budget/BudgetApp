@@ -24,7 +24,6 @@ const useCategories = ({ filter, sort }: Options) => {
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
     queryKey: getQueryKey(filter, sort, lastUpdated),
     queryFn: () => CategoriesClient.getCategories({ filter, sort }),
-    placeholderData: (prev) => prev,
   });
 
   return {

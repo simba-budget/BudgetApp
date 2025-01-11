@@ -23,7 +23,7 @@ const useTransactionsWeekStats = () => {
   });
 
   const data = useMemo<ChartData>(() => mapTransactionsStats(stats), [stats]);
-  const totalAmount = useMemo<number>(() => sumBy(stats, 'amount'), [stats]);
+  const totalAmount = useMemo<number>(() => sumBy(stats, 'amount') || 0, [stats]);
   return { data, isLoading, totalAmount, refetch, isRefetching };
 };
 

@@ -8,7 +8,6 @@ import CategoriesListItem from './CategoriesListItem';
 
 export interface CategoriesListProps {
   style?: StyleProp<ViewStyle>;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   categories: Category[];
@@ -16,7 +15,6 @@ export interface CategoriesListProps {
 
 const CategoriesList = ({
   categories,
-  isLoading,
   style,
   onRefresh,
   isRefreshing,
@@ -35,7 +33,7 @@ const CategoriesList = ({
       onRefresh={onRefresh}
       style={style}
       data={categories}
-      refreshing={isLoading || isRefreshing}
+      refreshing={isRefreshing}
       renderItem={renderItem}
     />
   );

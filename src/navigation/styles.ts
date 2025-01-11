@@ -1,6 +1,6 @@
 import { Theme } from '@react-navigation/native';
 import { justifyEnd, justifyStart, rowCenter } from '@styles/common';
-import { padding } from '@styles/lightTheme';
+import { padding, sizes } from '@styles/lightTheme';
 import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import { TextStyle, ViewStyle } from 'react-native';
 
@@ -37,6 +37,7 @@ export const theme: Theme = {
 export const headerTitleContainerStyle: ViewStyle = {
   marginLeft: 0,
   marginRight: 0,
+  paddingBottom: sizes.xxxs,
 };
 
 export const headerLeftContainerStyle: ViewStyle = {

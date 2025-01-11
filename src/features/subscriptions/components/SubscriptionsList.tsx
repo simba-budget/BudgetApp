@@ -1,6 +1,7 @@
 import { Subscription } from '@api/clients/subscriptions/types';
 import { FlatList } from '@common/components';
 import { justifyCenter } from '@styles/common';
+import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -37,7 +38,7 @@ const SubscriptionsList = ({
 
   return (
     <FlatList
-      contentContainerStyle={[total === 0 && justifyCenter]}
+      contentContainerStyle={[total === 0 && justifyCenter, padding('top')('xxs')]}
       ListEmptyComponent={<SubscriptionsEmpty onAddPress={onSubscriptionAddPress} />}
       keyExtractor={(subscription) => subscription.id.toString()}
       onEndReached={onFetchMore}

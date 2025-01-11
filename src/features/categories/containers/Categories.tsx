@@ -1,3 +1,4 @@
+import { SkeletonsList } from '@common/components';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { flex1 } from '@styles/common';
@@ -6,7 +7,11 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
-import { CategoriesList, CategoriesSearch } from '../components';
+import {
+  CategoriesList,
+  CategoriesListItemSkeleton,
+  CategoriesSearch,
+} from '../components';
 import { useCategories } from '../hooks';
 import { selectApiCategoriesFilter, selectCategoriesSort } from '../selectors';
 import { updateKeyword } from '../slice';
@@ -28,18 +33,24 @@ const Categories = () => {
   );
 
   return (
-    <View style={[flex1, padding('top')('xs')]}>
+    <View style={flex1}>
       <CategoriesSearch
         style={margin('bottom')('s')}
         onKeywordChange={handleOnKeywordChange}
         keyword={filter?.keyword}
       />
-      <CategoriesList
-        isLoading={isLoading}
-        isRefreshing={isRefetching}
-        onRefresh={refetch}
-        categories={categories}
-      />
+      {isLoading ? (
+        <SkeletonsList
+          style={padding('top')('xxs')}
+          ItemComponent={CategoriesListItemSkeleton}
+        />
+      ) : (
+        <CategoriesList
+          isRefreshing={isRefetching}
+          onRefresh={refetch}
+          categories={categories}
+        />
+      )}
     </View>
   );
 };

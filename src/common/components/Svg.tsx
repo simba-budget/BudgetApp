@@ -120,7 +120,17 @@ export interface SvgIconProps
 
 const Svg = ({ name, size = 24, color, ...rest }: SvgIconProps) => {
   const Icon = useMemo<FC<SvgProps>>(() => icons[name], [name]);
-  return <Icon disabled width={size} height={size} color={color} {...rest} />;
+
+  return (
+    <Icon
+      key={`${color}-${size}`}
+      disabled
+      width={size}
+      height={size}
+      color={color}
+      {...rest}
+    />
+  );
 };
 
 export default Svg;
