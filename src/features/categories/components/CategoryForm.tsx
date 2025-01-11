@@ -1,7 +1,7 @@
-import { Button, FormControl, IconButton, Input, Text } from '@common/components';
+import { Button, FormControl, Input, Text } from '@common/components';
 import { useCategoriesTranslations } from '@i18n/hooks';
-import { selfCenter } from '@styles/common';
-import { gap, margin, padding } from '@styles/lightTheme';
+import { center } from '@styles/common';
+import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
@@ -28,21 +28,23 @@ const CategoryForm = ({
   const { t } = useCategoriesTranslations();
 
   return (
-    <View style={[padding('horizontal')('m'), padding('top')('m'), style]}>
-      <IconButton
-        style={[selfCenter, margin('bottom')('s')]}
-        color="primary"
-        size={56}
-        iconSize={28}
-        iconName="squaresPlus"
-        isDisabled
-      />
-      <View style={[gap('row')('xxs'), margin('bottom')('xl')]}>
-        <Text color="primary" weight="semiBold" textAlign="center" size="m">
+    <View style={[padding('horizontal')('l'), padding('top')('m'), style]}>
+      <View style={[center, padding('horizontal')('m')]}>
+        <Text
+          style={margin('bottom')('xxxs')}
+          textAlign="center"
+          color="primary"
+          weight="semiBold"
+          size="l">
           {title}
         </Text>
-        <Text weight="medium" textAlign="center" color="tertiary" size="s">
-          {t('Style object for the card in stack. You can provide')}
+        <Text
+          textAlign="center"
+          style={margin('bottom')('l')}
+          weight="medium"
+          color="tertiary"
+          size="s">
+          {t('Style object for the card in stack. You can provide a custom color')}
         </Text>
       </View>
       <Controller
@@ -56,6 +58,7 @@ const CategoryForm = ({
             label={t('Name')}>
             <Input
               autoFocus
+              bgColor="secondary"
               keyboardType="default"
               iconName="userPlus"
               readOnly={isDisabled}

@@ -24,6 +24,7 @@ import Card from '@assets/svg/v2/card.svg';
 import Chart from '@assets/svg/v2/chart.svg';
 import Chat from '@assets/svg/v2/chat.svg';
 import ChevronDown from '@assets/svg/v2/chevron-down.svg';
+import ChevronLeft from '@assets/svg/v2/chevron-left.svg';
 import Clear from '@assets/svg/v2/clear.svg';
 import Delete from '@assets/svg/v2/delete.svg';
 import DocumentAdd from '@assets/svg/v2/document-add.svg';
@@ -107,6 +108,7 @@ const icons: Record<IconName, FC<SvgProps>> = {
   wallet: Wallet,
   arrowRightLeft: ArrowRightLeft,
   squaresPlus: SquaresPlus,
+  chevronLeft: ChevronLeft,
 };
 
 export interface SvgIconProps

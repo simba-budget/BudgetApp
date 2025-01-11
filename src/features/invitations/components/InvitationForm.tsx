@@ -1,7 +1,7 @@
-import { Button, FormControl, IconButton, Input, Text } from '@common/components';
+import { Button, FormControl, Input, Text } from '@common/components';
 import { useInvitationsTranslations } from '@i18n/hooks';
-import { selfCenter } from '@styles/common';
-import { gap, margin, padding } from '@styles/lightTheme';
+import { center } from '@styles/common';
+import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
@@ -27,22 +27,22 @@ const InvitationForm = ({
 
   return (
     <View style={[padding('horizontal')('l'), padding('top')('m'), style]}>
-      <IconButton
-        style={[selfCenter, margin('bottom')('s')]}
-        color="primary"
-        size={56}
-        iconSize={28}
-        iconName="userPlus"
-        isDisabled
-      />
-      <View style={[gap('row')('xxs'), margin('bottom')('xl')]}>
-        <Text color="primary" weight="semiBold" textAlign="center" size="m">
+      <View style={[center, padding('horizontal')('m')]}>
+        <Text
+          style={margin('bottom')('xxxs')}
+          textAlign="center"
+          color="primary"
+          weight="semiBold"
+          size="l">
           {t('Invite Member')}
         </Text>
-        <Text weight="medium" textAlign="center" color="tertiary" size="s">
-          {t(
-            'Style object for the card in stack. You can provide a custom background color',
-          )}
+        <Text
+          textAlign="center"
+          style={margin('bottom')('l')}
+          weight="medium"
+          color="tertiary"
+          size="s">
+          {t('Style object for the card in stack. You can provide a custom color')}
         </Text>
       </View>
       <Controller
@@ -55,6 +55,7 @@ const InvitationForm = ({
             error={error?.message}
             label={t('Email')}>
             <Input
+              bgColor="secondary"
               autoFocus
               keyboardType="email-address"
               iconName="email"

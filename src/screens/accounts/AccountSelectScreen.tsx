@@ -3,7 +3,7 @@ import { AccountSelect } from '@features/accounts/containers';
 import React from 'react';
 
 const AccountSelectScreen = () => (
-  <SheetScreenContainer backgroundColor="primary">
+  <SheetScreenContainer>
     <AccountSelect />
   </SheetScreenContainer>
 );

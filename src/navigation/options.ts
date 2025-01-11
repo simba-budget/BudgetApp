@@ -3,7 +3,7 @@ import { StackNavigationOptions } from '@react-navigation/stack';
 import { colors } from '@styles/v2/urbanistTheme';
 import { Easing } from 'react-native-reanimated';
 
-import { StackHeaderLeft } from './components';
+import { CardOverlay, StackHeaderLeft } from './components';
 import {
   headerLeftContainerStyle,
   headerRightContainerStyle,
@@ -21,6 +21,7 @@ export const bottomSheetOptions: StackNavigationOptions = {
   gestureEnabled: false,
   presentation: 'transparentModal',
   detachPreviousScreen: false,
+  cardOverlay: CardOverlay,
   transitionSpec: {
     open: {
       animation: 'timing',

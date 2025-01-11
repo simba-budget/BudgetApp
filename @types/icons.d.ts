@@ -51,5 +51,6 @@ declare module '@icons' {
     | 'wallet'
     | 'userPlus'
     | 'arrowRightLeft'
-    | 'squaresPlus';
+    | 'squaresPlus'
+    | 'chevronLeft';
 }

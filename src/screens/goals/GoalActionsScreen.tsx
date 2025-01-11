@@ -6,7 +6,7 @@ import React from 'react';
 export type GoalActionsScreenProps = StaticScreenProps<{ id: number }>;
 
 const GoalActionsScreen = ({ route }: GoalActionsScreenProps) => (
-  <SheetScreenContainer backgroundColor="primary">
+  <SheetScreenContainer>
     <GoalActions id={route.params.id} />
   </SheetScreenContainer>
 );
