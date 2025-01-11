@@ -10,7 +10,6 @@ import GoalsListItem from './GoalsListItem';
 
 export interface GoalsListProps {
   style?: StyleProp<ViewStyle>;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   goals: Goal[];
@@ -22,7 +21,6 @@ export interface GoalsListProps {
 
 const GoalsList = ({
   goals,
-  isLoading,
   style,
   onRefresh,
   isRefreshing,
@@ -46,7 +44,7 @@ const GoalsList = ({
       onRefresh={onRefresh}
       style={style}
       data={goals}
-      refreshing={isLoading || isRefreshing}
+      refreshing={isRefreshing}
       renderItem={renderItem}
     />
   );

@@ -1,11 +1,11 @@
-import { ScreenContainer } from '@common/components';
+import { FormScreenContainer } from '@common/components';
 import { Subscriptions } from '@features/subscriptions/containers';
 import React from 'react';
 
 const SubscriptionsScreen = () => (
-  <ScreenContainer>
+  <FormScreenContainer additionalPadding={0} isTabsScreen>
     <Subscriptions />
-  </ScreenContainer>
+  </FormScreenContainer>
 );
 
 export default SubscriptionsScreen;

@@ -1,4 +1,5 @@
-import { fonts, fontSizes, margin, themeTextColors } from '@styles/lightTheme';
+import { margin } from '@styles/lightTheme';
+import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { default as RNMarkdown } from 'react-native-markdown-display';
@@ -18,46 +19,46 @@ const Markdown = ({ style, content }: MarkdownProps) => (
 
 const styles = StyleSheet.create({
   heading1: {
-    ...fonts.spaceGrotesk.bold,
+    ...fonts.urbanist.bold,
     ...fontSizes.m,
     ...margin('bottom')('xxs'),
-    color: themeTextColors.primary,
+    color: colors.text.primary,
   },
   heading2: {
-    ...fonts.spaceGrotesk.bold,
+    ...fonts.urbanist.bold,
     ...fontSizes.m,
     ...margin('bottom')('xxs'),
-    color: themeTextColors.primary,
+    color: colors.text.primary,
   },
   heading3: {
-    ...fonts.spaceGrotesk.bold,
+    ...fonts.urbanist.bold,
     ...fontSizes.s,
     ...margin('bottom')('xxs'),
-    color: themeTextColors.primary,
+    color: colors.text.primary,
   },
   paragraph: {
-    ...fonts.spaceGrotesk.regular,
+    ...fonts.urbanist.regular,
     ...fontSizes.s,
     ...margin('bottom')('l'),
-    color: themeTextColors.secondary,
+    color: colors.text.tertiary,
   },
   bullet_list: {
-    ...fonts.spaceGrotesk.regular,
+    ...fonts.urbanist.regular,
     ...fontSizes.s,
     ...margin('bottom')('l'),
-    color: themeTextColors.secondary,
+    color: colors.text.tertiary,
   },
   bullet_list_icon: {
-    ...fonts.spaceGrotesk.regular,
+    ...fonts.urbanist.regular,
     ...fontSizes.s,
     ...margin('right')('xs'),
-    color: themeTextColors.secondary,
+    color: colors.text.tertiary,
   },
   link: {
-    ...fonts.spaceGrotesk.medium,
+    ...fonts.urbanist.medium,
     ...fontSizes.s,
     textDecorationLine: 'underline',
-    color: themeTextColors.highlightPrimary,
+    color: colors.text.accent,
   },
 });
 

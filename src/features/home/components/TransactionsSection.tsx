@@ -1,8 +1,9 @@
 import { Transaction } from '@api/clients/transactions/types';
-import { Text } from '@common/components';
+import { SkeletonsList, Text } from '@common/components';
 import {
   TransactionsEmpty,
   TransactionsListItem,
+  TransactionsListItemSkeleton,
 } from '@features/transactions/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
@@ -48,6 +49,12 @@ const TransactionsSection = ({
       </View>
       {isTransactionsEmpty ? (
         <TransactionsEmpty onAddPress={onTransactionAddPress} />
+      ) : isLoading ? (
+        <SkeletonsList
+          itemsCount={5}
+          noPadding
+          ItemComponent={TransactionsListItemSkeleton}
+        />
       ) : (
         <View style={gap('row')('xs')}>
           {transactions.map((transaction) => (

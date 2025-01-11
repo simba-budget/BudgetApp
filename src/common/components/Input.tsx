@@ -1,5 +1,6 @@
 import { IconName } from '@icons';
 import { padding, sizes } from '@styles/lightTheme';
+import { Colors } from '@styles/v2/types';
 import { colors, fonts, fontSizes } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import {
@@ -24,6 +25,7 @@ export interface InputProps
   iconName: IconName;
   inputStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
+  bgColor?: keyof Colors['background'];
 }
 
 const Input = ({
@@ -32,6 +34,7 @@ const Input = ({
   style,
   inputStyle,
   iconName,
+  bgColor = 'tertiary',
   ...rest
 }: InputProps) => (
   <View style={[styles.container, style]}>
@@ -47,7 +50,11 @@ const Input = ({
       placeholderTextColor={colors.text.placeholder}
       keyboardAppearance="dark"
       onChangeText={onChange}
-      style={[styles.input, inputStyle]}
+      style={[
+        styles.input,
+        { backgroundColor: colors.background[bgColor] },
+        inputStyle,
+      ]}
       value={value?.toString() ?? undefined}
       {...rest}
     />
@@ -73,7 +80,6 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 12,
     borderWidth: 1,
-    backgroundColor: colors.background.tertiary,
     borderColor: colors.border.primary,
   },
 });

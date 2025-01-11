@@ -1,13 +1,15 @@
+import { SkeletonsList } from '@common/components';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { RootNavigation, toGoalAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
+import { gap } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
-import { GoalsList, GoalsSearch } from '../components';
+import { GoalsList, GoalsListItemSkeleton, GoalsSearch } from '../components';
 import { useGoalsInfinity } from '../hooks';
 import { selectApiGoalsFilter, selectGoalsSort } from '../selectors';
 import { updateKeyword } from '../slice';
@@ -32,7 +34,7 @@ const Goals = () => {
     sort,
   });
 
-  const isGoalsEmpty = total === 0 && !filter?.keyword;
+  const isGoalsEmpty = total === 0 && !filter?.keyword && !isLoading;
 
   const handleOnKeywordChange = useCallback(
     (keyword: string) => dispatch(updateKeyword({ keyword })),
@@ -47,16 +49,23 @@ const Goals = () => {
           keyword={filter?.keyword}
         />
       )}
-      <GoalsList
-        total={total}
-        onGoalAddPress={() => toGoalAdd(navigation)}
-        isFetchingMore={isFetchingMore}
-        onFetchMore={fetchMore}
-        isLoading={isLoading}
-        isRefreshing={isRefetching}
-        onRefresh={refetch}
-        goals={goals}
-      />
+      {isLoading ? (
+        <SkeletonsList
+          itemsCount={3}
+          style={gap('row')('m')}
+          ItemComponent={GoalsListItemSkeleton}
+        />
+      ) : (
+        <GoalsList
+          total={total}
+          onGoalAddPress={() => toGoalAdd(navigation)}
+          isFetchingMore={isFetchingMore}
+          onFetchMore={fetchMore}
+          isRefreshing={isRefetching}
+          onRefresh={refetch}
+          goals={goals}
+        />
+      )}
     </View>
   );
 };

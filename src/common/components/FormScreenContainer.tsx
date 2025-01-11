@@ -1,28 +1,23 @@
 import { flex1 } from '@styles/common';
-import { sizes } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React, { ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
-import Animated, {
-  KeyboardState,
-  useAnimatedKeyboard,
-  useAnimatedStyle,
-} from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Animated from 'react-native-reanimated';
+
+import { useSafeBottomStyle } from '../hooks';
 
 export interface FormScreenContainerProps {
   children: ReactNode;
+  isTabsScreen?: boolean;
+  additionalPadding?: number;
 }
 
-const FormScreenContainer = ({ children }: FormScreenContainerProps) => {
-  const { bottom } = useSafeAreaInsets();
-  const { state, height } = useAnimatedKeyboard();
-
-  const containerStyle = useAnimatedStyle(() => {
-    const isKeyboardActive = activeStates.includes(state.value);
-    const paddingBottom = (isKeyboardActive ? height.value : bottom) + sizes.m;
-    return { paddingBottom };
-  });
+const FormScreenContainer = ({
+  children,
+  isTabsScreen,
+  additionalPadding,
+}: FormScreenContainerProps) => {
+  const containerStyle = useSafeBottomStyle({ isTabsScreen, additionalPadding });
 
   return (
     <Animated.View style={[styles.container, containerStyle]}>
@@ -30,8 +25,6 @@ const FormScreenContainer = ({ children }: FormScreenContainerProps) => {
     </Animated.View>
   );
 };
-
-const activeStates = [KeyboardState.OPEN, KeyboardState.OPENING];
 
 const styles = StyleSheet.create({
   container: {

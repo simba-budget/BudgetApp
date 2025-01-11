@@ -69,7 +69,7 @@ const SectionList = <T,>({
 
 const styles = StyleSheet.create({
   container: {
-    ...padding('full')('m'),
+    ...padding('horizontal')('m'),
     ...gap('row')('xs'),
     flexGrow: 1,
   },

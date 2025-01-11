@@ -1,4 +1,5 @@
 import { ScrollView } from '@common/components';
+import { gap } from '@styles/lightTheme';
 import React from 'react';
 
 import { ProfileHeader, ProfileSection } from '../components';
@@ -11,7 +12,10 @@ const Profile = () => {
   if (!profile) return null;
 
   return (
-    <ScrollView onRefresh={refetch} refreshing={isLoading || isRefetching}>
+    <ScrollView
+      contentContainerStyle={gap('row')('l')}
+      onRefresh={refetch}
+      refreshing={isLoading || isRefetching}>
       <ProfileHeader profile={profile} />
       {sections.map((section, index) => (
         <ProfileSection {...section} key={index} />

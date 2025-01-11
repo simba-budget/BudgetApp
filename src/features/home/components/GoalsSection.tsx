@@ -1,6 +1,10 @@
 import { Goal } from '@api/clients/goals/types';
-import { Text } from '@common/components';
-import { GoalsEmpty, GoalsListItem } from '@features/goals/components';
+import { SkeletonsList, Text } from '@common/components';
+import {
+  GoalsEmpty,
+  GoalsListItem,
+  GoalsListItemSkeleton,
+} from '@features/goals/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding, sizes } from '@styles/lightTheme';
@@ -34,7 +38,7 @@ const GoalsSection = ({
 }: GoalsSectionProps) => {
   const { t } = useHomeTranslations();
   const { width } = useWindowDimensions();
-  const isGoalsEmpty = !isLoading && goals.length === 0;
+  const isGoalsEmpty = !isLoading && goals.length === 0 && !isLoading;
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Goal>) => (
@@ -66,6 +70,8 @@ const GoalsSection = ({
         <View style={padding('horizontal')('m')}>
           <GoalsEmpty onAddPress={onGoalAddPress} />
         </View>
+      ) : isLoading ? (
+        <SkeletonsList itemsCount={1} ItemComponent={GoalsListItemSkeleton} />
       ) : (
         <FlatList
           scrollEnabled={goals.length > 1}

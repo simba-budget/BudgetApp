@@ -1,3 +1,4 @@
+import { SkeletonsList } from '@common/components';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { RootNavigation, toSubscriptionAdd } from '@navigation/navigators/root';
@@ -7,7 +8,11 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
-import { SubscriptionsList, SubscriptionsSearch } from '../components';
+import {
+  SubscriptionsList,
+  SubscriptionsListItemSkeleton,
+  SubscriptionsSearch,
+} from '../components';
 import { useSubscriptionsInfinity } from '../hooks';
 import { selectApiSubscriptionsFilter, selectSubscriptionsSort } from '../selectors';
 import { updateKeyword } from '../slice';
@@ -32,7 +37,7 @@ const Subscriptions = () => {
     sort,
   });
 
-  const isSubscriptionsEmpty = total === 0 && !filter?.keyword;
+  const isSubscriptionsEmpty = total === 0 && !filter?.keyword && !isLoading;
 
   const handleOnKeywordChange = useCallback(
     (keyword: string) => dispatch(updateKeyword({ keyword })),
@@ -47,16 +52,19 @@ const Subscriptions = () => {
           keyword={filter?.keyword}
         />
       )}
-      <SubscriptionsList
-        total={total}
-        onSubscriptionAddPress={() => toSubscriptionAdd(navigation)}
-        isFetchingMore={isFetchingMore}
-        onFetchMore={fetchMore}
-        isLoading={isLoading}
-        isRefreshing={isRefetching}
-        onRefresh={refetch}
-        subscriptions={subscriptions}
-      />
+      {isLoading ? (
+        <SkeletonsList ItemComponent={SubscriptionsListItemSkeleton} />
+      ) : (
+        <SubscriptionsList
+          total={total}
+          onSubscriptionAddPress={() => toSubscriptionAdd(navigation)}
+          isFetchingMore={isFetchingMore}
+          onFetchMore={fetchMore}
+          isRefreshing={isRefetching}
+          onRefresh={refetch}
+          subscriptions={subscriptions}
+        />
+      )}
     </View>
   );
 };

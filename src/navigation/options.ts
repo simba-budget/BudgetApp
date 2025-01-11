@@ -57,4 +57,5 @@ export const bottomTabsOptions: BottomTabNavigationOptions = {
   tabBarLabelStyle,
   tabBarActiveTintColor: colors.text.accent,
   tabBarInactiveTintColor: colors.text.tertiary,
+  tabBarHideOnKeyboard: true,
 };

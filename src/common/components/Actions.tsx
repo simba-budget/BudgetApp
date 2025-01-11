@@ -21,10 +21,10 @@ export interface ActionsProps {
 const Actions = ({ items, title }: ActionsProps) => (
   <View style={[padding('horizontal')('m'), padding('top')('m'), gap('row')('xs')]}>
     <Text
-      style={margin('bottom')('s')}
+      style={margin('bottom')('xs')}
       textAlign="center"
       color="primary"
-      size="m"
+      size="l"
       weight="semiBold">
       {title}
     </Text>

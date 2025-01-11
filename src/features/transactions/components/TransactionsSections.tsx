@@ -12,7 +12,6 @@ import TransactionsListItem from './TransactionsListItem';
 
 export interface TransactionsSectionsProps {
   style?: StyleProp<ViewStyle>;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   transactions: Transaction[];
@@ -24,7 +23,6 @@ export interface TransactionsSectionsProps {
 
 const TransactionsSections = ({
   transactions,
-  isLoading,
   style,
   onRefresh,
   isRefreshing,
@@ -53,7 +51,7 @@ const TransactionsSections = ({
       onRefresh={onRefresh}
       style={style}
       sections={sections}
-      refreshing={isLoading || isRefreshing}
+      refreshing={isRefreshing}
       renderItem={renderItem}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}

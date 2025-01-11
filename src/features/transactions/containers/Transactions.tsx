@@ -1,9 +1,13 @@
+import { SkeletonsSections } from '@common/components';
 import { useAppSelector } from '@core/store/store';
 import { RootNavigation, toTransactionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
+import { flex1 } from '@styles/common';
+import { padding } from '@styles/lightTheme';
 import React from 'react';
+import { View } from 'react-native';
 
-import { TransactionsSections } from '../components';
+import { TransactionsListItemSkeleton, TransactionsSections } from '../components';
 import { useTransactionsInfinity } from '../hooks';
 import { selectApiTransactionsFilter, selectTransactionsSort } from '../selectors';
 
@@ -26,16 +30,21 @@ const Transactions = () => {
   });
 
   return (
-    <TransactionsSections
-      total={total}
-      onTransactionAddPress={() => toTransactionAdd(navigation)}
-      onFetchMore={fetchMore}
-      isFetchingMore={isFetchingMore}
-      isLoading={isLoading}
-      isRefreshing={isRefetching}
-      onRefresh={refetch}
-      transactions={transactions}
-    />
+    <View style={[flex1, padding('top')('m')]}>
+      {isLoading ? (
+        <SkeletonsSections ItemComponent={TransactionsListItemSkeleton} />
+      ) : (
+        <TransactionsSections
+          total={total}
+          onTransactionAddPress={() => toTransactionAdd(navigation)}
+          onFetchMore={fetchMore}
+          isFetchingMore={isFetchingMore}
+          isRefreshing={isRefetching}
+          onRefresh={refetch}
+          transactions={transactions}
+        />
+      )}
+    </View>
   );
 };
 

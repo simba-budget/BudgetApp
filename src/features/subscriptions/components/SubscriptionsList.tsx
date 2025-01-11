@@ -9,7 +9,6 @@ import SubscriptionsListItem from './SubscriptionsListItem';
 
 export interface SubscriptionsListProps {
   style?: StyleProp<ViewStyle>;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   subscriptions: Subscription[];
@@ -21,7 +20,6 @@ export interface SubscriptionsListProps {
 
 const SubscriptionsList = ({
   subscriptions,
-  isLoading,
   style,
   onRefresh,
   isRefreshing,
@@ -47,7 +45,7 @@ const SubscriptionsList = ({
       onRefresh={onRefresh}
       style={style}
       data={subscriptions}
-      refreshing={isLoading || isRefreshing}
+      refreshing={isRefreshing}
       renderItem={renderItem}
     />
   );

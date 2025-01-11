@@ -20,6 +20,11 @@ const SubscriptionsSearch = ({
   return (
     <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
       <Input
+        autoCorrect={false}
+        submitBehavior="submit"
+        returnKeyType="search"
+        returnKeyLabel="Search"
+        bgColor="secondary"
         iconName="search"
         onChange={onKeywordChange}
         value={keyword}

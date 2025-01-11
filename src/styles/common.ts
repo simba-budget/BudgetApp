@@ -1,4 +1,4 @@
-import { colors } from '@styles/lightTheme';
+import { colors } from '@styles/v2/urbanistTheme';
 import { FlexStyle, ViewStyle } from 'react-native';
 
 export const fullWidth: FlexStyle = {
@@ -64,7 +64,7 @@ export const relative: FlexStyle = {
 };
 
 export const shadow: ViewStyle = {
-  shadowColor: colors.black,
+  shadowColor: colors.common.black,
   shadowOffset: { width: 0, height: 0 },
   shadowRadius: 4,
   shadowOpacity: 0.1,

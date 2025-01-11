@@ -1,8 +1,9 @@
 import { Subscription } from '@api/clients/subscriptions/types';
-import { Text } from '@common/components';
+import { SkeletonsList, Text } from '@common/components';
 import {
   SubscriptionsEmpty,
   SubscriptionsListItem,
+  SubscriptionsListItemSkeleton,
 } from '@features/subscriptions/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { flex1, rowCenter } from '@styles/common';
@@ -48,6 +49,12 @@ const SubscriptionsSection = ({
       </View>
       {isSubscriptionsEmpty ? (
         <SubscriptionsEmpty onAddPress={onSubscriptionAddPress} />
+      ) : isLoading ? (
+        <SkeletonsList
+          itemsCount={3}
+          noPadding
+          ItemComponent={SubscriptionsListItemSkeleton}
+        />
       ) : (
         <View style={gap('row')('xs')}>
           {subscriptions.map((subscription) => (

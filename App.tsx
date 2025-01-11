@@ -1,5 +1,6 @@
 import { StatusBar } from '@common/components';
 import { CachedResourcesLoader } from '@common/containers';
+import setupLogging from '@core/logging/setup';
 import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
@@ -24,7 +25,7 @@ dayjs.extend(relativeTime);
 dayjs.extend(minMax);
 setupTranslations();
 setupNotifications();
-// setupLogging();
+setupLogging();
 
 const App = () => (
   <View style={styles.container}>
