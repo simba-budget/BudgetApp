@@ -1,5 +1,6 @@
 import { Category } from '@api/clients/categories/types';
 import { FlatList } from '@common/components';
+import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -29,6 +30,7 @@ const CategoriesList = ({
 
   return (
     <FlatList
+      contentContainerStyle={padding('top')('xxs')}
       keyExtractor={(category) => category.id.toString()}
       onRefresh={onRefresh}
       style={style}

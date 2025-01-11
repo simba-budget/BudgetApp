@@ -29,13 +29,16 @@ const categoriesSlice = createSlice({
     updateSort: (state, action: PayloadAction<{ sort: CategoriesSort }>) => {
       state.sort = action.payload.sort;
     },
+    updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
+      state.filter.keyword = action.payload.keyword;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(logoutAction.fulfilled, () => initialState);
   },
 });
 
-export const { updateFilter, updateCategories, updateSort } =
+export const { updateFilter, updateCategories, updateKeyword, updateSort } =
   categoriesSlice.actions;
 
 export const { reducer } = categoriesSlice;
