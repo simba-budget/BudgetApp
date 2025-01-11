@@ -1,15 +1,15 @@
-import { gap, padding, sizes } from '@styles/lightTheme';
+import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
   RefreshControl,
   SectionList as RNSectionList,
   SectionListProps as RNSectionListProps,
   StyleSheet,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { scrollIndicatorInsets } from '../constants';
+import { useSafeBottomInset } from '../hooks';
 import { Section } from '../types';
 
 import ListFooter from './ListFooter';
@@ -24,24 +24,17 @@ export interface SectionListProps<T>
     | 'showsVerticalScrollIndicator'
     | 'stickySectionHeadersEnabled'
   > {
-  isSafeBottomArea?: boolean;
   isFetchingMore?: boolean;
 }
 
 const SectionList = <T,>({
-  isSafeBottomArea = false,
   isFetchingMore = false,
   contentContainerStyle,
   refreshing,
   onRefresh,
   ...rest
 }: SectionListProps<T>) => {
-  const { bottom } = useSafeAreaInsets();
-
-  const paddingBottom = useMemo<number>(
-    () => (isSafeBottomArea ? bottom : 0) + sizes.m,
-    [bottom, isSafeBottomArea],
-  );
+  const paddingBottom = useSafeBottomInset();
 
   return (
     <RNSectionList<T, Section<T>>

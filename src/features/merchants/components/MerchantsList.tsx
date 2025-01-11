@@ -38,7 +38,6 @@ const MerchantsList = ({
       keyExtractor={(merchant) => merchant.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
-      isSafeBottomArea
       onRefresh={onRefresh}
       style={style}
       data={merchants}

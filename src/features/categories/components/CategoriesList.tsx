@@ -30,7 +30,6 @@ const CategoriesList = ({
   return (
     <FlatList
       keyExtractor={(category) => category.id.toString()}
-      isSafeBottomArea
       onRefresh={onRefresh}
       style={style}
       data={categories}

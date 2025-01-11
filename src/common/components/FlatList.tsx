@@ -1,16 +1,16 @@
 import ListFooter from '@common/components/ListFooter';
-import { gap, padding, sizes } from '@styles/lightTheme';
+import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
   RefreshControl,
   FlatList as RNFlatList,
   FlatListProps as RNFlatListProps,
   StyleSheet,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { scrollIndicatorInsets } from '../constants';
+import { useSafeBottomInset } from '../hooks';
 
 export interface FlatListProps<T>
   extends Omit<
@@ -20,24 +20,17 @@ export interface FlatListProps<T>
     | 'ListFooterComponent'
     | 'showsVerticalScrollIndicator'
   > {
-  isSafeBottomArea?: boolean;
   isFetchingMore?: boolean;
 }
 
 const FlatList = <T,>({
-  isSafeBottomArea = false,
   isFetchingMore = false,
   contentContainerStyle,
   refreshing,
   onRefresh,
   ...rest
 }: FlatListProps<T>) => {
-  const { bottom } = useSafeAreaInsets();
-
-  const paddingBottom = useMemo<number>(
-    () => (isSafeBottomArea ? bottom : 0) + sizes.m,
-    [bottom, isSafeBottomArea],
-  );
+  const paddingBottom = useSafeBottomInset();
 
   return (
     <RNFlatList<T>

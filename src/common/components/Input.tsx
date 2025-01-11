@@ -18,7 +18,14 @@ import Svg from './Svg';
 export interface InputProps
   extends Omit<
     RNTextInputProps,
-    'onChange' | 'onChangeText' | 'value' | 'style' | 'keyboardAppearance'
+    | 'onChange'
+    | 'onChangeText'
+    | 'value'
+    | 'style'
+    | 'keyboardAppearance'
+    | 'selectionColor'
+    | 'cursorColor'
+    | 'placeholderTextColor'
   > {
   value?: string | null | number;
   onChange?: (text: string) => void;

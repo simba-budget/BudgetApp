@@ -1,40 +1,33 @@
-import { padding, sizes } from '@styles/lightTheme';
+import { padding } from '@styles/lightTheme';
 import { Sizes } from '@styles/types';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
   RefreshControl,
   ScrollView as RNScrollView,
   ScrollViewProps as RNScrollViewProps,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { scrollIndicatorInsets } from '../constants';
+import { useSafeBottomInset } from '../hooks';
 
 export interface ScrollViewProps
   extends Omit<
     RNScrollViewProps,
     'scrollIndicatorInsets' | 'showsVerticalScrollIndicator'
   > {
-  isSafeBottomArea?: boolean;
   refreshing?: boolean;
   onRefresh?: () => void;
   gap?: keyof Sizes;
 }
 
 const ScrollView = ({
-  isSafeBottomArea = false,
   contentContainerStyle,
   refreshing,
   onRefresh,
   ...rest
 }: ScrollViewProps) => {
-  const { bottom } = useSafeAreaInsets();
-
-  const paddingBottom = useMemo<number>(
-    () => (isSafeBottomArea ? bottom : 0) + sizes.m,
-    [bottom, isSafeBottomArea],
-  );
+  const paddingBottom = useSafeBottomInset();
 
   return (
     <RNScrollView

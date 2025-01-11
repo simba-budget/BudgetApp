@@ -1,11 +1,11 @@
-import { ScreenContainer } from '@common/components';
+import { FormScreenContainer } from '@common/components';
 import { Categories } from '@features/categories/containers';
 import React from 'react';
 
 const CategoriesScreen = () => (
-  <ScreenContainer>
+  <FormScreenContainer>
     <Categories />
-  </ScreenContainer>
+  </FormScreenContainer>
 );
 
 export default CategoriesScreen;

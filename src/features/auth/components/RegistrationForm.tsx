@@ -27,7 +27,13 @@ const RegistrationForm = ({
   const navigation = useNavigation<RootNavigation>();
 
   return (
-    <View style={[flex1, padding('horizontal')('m'), padding('top')('l')]}>
+    <View
+      style={[
+        flex1,
+        padding('horizontal')('m'),
+        padding('top')('l'),
+        padding('bottom')('m'),
+      ]}>
       <View style={[flex1, center]}>
         <Text
           textAlign="center"

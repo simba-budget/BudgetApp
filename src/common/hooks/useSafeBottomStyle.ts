@@ -1,4 +1,3 @@
-import { sizes } from '@styles/lightTheme';
 import {
   KeyboardState,
   useAnimatedKeyboard,
@@ -9,22 +8,16 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const activeStates = [KeyboardState.OPEN, KeyboardState.OPENING];
 
 export interface Options {
-  isTabsScreen?: boolean;
   additionalPadding?: number;
 }
 
-const useSafeBottomStyle = ({
-  isTabsScreen,
-  additionalPadding = sizes.m,
-}: Options = {}) => {
+const useSafeBottomStyle = () => {
   const { bottom } = useSafeAreaInsets();
   const { state, height } = useAnimatedKeyboard();
 
   return useAnimatedStyle(() => {
-    const safeBottom = isTabsScreen ? 0 : bottom;
     const isKeyboardActive = activeStates.includes(state.value);
-    const paddingBottom =
-      (isKeyboardActive ? height.value : safeBottom) + additionalPadding;
+    const paddingBottom = isKeyboardActive ? height.value : bottom;
     return { paddingBottom };
   });
 };

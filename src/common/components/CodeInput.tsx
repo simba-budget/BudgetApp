@@ -15,6 +15,7 @@ export interface CodeInputProps
     | 'autoCorrect'
     | 'keyboardType'
     | 'textContentType'
+    | 'keyboardAppearance'
   > {
   style?: StyleProp<ViewStyle>;
   onChange: (value: string) => void;
@@ -61,6 +62,7 @@ const CodeInput = ({
       cellCount={cellCount}
       rootStyle={[center, gap('column')('xs'), style]}
       keyboardType="number-pad"
+      keyboardAppearance="dark"
       textContentType="oneTimeCode"
       autoComplete={autoComplete}
       renderCell={renderCell}

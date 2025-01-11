@@ -28,7 +28,6 @@ const TagsList = ({
   return (
     <FlatList
       keyExtractor={(tag) => tag.id.toString()}
-      isSafeBottomArea
       onRefresh={onRefresh}
       style={style}
       data={tags}

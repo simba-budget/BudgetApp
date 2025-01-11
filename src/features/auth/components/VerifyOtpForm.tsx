@@ -34,7 +34,13 @@ const VerifyOtpForm = ({
   const formattedSeconds = `00:${Math.max(seconds, 0).toString().padStart(2, '0')}`;
 
   return (
-    <View style={[flex1, padding('horizontal')('m'), padding('top')('l')]}>
+    <View
+      style={[
+        flex1,
+        padding('horizontal')('m'),
+        padding('top')('l'),
+        padding('bottom')('m'),
+      ]}>
       <View style={[flex1, center]}>
         <Text
           textAlign="center"

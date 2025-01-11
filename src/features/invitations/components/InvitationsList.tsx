@@ -39,7 +39,6 @@ const InvitationsList = ({
   return (
     <FlatList
       keyExtractor={(invitation) => invitation.id.toString()}
-      isSafeBottomArea
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}
       onRefresh={onRefresh}

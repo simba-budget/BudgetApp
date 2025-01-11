@@ -20,6 +20,7 @@ const CategoriesSearch = ({
   return (
     <View style={[margin('vertical')('l'), padding('horizontal')('m'), style]}>
       <Input
+        bgColor="secondary"
         iconName="search"
         onChange={onKeywordChange}
         value={keyword}
