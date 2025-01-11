@@ -8,7 +8,7 @@ import { ChartData } from 'react-native-chart-kit/dist/HelperTypes';
 
 import { mapTransactionsStats } from '../map';
 
-const dateFrom = dayjs().subtract(7, 'days').format('YYYY-MM-DD');
+const dateFrom = dayjs().subtract(6, 'days').format('YYYY-MM-DD');
 const dateTo = dayjs().format('YYYY-MM-DD');
 const amountTo = -0.01;
 

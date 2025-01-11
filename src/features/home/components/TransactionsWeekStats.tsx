@@ -40,7 +40,7 @@ const TransactionsWeekStats = ({
       <View style={styles.container}>
         <View style={[padding('horizontal')('l'), margin('bottom')('m')]}>
           <Text size="m" weight="medium" color="tertiary">
-            {t('Weekly Expenses')}
+            {t('Week Expenses')}
           </Text>
           <View style={[rowCenter, gap('column')('xxs')]}>
             <AnimatedNumber
