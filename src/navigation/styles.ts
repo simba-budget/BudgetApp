@@ -52,8 +52,9 @@ export const headerRightContainerStyle: ViewStyle = {
 };
 
 export const headerTitleStyle: TextStyle = {
-  ...fonts.urbanist.medium,
+  ...fonts.urbanist.semiBold,
   ...fontSizes.l,
+  color: colors.text.primary,
 };
 
 export const tabBarStyle: ViewStyle = {

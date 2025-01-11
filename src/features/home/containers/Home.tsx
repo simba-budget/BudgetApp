@@ -20,7 +20,7 @@ import {
   toTransactionAdd,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import { gap } from '@styles/lightTheme';
+import { gap, padding } from '@styles/lightTheme';
 import React, { useCallback, useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -203,6 +203,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
+    ...padding('top')('xs'),
     ...gap('row')('l'),
     paddingHorizontal: 0,
   },

@@ -1,4 +1,5 @@
 import { flex1 } from '@styles/common';
+import { padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React, { ReactNode } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
@@ -15,6 +16,7 @@ const ScreenContainer = ({ children, style }: ScreenContainerProps) => (
 const styles = StyleSheet.create({
   container: {
     ...flex1,
+    ...padding('top')('xs'),
     backgroundColor: colors.background.primary,
   },
 });

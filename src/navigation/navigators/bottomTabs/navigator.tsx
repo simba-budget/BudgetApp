@@ -1,6 +1,3 @@
-import { GoalsActions } from '@features/goals/containers';
-import { SubscriptionsActions } from '@features/subscriptions/containers';
-import { TransactionsActions } from '@features/transactions/containers';
 import {
   BottomTabNavigationOptions,
   BottomTabNavigationProp,
@@ -33,22 +30,19 @@ const homeOptions: BottomTabNavigationOptions = {
 };
 
 const transactionsOptions: BottomTabNavigationOptions = {
-  headerRight: TransactionsActions,
   tabBarIcon: (props) => <TabBarIcon iconName="card" {...props} />,
 };
 
 const goalsOptions: BottomTabNavigationOptions = {
-  headerRight: GoalsActions,
   tabBarIcon: (props) => <TabBarIcon iconName="chart" {...props} />,
 };
 
 const subscriptionsOptions: BottomTabNavigationOptions = {
-  headerRight: SubscriptionsActions,
   tabBarIcon: (props) => <TabBarIcon iconName="card" {...props} />,
 };
 
 const profileOptions: BottomTabNavigationOptions = {
-  headerTitleAlign: 'center',
+  headerShown: false,
   tabBarIcon: (props) => <TabBarIcon iconName="profile" {...props} />,
 };
 

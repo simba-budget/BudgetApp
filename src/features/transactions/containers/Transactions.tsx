@@ -3,7 +3,6 @@ import { useAppSelector } from '@core/store/store';
 import { RootNavigation, toTransactionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -30,7 +29,7 @@ const Transactions = () => {
   });
 
   return (
-    <View style={[flex1, padding('top')('m')]}>
+    <View style={flex1}>
       {isLoading ? (
         <SkeletonsSections ItemComponent={TransactionsListItemSkeleton} />
       ) : (

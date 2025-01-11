@@ -1,25 +1,20 @@
 import { SkeletonsList } from '@common/components';
-import { debounceTime } from '@common/constants';
-import { useAppDispatch, useAppSelector } from '@core/store/store';
+import { useAppSelector } from '@core/store/store';
 import { RootNavigation, toGoalAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
 import { gap } from '@styles/lightTheme';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View } from 'react-native';
-import { useDebounce } from 'use-debounce';
 
-import { GoalsList, GoalsListItemSkeleton, GoalsSearch } from '../components';
+import { GoalsList, GoalsListItemSkeleton } from '../components';
 import { useGoalsInfinity } from '../hooks';
 import { selectApiGoalsFilter, selectGoalsSort } from '../selectors';
-import { updateKeyword } from '../slice';
 
 const Goals = () => {
   const navigation = useNavigation<RootNavigation>();
-  const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiGoalsFilter);
   const sort = useAppSelector(selectGoalsSort);
-  const [debouncedFilter] = useDebounce(filter, debounceTime);
 
   const {
     goals,
@@ -30,25 +25,12 @@ const Goals = () => {
     fetchMore,
     total,
   } = useGoalsInfinity({
-    filter: debouncedFilter,
+    filter,
     sort,
   });
 
-  const isGoalsEmpty = total === 0 && !filter?.keyword && !isLoading;
-
-  const handleOnKeywordChange = useCallback(
-    (keyword: string) => dispatch(updateKeyword({ keyword })),
-    [dispatch],
-  );
-
   return (
     <View style={flex1}>
-      {!isGoalsEmpty && (
-        <GoalsSearch
-          onKeywordChange={handleOnKeywordChange}
-          keyword={filter?.keyword}
-        />
-      )}
       {isLoading ? (
         <SkeletonsList
           itemsCount={3}

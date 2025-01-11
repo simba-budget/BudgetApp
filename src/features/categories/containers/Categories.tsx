@@ -1,6 +1,7 @@
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { flex1 } from '@styles/common';
+import { margin } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
@@ -29,6 +30,7 @@ const Categories = () => {
   return (
     <View style={flex1}>
       <CategoriesSearch
+        style={margin('bottom')('s')}
         onKeywordChange={handleOnKeywordChange}
         keyword={filter?.keyword}
       />

@@ -15,7 +15,7 @@ export interface ProfileHeaderProps {
 }
 
 const ProfileHeader = ({ style, profile }: ProfileHeaderProps) => (
-  <View style={[center, padding('vertical')('s'), style]}>
+  <View style={[center, padding('top')('xxl'), padding('bottom')('xl'), style]}>
     <View style={styles.avatarContainer}>
       <Text weight="bold" color="primary" size="xl">
         {getInitials(getFullName(profile))}
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.secondary,
     borderWidth: 1,
     borderColor: colors.border.primary,
-    width: 72,
-    height: 72,
-    borderRadius: 36,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
   },
 });
 

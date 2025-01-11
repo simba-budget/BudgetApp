@@ -5,11 +5,11 @@ const useIsKeyboardOpen = () => {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   useEffect(() => {
-    const showSubscription = Keyboard.addListener('keyboardWillShow', () => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       setIsKeyboardOpen(true);
     });
 
-    const hideSubscription = Keyboard.addListener('keyboardWillHide', () => {
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       setIsKeyboardOpen(false);
     });
 

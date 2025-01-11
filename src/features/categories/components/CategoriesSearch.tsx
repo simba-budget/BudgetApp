@@ -1,6 +1,6 @@
 import { Input } from '@common/components';
 import { useCategoriesTranslations } from '@i18n/hooks';
-import { margin, padding } from '@styles/lightTheme';
+import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 
@@ -18,7 +18,7 @@ const CategoriesSearch = ({
   const { t } = useCategoriesTranslations();
 
   return (
-    <View style={[margin('vertical')('l'), padding('horizontal')('m'), style]}>
+    <View style={[padding('horizontal')('m'), style]}>
       <Input
         bgColor="secondary"
         iconName="search"
