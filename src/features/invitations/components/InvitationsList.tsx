@@ -1,5 +1,6 @@
 import { Invitation } from '@api/clients/invitations/types';
 import { FlatList } from '@common/components';
+import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -27,6 +28,7 @@ const InvitationsList = ({
 
   return (
     <FlatList
+      contentContainerStyle={padding('top')('xxs')}
       keyExtractor={(invitation) => invitation.id.toString()}
       onRefresh={onRefresh}
       style={style}

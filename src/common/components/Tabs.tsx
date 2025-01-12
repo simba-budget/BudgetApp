@@ -51,7 +51,7 @@ const Tabs = ({ tabs, style, initialPage = 0 }: TabsProps) => {
       <PagerView
         ref={ref}
         onPageSelected={(event) => setPage(event.nativeEvent.position)}
-        style={[flex1, padding('top')('m'), style]}
+        style={[flex1, padding('top')('s'), style]}
         initialPage={initialPage}>
         {tabs.map((tab, index) => (
           <View key={index}>{tab.children}</View>

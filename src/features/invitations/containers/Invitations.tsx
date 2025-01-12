@@ -1,12 +1,11 @@
 import { SkeletonsList } from '@common/components';
 import { useAppSelector } from '@core/store/store';
-import { CategoriesListItemSkeleton } from '@features/categories/components';
 import { flex1 } from '@styles/common';
 import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { View } from 'react-native';
 
-import { InvitationsList } from '../components';
+import { InvitationsList, InvitationsListItemSkeleton } from '../components';
 import { useInvitations } from '../hooks';
 import { selectApiInvitationsFilter, selectInvitationsSort } from '../selectors';
 
@@ -24,7 +23,7 @@ const Invitations = () => {
       {isLoading ? (
         <SkeletonsList
           style={padding('top')('xxs')}
-          ItemComponent={CategoriesListItemSkeleton}
+          ItemComponent={InvitationsListItemSkeleton}
         />
       ) : (
         <InvitationsList

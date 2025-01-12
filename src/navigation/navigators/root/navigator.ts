@@ -22,7 +22,9 @@ import {
   GoalDeleteScreen,
   GoalEditScreen,
   GoalScreen,
+  InvitationActionsScreen,
   InvitationAddScreen,
+  InvitationDeleteScreen,
   InvitationScreen,
   InvitationsScreen,
   MemberEditScreen,
@@ -89,7 +91,9 @@ import {
   goalDeleteRoute,
   goalEditRoute,
   goalRoute,
+  invitationActionsRoute,
   invitationAddRoute,
+  invitationDeleteRoute,
   invitationRoute,
   invitationsRoute,
   memberEditRoute,
@@ -166,7 +170,6 @@ const RootStack = createStackNavigator({
         [goalRoute]: GoalScreen,
         [categoriesRoute]: CategoriesScreen,
         [categoryRoute]: CategoryScreen,
-        [invitationRoute]: InvitationScreen,
         [invitationsRoute]: InvitationsScreen,
         [tagsRoute]: TagsScreen,
         [memberRoute]: MemberScreen,
@@ -177,6 +180,7 @@ const RootStack = createStackNavigator({
         [merchantRoute]: MerchantScreen,
         [externalAccountsRoute]: ExternalAccountsScreen,
         [externalAccountRoute]: ExternalAccountScreen,
+        [membersAndInvitationsRoute]: MembersAndInvitationsScreen,
         [openBankingRoute]: View,
       },
     },
@@ -186,7 +190,6 @@ const RootStack = createStackNavigator({
         [accountSelectRoute]: AccountSelectScreen,
         [subscriptionRoute]: SubscriptionScreen,
         [invitationAddRoute]: InvitationAddScreen,
-        [membersAndInvitationsRoute]: MembersAndInvitationsScreen,
 
         // members
         [membersRoute]: MembersScreen,
@@ -216,6 +219,11 @@ const RootStack = createStackNavigator({
         [categoryAddRoute]: CategoryAddScreen,
         [categoryEditRoute]: CategoryEditScreen,
         [categoryDeleteRoute]: CategoryDeleteScreen,
+
+        // invitations
+        [invitationActionsRoute]: InvitationActionsScreen,
+        [invitationDeleteRoute]: InvitationDeleteScreen,
+        [invitationRoute]: InvitationScreen,
 
         // subscriptions
         [subscriptionAddRoute]: SubscriptionAddScreen,

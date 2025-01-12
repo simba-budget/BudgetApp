@@ -28,7 +28,7 @@ const TagForm = ({
   const { t } = useTagsTranslations();
 
   return (
-    <View style={[padding('horizontal')('m'), padding('top')('m'), style]}>
+    <View style={[padding('horizontal')('m'), style]}>
       <IconButton
         style={[selfCenter, margin('bottom')('s')]}
         color="primary"

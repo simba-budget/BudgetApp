@@ -29,16 +29,13 @@ const invitationsSlice = createSlice({
     updateSort: (state, action: PayloadAction<{ sort: InvitationsSort }>) => {
       state.sort = action.payload.sort;
     },
-    updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
-      state.filter.keyword = action.payload.keyword;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(logoutAction.fulfilled, () => initialState);
   },
 });
 
-export const { updateFilter, updateInvitations, updateKeyword, updateSort } =
+export const { updateFilter, updateInvitations, updateSort } =
   invitationsSlice.actions;
 
 export const { reducer } = invitationsSlice;

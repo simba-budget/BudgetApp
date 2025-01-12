@@ -1,5 +1,5 @@
 import { flex1 } from '@styles/common';
-import { padding, sizes } from '@styles/lightTheme';
+import { margin, padding, sizes } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React, { ReactNode, useMemo } from 'react';
 import {
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.primary,
   },
   handle: {
+    ...margin('bottom')('s'),
     alignSelf: 'center',
     width: 32,
     height: 4,

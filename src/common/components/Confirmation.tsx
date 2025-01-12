@@ -1,6 +1,6 @@
 import IconButton from '@common/components/IconButton';
 import { useCommonTranslations } from '@i18n/hooks';
-import { selfCenter } from '@styles/common';
+import { center, selfCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { View } from 'react-native';
@@ -32,7 +32,7 @@ const Confirmation = ({
   const { t } = useCommonTranslations();
 
   return (
-    <View style={[padding('horizontal')('l'), padding('top')('m')]}>
+    <View style={padding('horizontal')('l')}>
       <IconButton
         style={[selfCenter, margin('bottom')('s')]}
         color="primary"
@@ -41,11 +41,16 @@ const Confirmation = ({
         iconName="warning"
         isDisabled
       />
-      <View style={[gap('row')('xxs'), margin('bottom')('xl')]}>
-        <Text color="primary" weight="semiBold" textAlign="center" size="m">
+      <View style={[center, padding('horizontal')('m'), margin('bottom')('l')]}>
+        <Text
+          style={margin('bottom')('xxxs')}
+          textAlign="center"
+          color="primary"
+          weight="semiBold"
+          size="l">
           {title}
         </Text>
-        <Text weight="medium" textAlign="center" color="tertiary" size="s">
+        <Text textAlign="center" weight="medium" color="tertiary" size="s">
           {description}
         </Text>
       </View>

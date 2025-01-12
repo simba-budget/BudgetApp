@@ -1,4 +1,4 @@
-import { SheetScreenContainer, Tabs } from '@common/components';
+import { ScreenContainer, Tabs } from '@common/components';
 import { Tab } from '@common/components/Tabs';
 import { Invitations } from '@features/invitations/containers';
 import { Members } from '@features/members/containers';
@@ -17,9 +17,9 @@ const MembersAndInvitationsScreen = () => {
   );
 
   return (
-    <SheetScreenContainer minHeight="60%">
+    <ScreenContainer>
       <Tabs tabs={tabs} />
-    </SheetScreenContainer>
+    </ScreenContainer>
   );
 };
 

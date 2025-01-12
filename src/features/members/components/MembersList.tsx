@@ -1,5 +1,6 @@
 import { Member } from '@api/clients/members/types';
 import { FlatList } from '@common/components';
+import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -25,6 +26,7 @@ const MembersList = ({
 
   return (
     <FlatList
+      contentContainerStyle={padding('top')('xxs')}
       keyExtractor={(member) => member.id.toString()}
       onRefresh={onRefresh}
       style={style}

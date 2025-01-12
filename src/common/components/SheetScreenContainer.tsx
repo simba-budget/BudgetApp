@@ -10,7 +10,6 @@ export interface SheetScreenContainerProps {
   children: ReactNode;
   isBottomSafe?: boolean;
   minHeight?: ViewStyle['minHeight'];
-  title?: string;
 }
 
 const SheetScreenContainer = ({

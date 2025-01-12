@@ -2,6 +2,13 @@ import { Invitation } from '@api/clients/invitations/types';
 import { MemberRole } from '@api/clients/members/types';
 import { Badge, IconButton, Text } from '@common/components';
 import { useInvitationsTranslations } from '@i18n/hooks';
+import {
+  categoryRoute,
+  invitationActionsRoute,
+  invitationRoute,
+  RootNavigation,
+} from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { Colors } from '@styles/v2/types';
@@ -23,9 +30,13 @@ export interface InvitationsListItemProps {
 
 const InvitationsListItem = ({ style, invitation }: InvitationsListItemProps) => {
   const { t } = useInvitationsTranslations();
+  const { navigate } = useNavigation<RootNavigation>();
 
   return (
-    <TouchableOpacity style={[styles.container, style]}>
+    <TouchableOpacity
+      onLongPress={() => navigate(invitationActionsRoute, { id: invitation.id })}
+      onPress={() => navigate(invitationRoute, { id: invitation.id })}
+      style={[styles.container, style]}>
       <IconButton isDisabled size={40} iconSize={20} iconName="profile" />
       <View style={[flex1, gap('row')('xxs')]}>
         <Text weight="semiBold" size="s" color="primary">

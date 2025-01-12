@@ -201,3 +201,10 @@ export const membersRoute: MembersRoute = 'Members';
 export type MembersAndInvitationsRoute = 'MembersAndInvitations';
 export const membersAndInvitationsRoute: MembersAndInvitationsRoute =
   'MembersAndInvitations';
+
+// invitations
+export type InvitationActionsRoute = 'InvitationActions';
+export const invitationActionsRoute: InvitationActionsRoute = 'InvitationActions';
+
+export type InvitationDeleteRoute = 'InvitationDelete';
+export const invitationDeleteRoute: InvitationDeleteRoute = 'InvitationDelete';

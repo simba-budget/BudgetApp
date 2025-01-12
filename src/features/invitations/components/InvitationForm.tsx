@@ -26,7 +26,7 @@ const InvitationForm = ({
   const { t } = useInvitationsTranslations();
 
   return (
-    <View style={[padding('horizontal')('l'), padding('top')('m'), style]}>
+    <View style={[padding('horizontal')('l'), style]}>
       <View style={[center, padding('horizontal')('m')]}>
         <Text
           style={margin('bottom')('xxxs')}

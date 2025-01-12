@@ -28,8 +28,8 @@ const CategoryForm = ({
   const { t } = useCategoriesTranslations();
 
   return (
-    <View style={[padding('horizontal')('l'), padding('top')('m'), style]}>
-      <View style={[center, padding('horizontal')('m')]}>
+    <View style={[padding('horizontal')('l'), style]}>
+      <View style={[center, padding('horizontal')('m'), margin('bottom')('l')]}>
         <Text
           style={margin('bottom')('xxxs')}
           textAlign="center"
@@ -38,12 +38,7 @@ const CategoryForm = ({
           size="l">
           {title}
         </Text>
-        <Text
-          textAlign="center"
-          style={margin('bottom')('l')}
-          weight="medium"
-          color="tertiary"
-          size="s">
+        <Text textAlign="center" weight="medium" color="tertiary" size="s">
           {t('Style object for the card in stack. You can provide a custom color')}
         </Text>
       </View>

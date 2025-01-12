@@ -7,7 +7,7 @@ import { gap, padding } from '@styles/lightTheme';
 import { Colors } from '@styles/v2/types';
 import { colors } from '@styles/v2/urbanistTheme';
 import { getInitials } from '@utils/string';
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -24,15 +24,10 @@ export interface MembersListItemProps {
 const MembersListItem = ({ style, member }: MembersListItemProps) => {
   const navigation = useNavigation<RootNavigation>();
 
-  const handleOnMemberPress = useCallback(() => {
-    navigation.goBack();
-    setTimeout(() => navigation.navigate(memberRoute, { id: member.id }));
-  }, [navigation, member.id]);
-
   return (
     <TouchableOpacity
       style={[style, styles.container]}
-      onPress={handleOnMemberPress}>
+      onPress={() => navigation.navigate(memberRoute, { id: member.id })}>
       <Avatar
         size={40}
         initials={getInitials(`${member.firstName} ${member.lastName}`)}

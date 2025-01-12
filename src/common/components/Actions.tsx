@@ -19,7 +19,7 @@ export interface ActionsProps {
 }
 
 const Actions = ({ items, title }: ActionsProps) => (
-  <View style={[padding('horizontal')('m'), padding('top')('m'), gap('row')('xs')]}>
+  <View style={[padding('horizontal')('m'), gap('row')('xs')]}>
     <Text
       style={margin('bottom')('xs')}
       textAlign="center"
