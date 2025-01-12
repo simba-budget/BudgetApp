@@ -12,11 +12,12 @@ const TagAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<RootNavigation>();
   const { t } = useTagsTranslations();
-  const { handleSubmit, control } = useTagForm();
+  const { handleSubmit, control, isValid } = useTagForm();
   const { addTag, isSubmitting } = useAddTag({ onSuccess: goBack, accountId });
 
   return (
     <TagForm
+      isValid={isValid}
       title={t('Create Tag')}
       onSubmit={handleSubmit(addTag)}
       isSubmitting={isSubmitting}

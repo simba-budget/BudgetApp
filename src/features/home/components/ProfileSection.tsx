@@ -37,7 +37,11 @@ const ProfileSection = ({
           </Text>
         </View>
       </TouchableOpacity>
-      <IconButton onPress={onNotificationsPress} iconName="notification" />
+      <IconButton
+        color="secondary"
+        onPress={onNotificationsPress}
+        iconName="notification"
+      />
     </View>
   );
 };

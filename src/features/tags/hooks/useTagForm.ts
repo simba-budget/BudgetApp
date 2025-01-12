@@ -19,14 +19,19 @@ const getSchema = (t: TFunction) => {
 const useTagForm = () => {
   const { t } = useValidationsTranslations();
 
-  const { control, handleSubmit, reset } = useForm<SaveTagRequest>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm<SaveTagRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
 
-  return { control, handleSubmit, reset };
+  return { control, handleSubmit, reset, isValid };
 };
 
 export default useTagForm;

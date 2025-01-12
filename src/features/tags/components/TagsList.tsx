@@ -9,19 +9,12 @@ import TagsListItem from './TagsListItem';
 
 export interface TagsListProps {
   style?: StyleProp<ViewStyle>;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   tags: Tag[];
 }
 
-const TagsList = ({
-  tags,
-  isLoading,
-  style,
-  onRefresh,
-  isRefreshing,
-}: TagsListProps) => {
+const TagsList = ({ tags, style, onRefresh, isRefreshing }: TagsListProps) => {
   const paddingBottom = useSafeBottomInset();
 
   const renderItem = useCallback(
@@ -36,7 +29,7 @@ const TagsList = ({
       onRefresh={onRefresh}
       style={style}
       data={tags}
-      refreshing={isLoading || isRefreshing}
+      refreshing={isRefreshing}
       renderItem={renderItem}
     />
   );

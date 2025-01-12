@@ -32,11 +32,9 @@ const CategoriesListItemProps = ({ style, category }: CategoriesListItemProps) =
       onLongPress={() => navigate(categoryActionsRoute, { id: category.id })}
       onPress={() => navigate(categoryRoute, { id: category.id })}>
       <IconButton iconName="card" size={36} iconSize={18} isDisabled />
-      <View style={flex1}>
-        <Text weight="semiBold" size="s" color="primary">
-          {category.name}
-        </Text>
-      </View>
+      <Text style={flex1} weight="semiBold" size="s" color="primary">
+        {category.name}
+      </Text>
     </TouchableOpacity>
   );
 };

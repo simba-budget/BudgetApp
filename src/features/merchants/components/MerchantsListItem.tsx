@@ -4,13 +4,7 @@ import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 
 import { getMerchantLogoUrl } from '../utils';
 
@@ -22,12 +16,10 @@ export interface MerchantsListItemProps {
 
 const MerchantsListItem = ({ style, merchant, onPress }: MerchantsListItemProps) => (
   <TouchableOpacity style={[style, styles.container]} onPress={onPress}>
-    <Avatar initials={merchant.name} uri={getMerchantLogoUrl(merchant)} />
-    <View style={flex1}>
-      <Text weight="semiBold" size="s" color="primary">
-        {merchant.name}
-      </Text>
-    </View>
+    <Avatar size={36} initials={merchant.name} uri={getMerchantLogoUrl(merchant)} />
+    <Text style={flex1} weight="semiBold" size="s" color="primary">
+      {merchant.name}
+    </Text>
   </TouchableOpacity>
 );
 

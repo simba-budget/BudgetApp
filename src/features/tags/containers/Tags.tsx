@@ -1,11 +1,13 @@
+import { SkeletonsList } from '@common/components';
 import { debounceTime } from '@common/constants';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { flex1 } from '@styles/common';
+import { margin, padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
 
-import { TagsList, TagsSearch } from '../components';
+import { TagsList, TagsListItemSkeleton, TagsSearch } from '../components';
 import { useTags } from '../hooks';
 import { selectApiTagsFilter, selectTagsSort } from '../selectors';
 import { updateKeyword } from '../slice';
@@ -29,15 +31,18 @@ const Tags = () => {
   return (
     <View style={flex1}>
       <TagsSearch
+        style={margin('bottom')('s')}
         onKeywordChange={handleOnKeywordChange}
         keyword={filter?.keyword}
       />
-      <TagsList
-        isLoading={isLoading}
-        isRefreshing={isRefetching}
-        onRefresh={refetch}
-        tags={tags}
-      />
+      {isLoading ? (
+        <SkeletonsList
+          style={padding('top')('xxs')}
+          ItemComponent={TagsListItemSkeleton}
+        />
+      ) : (
+        <TagsList isRefreshing={isRefetching} onRefresh={refetch} tags={tags} />
+      )}
     </View>
   );
 };

@@ -19,7 +19,7 @@ const TagEdit = ({ id }: TagEditProps) => {
   const { pop } = useNavigation<RootNavigation>();
   const { t } = useTagsTranslations();
   const { tag, isLoading } = useTag(id);
-  const { handleSubmit, control, reset } = useTagForm();
+  const { handleSubmit, control, reset, isValid } = useTagForm();
   const { editTag, isSubmitting } = useEditTag({ onSuccess: () => pop(2) });
 
   const handleOnSubmit = (request: SaveTagRequest) => {
@@ -32,6 +32,7 @@ const TagEdit = ({ id }: TagEditProps) => {
 
   return (
     <TagForm
+      isValid={isValid}
       title={t('Edit Tag')}
       onSubmit={handleSubmit(handleOnSubmit)}
       isSubmitting={isSubmitting}

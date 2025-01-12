@@ -25,7 +25,6 @@ const useTags = (options: Options) => {
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
     queryKey: getQueryKey(filter, sort, lastUpdated),
     queryFn: () => TagsClient.getTags({ filter, sort }),
-    placeholderData: (prev) => prev,
   });
 
   return {

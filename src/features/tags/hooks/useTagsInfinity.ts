@@ -34,7 +34,6 @@ const useTagsInfinity = ({ filter, sort }: Options) => {
     queryFn,
     initialPageParam: 0,
     getNextPageParam,
-    placeholderData: (prev) => prev,
   });
 
   const { items, total } = parseData(data);

@@ -1,7 +1,7 @@
-import { Button, FormControl, IconButton, Input, Text } from '@common/components';
+import { Button, FormControl, Input, Text } from '@common/components';
 import { useTagsTranslations } from '@i18n/hooks';
-import { selfCenter } from '@styles/common';
-import { gap, margin, padding } from '@styles/lightTheme';
+import { center } from '@styles/common';
+import { margin, padding } from '@styles/lightTheme';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { StyleProp, View, ViewStyle } from 'react-native';
@@ -15,6 +15,7 @@ export interface TagFormProps {
   isDisabled?: boolean;
   control: Control<SaveTagRequest>;
   title: string;
+  isValid: boolean;
 }
 
 const TagForm = ({
@@ -23,39 +24,34 @@ const TagForm = ({
   onSubmit,
   control,
   title,
+  isValid,
   isDisabled = false,
 }: TagFormProps) => {
   const { t } = useTagsTranslations();
 
   return (
-    <View style={[padding('horizontal')('m'), style]}>
-      <IconButton
-        style={[selfCenter, margin('bottom')('s')]}
-        color="primary"
-        size={56}
-        iconSize={28}
-        iconName="squaresPlus"
-        isDisabled
-      />
-      <View style={[gap('row')('xxs'), margin('bottom')('xl')]}>
-        <Text color="primary" weight="semiBold" textAlign="center" size="m">
+    <View style={[padding('horizontal')('l'), style]}>
+      <View style={[center, padding('horizontal')('m'), margin('bottom')('l')]}>
+        <Text
+          style={margin('bottom')('xxxs')}
+          textAlign="center"
+          color="primary"
+          weight="semiBold"
+          size="l">
           {title}
         </Text>
-        <Text weight="medium" textAlign="center" color="tertiary" size="s">
-          {t('Style object for the card in stack. You can provide')}
+        <Text textAlign="center" weight="medium" color="tertiary" size="s">
+          {t('Style object for the card in stack. You can provide a custom color')}
         </Text>
       </View>
       <Controller
         control={control}
         name="name"
-        render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl
-            style={margin('bottom')('s')}
-            isRequired
-            error={error?.message}
-            label={t('Name')}>
+        render={({ field: { ref: _, ...rest } }) => (
+          <FormControl style={margin('bottom')('s')} isRequired label={t('Name')}>
             <Input
               autoFocus
+              bgColor="secondary"
               keyboardType="default"
               iconName="userPlus"
               readOnly={isDisabled}
@@ -66,6 +62,7 @@ const TagForm = ({
         )}
       />
       <Button
+        isDisabled={!isValid}
         isSubmitting={isSubmitting}
         onPress={onSubmit}
         size="medium"

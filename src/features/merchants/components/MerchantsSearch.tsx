@@ -1,6 +1,6 @@
 import { Input } from '@common/components';
 import { useMerchantsTranslations } from '@i18n/hooks';
-import { margin, padding } from '@styles/lightTheme';
+import { padding } from '@styles/lightTheme';
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 
@@ -18,8 +18,9 @@ const MerchantsSearch = ({
   const { t } = useMerchantsTranslations();
 
   return (
-    <View style={[margin('vertical')('m'), padding('horizontal')('m'), style]}>
+    <View style={[padding('horizontal')('m'), style]}>
       <Input
+        bgColor="secondary"
         iconName="search"
         onChange={onKeywordChange}
         value={keyword}

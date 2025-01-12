@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { RootNavigation, toMerchant } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
+import { margin } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDebounce } from 'use-debounce';
@@ -39,6 +40,7 @@ const Merchants = () => {
   return (
     <View style={flex1}>
       <MerchantsSearch
+        style={margin('bottom')('s')}
         onKeywordChange={handleOnKeywordChange}
         keyword={filter?.keyword}
       />
