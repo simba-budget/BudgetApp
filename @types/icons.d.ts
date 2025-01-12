@@ -52,5 +52,6 @@ declare module '@icons' {
     | 'userPlus'
     | 'arrowRightLeft'
     | 'squaresPlus'
-    | 'chevronLeft';
+    | 'chevronLeft'
+    | 'tag';
 }

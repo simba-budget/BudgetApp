@@ -46,6 +46,7 @@ import Settings from '@assets/svg/v2/settings.svg';
 import Show from '@assets/svg/v2/show.svg';
 import SquaresPlus from '@assets/svg/v2/squares-plus.svg';
 import Star from '@assets/svg/v2/star.svg';
+import Tag from '@assets/svg/v2/tag.svg';
 import UserPlus from '@assets/svg/v2/user-plus.svg';
 import Users from '@assets/svg/v2/users.svg';
 import Wallet from '@assets/svg/v2/wallet.svg';
@@ -109,6 +110,7 @@ const icons: Record<IconName, FC<SvgProps>> = {
   arrowRightLeft: ArrowRightLeft,
   squaresPlus: SquaresPlus,
   chevronLeft: ChevronLeft,
+  tag: Tag,
 };
 
 export interface SvgIconProps

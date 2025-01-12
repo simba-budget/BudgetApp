@@ -1,12 +1,12 @@
 import { Tag } from '@api/clients/tags/types';
-import { IconButton, Text } from '@common/components';
+import { Text } from '@common/components';
 import {
   RootNavigation,
   tagActionsRoute,
   tagRoute,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
-import { flex1, rowCenter } from '@styles/common';
+import { center, flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
@@ -31,7 +31,9 @@ const TagsListItemProps = ({ style, tag }: TagsListItemProps) => {
       style={[style, styles.container]}
       onLongPress={() => navigate(tagActionsRoute, { id: tag.id })}
       onPress={() => navigate(tagRoute, { id: tag.id })}>
-      <IconButton iconName="card" size={36} iconSize={18} isDisabled />
+      <View style={styles.colorContainer}>
+        <View style={[styles.color, { backgroundColor: tag.color }]} />
+      </View>
       <View style={flex1}>
         <Text weight="semiBold" size="s" color="primary">
           {tag.name}
@@ -50,6 +52,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,
     borderWidth: 1,
+  },
+  colorContainer: {
+    ...center,
+    backgroundColor: colors.background.tertiary,
+    borderColor: colors.border.primary,
+    borderWidth: 1,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+  },
+  color: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
   },
 });
 

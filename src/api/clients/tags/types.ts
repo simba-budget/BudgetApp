@@ -2,6 +2,7 @@ import { BaseModel, ListRequest, Sort } from '@api/types';
 
 export interface Tag extends BaseModel {
   name: string;
+  color: string;
 }
 
 export interface SaveTagRequest {
