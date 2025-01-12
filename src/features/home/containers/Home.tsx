@@ -204,6 +204,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     ...padding('top')('xs'),
+    ...padding('bottom')('m'),
     ...gap('row')('l'),
     paddingHorizontal: 0,
   },

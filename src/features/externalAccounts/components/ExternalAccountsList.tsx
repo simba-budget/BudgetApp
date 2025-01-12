@@ -1,5 +1,7 @@
 import { ExternalAccount } from '@api/clients/externalAccounts/types';
 import { FlatList } from '@common/components';
+import { useSafeBottomInset } from '@common/hooks';
+import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -26,6 +28,8 @@ const ExternalAccountsList = ({
   onFetchMore,
   isFetchingMore,
 }: ExternalAccountsListProps) => {
+  const paddingBottom = useSafeBottomInset();
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<ExternalAccount>) => (
       <ExternalAccountsListItem
@@ -38,6 +42,7 @@ const ExternalAccountsList = ({
 
   return (
     <FlatList
+      contentContainerStyle={[padding('top')('xxs'), { paddingBottom }]}
       keyExtractor={(externalAccount) => externalAccount.id.toString()}
       onEndReached={onFetchMore}
       isFetchingMore={isFetchingMore}

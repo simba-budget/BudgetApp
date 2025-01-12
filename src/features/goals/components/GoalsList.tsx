@@ -1,7 +1,7 @@
 import { Goal } from '@api/clients/goals/types';
 import { FlatList } from '@common/components';
 import { justifyCenter } from '@styles/common';
-import { gap } from '@styles/lightTheme';
+import { gap, padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 
@@ -36,7 +36,11 @@ const GoalsList = ({
 
   return (
     <FlatList
-      contentContainerStyle={[total === 0 && justifyCenter, gap('row')('m')]}
+      contentContainerStyle={[
+        total === 0 && justifyCenter,
+        gap('row')('m'),
+        padding('bottom')('m'),
+      ]}
       ListEmptyComponent={<GoalsEmpty onAddPress={onGoalAddPress} />}
       keyExtractor={(goal) => goal.id.toString()}
       onEndReached={onFetchMore}

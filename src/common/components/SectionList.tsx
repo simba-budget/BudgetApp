@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { scrollIndicatorInsets } from '../constants';
-import { useSafeBottomInset } from '../hooks';
 import { Section } from '../types';
 
 import ListFooter from './ListFooter';
@@ -33,32 +32,24 @@ const SectionList = <T,>({
   refreshing,
   onRefresh,
   ...rest
-}: SectionListProps<T>) => {
-  const paddingBottom = useSafeBottomInset();
-
-  return (
-    <RNSectionList<T, Section<T>>
-      showsVerticalScrollIndicator={false}
-      stickySectionHeadersEnabled={false}
-      scrollIndicatorInsets={scrollIndicatorInsets}
-      renderSectionHeader={SectionHeader}
-      contentContainerStyle={[
-        styles.container,
-        contentContainerStyle,
-        { paddingBottom },
-      ]}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing || false}
-          onRefresh={onRefresh || undefined}
-          tintColor={colors.text.primary}
-        />
-      }
-      ListFooterComponent={<ListFooter isFetchingMore={isFetchingMore} />}
-      {...rest}
-    />
-  );
-};
+}: SectionListProps<T>) => (
+  <RNSectionList<T, Section<T>>
+    showsVerticalScrollIndicator={false}
+    stickySectionHeadersEnabled={false}
+    scrollIndicatorInsets={scrollIndicatorInsets}
+    renderSectionHeader={SectionHeader}
+    contentContainerStyle={[styles.container, contentContainerStyle]}
+    refreshControl={
+      <RefreshControl
+        refreshing={refreshing || false}
+        onRefresh={onRefresh || undefined}
+        tintColor={colors.text.primary}
+      />
+    }
+    ListFooterComponent={<ListFooter isFetchingMore={isFetchingMore} />}
+    {...rest}
+  />
+);
 
 const styles = StyleSheet.create({
   container: {

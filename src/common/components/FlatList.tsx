@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import { scrollIndicatorInsets } from '../constants';
-import { useSafeBottomInset } from '../hooks';
 
 export interface FlatListProps<T>
   extends Omit<
@@ -29,30 +28,22 @@ const FlatList = <T,>({
   refreshing,
   onRefresh,
   ...rest
-}: FlatListProps<T>) => {
-  const paddingBottom = useSafeBottomInset();
-
-  return (
-    <RNFlatList<T>
-      showsVerticalScrollIndicator={false}
-      scrollIndicatorInsets={scrollIndicatorInsets}
-      contentContainerStyle={[
-        styles.container,
-        contentContainerStyle,
-        { paddingBottom },
-      ]}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing || false}
-          onRefresh={onRefresh || undefined}
-          tintColor={colors.text.primary}
-        />
-      }
-      ListFooterComponent={<ListFooter isFetchingMore={isFetchingMore} />}
-      {...rest}
-    />
-  );
-};
+}: FlatListProps<T>) => (
+  <RNFlatList<T>
+    showsVerticalScrollIndicator={false}
+    scrollIndicatorInsets={scrollIndicatorInsets}
+    contentContainerStyle={[styles.container, contentContainerStyle]}
+    refreshControl={
+      <RefreshControl
+        refreshing={refreshing || false}
+        onRefresh={onRefresh || undefined}
+        tintColor={colors.text.primary}
+      />
+    }
+    ListFooterComponent={<ListFooter isFetchingMore={isFetchingMore} />}
+    {...rest}
+  />
+);
 
 const styles = StyleSheet.create({
   container: {

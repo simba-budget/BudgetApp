@@ -1,5 +1,6 @@
 import { Member } from '@api/clients/members/types';
 import { FlatList } from '@common/components';
+import { useSafeBottomInset } from '@common/hooks';
 import { padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
@@ -19,6 +20,8 @@ const MembersList = ({
   onRefresh,
   isRefreshing,
 }: MembersListProps) => {
+  const paddingBottom = useSafeBottomInset();
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Member>) => <MembersListItem member={item} />,
     [],
@@ -26,7 +29,7 @@ const MembersList = ({
 
   return (
     <FlatList
-      contentContainerStyle={padding('top')('xxs')}
+      contentContainerStyle={[padding('top')('xxs'), { paddingBottom }]}
       keyExtractor={(member) => member.id.toString()}
       onRefresh={onRefresh}
       style={style}

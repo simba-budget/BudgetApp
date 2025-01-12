@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { scrollIndicatorInsets } from '../constants';
-import { useSafeBottomInset } from '../hooks';
 
 export interface ScrollViewProps
   extends Omit<
@@ -26,28 +25,20 @@ const ScrollView = ({
   refreshing,
   onRefresh,
   ...rest
-}: ScrollViewProps) => {
-  const paddingBottom = useSafeBottomInset();
-
-  return (
-    <RNScrollView
-      showsVerticalScrollIndicator={false}
-      scrollIndicatorInsets={scrollIndicatorInsets}
-      contentContainerStyle={[
-        padding('horizontal')('m'),
-        contentContainerStyle,
-        { paddingBottom },
-      ]}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing || false}
-          onRefresh={onRefresh || undefined}
-          tintColor={colors.text.primary}
-        />
-      }
-      {...rest}
-    />
-  );
-};
+}: ScrollViewProps) => (
+  <RNScrollView
+    showsVerticalScrollIndicator={false}
+    scrollIndicatorInsets={scrollIndicatorInsets}
+    contentContainerStyle={[padding('horizontal')('m'), contentContainerStyle]}
+    refreshControl={
+      <RefreshControl
+        refreshing={refreshing || false}
+        onRefresh={onRefresh || undefined}
+        tintColor={colors.text.primary}
+      />
+    }
+    {...rest}
+  />
+);
 
 export default ScrollView;

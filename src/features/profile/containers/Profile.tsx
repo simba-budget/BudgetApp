@@ -1,5 +1,5 @@
 import { ScrollView } from '@common/components';
-import { gap } from '@styles/lightTheme';
+import { gap, padding } from '@styles/lightTheme';
 import React from 'react';
 
 import { ProfileHeader, ProfileSection } from '../components';
@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <ScrollView
-      contentContainerStyle={gap('row')('l')}
+      contentContainerStyle={[gap('row')('l'), padding('bottom')('m')]}
       onRefresh={refetch}
       refreshing={isLoading || isRefetching}>
       <ProfileHeader profile={profile} />

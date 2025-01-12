@@ -38,7 +38,11 @@ const SubscriptionsList = ({
 
   return (
     <FlatList
-      contentContainerStyle={[total === 0 && justifyCenter, padding('top')('xxs')]}
+      contentContainerStyle={[
+        total === 0 && justifyCenter,
+        padding('top')('xxs'),
+        padding('bottom')('m'),
+      ]}
       ListEmptyComponent={<SubscriptionsEmpty onAddPress={onSubscriptionAddPress} />}
       keyExtractor={(subscription) => subscription.id.toString()}
       onEndReached={onFetchMore}
