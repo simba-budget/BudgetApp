@@ -1,9 +1,9 @@
 import { useHomeTranslations } from '@i18n/hooks';
 import {
   goalAddRoute,
+  membersAndInvitationsRoute,
   RootNavigation,
   toCategoryAdd,
-  toMembers,
   toTransactionAdd,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
@@ -35,7 +35,7 @@ const useQuickActionItems = () => {
       {
         title: t('View\nMembers'),
         iconName: 'users',
-        onPress: () => toMembers(navigation),
+        onPress: () => navigation.navigate(membersAndInvitationsRoute),
       },
     ],
     [t, navigation],

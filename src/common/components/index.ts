@@ -29,3 +29,4 @@ export { default as SkeletonsList } from './SkeletonsList';
 export { default as SkeletonsSections } from './SkeletonsSections';
 export { default as KeyboardAvoidingView } from './KeyboardAvoidingView';
 export { default as AnimatedNumber } from './AnimatedNumber';
+export { default as Tabs } from './Tabs';

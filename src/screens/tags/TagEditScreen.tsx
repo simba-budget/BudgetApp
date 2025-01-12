@@ -8,7 +8,7 @@ export type TagEditScreenProps = StaticScreenProps<{
 }>;
 
 const TagEditScreen = ({ route }: TagEditScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <TagEdit id={route.params.id} />
   </SheetScreenContainer>
 );

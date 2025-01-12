@@ -8,7 +8,7 @@ export type SubscriptionEditScreenProps = StaticScreenProps<{
 }>;
 
 const SubscriptionEditScreen = ({ route }: SubscriptionEditScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <SubscriptionEdit id={route.params.id} />
   </SheetScreenContainer>
 );

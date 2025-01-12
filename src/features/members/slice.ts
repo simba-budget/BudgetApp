@@ -29,15 +29,11 @@ const membersSlice = createSlice({
     updateSort: (state, action: PayloadAction<{ sort: MembersSort }>) => {
       state.sort = action.payload.sort;
     },
-    updateKeyword: (state, action: PayloadAction<{ keyword: string }>) => {
-      state.filter.keyword = action.payload.keyword;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(logoutAction.fulfilled, () => initialState);
   },
 });
 
-export const { updateFilter, updateMembers, updateKeyword, updateSort } =
-  membersSlice.actions;
+export const { updateFilter, updateMembers, updateSort } = membersSlice.actions;
 export const { reducer } = membersSlice;

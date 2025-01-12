@@ -3,7 +3,7 @@ import { TransactionAdd } from '@features/transactions/containers';
 import React from 'react';
 
 const TransactionAddScreen = () => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <TransactionAdd />
   </SheetScreenContainer>
 );

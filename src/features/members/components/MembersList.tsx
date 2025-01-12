@@ -7,7 +7,6 @@ import MembersListItem from './MembersListItem';
 
 export interface MembersListProps {
   style?: StyleProp<ViewStyle>;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: () => void;
   members: Member[];
@@ -15,7 +14,6 @@ export interface MembersListProps {
 
 const MembersList = ({
   members,
-  isLoading,
   style,
   onRefresh,
   isRefreshing,
@@ -31,7 +29,7 @@ const MembersList = ({
       onRefresh={onRefresh}
       style={style}
       data={members}
-      refreshing={isLoading || isRefreshing}
+      refreshing={isRefreshing}
       renderItem={renderItem}
     />
   );

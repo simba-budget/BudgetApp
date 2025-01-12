@@ -6,7 +6,7 @@ import React from 'react';
 export type CategoryActionsScreenProps = StaticScreenProps<{ id: number }>;
 
 const CategoryActionsScreen = ({ route }: CategoryActionsScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <CategoryActions id={route.params.id} />
   </SheetScreenContainer>
 );

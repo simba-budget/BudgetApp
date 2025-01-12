@@ -6,7 +6,7 @@ import React from 'react';
 export type TransactionScreenProps = StaticScreenProps<{ id: number }>;
 
 const TransactionScreen = ({ route }: TransactionScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <Transaction id={route.params.id} />
   </SheetScreenContainer>
 );

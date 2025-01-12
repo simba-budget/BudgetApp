@@ -110,9 +110,6 @@ export const tagEditRoute: TagEditRoute = 'TagEdit';
 export type TagRoute = 'Tag';
 export const tagRoute: TagRoute = 'Tag';
 
-export type MembersRoute = 'Members';
-export const membersRoute: MembersRoute = 'Members';
-
 export type MemberRoute = 'Member';
 export const memberRoute: MemberRoute = 'Member';
 
@@ -151,7 +148,7 @@ export const openBankingRoute: OpenBankingRoute = 'OpenBanking';
 
 // Bottom Sheet
 // ---------------------------------------------------------------------------------
-// acounts
+// accounts
 export type AccountSelectRoute = 'AccountSelect';
 export const accountSelectRoute: AccountSelectRoute = 'AccountSelect';
 
@@ -196,3 +193,11 @@ export const goalActionsRoute: GoalActionsRoute = 'GoalActions';
 
 export type GoalDeleteRoute = 'GoalDelete';
 export const goalDeleteRoute: GoalDeleteRoute = 'GoalDelete';
+
+// members
+export type MembersRoute = 'Members';
+export const membersRoute: MembersRoute = 'Members';
+
+export type MembersAndInvitationsRoute = 'MembersAndInvitations';
+export const membersAndInvitationsRoute: MembersAndInvitationsRoute =
+  'MembersAndInvitations';

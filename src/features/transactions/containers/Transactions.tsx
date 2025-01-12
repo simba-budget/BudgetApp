@@ -31,7 +31,10 @@ const Transactions = () => {
   return (
     <View style={flex1}>
       {isLoading ? (
-        <SkeletonsSections ItemComponent={TransactionsListItemSkeleton} />
+        <SkeletonsSections
+          isSubtitleVisible
+          ItemComponent={TransactionsListItemSkeleton}
+        />
       ) : (
         <TransactionsSections
           total={total}

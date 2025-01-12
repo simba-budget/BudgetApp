@@ -3,7 +3,7 @@ import { InvitationAdd } from '@features/invitations/containers';
 import React from 'react';
 
 const InvitationAddScreen = () => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <InvitationAdd />
   </SheetScreenContainer>
 );

@@ -6,7 +6,7 @@ import React from 'react';
 export type SubscriptionActionsScreenProps = StaticScreenProps<{ id: number }>;
 
 const SubscriptionActionsScreen = ({ route }: SubscriptionActionsScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <SubscriptionActions id={route.params.id} />
   </SheetScreenContainer>
 );

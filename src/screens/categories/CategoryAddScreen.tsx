@@ -3,7 +3,7 @@ import { CategoryAdd } from '@features/categories/containers';
 import React from 'react';
 
 const CategoryAddScreen = () => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <CategoryAdd />
   </SheetScreenContainer>
 );

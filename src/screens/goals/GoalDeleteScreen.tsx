@@ -6,7 +6,7 @@ import React from 'react';
 export type GoalDeleteScreenProps = StaticScreenProps<{ id: number }>;
 
 const GoalDeleteScreen = ({ route }: GoalDeleteScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <GoalDelete id={route.params.id} />
   </SheetScreenContainer>
 );

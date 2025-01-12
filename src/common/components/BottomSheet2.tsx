@@ -1,25 +1,47 @@
 import { flex1 } from '@styles/common';
-import { padding } from '@styles/lightTheme';
+import { padding, sizes } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { ReactNode } from 'react';
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import React, { ReactNode, useMemo } from 'react';
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
+  useWindowDimensions,
+  View,
+  ViewStyle,
+} from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useSafeBottomInset } from '../hooks';
 
 export interface BottomSheet2Props {
   children: ReactNode;
   onClose: () => void;
+  isBottomSafe?: boolean;
+  minHeight?: ViewStyle['minHeight'];
 }
 
-const BottomSheet2 = ({ onClose, children }: BottomSheet2Props) => {
+const BottomSheet2 = ({
+  onClose,
+  children,
+  minHeight,
+  isBottomSafe = false,
+}: BottomSheet2Props) => {
+  const { top } = useSafeAreaInsets();
   const paddingBottom = useSafeBottomInset();
+  const { height } = useWindowDimensions();
+  const maxHeight = useMemo<number>(() => height - top - sizes.xxl, [height, top]);
 
   return (
     <View style={flex1}>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={flex1} />
       </TouchableWithoutFeedback>
-      <View style={[styles.container, { paddingBottom }]}>
+      <View
+        style={[
+          styles.container,
+          { maxHeight, minHeight },
+          isBottomSafe && { paddingBottom },
+        ]}>
         <View style={styles.handle} />
         {children}
       </View>

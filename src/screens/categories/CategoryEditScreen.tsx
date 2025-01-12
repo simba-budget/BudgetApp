@@ -6,7 +6,7 @@ import React from 'react';
 export type CategoryEditScreenProps = StaticScreenProps<{ id: number }>;
 
 const CategoryEditScreen = ({ route }: CategoryEditScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <CategoryEdit id={route.params.id} />
   </SheetScreenContainer>
 );

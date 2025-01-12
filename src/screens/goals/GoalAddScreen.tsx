@@ -3,7 +3,7 @@ import { GoalAdd } from '@features/goals/containers';
 import React from 'react';
 
 const GoalAddScreen = () => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <GoalAdd />
   </SheetScreenContainer>
 );

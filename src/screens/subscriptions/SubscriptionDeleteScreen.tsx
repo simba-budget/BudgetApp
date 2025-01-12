@@ -6,7 +6,7 @@ import React from 'react';
 export type SubscriptionDeleteScreenProps = StaticScreenProps<{ id: number }>;
 
 const SubscriptionDeleteScreen = ({ route }: SubscriptionDeleteScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <SubscriptionDelete id={route.params.id} />
   </SheetScreenContainer>
 );

@@ -1,42 +1,35 @@
-import { debounceTime } from '@common/constants';
-import { useAppDispatch, useAppSelector } from '@core/store/store';
-import React, { useCallback } from 'react';
-import { useDebounce } from 'use-debounce';
+import { SkeletonsList } from '@common/components';
+import { useAppSelector } from '@core/store/store';
+import { CategoriesListItemSkeleton } from '@features/categories/components';
+import { flex1 } from '@styles/common';
+import { padding } from '@styles/lightTheme';
+import React from 'react';
+import { View } from 'react-native';
 
-import { MembersList, MembersSearch } from '../components';
+import { MembersList } from '../components';
 import { useMembers } from '../hooks';
 import { selectApiMembersFilter, selectMembersSort } from '../selectors';
-import { updateKeyword } from '../slice';
 
 const Members = () => {
-  const dispatch = useAppDispatch();
   const filter = useAppSelector(selectApiMembersFilter);
   const sort = useAppSelector(selectMembersSort);
-  const [debouncedFilter] = useDebounce(filter, debounceTime);
-
-  const { members, isLoading, isRefetching, refetch } = useMembers({
-    filter: debouncedFilter,
-    sort,
-  });
-
-  const handleOnKeywordChange = useCallback(
-    (keyword: string) => dispatch(updateKeyword({ keyword })),
-    [dispatch],
-  );
+  const { members, isLoading, isRefetching, refetch } = useMembers({ filter, sort });
 
   return (
-    <>
-      <MembersSearch
-        onKeywordChange={handleOnKeywordChange}
-        keyword={filter?.keyword}
-      />
-      <MembersList
-        isLoading={isLoading}
-        isRefreshing={isRefetching}
-        onRefresh={refetch}
-        members={members}
-      />
-    </>
+    <View style={flex1}>
+      {isLoading ? (
+        <SkeletonsList
+          style={padding('top')('xxs')}
+          ItemComponent={CategoriesListItemSkeleton}
+        />
+      ) : (
+        <MembersList
+          isRefreshing={isRefetching}
+          onRefresh={refetch}
+          members={members}
+        />
+      )}
+    </View>
   );
 };
 

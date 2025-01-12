@@ -26,6 +26,7 @@ import {
   InvitationScreen,
   InvitationsScreen,
   MemberEditScreen,
+  MembersAndInvitationsScreen,
   MemberScreen,
   MembersScreen,
   MerchantAddScreen,
@@ -93,6 +94,7 @@ import {
   invitationsRoute,
   memberEditRoute,
   memberRoute,
+  membersAndInvitationsRoute,
   membersRoute,
   merchantAddRoute,
   merchantEditRoute,
@@ -182,9 +184,12 @@ const RootStack = createStackNavigator({
       screenOptions: bottomSheetOptions,
       screens: {
         [accountSelectRoute]: AccountSelectScreen,
-        [membersRoute]: MembersScreen,
         [subscriptionRoute]: SubscriptionScreen,
         [invitationAddRoute]: InvitationAddScreen,
+        [membersAndInvitationsRoute]: MembersAndInvitationsScreen,
+
+        // members
+        [membersRoute]: MembersScreen,
 
         // goals
         [goalAddRoute]: GoalAddScreen,

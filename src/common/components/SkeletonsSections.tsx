@@ -11,6 +11,7 @@ export interface SkeletonsSectionsProps {
   itemsCount?: number;
   sectionsCount?: number;
   noPadding?: boolean;
+  isSubtitleVisible?: boolean;
   ItemComponent: ComponentType;
 }
 
@@ -20,13 +21,14 @@ const SkeletonsSections = ({
   itemsCount = 2,
   sectionsCount = 5,
   noPadding = false,
+  isSubtitleVisible = false,
 }: SkeletonsSectionsProps) => (
   <View style={[!noPadding && padding('horizontal')('m'), gap('row')('m'), style]}>
     {range(sectionsCount).map((sectionIndex) => (
       <View key={sectionIndex} style={gap('row')('xs')}>
         <View style={[rowCenter, justifyBetween, margin('vertical')('xxxs')]}>
           <Skeleton height={12} width={70} borderRadius={6} />
-          <Skeleton height={12} width={60} borderRadius={6} />
+          {isSubtitleVisible && <Skeleton height={12} width={60} borderRadius={6} />}
         </View>
         {range(itemsCount).map((itemIndex) => (
           <ItemComponent key={itemIndex} />

@@ -6,7 +6,7 @@ import React from 'react';
 export type GoalEditScreenProps = StaticScreenProps<{ id: number }>;
 
 const GoalEditScreen = ({ route }: GoalEditScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <GoalEdit id={route.params.id} />
   </SheetScreenContainer>
 );

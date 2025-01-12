@@ -3,7 +3,7 @@ import { TagAdd } from '@features/tags/containers';
 import React from 'react';
 
 const TagAddScreen = () => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <TagAdd />
   </SheetScreenContainer>
 );

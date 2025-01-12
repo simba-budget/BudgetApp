@@ -3,7 +3,7 @@ import { SubscriptionAdd } from '@features/subscriptions/containers';
 import React from 'react';
 
 const SubscriptionAddScreen = () => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <SubscriptionAdd />
   </SheetScreenContainer>
 );

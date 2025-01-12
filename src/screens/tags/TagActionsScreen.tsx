@@ -6,7 +6,7 @@ import React from 'react';
 export type TagActionsScreenProps = StaticScreenProps<{ id: number }>;
 
 const TagActionsScreen = ({ route }: TagActionsScreenProps) => (
-  <SheetScreenContainer>
+  <SheetScreenContainer isBottomSafe>
     <TagActions id={route.params.id} />
   </SheetScreenContainer>
 );
