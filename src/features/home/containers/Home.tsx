@@ -14,7 +14,6 @@ import {
   RootNavigation,
   toAccountSelect,
   toGoalAdd,
-  toInvitationAdd,
   toNotifications,
   toSubscriptionAdd,
   toTransactionAdd,
@@ -190,9 +189,7 @@ const Home = () => {
         subscriptions={subscriptions}
         onViewAllPress={() => toSubscriptions(bottomTabsNavigation)}
       />
-      <InvitationAddSection
-        onInvitationAddPress={() => toInvitationAdd(navigation)}
-      />
+      <InvitationAddSection />
       <TransactionsSection
         isLoading={isTransactionsLoading}
         onTransactionAddPress={() => toTransactionAdd(navigation)}
