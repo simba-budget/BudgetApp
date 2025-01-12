@@ -14,6 +14,7 @@ export interface InvitationFormProps {
   isSubmitting: boolean;
   isDisabled?: boolean;
   control: Control<SaveInvitationRequest>;
+  isValid: boolean;
 }
 
 const InvitationForm = ({
@@ -22,6 +23,7 @@ const InvitationForm = ({
   onSubmit,
   control,
   isDisabled = false,
+  isValid,
 }: InvitationFormProps) => {
   const { t } = useInvitationsTranslations();
 
@@ -48,12 +50,8 @@ const InvitationForm = ({
       <Controller
         control={control}
         name="email"
-        render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl
-            style={margin('bottom')('s')}
-            isRequired
-            error={error?.message}
-            label={t('Email')}>
+        render={({ field: { ref: _, ...rest } }) => (
+          <FormControl style={margin('bottom')('s')} isRequired label={t('Email')}>
             <Input
               bgColor="secondary"
               autoFocus
@@ -68,6 +66,7 @@ const InvitationForm = ({
         )}
       />
       <Button
+        isDisabled={!isValid}
         isSubmitting={isSubmitting}
         onPress={onSubmit}
         size="medium"

@@ -24,14 +24,19 @@ const getSchema = (t: TFunction) => {
 const useInvitationForm = () => {
   const { t } = useValidationsTranslations();
 
-  const { control, handleSubmit, reset } = useForm<SaveInvitationRequest>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm<SaveInvitationRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
     mode: 'onBlur',
     reValidateMode: 'onBlur',
   });
 
-  return { control, handleSubmit, reset };
+  return { control, handleSubmit, reset, isValid };
 };
 
 export default useInvitationForm;

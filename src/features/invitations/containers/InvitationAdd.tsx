@@ -10,7 +10,7 @@ import { useAddInvitation, useInvitationForm } from '../hooks';
 const InvitationAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<RootNavigation>();
-  const { handleSubmit, control } = useInvitationForm();
+  const { handleSubmit, control, isValid } = useInvitationForm();
 
   const { addInvitation, isSubmitting } = useAddInvitation({
     onSuccess: goBack,
@@ -19,6 +19,7 @@ const InvitationAdd = () => {
 
   return (
     <InvitationForm
+      isValid={isValid}
       onSubmit={handleSubmit(addInvitation)}
       isSubmitting={isSubmitting}
       control={control}

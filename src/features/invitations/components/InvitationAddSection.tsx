@@ -3,7 +3,7 @@ import { useInvitationsTranslations } from '@i18n/hooks';
 import { invitationAddRoute, RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1, rowCenter } from '@styles/common';
-import { gap, margin, padding } from '@styles/lightTheme';
+import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
