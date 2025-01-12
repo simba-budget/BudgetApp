@@ -9,11 +9,11 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import React, { useMemo } from 'react';
 
-export interface CategoryActionsProps {
+export interface InvitationActionsProps {
   id: number;
 }
 
-const InvitationActions = ({ id }: CategoryActionsProps) => {
+const InvitationActions = ({ id }: InvitationActionsProps) => {
   const navigation = useNavigation<RootNavigation>();
   const { t } = useInvitationsTranslations();
 

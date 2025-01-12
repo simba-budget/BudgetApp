@@ -21,14 +21,19 @@ const getSchema = (t: TFunction) => {
 const useCategoryForm = () => {
   const { t } = useValidationsTranslations();
 
-  const { control, handleSubmit, reset } = useForm<SaveCategoryRequest>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = useForm<SaveCategoryRequest>({
     defaultValues: initialFormData,
     resolver: yupResolver(getSchema(t)),
     mode: 'onBlur',
     reValidateMode: 'onBlur',
   });
 
-  return { control, handleSubmit, reset };
+  return { control, handleSubmit, reset, isValid };
 };
 
 export default useCategoryForm;

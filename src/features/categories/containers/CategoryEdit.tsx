@@ -19,7 +19,7 @@ const CategoryEdit = ({ id }: CategoryEditProps) => {
   const { t } = useCategoriesTranslations();
   const { pop } = useNavigation<RootNavigation>();
   const { category, isLoading } = useCategory(id);
-  const { handleSubmit, control, reset } = useCategoryForm();
+  const { handleSubmit, control, reset, isValid } = useCategoryForm();
 
   const { editCategory, isSubmitting } = useEditCategory({
     onSuccess: () => pop(2),
@@ -35,6 +35,7 @@ const CategoryEdit = ({ id }: CategoryEditProps) => {
 
   return (
     <CategoryForm
+      isValid={isValid}
       title={t('Edit Category')}
       onSubmit={handleSubmit(handleOnSubmit)}
       isSubmitting={isSubmitting}

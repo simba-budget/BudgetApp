@@ -3,7 +3,6 @@ import { MemberRole } from '@api/clients/members/types';
 import { Badge, IconButton, Text } from '@common/components';
 import { useInvitationsTranslations } from '@i18n/hooks';
 import {
-  categoryRoute,
   invitationActionsRoute,
   invitationRoute,
   RootNavigation,

@@ -15,6 +15,7 @@ export interface CategoryFormProps {
   isDisabled?: boolean;
   control: Control<SaveCategoryRequest>;
   title: string;
+  isValid: boolean;
 }
 
 const CategoryForm = ({
@@ -23,6 +24,7 @@ const CategoryForm = ({
   onSubmit,
   control,
   title,
+  isValid,
   isDisabled = false,
 }: CategoryFormProps) => {
   const { t } = useCategoriesTranslations();
@@ -45,12 +47,8 @@ const CategoryForm = ({
       <Controller
         control={control}
         name="name"
-        render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl
-            style={margin('bottom')('s')}
-            isRequired
-            error={error?.message}
-            label={t('Name')}>
+        render={({ field: { ref: _, ...rest } }) => (
+          <FormControl style={margin('bottom')('s')} isRequired label={t('Name')}>
             <Input
               autoFocus
               bgColor="secondary"
@@ -64,6 +62,7 @@ const CategoryForm = ({
         )}
       />
       <Button
+        isDisabled={!isValid}
         isSubmitting={isSubmitting}
         onPress={onSubmit}
         size="medium"

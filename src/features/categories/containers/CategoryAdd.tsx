@@ -12,7 +12,7 @@ const CategoryAdd = () => {
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<RootNavigation>();
   const { t } = useCategoriesTranslations();
-  const { handleSubmit, control } = useCategoryForm();
+  const { handleSubmit, control, isValid } = useCategoryForm();
 
   const { addCategory, isSubmitting } = useAddCategory({
     onSuccess: goBack,
@@ -21,6 +21,7 @@ const CategoryAdd = () => {
 
   return (
     <CategoryForm
+      isValid={isValid}
       title={t('Create Category')}
       onSubmit={handleSubmit(addCategory)}
       isSubmitting={isSubmitting}
