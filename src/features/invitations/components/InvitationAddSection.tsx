@@ -18,7 +18,7 @@ const InvitationAddSection = ({ style }: InvitationAddSectionProps) => {
 
   return (
     <View style={[styles.container, style]}>
-      <View style={[flex1, gap('row')('xxs')]}>
+      <View style={[flex1, gap('row')('xxxs')]}>
         <Text weight="semiBold" color="primary" size="m">
           {t('Expand Your Circle')}
         </Text>
@@ -27,6 +27,7 @@ const InvitationAddSection = ({ style }: InvitationAddSectionProps) => {
         </Text>
       </View>
       <Button
+        iconName="userPlus"
         size="small"
         onPress={() => navigation.navigate(invitationAddRoute)}
         color="primary"
@@ -39,8 +40,8 @@ const InvitationAddSection = ({ style }: InvitationAddSectionProps) => {
 const styles = StyleSheet.create({
   container: {
     ...rowCenter,
-    ...margin('bottom')('s'),
     ...padding('full')('l'),
+    ...gap('column')('m'),
     borderRadius: 16,
     borderWidth: 1,
     borderColor: colors.border.primary,
