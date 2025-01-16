@@ -30,3 +30,4 @@ export { default as KeyboardAvoidingView } from './KeyboardAvoidingView';
 export { default as AnimatedNumber } from './AnimatedNumber';
 export { default as Tabs } from './Tabs';
 export { SingleSelect, MultiSelect } from './Select';
+export { DatePickerSheet } from './DatePicker';

@@ -1,5 +1,5 @@
 import { SaveTransactionRequest } from '@api/clients/transactions/types';
-import { Button, FormControl, Input } from '@common/components';
+import { Button, DatePickerSheet, FormControl, Input } from '@common/components';
 import { CategoriesSelect } from '@features/categories/containers';
 import { MerchantsSelect } from '@features/merchants/containers';
 import { SubscriptionsSelect } from '@features/subscriptions/containers';
@@ -122,6 +122,7 @@ const TransactionForm = ({
           </FormControl>
         )}
       />
+      <DatePickerSheet isOpen onClose={console.log} />
       <Button
         onPress={onSubmit}
         isDisabled={isSubmitting || isDisabled}
