@@ -1,4 +1,4 @@
-import { SheetScreenContainer } from '@common/components';
+import { FormScreenContainer } from '@common/components';
 import { TransactionEdit } from '@features/transactions/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -6,9 +6,9 @@ import React from 'react';
 export type TransactionEditScreenProps = StaticScreenProps<{ id: number }>;
 
 const TransactionEditScreen = ({ route }: TransactionEditScreenProps) => (
-  <SheetScreenContainer isBottomSafe>
+  <FormScreenContainer>
     <TransactionEdit id={route.params.id} />
-  </SheetScreenContainer>
+  </FormScreenContainer>
 );
 
 export default TransactionEditScreen;

@@ -62,7 +62,6 @@ import {
 import { View } from 'react-native';
 
 import { useIsAccountSelected, useIsLoggedIn, useIsLoggedOut } from '../../hooks';
-import { RootLayout } from '../../layouts';
 import { bottomSheetOptions, hiddenOptions, stackOptions } from '../../options';
 import BottomTabs, { bottomTabsRoute } from '../bottomTabs';
 
@@ -134,7 +133,6 @@ import {
 
 const RootStack = createStackNavigator({
   screenOptions: hiddenOptions,
-  screenLayout: RootLayout,
   groups: {
     [authRoute]: {
       if: useIsLoggedOut,
@@ -181,6 +179,8 @@ const RootStack = createStackNavigator({
         [externalAccountsRoute]: ExternalAccountsScreen,
         [externalAccountRoute]: ExternalAccountScreen,
         [membersAndInvitationsRoute]: MembersAndInvitationsScreen,
+        [transactionAddRoute]: TransactionAddScreen,
+        [transactionEditRoute]: TransactionEditScreen,
         [openBankingRoute]: View,
       },
     },
@@ -204,8 +204,6 @@ const RootStack = createStackNavigator({
         [transactionActionsRoute]: TransactionActionsScreen,
         [transactionRoute]: TransactionScreen,
         [transactionDeleteRoute]: TransactionDeleteScreen,
-        [transactionAddRoute]: TransactionAddScreen,
-        [transactionEditRoute]: TransactionEditScreen,
 
         // tags
         [tagAddRoute]: TagAddScreen,

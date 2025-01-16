@@ -3,42 +3,43 @@ import { SelectOption, SingleSelectProps } from '@common/components/Select';
 import { debounceTime } from '@common/constants';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { useCategories } from '@features/categories/hooks';
-import { mapCategoryToOption } from '@features/categories/map';
-import { useCategoriesTranslations } from '@i18n/hooks';
+import { useSubscriptionsTranslations } from '@i18n/hooks';
 import React, { useMemo, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
-export type CategoriesSelectProps = Omit<
+import { useSubscriptions } from '../hooks';
+import { mapSubscriptionToOption } from '../map';
+
+export type SubscriptionsSelectProps = Omit<
   SingleSelectProps<number>,
   'options' | 'title' | 'keyword' | 'onKeywordChange'
 >;
 
-const CategoriesSelect = (props: CategoriesSelectProps) => {
-  const { t } = useCategoriesTranslations();
+const SubscriptionsSelect = (props: SubscriptionsSelectProps) => {
+  const { t } = useSubscriptionsTranslations();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const [keyword, setKeyword] = useState<string>('');
   const [debouncedKeyword] = useDebounce(keyword, debounceTime);
 
-  const { categories, isLoading } = useCategories({
+  const { subscriptions, isLoading } = useSubscriptions({
     filter: { accountId, keyword: debouncedKeyword },
     sort: { column: 'name', direction: 'asc' },
   });
 
   const options = useMemo<SelectOption<number>[]>(
-    () => categories.map(mapCategoryToOption),
-    [categories],
+    () => subscriptions.map(mapSubscriptionToOption),
+    [subscriptions],
   );
 
   return (
     <SingleSelect
       isLoading={isLoading}
       onKeywordChange={setKeyword}
-      title={t('Select Category')}
+      title={t('Select Subscription')}
       options={options}
       {...props}
     />
   );
 };
 
-export default CategoriesSelect;
+export default SubscriptionsSelect;

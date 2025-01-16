@@ -21,7 +21,7 @@ export const getQueryKey = (
 interface Options {
   filter: SubscriptionsFilter;
   sort: SubscriptionsSort;
-  paging: Paging;
+  paging?: Paging;
 }
 
 const useSubscriptions = ({ filter, sort, paging }: Options) => {

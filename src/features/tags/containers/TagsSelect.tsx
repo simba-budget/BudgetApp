@@ -1,44 +1,45 @@
-import { SingleSelect } from '@common/components';
-import { SelectOption, SingleSelectProps } from '@common/components/Select';
+import { MultiSelect } from '@common/components';
+import { MultiSelectProps, SelectOption } from '@common/components/Select';
 import { debounceTime } from '@common/constants';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { useCategories } from '@features/categories/hooks';
-import { mapCategoryToOption } from '@features/categories/map';
-import { useCategoriesTranslations } from '@i18n/hooks';
+import { useTagsTranslations } from '@i18n/hooks';
 import React, { useMemo, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
-export type CategoriesSelectProps = Omit<
-  SingleSelectProps<number>,
+import { useTags } from '../hooks';
+import { mapTagToOption } from '../map';
+
+export type TagsSelectProps = Omit<
+  MultiSelectProps<number>,
   'options' | 'title' | 'keyword' | 'onKeywordChange'
 >;
 
-const CategoriesSelect = (props: CategoriesSelectProps) => {
-  const { t } = useCategoriesTranslations();
+const TagsSelect = (props: TagsSelectProps) => {
+  const { t } = useTagsTranslations();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const [keyword, setKeyword] = useState<string>('');
   const [debouncedKeyword] = useDebounce(keyword, debounceTime);
 
-  const { categories, isLoading } = useCategories({
+  const { tags, isLoading } = useTags({
     filter: { accountId, keyword: debouncedKeyword },
     sort: { column: 'name', direction: 'asc' },
   });
 
   const options = useMemo<SelectOption<number>[]>(
-    () => categories.map(mapCategoryToOption),
-    [categories],
+    () => tags.map(mapTagToOption),
+    [tags],
   );
 
   return (
-    <SingleSelect
+    <MultiSelect
       isLoading={isLoading}
       onKeywordChange={setKeyword}
-      title={t('Select Category')}
+      title={t('Select Tags')}
       options={options}
       {...props}
     />
   );
 };
 
-export default CategoriesSelect;
+export default TagsSelect;

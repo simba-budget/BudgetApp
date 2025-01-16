@@ -1,6 +1,5 @@
 import { MerchantsClient } from '@api/clients';
 import { MerchantsFilter, MerchantsSort } from '@api/clients/merchants/types';
-import { Paging } from '@api/types';
 import { useAppSelector } from '@core/store/store';
 import { useQuery } from '@tanstack/react-query';
 
@@ -10,24 +9,22 @@ export const getQueryKey = (
   filter: MerchantsFilter,
   sort: MerchantsSort,
   lastUpdated: number,
-  paging?: Paging,
 ) => {
-  return ['merchants', filter, sort, lastUpdated, paging];
+  return ['merchants', filter, sort, lastUpdated];
 };
 
 interface Options {
   filter: MerchantsFilter;
   sort: MerchantsSort;
-  paging: Paging;
 }
 
 const useMerchants = (options: Options) => {
-  const { filter, sort, paging } = options;
+  const { filter, sort } = options;
   const lastUpdated = useAppSelector(selectMerchantsLastUpdated);
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
-    queryKey: getQueryKey(filter, sort, lastUpdated, paging),
-    queryFn: () => MerchantsClient.getMerchants({ filter, sort, paging }),
+    queryKey: getQueryKey(filter, sort, lastUpdated),
+    queryFn: () => MerchantsClient.getMerchants({ filter, sort }),
   });
 
   return {

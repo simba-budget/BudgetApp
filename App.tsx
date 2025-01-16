@@ -5,6 +5,7 @@ import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
 import ToastProvider from '@core/toasts/ToastProvider';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setupTranslations } from '@i18n/setup';
 import linking from '@navigation/linking';
 import Navigation from '@navigation/navigation';
@@ -36,7 +37,9 @@ const App = () => (
             <SafeAreaProvider>
               <StatusBar translucent />
               <ToastProvider>
-                <Navigation theme={theme} linking={linking} />
+                <BottomSheetModalProvider>
+                  <Navigation theme={theme} linking={linking} />
+                </BottomSheetModalProvider>
               </ToastProvider>
             </SafeAreaProvider>
           </GestureHandlerRootView>

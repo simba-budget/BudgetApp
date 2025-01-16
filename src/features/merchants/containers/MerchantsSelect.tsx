@@ -3,42 +3,43 @@ import { SelectOption, SingleSelectProps } from '@common/components/Select';
 import { debounceTime } from '@common/constants';
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
-import { useCategories } from '@features/categories/hooks';
-import { mapCategoryToOption } from '@features/categories/map';
-import { useCategoriesTranslations } from '@i18n/hooks';
+import { useMerchantsTranslations } from '@i18n/hooks';
 import React, { useMemo, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
-export type CategoriesSelectProps = Omit<
+import { useMerchants } from '../hooks';
+import { mapMerchantToOption } from '../map';
+
+export type MerchantsSelectProps = Omit<
   SingleSelectProps<number>,
   'options' | 'title' | 'keyword' | 'onKeywordChange'
 >;
 
-const CategoriesSelect = (props: CategoriesSelectProps) => {
-  const { t } = useCategoriesTranslations();
+const MerchantsSelect = (props: MerchantsSelectProps) => {
+  const { t } = useMerchantsTranslations();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const [keyword, setKeyword] = useState<string>('');
   const [debouncedKeyword] = useDebounce(keyword, debounceTime);
 
-  const { categories, isLoading } = useCategories({
+  const { merchants, isLoading } = useMerchants({
     filter: { accountId, keyword: debouncedKeyword },
     sort: { column: 'name', direction: 'asc' },
   });
 
   const options = useMemo<SelectOption<number>[]>(
-    () => categories.map(mapCategoryToOption),
-    [categories],
+    () => merchants.map(mapMerchantToOption),
+    [merchants],
   );
 
   return (
     <SingleSelect
       isLoading={isLoading}
       onKeywordChange={setKeyword}
-      title={t('Select Category')}
+      title={t('Select Merchant')}
       options={options}
       {...props}
     />
   );
 };
 
-export default CategoriesSelect;
+export default MerchantsSelect;
