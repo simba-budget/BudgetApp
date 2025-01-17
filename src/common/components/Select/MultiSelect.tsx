@@ -1,15 +1,11 @@
+import { useCommonTranslations } from '@i18n/hooks';
 import { sizes } from '@styles/lightTheme';
 import xor from 'lodash/xor';
 import React, { useCallback, useMemo, useState } from 'react';
-import {
-  ListRenderItemInfo,
-  StyleProp,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { ListRenderItemInfo, StyleProp, View, ViewStyle } from 'react-native';
 
 import Text from '../Text';
+import ValueContainer from '../ValueContainer';
 
 import MultiSelectFooter from './MultiSelectFooter';
 import SelectOption from './SelectOption';
@@ -25,6 +21,7 @@ export interface MultiSelectProps<T> {
   options: SelectOptionType<T>[];
   title: string;
   onKeywordChange: (keyword: string) => void;
+  label: string;
 }
 
 const MultiSelect = <T,>({
@@ -36,7 +33,9 @@ const MultiSelect = <T,>({
   isLoading = false,
   title,
   onKeywordChange,
+  label,
 }: MultiSelectProps<T>) => {
+  const { t } = useCommonTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const [localValue, setLocalValue] = useState<T[] | null>(value);
 
@@ -79,11 +78,20 @@ const MultiSelect = <T,>({
 
   return (
     <View style={style}>
-      <TouchableOpacity onPress={() => setIsOpen(true)} disabled={isDisabled}>
-        <Text>
-          Select: {selectedOptions.map((option) => option.label).join(', ')}
+      <ValueContainer
+        isDisabled={isDisabled}
+        iconName="calendar"
+        label={label}
+        onPress={() => setIsOpen(true)}>
+        <Text
+          weight="semiBold"
+          size="s"
+          color={selectedOptions.length > 0 ? 'primary' : 'tertiary'}>
+          {selectedOptions.length > 0
+            ? selectedOptions.map((option) => option.label).join(', ')
+            : t('Not set')}
         </Text>
-      </TouchableOpacity>
+      </ValueContainer>
       <SelectSheet
         paddingBottom={sizes.m}
         isLoading={isLoading}

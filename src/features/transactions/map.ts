@@ -1,14 +1,13 @@
-import {
-  SaveTransactionRequest,
-  Transaction,
-} from '@api/clients/transactions/types';
+import { Transaction } from '@api/clients/transactions/types';
 import { Section } from '@common/types';
-import { formatDate, getCurrentDate } from '@utils/date';
+import { formatDate, getCurrentFormDate } from '@utils/date';
 import { formatPrice } from '@utils/price';
 import groupBy from 'lodash/groupBy';
 import map from 'lodash/map';
 import orderBy from 'lodash/orderBy';
 import sumBy from 'lodash/sumBy';
+
+import { SaveTransactionRequest } from './types';
 
 export const mapTransactionsToDaySections = (
   transactions: Transaction[],
@@ -31,7 +30,7 @@ export const mapSaveTransactionRequest = (
 ): SaveTransactionRequest => ({
   description: transaction?.description ?? '',
   categoryId: transaction?.category?.id ?? 0,
-  date: transaction?.date ?? getCurrentDate(),
+  date: transaction?.date ?? getCurrentFormDate(),
   amount: transaction?.amount ?? 0,
   currency: transaction?.currency ?? 'EUR',
   subscriptionId: transaction?.subscription?.id ?? null,

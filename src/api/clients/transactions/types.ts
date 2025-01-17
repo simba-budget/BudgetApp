@@ -32,6 +32,7 @@ export type TransactionsStatsResponse = ListResponse<TransactionDateStats>;
 export interface SaveTransactionRequest {
   amount: number;
   currency: string;
+  accountId: number;
   description: string | null;
   categoryId: number | null;
   subscriptionId: number | null;

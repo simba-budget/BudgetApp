@@ -1,16 +1,17 @@
-import { SaveTransactionRequest } from '@api/clients/transactions/types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useValidationsTranslations } from '@i18n/hooks';
-import { getCurrentDate } from '@utils/date';
+import { getCurrentFormDate } from '@utils/date';
 import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+
+import { SaveTransactionRequest } from '../types';
 
 const initialFormData: Partial<SaveTransactionRequest> = {
   amount: 0,
   currency: 'EUR',
   description: null,
-  date: getCurrentDate(),
+  date: getCurrentFormDate(),
   subscriptionId: null,
   merchantId: null,
   categoryId: null,

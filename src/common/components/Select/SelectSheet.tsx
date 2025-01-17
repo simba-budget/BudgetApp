@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import { ListRenderItem } from 'react-native';
 
 import { scrollIndicatorInsets } from '../../constants';
-import BottomSheet from '../BottomSheet';
+import { BottomSheet } from '../BottomSheet';
 import SkeletonsList from '../SkeletonsList';
 import Text from '../Text';
 
@@ -35,7 +35,11 @@ const SelectSheet = <T,>({
   renderFooter,
   paddingBottom,
 }: SelectSheetProps<T>) => (
-  <BottomSheet isOpen={isOpen} onClose={onClose}>
+  <BottomSheet
+    enableDynamicSizing={false}
+    snapPoints={['95%']}
+    isOpen={isOpen}
+    onClose={onClose}>
     <Text
       style={[margin('bottom')('m'), padding('horizontal')('m')]}
       size="m"

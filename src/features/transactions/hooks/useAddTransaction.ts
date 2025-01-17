@@ -1,21 +1,19 @@
 import { TransactionsClient } from '@api/clients';
-import {
-  SaveTransactionRequest,
-  Transaction,
-} from '@api/clients/transactions/types';
+import { Transaction } from '@api/clients/transactions/types';
 import { useAppDispatch } from '@core/store/store';
 import { showSuccessToast } from '@core/toasts/actions';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { useMutation } from '@tanstack/react-query';
 
 import { updateTransactions } from '../slice';
+import { SaveTransactionRequest } from '../types';
 
 interface Options {
+  accountId: number;
   onSuccess: (transaction: Transaction) => void;
 }
 
-const useAddTransaction = (options: Options) => {
-  const { onSuccess } = options;
+const useAddTransaction = ({ onSuccess, accountId }: Options) => {
   const dispatch = useAppDispatch();
   const { t } = useTransactionsTranslations();
 
@@ -29,7 +27,7 @@ const useAddTransaction = (options: Options) => {
   });
 
   const addTransaction = (request: SaveTransactionRequest) => {
-    return mutateAsync(request);
+    return mutateAsync({ ...request, accountId });
   };
 
   return { addTransaction, isSubmitting };

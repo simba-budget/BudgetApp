@@ -41,7 +41,10 @@ const TransactionActions = ({ id }: TransactionActionsProps) => {
         title: t('Edit'),
         iconName: 'edit',
         description: t('Edit transaction details'),
-        onPress: () => navigation.navigate(transactionEditRoute, { id }),
+        onPress: () => {
+          navigation.goBack();
+          setTimeout(() => navigation.navigate(transactionEditRoute, { id }));
+        },
       },
       {
         title: t('Delete'),

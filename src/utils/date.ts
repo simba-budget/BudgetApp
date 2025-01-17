@@ -4,7 +4,15 @@ export const getCurrentDate = () => {
   return formatDate(dayjs());
 };
 
-export const formatDate = (date: string | number | Dayjs | Date) => {
+export const getCurrentFormDate = () => {
+  return formatFormDate(dayjs());
+};
+
+export const formatFormDate = (date?: string | number | Dayjs | Date | null) => {
+  return dayjs(date).format('YYYY-MM-DD');
+};
+
+export const formatDate = (date?: string | number | Dayjs | Date | null) => {
   return dayjs(date).format('MMM D, YYYY');
 };
 

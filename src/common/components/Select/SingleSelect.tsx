@@ -1,14 +1,10 @@
+import { useCommonTranslations } from '@i18n/hooks';
 import React, { useCallback, useMemo, useState } from 'react';
-import {
-  ListRenderItemInfo,
-  StyleProp,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { ListRenderItemInfo, StyleProp, View, ViewStyle } from 'react-native';
 
 import { useSafeBottomInset } from '../../hooks';
 import Text from '../Text';
+import ValueContainer from '../ValueContainer';
 
 import SelectOption from './SelectOption';
 import SelectSheet from './SelectSheet';
@@ -23,6 +19,7 @@ export interface SingleSelectProps<T> {
   options: SelectOptionType<T>[];
   title: string;
   onKeywordChange: (keyword: string) => void;
+  label: string;
 }
 
 const SingleSelect = <T,>({
@@ -34,7 +31,9 @@ const SingleSelect = <T,>({
   isLoading = false,
   title,
   onKeywordChange,
+  label,
 }: SingleSelectProps<T>) => {
+  const { t } = useCommonTranslations();
   const paddingBottom = useSafeBottomInset();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -64,9 +63,18 @@ const SingleSelect = <T,>({
 
   return (
     <View style={style}>
-      <TouchableOpacity onPress={() => setIsOpen(true)} disabled={isDisabled}>
-        <Text>Select: {selectedOption?.label}</Text>
-      </TouchableOpacity>
+      <ValueContainer
+        isDisabled={isDisabled}
+        iconName="calendar"
+        label={label}
+        onPress={() => setIsOpen(true)}>
+        <Text
+          weight="semiBold"
+          size="s"
+          color={selectedOption ? 'primary' : 'tertiary'}>
+          {selectedOption?.label || t('Not set')}
+        </Text>
+      </ValueContainer>
       <SelectSheet
         paddingBottom={paddingBottom}
         isLoading={isLoading}

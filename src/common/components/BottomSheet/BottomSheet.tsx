@@ -1,20 +1,31 @@
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetModalProps } from '@gorhom/bottom-sheet';
 import { margin } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import React, { ReactNode, useEffect, useRef } from 'react';
-import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetBackdrop from './BottomSheetBackdrop';
 
-export interface BottomSheetProps {
-  style?: StyleProp<ViewStyle>;
+export interface BottomSheetProps
+  extends Omit<
+    BottomSheetModalProps,
+    | 'keyboardBehavior'
+    | 'topInset'
+    | 'bottomInset'
+    | 'onDismiss'
+    | 'enablePanDownToClose'
+    | 'enableOverDrag'
+    | 'backgroundStyle'
+    | 'handleIndicatorStyle'
+    | 'backdropComponent'
+    | 'index'
+  > {
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
 }
 
-const BottomSheet = ({ style, onClose, isOpen, children }: BottomSheetProps) => {
+const BottomSheet = ({ onClose, isOpen, ...rest }: BottomSheetProps) => {
   const { top } = useSafeAreaInsets();
   const ref = useRef<BottomSheetModal>(null);
 
@@ -27,21 +38,18 @@ const BottomSheet = ({ style, onClose, isOpen, children }: BottomSheetProps) => 
   return (
     <BottomSheetModal
       keyboardBehavior="interactive"
-      enableDynamicSizing={false}
-      snapPoints={['95%']}
       topInset={top}
       bottomInset={0}
       onDismiss={onClose}
-      style={style}
       ref={ref}
       enablePanDownToClose
       enableOverDrag={false}
       backgroundStyle={styles.container}
       handleIndicatorStyle={styles.handle}
       backdropComponent={BottomSheetBackdrop}
-      index={0}>
-      {children}
-    </BottomSheetModal>
+      index={0}
+      {...rest}
+    />
   );
 };
 

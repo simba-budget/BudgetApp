@@ -1,4 +1,1 @@
-export {
-  default as DatePickerSheet,
-  type DatePickerSheetProps,
-} from './DatePickerSheet';
+export { default as DatePicker, type DatePickerProps } from './DatePicker';
