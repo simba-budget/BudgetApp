@@ -1,4 +1,4 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { InvitationActions } from '@features/invitations/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -6,9 +6,9 @@ import React from 'react';
 export type InvitationActionsScreenProps = StaticScreenProps<{ id: number }>;
 
 const InvitationActionsScreen = ({ route }: InvitationActionsScreenProps) => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <InvitationActions id={route.params.id} />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default InvitationActionsScreen;

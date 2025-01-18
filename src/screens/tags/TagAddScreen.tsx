@@ -1,11 +1,11 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { TagAdd } from '@features/tags/containers';
 import React from 'react';
 
 const TagAddScreen = () => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <TagAdd />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default TagAddScreen;

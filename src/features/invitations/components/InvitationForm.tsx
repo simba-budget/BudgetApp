@@ -1,4 +1,4 @@
-import { Button, FormControl, Input, Text } from '@common/components';
+import { BottomSheetInput, Button, FormControl, Text } from '@common/components';
 import { useInvitationsTranslations } from '@i18n/hooks';
 import { center } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
@@ -52,8 +52,7 @@ const InvitationForm = ({
         name="email"
         render={({ field: { ref: _, ...rest } }) => (
           <FormControl style={margin('bottom')('s')} isRequired label={t('Email')}>
-            <Input
-              bgColor="secondary"
+            <BottomSheetInput
               autoFocus
               keyboardType="email-address"
               iconName="email"

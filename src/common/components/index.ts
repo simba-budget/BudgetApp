@@ -15,7 +15,6 @@ export { default as BarChart } from './BarChart';
 export { default as Badge } from './Badge';
 export { default as EmptySection } from './EmptySection';
 export { default as DetailsItem } from './DetailsItem';
-export { default as SheetScreenContainer } from './SheetScreenContainer';
 export { default as Confirmation } from './Confirmation';
 export { default as Action } from './Action';
 export { default as Actions } from './Actions';
@@ -30,5 +29,9 @@ export { default as AnimatedNumber } from './AnimatedNumber';
 export { default as Tabs } from './Tabs';
 export { SingleSelect, MultiSelect } from './Select';
 export { DatePicker } from './DatePicker';
-export { BottomSheet } from './BottomSheet';
+export {
+  BottomSheet,
+  BottomSheetInput,
+  BottomSheetScreenContainer,
+} from './BottomSheet';
 export { default as Textarea } from './Textarea';

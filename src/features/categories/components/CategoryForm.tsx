@@ -1,5 +1,4 @@
-import { Button, FormControl, Input, Text } from '@common/components';
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import { BottomSheetInput, Button, FormControl, Text } from '@common/components';
 import { useCategoriesTranslations } from '@i18n/hooks';
 import { center } from '@styles/common';
 import { margin, padding } from '@styles/lightTheme';
@@ -50,7 +49,8 @@ const CategoryForm = ({
         name="name"
         render={({ field: { ref: _, ...rest } }) => (
           <FormControl style={margin('bottom')('s')} isRequired label={t('Name')}>
-            <BottomSheetTextInput
+            <BottomSheetInput
+              iconName="email"
               autoFocus
               keyboardType="default"
               readOnly={isDisabled}

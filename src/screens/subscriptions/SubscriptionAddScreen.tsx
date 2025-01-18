@@ -1,11 +1,11 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { SubscriptionAdd } from '@features/subscriptions/containers';
 import React from 'react';
 
 const SubscriptionAddScreen = () => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <SubscriptionAdd />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default SubscriptionAddScreen;

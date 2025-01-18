@@ -1,4 +1,4 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { TransactionDelete } from '@features/transactions/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -6,9 +6,9 @@ import React from 'react';
 export type TransactionDeleteScreenProps = StaticScreenProps<{ id: number }>;
 
 const TransactionDeleteScreen = ({ route }: TransactionDeleteScreenProps) => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <TransactionDelete id={route.params.id} />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default TransactionDeleteScreen;

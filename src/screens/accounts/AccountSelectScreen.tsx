@@ -1,11 +1,11 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { AccountSelect } from '@features/accounts/containers';
 import React from 'react';
 
 const AccountSelectScreen = () => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <AccountSelect />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default AccountSelectScreen;

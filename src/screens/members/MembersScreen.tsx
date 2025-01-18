@@ -1,11 +1,11 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { Members } from '@features/members/containers';
 import React from 'react';
 
 const MembersScreen = () => (
-  <SheetScreenContainer>
+  <BottomSheetScreenContainer>
     <Members />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default MembersScreen;

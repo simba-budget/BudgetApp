@@ -93,6 +93,7 @@ const MultiSelect = <T,>({
         </Text>
       </ValueContainer>
       <SelectSheet
+        onAddPress={console.log}
         paddingBottom={sizes.m}
         isLoading={isLoading}
         onKeywordChange={onKeywordChange}

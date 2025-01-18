@@ -1,11 +1,11 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { GoalAdd } from '@features/goals/containers';
 import React from 'react';
 
 const GoalAddScreen = () => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <GoalAdd />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default GoalAddScreen;

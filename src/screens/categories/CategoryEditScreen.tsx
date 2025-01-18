@@ -1,4 +1,4 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { CategoryEdit } from '@features/categories/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -6,9 +6,9 @@ import React from 'react';
 export type CategoryEditScreenProps = StaticScreenProps<{ id: number }>;
 
 const CategoryEditScreen = ({ route }: CategoryEditScreenProps) => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <CategoryEdit id={route.params.id} />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default CategoryEditScreen;

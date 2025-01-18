@@ -1,4 +1,4 @@
-import { SheetScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { TagActions } from '@features/tags/containers';
 import { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
@@ -6,9 +6,9 @@ import React from 'react';
 export type TagActionsScreenProps = StaticScreenProps<{ id: number }>;
 
 const TagActionsScreen = ({ route }: TagActionsScreenProps) => (
-  <SheetScreenContainer isBottomSafe>
+  <BottomSheetScreenContainer>
     <TagActions id={route.params.id} />
-  </SheetScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default TagActionsScreen;

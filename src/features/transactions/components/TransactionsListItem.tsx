@@ -39,7 +39,9 @@ const TransactionsListItem = ({
     <TouchableOpacity
       style={[styles.container, style]}
       onLongPress={() => navigate(transactionActionsRoute, { id: transaction.id })}
-      onPress={() => navigate(transactionRoute, { id: transaction.id })}>
+      onPress={() =>
+        navigate(transactionRoute, { id: transaction.id, transaction })
+      }>
       <IconButton iconSize={20} size={40} iconName="card" isDisabled />
       <View style={[flex1, gap('row')('xxs')]}>
         <Text weight="semiBold" size="s" color="primary">

@@ -37,12 +37,14 @@ const BottomSheet = ({ onClose, isOpen, ...rest }: BottomSheetProps) => {
 
   return (
     <BottomSheetModal
+      keyboardBehavior="interactive"
+      keyboardBlurBehavior="restore"
       topInset={top}
       bottomInset={0}
       onDismiss={onClose}
       ref={ref}
       enablePanDownToClose
-      enableOverDrag={false}
+      enableOverDrag
       backgroundStyle={styles.container}
       handleIndicatorStyle={styles.handle}
       backdropComponent={BottomSheetBackdrop}

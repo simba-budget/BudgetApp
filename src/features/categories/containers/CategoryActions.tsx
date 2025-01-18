@@ -26,7 +26,7 @@ const CategoryActions = ({ id }: CategoryActionsProps) => {
         description: t('View category details'),
         onPress: () => {
           navigation.goBack();
-          setTimeout(() => navigation.navigate(categoryRoute, { id }));
+          setTimeout(() => navigation.replace(categoryRoute, { id }));
         },
       },
       {
