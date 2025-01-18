@@ -37,7 +37,6 @@ const BottomSheet = ({ onClose, isOpen, ...rest }: BottomSheetProps) => {
 
   return (
     <BottomSheetModal
-      keyboardBehavior="interactive"
       topInset={top}
       bottomInset={0}
       onDismiss={onClose}

@@ -1,4 +1,6 @@
 import { useCommonTranslations } from '@i18n/hooks';
+import { categoryAddRoute, RootNavigation } from '@navigation/navigators/root';
+import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useMemo, useState } from 'react';
 import { ListRenderItemInfo, StyleProp, View, ViewStyle } from 'react-native';
 
@@ -36,6 +38,7 @@ const SingleSelect = <T,>({
   const { t } = useCommonTranslations();
   const paddingBottom = useSafeBottomInset();
   const [isOpen, setIsOpen] = useState(false);
+  const navigation = useNavigation<RootNavigation>();
 
   const selectedOption = useMemo<SelectOptionType<T> | undefined>(
     () => options.find((option) => option.value === value),
@@ -61,6 +64,10 @@ const SingleSelect = <T,>({
     [value, handleOnOptionPress],
   );
 
+  const handleOnAddPress = useCallback(() => {
+    navigation.navigate(categoryAddRoute);
+  }, [navigation]);
+
   return (
     <View style={style}>
       <ValueContainer
@@ -76,6 +83,7 @@ const SingleSelect = <T,>({
         </Text>
       </ValueContainer>
       <SelectSheet
+        onAddPress={handleOnAddPress}
         paddingBottom={paddingBottom}
         isLoading={isLoading}
         onKeywordChange={onKeywordChange}

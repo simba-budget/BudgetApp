@@ -1,11 +1,10 @@
 import { StatusBar } from '@common/components';
-import { CachedResourcesLoader } from '@common/containers';
-// import setupLogging from '@core/logging/setup';
+import { CachedResourcesLoader, ErrorBoundary } from '@common/containers';
+import setupLogging from '@core/logging/setup';
 import setupNotifications from '@core/notifications/setup';
 import queryClient from '@core/query/client';
 import { store } from '@core/store/store';
 import ToastProvider from '@core/toasts/ToastProvider';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setupTranslations } from '@i18n/setup';
 import linking from '@navigation/linking';
 import Navigation from '@navigation/navigation';
@@ -26,26 +25,26 @@ dayjs.extend(relativeTime);
 dayjs.extend(minMax);
 setupTranslations();
 setupNotifications();
-// setupLogging();
+setupLogging();
 
 const App = () => (
   <View style={styles.container}>
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <CachedResourcesLoader>
-          <GestureHandlerRootView style={flex1}>
-            <SafeAreaProvider>
-              <StatusBar translucent />
-              <ToastProvider>
-                <BottomSheetModalProvider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <CachedResourcesLoader>
+            <GestureHandlerRootView style={flex1}>
+              <SafeAreaProvider>
+                <StatusBar translucent />
+                <ToastProvider>
                   <Navigation theme={theme} linking={linking} />
-                </BottomSheetModalProvider>
-              </ToastProvider>
-            </SafeAreaProvider>
-          </GestureHandlerRootView>
-        </CachedResourcesLoader>
-      </QueryClientProvider>
-    </Provider>
+                </ToastProvider>
+              </SafeAreaProvider>
+            </GestureHandlerRootView>
+          </CachedResourcesLoader>
+        </QueryClientProvider>
+      </Provider>
+    </ErrorBoundary>
   </View>
 );
 

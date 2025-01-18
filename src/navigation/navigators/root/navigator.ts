@@ -62,6 +62,7 @@ import {
 import { View } from 'react-native';
 
 import { useIsAccountSelected, useIsLoggedIn, useIsLoggedOut } from '../../hooks';
+import { RootLayout } from '../../layouts';
 import { bottomSheetOptions, hiddenOptions, stackOptions } from '../../options';
 import BottomTabs, { bottomTabsRoute } from '../bottomTabs';
 
@@ -133,6 +134,7 @@ import {
 
 const RootStack = createStackNavigator({
   screenOptions: hiddenOptions,
+  screenLayout: RootLayout,
   groups: {
     [authRoute]: {
       if: useIsLoggedOut,

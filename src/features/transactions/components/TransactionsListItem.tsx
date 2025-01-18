@@ -1,5 +1,6 @@
 import { Transaction } from '@api/clients/transactions/types';
 import { IconButton, Text } from '@common/components';
+import { useTransactionsTranslations } from '@i18n/hooks';
 import {
   RootNavigation,
   transactionActionsRoute,
@@ -31,6 +32,7 @@ const TransactionsListItem = ({
   transaction,
   isDateHidden = false,
 }: TransactionsListItemProps) => {
+  const { t } = useTransactionsTranslations();
   const { navigate } = useNavigation<RootNavigation>();
 
   return (
@@ -41,7 +43,7 @@ const TransactionsListItem = ({
       <IconButton iconSize={20} size={40} iconName="card" isDisabled />
       <View style={[flex1, gap('row')('xxs')]}>
         <Text weight="semiBold" size="s" color="primary">
-          {transaction.category?.name}
+          {transaction.category?.name || t('Other')}
         </Text>
         <Text numberOfLines={1} weight="semiBold" size="xs" color="tertiary">
           {transaction.description}

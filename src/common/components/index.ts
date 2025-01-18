@@ -30,4 +30,5 @@ export { default as AnimatedNumber } from './AnimatedNumber';
 export { default as Tabs } from './Tabs';
 export { SingleSelect, MultiSelect } from './Select';
 export { DatePicker } from './DatePicker';
+export { BottomSheet } from './BottomSheet';
 export { default as Textarea } from './Textarea';
