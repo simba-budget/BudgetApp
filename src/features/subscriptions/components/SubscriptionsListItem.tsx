@@ -52,7 +52,10 @@ const SubscriptionsListItem = ({
       </View>
       <View style={[alignEnd, gap('row')('xxs')]}>
         <Text weight="bold" size="s" color="primary">
-          {formatPrice(subscription.amount, subscription.currency)}
+          {formatPrice(
+            subscription.baseAmount || subscription.amount,
+            subscription.baseCurrency,
+          )}
         </Text>
         <Text weight="medium" size="xs" color="tertiary">
           {formatDate(subscription.startedAt)}

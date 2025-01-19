@@ -1,6 +1,7 @@
 import { BaseModel, ListRequest, ListResponse, Sort } from '@api/types';
 
 import { Category } from '../categories/types';
+import { Currency } from '../currencies/types';
 import { ExternalAccount } from '../externalAccounts/types';
 import { Member } from '../members/types';
 import { Merchant } from '../merchants/types';
@@ -9,7 +10,7 @@ import { Tag } from '../tags/types';
 
 export interface Transaction extends BaseModel {
   amount: number;
-  currency: string;
+  currency: Currency;
   externalAccount: ExternalAccount | null;
   description: string | null;
   category: Category | null;
@@ -20,6 +21,8 @@ export interface Transaction extends BaseModel {
   createdBy: Member | null;
   updatedAt: string | null;
   createdAt: string | null;
+  baseAmount: number;
+  baseCurrency: Currency;
 }
 
 export interface TransactionDateStats {
@@ -31,7 +34,7 @@ export type TransactionsStatsResponse = ListResponse<TransactionDateStats>;
 
 export interface SaveTransactionRequest {
   amount: number;
-  currency: string;
+  currencyId: number;
   accountId: number;
   description: string | null;
   categoryId: number | null;

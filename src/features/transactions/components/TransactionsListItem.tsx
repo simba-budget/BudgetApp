@@ -56,11 +56,19 @@ const TransactionsListItem = ({
           weight="bold"
           size="s"
           color={transaction.amount < 0 ? 'error' : 'success'}>
-          {formatPrice(transaction.amount, transaction.currency)}
+          {formatPrice(
+            transaction.baseAmount || transaction.amount,
+            transaction.baseCurrency,
+          )}
         </Text>
         {!isDateHidden && (
           <Text weight="medium" size="xs" color="tertiary">
             {formatDate(transaction.date)}
+          </Text>
+        )}
+        {transaction.baseAmount && isDateHidden && (
+          <Text weight="medium" size="xs" color="tertiary">
+            {formatPrice(transaction.amount, transaction.currency)}
           </Text>
         )}
       </View>

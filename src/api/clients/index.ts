@@ -2,6 +2,7 @@ import * as AccountsClient from './accounts';
 import * as AuthClient from './auth';
 import * as CategoriesClient from './categories';
 import * as ContributionsClient from './contributions';
+import * as CurrenciesClient from './currencies';
 import * as DocumentsClient from './documents';
 import * as ExternalAccountsClient from './externalAccounts';
 import * as GoalsClient from './goals';
@@ -32,4 +33,5 @@ export {
   SubscriptionsClient,
   TagsClient,
   TransactionsClient,
+  CurrenciesClient,
 };

@@ -162,19 +162,22 @@ const Home = () => {
         />
       )}
       {account ? (
-        <AccountSection
-          onAccountPress={() => toAccountSelect(navigation)}
-          account={account}
-          quickActions={quickActions}
-        />
+        <>
+          <AccountSection
+            onAccountPress={() => toAccountSelect(navigation)}
+            account={account}
+            quickActions={quickActions}
+          />
+          <TransactionsWeekStats
+            baseCurrency={account?.currency}
+            isLoading={isTransactionsWeekStatsLoading}
+            totalAmount={totalAmount}
+            data={transactionsStats}
+          />
+        </>
       ) : (
         <AccountSectionSkeleton />
       )}
-      <TransactionsWeekStats
-        isLoading={isTransactionsWeekStatsLoading}
-        totalAmount={totalAmount}
-        data={transactionsStats}
-      />
       <GoalsSection
         onGoalAddPress={() => toGoalAdd(navigation)}
         total={totalGoals}

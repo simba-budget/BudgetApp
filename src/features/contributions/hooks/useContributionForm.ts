@@ -7,9 +7,8 @@ import * as yup from 'yup';
 
 import { SaveContributionRequest } from '../types';
 
-const initialFormData: SaveContributionRequest = {
+const initialFormData: Partial<SaveContributionRequest> = {
   description: null,
-  currency: 'EUR',
   amount: 0,
   date: getCurrentDate(),
 };
@@ -17,7 +16,7 @@ const initialFormData: SaveContributionRequest = {
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
     description: yup.string().nullable().defined(),
-    currency: yup.string().required(t('Currency is required')),
+    currencyId: yup.number().required(t('Currency is required')),
     date: yup.string().required(t('Date is required')),
     amount: yup.number().required(t('Amount is required')),
   });

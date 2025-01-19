@@ -15,6 +15,11 @@ export const selectSelectedAccountId = createSelector(
   (state) => state.selectedAccountId,
 );
 
+export const selectSelectedAccount = createSelector(
+  selectAccounts,
+  (state) => state.selectedAccount,
+);
+
 export const selectSelectedAccountIdStrict = createSelector(
   selectAccounts,
   (state) => {

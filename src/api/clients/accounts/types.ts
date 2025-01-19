@@ -1,21 +1,21 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
+import { Currency } from '../currencies/types';
+
 export type AccountType = 'PERSONAL' | 'BUSINESS';
 
 export interface Account extends BaseModel {
   name: string;
-  initialBalance: number;
-  balance: number;
   type: AccountType;
-  currency: string;
   membersCount: number;
+  balance: number;
+  currency: Currency;
 }
 
 export interface SaveAccountRequest {
   name: string;
   type: AccountType;
-  initialBalance: number;
-  currency: string;
+  currencyId: number;
 }
 
 export interface AccountsFilter {

@@ -33,5 +33,6 @@ export {
   BottomSheet,
   BottomSheetInput,
   BottomSheetScreenContainer,
+  BottomSheetTextArea,
+  BottomSheetAmountInput,
 } from './BottomSheet';
-export { default as Textarea } from './Textarea';

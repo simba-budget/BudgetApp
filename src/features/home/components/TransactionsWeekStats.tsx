@@ -1,3 +1,4 @@
+import { Currency } from '@api/clients/currencies/types';
 import { AnimatedNumber, BarChart, Text } from '@common/components';
 import { useHomeTranslations } from '@i18n/hooks';
 import { rowCenter } from '@styles/common';
@@ -20,19 +21,21 @@ export interface TransactionsWeekStatsProps {
   data: ChartData;
   totalAmount: number;
   isLoading: boolean;
+  baseCurrency: Currency;
 }
 
 const TransactionsWeekStats = ({
   style,
   data,
   totalAmount,
+  baseCurrency,
 }: TransactionsWeekStatsProps) => {
   const { t } = useHomeTranslations();
   const { width } = useWindowDimensions();
 
   const formatYLabel = useCallback(
-    (label: string) => formatShortPrice(Number(label), 'EUR'),
-    [],
+    (label: string) => formatShortPrice(Number(label), baseCurrency),
+    [baseCurrency],
   );
 
   return (

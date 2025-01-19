@@ -7,11 +7,10 @@ import * as yup from 'yup';
 
 import { SaveSubscriptionRequest } from '../types';
 
-const initialFormData: SaveSubscriptionRequest = {
+const initialFormData: Partial<SaveSubscriptionRequest> = {
   name: '',
   startedAt: getCurrentDate(),
   amount: 0,
-  currency: 'EUR',
   merchantId: null,
   frequency: 'MONTHLY',
   description: null,
@@ -21,7 +20,7 @@ const initialFormData: SaveSubscriptionRequest = {
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
     amount: yup.number().required(t('Amount is required')),
-    currency: yup.string().required(t('Currency is required')),
+    currencyId: yup.number().required(t('Currency is required')),
     name: yup.string().required(t('Name is required')),
     startedAt: yup.string().required(t('Started at is required')),
     merchantId: yup.number().nullable().defined(),

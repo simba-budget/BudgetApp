@@ -1,5 +1,6 @@
 import { SkeletonsSections } from '@common/components';
 import { useAppSelector } from '@core/store/store';
+import { selectSelectedAccount } from '@features/accounts/selectors';
 import { RootNavigation, toTransactionAdd } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { flex1 } from '@styles/common';
@@ -12,6 +13,7 @@ import { selectApiTransactionsFilter, selectTransactionsSort } from '../selector
 
 const Transactions = () => {
   const navigation = useNavigation<RootNavigation>();
+  const account = useAppSelector(selectSelectedAccount);
   const filter = useAppSelector(selectApiTransactionsFilter);
   const sort = useAppSelector(selectTransactionsSort);
 
@@ -27,6 +29,8 @@ const Transactions = () => {
     filter,
     sort,
   });
+
+  if (!account) return null;
 
   return (
     <View style={flex1}>
@@ -44,6 +48,7 @@ const Transactions = () => {
           isRefreshing={isRefetching}
           onRefresh={refetch}
           transactions={transactions}
+          baseCurrency={account.currency}
         />
       )}
     </View>

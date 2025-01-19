@@ -5,9 +5,9 @@ import { SaveContributionRequest } from './types';
 
 export const mapSaveContributionRequest = (
   contribution?: Contribution | null,
-): SaveContributionRequest => ({
+): Partial<SaveContributionRequest> => ({
   description: contribution?.description ?? null,
-  currency: contribution?.currency ?? 'EUR',
   amount: contribution?.amount ?? 0,
   date: contribution?.date ?? getCurrentDate(),
+  ...(contribution?.currency && { currencyId: contribution.currency.id }),
 });

@@ -181,8 +181,6 @@ const RootStack = createStackNavigator({
         [externalAccountsRoute]: ExternalAccountsScreen,
         [externalAccountRoute]: ExternalAccountScreen,
         [membersAndInvitationsRoute]: MembersAndInvitationsScreen,
-        [transactionAddRoute]: TransactionAddScreen,
-        [transactionEditRoute]: TransactionEditScreen,
         [openBankingRoute]: View,
       },
     },
@@ -206,6 +204,8 @@ const RootStack = createStackNavigator({
         [transactionActionsRoute]: TransactionActionsScreen,
         [transactionRoute]: TransactionScreen,
         [transactionDeleteRoute]: TransactionDeleteScreen,
+        [transactionAddRoute]: TransactionAddScreen,
+        [transactionEditRoute]: TransactionEditScreen,
 
         // tags
         [tagAddRoute]: TagAddScreen,

@@ -13,7 +13,7 @@ const useAccounts = () => {
 
   const { isLoading, refetch, isRefetching, data, isFetching } = useQuery({
     queryKey: getQueryKey(lastUpdated),
-    queryFn: AccountsClient.getAccounts,
+    queryFn: () => AccountsClient.getAccounts(),
   });
 
   return {

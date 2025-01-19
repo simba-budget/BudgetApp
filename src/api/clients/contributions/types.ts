@@ -1,16 +1,20 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
+import { Currency } from '../currencies/types';
+
 export interface Contribution extends BaseModel {
-  amount: number;
-  currency: string;
   description: string | null;
   date: string;
   goalId: number;
+  amount: number;
+  currency: Currency;
+  baseAmount: number;
+  baseCurrency: Currency;
 }
 
 export interface SaveContributionRequest {
   amount: number;
-  currency: string;
+  currencyId: number;
   description: string | null;
   goalId: number;
   date: string;

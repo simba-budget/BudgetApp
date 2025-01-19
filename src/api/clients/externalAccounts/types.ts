@@ -1,11 +1,16 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
+import { Currency } from '../currencies/types';
+
 export interface ExternalAccount extends BaseModel {
   name: string;
   mask: string;
   availableBalance: number;
   currentBalance: number;
-  currency: string;
+  currency: Currency;
+  baseAvailableBalance: number;
+  baseCurrentBalance: number;
+  baseCurrency: Currency;
 }
 
 export interface ExternalAccountsFilter {

@@ -53,10 +53,13 @@ const GoalsListItem = ({ style, goal }: GoalsListItemProps) => {
       </Text>
       <View style={[rowCenter, margin('bottom')('xxs')]}>
         <Text style={flex1} weight="semiBold" size="s" color="primary">
-          {formatPrice(goal.amount, goal.currency)}
+          {formatPrice(goal.baseAmount || goal.amount, goal.baseCurrency)}
         </Text>
         <Text weight="semiBold" size="s" color="primary">
-          {formatPrice(goal.targetAmount, goal.currency)}
+          {formatPrice(
+            goal.baseTargetAmount || goal.targetAmount,
+            goal.baseCurrency,
+          )}
         </Text>
       </View>
       <ProgressBar total={goal.targetAmount} current={goal.amount} />

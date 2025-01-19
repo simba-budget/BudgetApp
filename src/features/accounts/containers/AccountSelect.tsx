@@ -1,3 +1,4 @@
+import { Account } from '@api/clients/accounts/types';
 import { Profile } from '@api/clients/profile/types';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { useProfile } from '@features/profile/hooks';
@@ -11,6 +12,7 @@ import { selectAccountIdAction } from '../actions';
 import { AccountDetails, AccountsListItem } from '../components';
 import { useAccounts } from '../hooks';
 import { selectSelectedAccountIdStrict } from '../selectors';
+import { selectAccount } from '../slice';
 
 const AccountSelect = () => {
   const dispatch = useAppDispatch();
@@ -20,9 +22,10 @@ const AccountSelect = () => {
   const { accounts } = useAccounts();
 
   const handleOnAccountPress = useCallback(
-    (id: number) => {
+    (account: Account) => {
       navigation.goBack();
-      dispatch(selectAccountIdAction(id));
+      dispatch(selectAccountIdAction(account.id));
+      dispatch(selectAccount({ account }));
     },
     [navigation, dispatch],
   );
@@ -36,7 +39,7 @@ const AccountSelect = () => {
             key={account.id}
             account={account}
             isSelected={account.id === selectedAccountId}
-            onPress={() => handleOnAccountPress(account.id)}
+            onPress={() => handleOnAccountPress(account)}
           />
         ))}
       </View>

@@ -1,3 +1,4 @@
+import { Currency } from '@api/clients/currencies/types';
 import { Transaction } from '@api/clients/transactions/types';
 import { SectionList } from '@common/components';
 import { Section } from '@common/types';
@@ -19,6 +20,7 @@ export interface TransactionsSectionsProps {
   onFetchMore: () => void;
   total: number;
   onTransactionAddPress: () => void;
+  baseCurrency: Currency;
 }
 
 const TransactionsSections = ({
@@ -29,11 +31,12 @@ const TransactionsSections = ({
   isFetchingMore,
   onFetchMore,
   total,
+  baseCurrency,
   onTransactionAddPress,
 }: TransactionsSectionsProps) => {
   const sections = useMemo<Section<Transaction>[]>(
-    () => mapTransactionsToDaySections(transactions),
-    [transactions],
+    () => mapTransactionsToDaySections(transactions, baseCurrency),
+    [transactions, baseCurrency],
   );
 
   const renderItem = useCallback(

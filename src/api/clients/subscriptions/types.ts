@@ -1,6 +1,7 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
 import { Category } from '../categories/types';
+import { Currency } from '../currencies/types';
 import { Merchant } from '../merchants/types';
 
 export type SubscriptionFrequency = 'ANNUALLY' | 'MONTHLY';
@@ -11,9 +12,11 @@ export interface Subscription extends BaseModel {
   description: string | null;
   startedAt: string;
   amount: number;
-  currency: string;
+  currency: Currency;
   merchant: Merchant | null;
   category: Category | null;
+  baseAmount: number;
+  baseCurrency: Currency;
 }
 
 export interface SaveSubscriptionRequest {
@@ -22,7 +25,7 @@ export interface SaveSubscriptionRequest {
   description: string | null;
   startedAt: string;
   amount: number;
-  currency: string;
+  currencyId: number;
   accountId: number;
   merchantId: number | null;
   categoryId: number | null;

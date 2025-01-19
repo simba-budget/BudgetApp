@@ -1,14 +1,20 @@
 import { BaseModel, ListRequest, Sort } from '@api/types';
 
+import { Currency } from '../currencies/types';
+
 export interface Goal extends BaseModel {
   name: string;
   description: string | null;
   initialAmount: number;
   targetAmount: number;
   amount: number;
-  currency: string;
+  currency: Currency;
   startedAt: string;
   endAt: string | null;
+  baseAmount: number;
+  baseTargetAmount: number;
+  baseInitialAmount: number;
+  baseCurrency: Currency;
 }
 
 export interface SaveGoalRequest {
@@ -16,7 +22,7 @@ export interface SaveGoalRequest {
   description: string | null;
   initialAmount: number;
   targetAmount: number;
-  currency: string;
+  currencyId: number;
   startedAt: string;
   endAt: string | null;
   accountId: number;

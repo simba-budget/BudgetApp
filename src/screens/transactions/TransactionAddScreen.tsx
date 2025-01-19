@@ -1,11 +1,11 @@
-import { FormScreenContainer } from '@common/components';
+import { BottomSheetScreenContainer } from '@common/components';
 import { TransactionAdd } from '@features/transactions/containers';
 import React from 'react';
 
 const TransactionAddScreen = () => (
-  <FormScreenContainer>
+  <BottomSheetScreenContainer>
     <TransactionAdd />
-  </FormScreenContainer>
+  </BottomSheetScreenContainer>
 );
 
 export default TransactionAddScreen;

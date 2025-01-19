@@ -40,7 +40,7 @@ const AccountForm = ({
       />
       <Controller
         control={control}
-        name="currency"
+        name="currencyId"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Currency')}>
             <Input
@@ -62,20 +62,6 @@ const AccountForm = ({
               {...rest}
               readOnly={isDisabled}
               placeholder={t('Type')}
-            />
-          </FormControl>
-        )}
-      />
-      <Controller
-        control={control}
-        name="initialBalance"
-        render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
-          <FormControl error={error?.message} label={t('Initial balance')}>
-            <Input
-              iconName="search"
-              {...rest}
-              readOnly={isDisabled}
-              placeholder={t('Initial balance')}
             />
           </FormControl>
         )}

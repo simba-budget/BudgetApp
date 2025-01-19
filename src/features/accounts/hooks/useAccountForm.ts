@@ -5,18 +5,15 @@ import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-const initialFormData: SaveAccountRequest = {
+const initialFormData: Partial<SaveAccountRequest> = {
   name: '',
-  initialBalance: 0,
-  currency: 'EUR',
   type: 'PERSONAL',
 };
 
 const getSchema = (t: TFunction) => {
   return yup.object().shape({
     name: yup.string().required(t('Name is required')),
-    initialBalance: yup.number().required(t('Initial budget is required')),
-    currency: yup.string().required(t('Currency is required')),
+    currencyId: yup.number().required(t('Currency is required')),
     type: yup
       .string()
       .oneOf(['PERSONAL', 'BUSINESS'], t('Type is required'))

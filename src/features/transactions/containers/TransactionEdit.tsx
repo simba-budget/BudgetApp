@@ -1,5 +1,6 @@
 import { useAppSelector } from '@core/store/store';
 import { selectSelectedAccountIdStrict } from '@features/accounts/selectors';
+import { useTransactionsTranslations } from '@i18n/hooks';
 import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
@@ -14,6 +15,7 @@ export interface TransactionEditProps {
 }
 
 const TransactionEdit = ({ id }: TransactionEditProps) => {
+  const { t } = useTransactionsTranslations();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
   const { goBack } = useNavigation<RootNavigation>();
   const { transaction, isLoading } = useTransaction(id);
@@ -34,6 +36,7 @@ const TransactionEdit = ({ id }: TransactionEditProps) => {
 
   return (
     <TransactionForm
+      title={t('Edit Transaction')}
       onSubmit={handleSubmit(handleOnSubmit)}
       isSubmitting={isSubmitting}
       control={control}

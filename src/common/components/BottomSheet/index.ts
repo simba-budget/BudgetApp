@@ -7,3 +7,11 @@ export {
   default as BottomSheetScreenContainer,
   type BottomSheetScreenContainerProps,
 } from './BottomSheetScreenContainer';
+export {
+  default as BottomSheetTextArea,
+  type BottomSheetTextAreaProps,
+} from './BottomSheetTextArea';
+export {
+  default as BottomSheetAmountInput,
+  type BottomSheetAmountInputProps,
+} from './BottomSheetAmountInput';

@@ -7,12 +7,11 @@ import * as yup from 'yup';
 
 import { SaveGoalRequest } from '../types';
 
-const initialFormData: SaveGoalRequest = {
+const initialFormData: Partial<SaveGoalRequest> = {
   name: '',
   description: null,
   initialAmount: 0,
   targetAmount: 0,
-  currency: 'EUR',
   startedAt: getCurrentDate(),
   endAt: null,
 };
@@ -21,7 +20,7 @@ const getSchema = (t: TFunction) => {
   return yup.object().shape({
     name: yup.string().required(t('Name is required')),
     description: yup.string().nullable().defined(),
-    currency: yup.string().required(t('Currency is required')),
+    currencyId: yup.number().required(t('Currency is required')),
     startedAt: yup.string().required(t('Started at is required')),
     endAt: yup.string().nullable().defined(),
     initialAmount: yup.number().required(t('Initial amount is required')),

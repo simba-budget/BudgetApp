@@ -41,7 +41,7 @@ const ContributionForm = ({
       />
       <Controller
         control={control}
-        name="currency"
+        name="currencyId"
         render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
           <FormControl error={error?.message} label={t('Currency')}>
             <Input

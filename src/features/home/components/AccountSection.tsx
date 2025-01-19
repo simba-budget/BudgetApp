@@ -4,7 +4,6 @@ import { useHomeTranslations } from '@i18n/hooks';
 import { center, flex1, rowCenter } from '@styles/common';
 import { gap, margin, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
-import getSymbolFromCurrency from 'currency-symbol-map';
 import React from 'react';
 import {
   StyleProp,
@@ -52,7 +51,7 @@ const AccountSection = ({
               value={account.balance}
             />
             <Text size="xxl" weight="semiBold" color="secondary">
-              {getSymbolFromCurrency(account.currency)}
+              {account.currency.symbol}
             </Text>
           </View>
         </View>

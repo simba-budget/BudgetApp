@@ -1,9 +1,9 @@
-import getSymbolFromCurrency from 'currency-symbol-map';
+import { Currency } from '@api/clients/currencies/types';
 
-export const formatPrice = (price: number, currency: string): string => {
-  return `${price.toFixed(2)} ${getSymbolFromCurrency(currency)}`;
+export const formatPrice = (price: number, currency: Currency): string => {
+  return `${price.toFixed(2)} ${currency.symbol}`;
 };
 
-export const formatShortPrice = (price: number, currency: string): string => {
-  return `${price.toFixed(0)} ${getSymbolFromCurrency(currency)}`;
+export const formatShortPrice = (price: number, currency: Currency): string => {
+  return `${price.toFixed(0)} ${currency.symbol}`;
 };
