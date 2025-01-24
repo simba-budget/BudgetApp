@@ -10,6 +10,13 @@ export const transactionsRoute: TransactionsRoute = 'Transactions';
 export type GoalsRoute = 'Goals';
 export const goalsRoute: GoalsRoute = 'Goals';
 
+export type CategoriesRoute = 'Categories';
+export const categoriesRoute: CategoriesRoute = 'Categories';
+
+export type MembersAndInvitationsRoute = 'MembersAndInvitations';
+export const membersAndInvitationsRoute: MembersAndInvitationsRoute =
+  'MembersAndInvitations';
+
 export type SubscriptionsRoute = 'Subscriptions';
 export const subscriptionsRoute: SubscriptionsRoute = 'Subscriptions';
 

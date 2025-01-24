@@ -6,17 +6,13 @@ import { useProfile } from '@features/profile/hooks';
 import { useHomeTranslations } from '@i18n/hooks';
 import {
   BottomTabsNavigation,
-  toGoals,
   toProfile,
-  toSubscriptions,
   toTransactions,
 } from '@navigation/navigators/bottomTabs';
 import {
   RootNavigation,
   toAccountSelect,
-  toGoalAdd,
   toNotifications,
-  toSubscriptionAdd,
   toTransactionAdd,
 } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
@@ -27,27 +23,23 @@ import { StyleSheet } from 'react-native';
 import {
   AccountSection,
   AccountSectionSkeleton,
-  GoalsSection,
-  InvitationAddSection,
   ProfileSection,
-  SubscriptionsSection,
   TransactionsSection,
   TransactionsWeekStats,
 } from '../components';
 import {
-  useQuickActionItems,
-  useRecentGoals,
-  useRecentTransactions,
+  useRecentExpenses,
+  useRecentIncomes,
+  useShortQuickActionItems,
   useTransactionsWeekStats,
-  useUpcomingSubscriptions,
 } from '../hooks';
 
-const Home = () => {
+const HomeShort = () => {
   const { t } = useHomeTranslations();
   const navigation = useNavigation<RootNavigation>();
   const bottomTabsNavigation = useNavigation<BottomTabsNavigation>();
   const accountId = useAppSelector(selectSelectedAccountIdStrict);
-  const quickActions = useQuickActionItems();
+  const quickActions = useShortQuickActionItems();
 
   const {
     account,
@@ -72,42 +64,32 @@ const Home = () => {
   } = useProfile();
 
   const {
-    goals,
-    isLoading: isGoalsLoading,
-    refetch: refetchGoals,
-    isRefetching: isGoalsRefetching,
-    total: totalGoals,
-  } = useRecentGoals();
+    transactions: expenses,
+    isLoading: isExpensesLoading,
+    refetch: refetchExpenses,
+    isRefetching: isExpensesRefetching,
+    total: totalExpenses,
+  } = useRecentExpenses();
 
   const {
-    subscriptions,
-    isLoading: isSubscriptionsLoading,
-    refetch: refetchSubscriptions,
-    isRefetching: isSubscriptionsRefetching,
-    total: totalSubscriptions,
-  } = useUpcomingSubscriptions();
-
-  const {
-    transactions,
-    isLoading: isTransactionsLoading,
-    refetch: refetchTransactions,
-    isRefetching: isTransactionsRefetching,
-    total: totalTransactions,
-  } = useRecentTransactions();
+    transactions: incomes,
+    isLoading: isIncomesLoading,
+    refetch: refetchIncomes,
+    isRefetching: isIncomesRefetching,
+    total: totalIncomes,
+  } = useRecentIncomes();
 
   const isLoading = useMemo(
     () =>
       isProfileLoading ||
-      isTransactionsLoading ||
-      isGoalsLoading ||
-      isSubscriptionsLoading ||
+      isExpensesLoading ||
+      isIncomesLoading ||
       isAccountLoading ||
       isTransactionsWeekStatsLoading,
     [
       isProfileLoading,
-      isTransactionsLoading,
-      isGoalsLoading,
-      isSubscriptionsLoading,
+      isExpensesLoading,
+      isIncomesLoading,
       isAccountLoading,
       isTransactionsWeekStatsLoading,
     ],
@@ -116,16 +98,14 @@ const Home = () => {
   const isRefetching = useMemo(
     () =>
       isProfileRefetching ||
-      isTransactionsRefetching ||
-      isGoalsRefetching ||
-      isSubscriptionsRefetching ||
+      isExpensesRefetching ||
+      isIncomesRefetching ||
       isAccountRefetching ||
       isTransactionsWeekStatsRefetching,
     [
       isProfileRefetching,
-      isTransactionsRefetching,
-      isGoalsRefetching,
-      isSubscriptionsRefetching,
+      isExpensesRefetching,
+      isIncomesRefetching,
       isAccountRefetching,
       isTransactionsWeekStatsRefetching,
     ],
@@ -134,18 +114,16 @@ const Home = () => {
   const handleOnRefetch = useCallback(
     () =>
       Promise.resolve([
-        refetchTransactions(),
+        refetchExpenses(),
+        refetchIncomes(),
         refetchProfile(),
-        refetchGoals(),
-        refetchSubscriptions(),
         refetchAccount(),
         refetchTransactionsWeekStats(),
       ]),
     [
-      refetchTransactions,
+      refetchExpenses,
+      refetchIncomes,
       refetchProfile,
-      refetchGoals,
-      refetchSubscriptions,
       refetchAccount,
       refetchTransactionsWeekStats,
     ],
@@ -180,27 +158,20 @@ const Home = () => {
       ) : (
         <AccountSectionSkeleton />
       )}
-      <GoalsSection
-        onGoalAddPress={() => toGoalAdd(navigation)}
-        total={totalGoals}
-        goals={goals}
-        isLoading={isGoalsLoading}
-        onViewAllPress={() => toGoals(bottomTabsNavigation)}
-      />
-      <SubscriptionsSection
-        isLoading={isSubscriptionsLoading}
-        onSubscriptionAddPress={() => toSubscriptionAdd(navigation)}
-        total={totalSubscriptions}
-        subscriptions={subscriptions}
-        onViewAllPress={() => toSubscriptions(bottomTabsNavigation)}
-      />
-      <InvitationAddSection />
       <TransactionsSection
-        title={t('Recent Transactions')}
-        isLoading={isTransactionsLoading}
+        title={t('Recent Expenses')}
+        isLoading={isExpensesLoading}
         onTransactionAddPress={() => toTransactionAdd(navigation)}
-        total={totalTransactions}
-        transactions={transactions}
+        total={totalExpenses}
+        transactions={expenses}
+        onViewAllPress={() => toTransactions(bottomTabsNavigation)}
+      />
+      <TransactionsSection
+        title={t('Recent Incomes')}
+        isLoading={isIncomesLoading}
+        onTransactionAddPress={() => toTransactionAdd(navigation)}
+        total={totalIncomes}
+        transactions={incomes}
         onViewAllPress={() => toTransactions(bottomTabsNavigation)}
       />
     </ScrollView>
@@ -216,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default HomeShort;

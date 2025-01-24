@@ -3,10 +3,10 @@ import { gap, padding } from '@styles/lightTheme';
 import React from 'react';
 
 import { ProfileHeader, ProfileSection } from '../components';
-import { useProfile, useProfileSections } from '../hooks';
+import { useProfile, useProfileShortSections } from '../hooks';
 
 const Profile = () => {
-  const sections = useProfileSections();
+  const sections = useProfileShortSections();
   const { profile, isRefetching, refetch, isLoading } = useProfile();
 
   if (!profile) return null;

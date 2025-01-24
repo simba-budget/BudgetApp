@@ -18,6 +18,7 @@ export interface TransactionsSectionProps {
   onViewAllPress: () => void;
   isLoading: boolean;
   onTransactionAddPress: () => void;
+  title: string;
 }
 
 const TransactionsSection = ({
@@ -27,6 +28,7 @@ const TransactionsSection = ({
   onViewAllPress,
   onTransactionAddPress,
   isLoading,
+  title,
 }: TransactionsSectionProps) => {
   const { t } = useHomeTranslations();
   const isTransactionsEmpty = !isLoading && transactions.length === 0;
@@ -35,7 +37,7 @@ const TransactionsSection = ({
     <View style={[padding('horizontal')('m'), style]}>
       <View style={[rowCenter, margin('bottom')('xs')]}>
         <Text style={flex1} color="primary" size="s" weight="semiBold">
-          {t('Recent Transactions')}
+          {title}
         </Text>
         {!isTransactionsEmpty && (
           <TouchableOpacity

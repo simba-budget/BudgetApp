@@ -2,6 +2,7 @@ import { useHomeTranslations } from '@i18n/hooks';
 import {
   categoryAddRoute,
   goalAddRoute,
+  invitationAddRoute,
   membersAndInvitationsRoute,
   RootNavigation,
   transactionAddRoute,
@@ -11,7 +12,7 @@ import { useMemo } from 'react';
 
 import { QuickActionItem } from '../types';
 
-const useQuickActionItems = () => {
+const useShortQuickActionItems = () => {
   const { t } = useHomeTranslations();
   const navigation = useNavigation<RootNavigation>();
 
@@ -28,9 +29,9 @@ const useQuickActionItems = () => {
         onPress: () => navigation.navigate(categoryAddRoute),
       },
       {
-        title: t('Create\nGoal'),
-        iconName: 'squaresPlus',
-        onPress: () => navigation.push(goalAddRoute),
+        title: t('Invite\nMember'),
+        iconName: 'userPlus',
+        onPress: () => navigation.push(invitationAddRoute),
       },
       {
         title: t('View\nMembers'),
@@ -42,4 +43,4 @@ const useQuickActionItems = () => {
   );
 };
 
-export default useQuickActionItems;
+export default useShortQuickActionItems;

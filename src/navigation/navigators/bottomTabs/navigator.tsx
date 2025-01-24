@@ -5,10 +5,10 @@ import {
 } from '@react-navigation/bottom-tabs';
 import { StaticParamList } from '@react-navigation/native';
 import {
-  GoalsScreen,
+  CategoriesScreen,
   HomeScreen,
+  MembersAndInvitationsScreen,
   ProfileScreen,
-  SubscriptionsScreen,
   TransactionsScreen,
 } from '@screens';
 import React from 'react';
@@ -17,10 +17,10 @@ import { TabBarIcon } from '../../components';
 import { bottomTabsOptions } from '../../options';
 
 import {
-  goalsRoute,
+  categoriesRoute,
   homeRoute,
+  membersAndInvitationsRoute,
   profileRoute,
-  subscriptionsRoute,
   transactionsRoute,
 } from './types';
 
@@ -33,12 +33,13 @@ const transactionsOptions: BottomTabNavigationOptions = {
   tabBarIcon: (props) => <TabBarIcon iconName="card" {...props} />,
 };
 
-const goalsOptions: BottomTabNavigationOptions = {
-  tabBarIcon: (props) => <TabBarIcon iconName="chart" {...props} />,
+const categoriesOptions: BottomTabNavigationOptions = {
+  tabBarIcon: (props) => <TabBarIcon iconName="squares" {...props} />,
 };
 
-const subscriptionsOptions: BottomTabNavigationOptions = {
-  tabBarIcon: (props) => <TabBarIcon iconName="card" {...props} />,
+const membersAndInvitationsOptions: BottomTabNavigationOptions = {
+  title: 'Members',
+  tabBarIcon: (props) => <TabBarIcon iconName="users" {...props} />,
 };
 
 const profileOptions: BottomTabNavigationOptions = {
@@ -55,10 +56,10 @@ const BottomTabs = createBottomTabNavigator({
       screen: TransactionsScreen,
       options: transactionsOptions,
     },
-    [goalsRoute]: { screen: GoalsScreen, options: goalsOptions },
-    [subscriptionsRoute]: {
-      screen: SubscriptionsScreen,
-      options: subscriptionsOptions,
+    [categoriesRoute]: { screen: CategoriesScreen, options: categoriesOptions },
+    [membersAndInvitationsRoute]: {
+      screen: MembersAndInvitationsScreen,
+      options: membersAndInvitationsOptions,
     },
     [profileRoute]: { screen: ProfileScreen, options: profileOptions },
   },
