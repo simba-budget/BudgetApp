@@ -1,4 +1,5 @@
 import { SaveAccountRequest } from '@api/clients/accounts/types';
+import { useAccountsTranslations } from '@i18n/hooks';
 import { RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
@@ -12,6 +13,7 @@ export interface AccountEditProps {
 }
 
 const AccountEdit = ({ id }: AccountEditProps) => {
+  const { t } = useAccountsTranslations();
   const { goBack } = useNavigation<RootNavigation>();
   const { account, isLoading } = useAccount(id);
   const { handleSubmit, control, reset } = useAccountForm();
@@ -27,6 +29,7 @@ const AccountEdit = ({ id }: AccountEditProps) => {
 
   return (
     <AccountForm
+      title={t('Edit Account')}
       onSubmit={handleSubmit(handleOnSubmit)}
       isSubmitting={isSubmitting}
       control={control}

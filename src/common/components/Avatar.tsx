@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: colors.border.primary,
-    backgroundColor: colors.text.primary,
+    backgroundColor: colors.text.tertiary,
   },
   image: {
     width: '100%',

@@ -53,5 +53,7 @@ declare module '@icons' {
     | 'arrowRightLeft'
     | 'squaresPlus'
     | 'chevronLeft'
-    | 'tag';
+    | 'tag'
+    | 'banknotes'
+    | 'squares';
 }

@@ -2,7 +2,7 @@ import { BottomSheetModal, BottomSheetModalProps } from '@gorhom/bottom-sheet';
 import { margin } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
 import React, { useEffect, useRef } from 'react';
-import { StyleSheet } from 'react-native';
+import { Keyboard, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheetBackdrop from './BottomSheetBackdrop';
@@ -31,12 +31,15 @@ const BottomSheet = ({ onClose, isOpen, ...rest }: BottomSheetProps) => {
 
   useEffect(() => {
     if (!ref.current) return;
-    if (isOpen) ref.current.present();
-    else ref.current.close();
+    if (isOpen) {
+      Keyboard.dismiss();
+      ref.current.present();
+    } else ref.current.close();
   }, [isOpen]);
 
   return (
     <BottomSheetModal
+      stackBehavior="push"
       keyboardBehavior="interactive"
       keyboardBlurBehavior="restore"
       topInset={top}

@@ -7,6 +7,7 @@ import {
   Text,
 } from '@common/components';
 import { CategoriesSelect } from '@features/categories/containers';
+import { CurrenciesSelect } from '@features/currencies/containers';
 import { TagsSelect } from '@features/tags/containers';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { margin, padding } from '@styles/lightTheme';
@@ -70,6 +71,18 @@ const TransactionForm = ({
               placeholder={t('Description')}
               {...rest}
             />
+          </FormControl>
+        )}
+      />
+      <Controller
+        control={control}
+        name="currencyId"
+        render={({ field: { ref: _, ...rest }, fieldState: { error } }) => (
+          <FormControl
+            style={margin('bottom')('xs')}
+            error={error?.message}
+            label={t('Category')}>
+            <CurrenciesSelect label={t('Currency')} {...rest} />
           </FormControl>
         )}
       />

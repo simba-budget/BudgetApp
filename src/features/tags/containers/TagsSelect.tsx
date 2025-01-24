@@ -12,7 +12,7 @@ import { mapTagToOption } from '../map';
 
 export type TagsSelectProps = Omit<
   MultiSelectProps<number>,
-  'options' | 'title' | 'keyword' | 'onKeywordChange'
+  'options' | 'title' | 'keyword' | 'onKeywordChange' | 'iconName'
 >;
 
 const TagsSelect = (props: TagsSelectProps) => {
@@ -33,6 +33,7 @@ const TagsSelect = (props: TagsSelectProps) => {
 
   return (
     <MultiSelect
+      iconName="tag"
       isLoading={isLoading}
       onKeywordChange={setKeyword}
       title={t('Select Tags')}

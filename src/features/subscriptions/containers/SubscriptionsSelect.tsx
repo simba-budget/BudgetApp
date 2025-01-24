@@ -12,7 +12,7 @@ import { mapSubscriptionToOption } from '../map';
 
 export type SubscriptionsSelectProps = Omit<
   SingleSelectProps<number>,
-  'options' | 'title' | 'keyword' | 'onKeywordChange'
+  'options' | 'title' | 'keyword' | 'onKeywordChange' | 'iconName'
 >;
 
 const SubscriptionsSelect = (props: SubscriptionsSelectProps) => {
@@ -33,6 +33,7 @@ const SubscriptionsSelect = (props: SubscriptionsSelectProps) => {
 
   return (
     <SingleSelect
+      iconName="card"
       isLoading={isLoading}
       onKeywordChange={setKeyword}
       title={t('Select Subscription')}

@@ -35,4 +35,5 @@ export {
   BottomSheetScreenContainer,
   BottomSheetTextArea,
   BottomSheetAmountInput,
+  BottomSheetScrollView,
 } from './BottomSheet';

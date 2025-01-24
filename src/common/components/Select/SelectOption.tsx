@@ -1,3 +1,4 @@
+import { Avatar } from '@common/components';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
 import { colors } from '@styles/v2/urbanistTheme';
@@ -30,7 +31,12 @@ const SelectOption = <T,>({
     style={[styles.container, style]}
     onPress={onPress}
     disabled={option.isDisabled}>
-    <IconButton size={36} iconSize={18} isDisabled iconName={option.iconName} />
+    {option.avatarUrl && (
+      <Avatar size={36} uri={option.avatarUrl} initials={option.key} />
+    )}
+    {option.iconName && (
+      <IconButton size={36} iconSize={18} isDisabled iconName={option.iconName} />
+    )}
     <Text style={flex1} color="primary" weight="semiBold" size="s">
       {option.label}
     </Text>
@@ -47,6 +53,7 @@ const styles = StyleSheet.create({
     ...rowCenter,
     ...gap('column')('s'),
     ...padding('full')('xs'),
+    minHeight: 52,
     borderRadius: 12,
     backgroundColor: colors.background.secondary,
     borderColor: colors.border.primary,

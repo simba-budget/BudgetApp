@@ -1,4 +1,3 @@
-import { Button } from '@common/components';
 import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import { gap, margin, padding } from '@styles/lightTheme';
 import React, { ReactNode } from 'react';
@@ -23,7 +22,6 @@ export interface SelectSheetProps<T> {
   isLoading: boolean;
   paddingBottom: number;
   renderFooter?: () => ReactNode;
-  onAddPress: () => void;
 }
 
 const SelectSheet = <T,>({
@@ -36,11 +34,10 @@ const SelectSheet = <T,>({
   isLoading,
   renderFooter,
   paddingBottom,
-  onAddPress,
 }: SelectSheetProps<T>) => (
   <BottomSheet
     enableDynamicSizing={false}
-    snapPoints={['95%']}
+    snapPoints={['100%']}
     isOpen={isOpen}
     onClose={onClose}>
     <Text
@@ -52,7 +49,6 @@ const SelectSheet = <T,>({
       {title}
     </Text>
     <SelectSearch style={margin('bottom')('s')} onKeywordChange={onKeywordChange} />
-    <Button onPress={onAddPress} title="Add new" />
     {isLoading ? (
       <SkeletonsList
         itemsCount={6}

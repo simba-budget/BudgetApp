@@ -18,6 +18,7 @@ import ArrowDown from '@assets/svg/v2/arrow-down.svg';
 import ArrowLeft from '@assets/svg/v2/arrow-left.svg';
 import ArrowRightLeft from '@assets/svg/v2/arrow-right-left.svg';
 import ArrowRight from '@assets/svg/v2/arrow-right.svg';
+import Banknotes from '@assets/svg/v2/banknotes.svg';
 import Calendar from '@assets/svg/v2/calendar.svg';
 import Call from '@assets/svg/v2/call.svg';
 import Card from '@assets/svg/v2/card.svg';
@@ -45,6 +46,7 @@ import Search from '@assets/svg/v2/search.svg';
 import Settings from '@assets/svg/v2/settings.svg';
 import Show from '@assets/svg/v2/show.svg';
 import SquaresPlus from '@assets/svg/v2/squares-plus.svg';
+import Squares from '@assets/svg/v2/squares.svg';
 import Star from '@assets/svg/v2/star.svg';
 import Tag from '@assets/svg/v2/tag.svg';
 import UserPlus from '@assets/svg/v2/user-plus.svg';
@@ -111,6 +113,8 @@ const icons: Record<IconName, FC<SvgProps>> = {
   squaresPlus: SquaresPlus,
   chevronLeft: ChevronLeft,
   tag: Tag,
+  banknotes: Banknotes,
+  squares: Squares,
 };
 
 export interface SvgIconProps

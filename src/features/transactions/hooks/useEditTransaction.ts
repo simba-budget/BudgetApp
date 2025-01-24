@@ -2,6 +2,7 @@ import { TransactionsClient } from '@api/clients';
 import { Transaction } from '@api/clients/transactions/types';
 import { useAppDispatch } from '@core/store/store';
 import { showSuccessToast } from '@core/toasts/actions';
+import { updateAccounts } from '@features/accounts/slice';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { useMutation } from '@tanstack/react-query';
 
@@ -28,8 +29,9 @@ const useEditTransaction = ({ onSuccess, accountId }: Options) => {
     mutationFn,
     onSuccess: (response) => {
       showSuccessToast(t('Transaction is successfully updated!'));
-      onSuccess(response.data);
       dispatch(updateTransactions());
+      dispatch(updateAccounts());
+      onSuccess(response.data);
     },
   });
 

@@ -21,12 +21,8 @@ import {
   goalAddRoute,
   GoalEditRoute,
   goalEditRoute,
-  invitationAddRoute,
-  InvitationRoute,
-  invitationRoute,
   MemberEditRoute,
   memberEditRoute,
-  membersRoute,
   merchantAddRoute,
   MerchantEditRoute,
   merchantEditRoute,
@@ -107,21 +103,6 @@ export const toCategoryEdit = (
 
 export const toTransactionAdd = ({ navigate }: RootNavigation) => {
   return navigate(transactionAddRoute);
-};
-
-export const toInvitationAdd = ({ navigate }: RootNavigation) => {
-  return navigate(invitationAddRoute);
-};
-
-export const toInvitation = (
-  { navigate }: RootNavigation,
-  params: RootParams[InvitationRoute],
-) => {
-  return navigate(invitationRoute, params);
-};
-
-export const toMembers = ({ navigate }: RootNavigation) => {
-  return navigate(membersRoute);
 };
 
 export const toMemberEdit = (

@@ -1,11 +1,11 @@
 import { BottomSheetScreenContainer } from '@common/components';
-import { AccountAdd } from '@features/accounts/containers';
+import { AccountDelete } from '@features/profile/containers';
 import React from 'react';
 
-const AccountAddScreen = () => (
+const AccountDeleteScreen = () => (
   <BottomSheetScreenContainer>
-    <AccountAdd />
+    <AccountDelete />
   </BottomSheetScreenContainer>
 );
 
-export default AccountAddScreen;
+export default AccountDeleteScreen;

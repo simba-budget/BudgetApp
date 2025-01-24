@@ -15,3 +15,7 @@ export {
   default as BottomSheetAmountInput,
   type BottomSheetAmountInputProps,
 } from './BottomSheetAmountInput';
+export {
+  default as BottomSheetScrollView,
+  type BottomSheetScrollViewProps,
+} from './BottomSheetScrollView';

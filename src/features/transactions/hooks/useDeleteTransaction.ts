@@ -1,6 +1,7 @@
 import { TransactionsClient } from '@api/clients';
 import { useAppDispatch } from '@core/store/store';
 import { showSuccessToast } from '@core/toasts/actions';
+import { updateAccounts } from '@features/accounts/slice';
 import { useTransactionsTranslations } from '@i18n/hooks';
 import { useMutation } from '@tanstack/react-query';
 
@@ -20,6 +21,7 @@ const useDeleteTransaction = (options: Options) => {
     onSuccess: () => {
       showSuccessToast(t('Transaction is successfully deleted!'));
       dispatch(updateTransactions());
+      dispatch(updateAccounts());
       onSuccess();
     },
   });

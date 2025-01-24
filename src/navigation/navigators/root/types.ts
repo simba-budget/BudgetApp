@@ -208,3 +208,6 @@ export const invitationActionsRoute: InvitationActionsRoute = 'InvitationActions
 
 export type InvitationDeleteRoute = 'InvitationDelete';
 export const invitationDeleteRoute: InvitationDeleteRoute = 'InvitationDelete';
+
+export type AccountDeleteRoute = 'AccountDelete';
+export const accountDeleteRoute: AccountDeleteRoute = 'AccountDelete';

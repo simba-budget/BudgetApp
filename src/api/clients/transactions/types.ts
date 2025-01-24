@@ -9,20 +9,20 @@ import { Subscription } from '../subscriptions/types';
 import { Tag } from '../tags/types';
 
 export interface Transaction extends BaseModel {
+  date: string;
+  description: string | null;
   amount: number;
   currency: Currency;
-  externalAccount: ExternalAccount | null;
-  description: string | null;
+  baseAmount: number;
+  baseCurrency: Currency;
   category: Category | null;
   subscription: Subscription | null;
   merchant: Merchant | null;
+  externalAccount: ExternalAccount | null;
   tags: Tag[];
-  date: string;
   createdBy: Member | null;
   updatedAt: string | null;
   createdAt: string | null;
-  baseAmount: number;
-  baseCurrency: Currency;
 }
 
 export interface TransactionDateStats {

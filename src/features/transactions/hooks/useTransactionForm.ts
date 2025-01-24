@@ -1,3 +1,5 @@
+import { useAppSelector } from '@core/store/store';
+import { selectSelectedAccount } from '@features/accounts/selectors';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useValidationsTranslations } from '@i18n/hooks';
 import { getCurrentFormDate } from '@utils/date';
@@ -31,9 +33,10 @@ const getSchema = (t: TFunction) => {
 
 const useTransactionForm = () => {
   const { t } = useValidationsTranslations();
+  const account = useAppSelector(selectSelectedAccount);
 
   const { control, handleSubmit, reset } = useForm<SaveTransactionRequest>({
-    defaultValues: initialFormData,
+    defaultValues: { ...initialFormData, currencyId: account?.currency.id },
     resolver: yupResolver(getSchema(t)),
     mode: 'onChange',
     reValidateMode: 'onChange',

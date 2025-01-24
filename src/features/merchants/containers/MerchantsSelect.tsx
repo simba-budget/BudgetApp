@@ -12,7 +12,7 @@ import { mapMerchantToOption } from '../map';
 
 export type MerchantsSelectProps = Omit<
   SingleSelectProps<number>,
-  'options' | 'title' | 'keyword' | 'onKeywordChange'
+  'options' | 'title' | 'keyword' | 'onKeywordChange' | 'iconName'
 >;
 
 const MerchantsSelect = (props: MerchantsSelectProps) => {
@@ -33,6 +33,7 @@ const MerchantsSelect = (props: MerchantsSelectProps) => {
 
   return (
     <SingleSelect
+      iconName="profile"
       isLoading={isLoading}
       onKeywordChange={setKeyword}
       title={t('Select Merchant')}

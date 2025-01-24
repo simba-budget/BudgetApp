@@ -21,6 +21,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { formatTransactionAmount, getTransactionAmount } from '../utils';
+
 export interface TransactionsListItemProps {
   style?: StyleProp<ViewStyle>;
   transaction: Transaction;
@@ -55,11 +57,8 @@ const TransactionsListItem = ({
         <Text
           weight="bold"
           size="s"
-          color={transaction.amount < 0 ? 'error' : 'success'}>
-          {formatPrice(
-            transaction.baseAmount || transaction.amount,
-            transaction.baseCurrency,
-          )}
+          color={getTransactionAmount(transaction) < 0 ? 'error' : 'success'}>
+          {formatTransactionAmount(transaction)}
         </Text>
         {!isDateHidden && (
           <Text weight="medium" size="xs" color="tertiary">

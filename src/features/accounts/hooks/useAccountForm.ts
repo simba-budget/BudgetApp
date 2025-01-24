@@ -7,6 +7,7 @@ import * as yup from 'yup';
 
 const initialFormData: Partial<SaveAccountRequest> = {
   name: '',
+  currencyId: 1,
   type: 'PERSONAL',
 };
 

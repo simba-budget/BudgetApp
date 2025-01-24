@@ -1,6 +1,3 @@
-import IconButton from '@common/components/IconButton';
-import Svg from '@common/components/Svg';
-import Text from '@common/components/Text';
 import { IconName } from '@icons';
 import { flex1, rowCenter } from '@styles/common';
 import { gap, padding } from '@styles/lightTheme';
@@ -13,6 +10,10 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
+import IconButton from './IconButton';
+import Svg from './Svg';
+import Text from './Text';
 
 export interface ValueContainerProps {
   iconName: IconName;

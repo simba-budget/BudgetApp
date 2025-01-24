@@ -2,6 +2,7 @@ import { StaticParamList } from '@react-navigation/native';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import {
   AccountAddScreen,
+  AccountDeleteScreen,
   AccountEditScreen,
   AccountSelectScreen,
   AccountsLoadingScreen,
@@ -68,6 +69,7 @@ import BottomTabs, { bottomTabsRoute } from '../bottomTabs';
 
 import {
   accountAddRoute,
+  accountDeleteRoute,
   accountEditRoute,
   accountRoute,
   accountSelectRoute,
@@ -152,7 +154,6 @@ const RootStack = createStackNavigator({
       initialRouteName: accountsLoadingRoute,
       screens: {
         [accountsLoadingRoute]: AccountsLoadingScreen,
-        [accountAddRoute]: AccountAddScreen,
         [accountEditRoute]: AccountEditScreen,
         [notificationsRoute]: NotificationsScreen,
       },
@@ -188,6 +189,8 @@ const RootStack = createStackNavigator({
       screenOptions: bottomSheetOptions,
       screens: {
         [accountSelectRoute]: AccountSelectScreen,
+        [accountAddRoute]: AccountAddScreen,
+        [accountDeleteRoute]: AccountDeleteScreen,
         [subscriptionRoute]: SubscriptionScreen,
         [invitationAddRoute]: InvitationAddScreen,
 

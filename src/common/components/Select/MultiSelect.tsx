@@ -1,4 +1,5 @@
 import { useCommonTranslations } from '@i18n/hooks';
+import { IconName } from '@icons';
 import { sizes } from '@styles/lightTheme';
 import xor from 'lodash/xor';
 import React, { useCallback, useMemo, useState } from 'react';
@@ -22,6 +23,7 @@ export interface MultiSelectProps<T> {
   title: string;
   onKeywordChange: (keyword: string) => void;
   label: string;
+  iconName: IconName;
 }
 
 const MultiSelect = <T,>({
@@ -34,6 +36,7 @@ const MultiSelect = <T,>({
   title,
   onKeywordChange,
   label,
+  iconName,
 }: MultiSelectProps<T>) => {
   const { t } = useCommonTranslations();
   const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +83,7 @@ const MultiSelect = <T,>({
     <View style={style}>
       <ValueContainer
         isDisabled={isDisabled}
-        iconName="calendar"
+        iconName={iconName}
         label={label}
         onPress={() => setIsOpen(true)}>
         <Text
@@ -93,7 +96,6 @@ const MultiSelect = <T,>({
         </Text>
       </ValueContainer>
       <SelectSheet
-        onAddPress={console.log}
         paddingBottom={sizes.m}
         isLoading={isLoading}
         onKeywordChange={onKeywordChange}

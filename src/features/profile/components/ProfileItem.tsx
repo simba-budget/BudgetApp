@@ -13,13 +13,14 @@ const ProfileItem = ({
   onPress,
   subtitle,
   hideArrow = false,
+  color,
 }: ProfileItemProps) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.iconContainer}>
-      <Svg color={colors.text.primary} size={18} name={iconName} />
+      <Svg color={colors.text[color || 'primary']} size={18} name={iconName} />
     </View>
     <View style={flex1}>
-      <Text weight="semiBold" size="s" color="primary">
+      <Text weight="semiBold" size="s" color={color}>
         {title}
       </Text>
       {subtitle && (

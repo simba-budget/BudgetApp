@@ -1,8 +1,10 @@
 import { Account } from '@api/clients/accounts/types';
 import { Profile } from '@api/clients/profile/types';
+import { Button } from '@common/components';
 import { useAppDispatch, useAppSelector } from '@core/store/store';
 import { useProfile } from '@features/profile/hooks';
-import { RootNavigation } from '@navigation/navigators/root';
+import { useAccountsTranslations } from '@i18n/hooks';
+import { accountAddRoute, RootNavigation } from '@navigation/navigators/root';
 import { useNavigation } from '@react-navigation/native';
 import { gap, padding } from '@styles/lightTheme';
 import React, { useCallback } from 'react';
@@ -16,6 +18,7 @@ import { selectAccount } from '../slice';
 
 const AccountSelect = () => {
   const dispatch = useAppDispatch();
+  const { t } = useAccountsTranslations();
   const selectedAccountId = useAppSelector(selectSelectedAccountIdStrict);
   const navigation = useNavigation<RootNavigation>();
   const { profile } = useProfile();
@@ -42,6 +45,13 @@ const AccountSelect = () => {
             onPress={() => handleOnAccountPress(account)}
           />
         ))}
+        <Button
+          onPress={() => navigation.navigate(accountAddRoute)}
+          iconName="plus"
+          color="secondary"
+          size="medium"
+          title={t('Create an Account')}
+        />
       </View>
     </View>
   );

@@ -1,6 +1,5 @@
 import { useCommonTranslations } from '@i18n/hooks';
-import { categoryAddRoute, RootNavigation } from '@navigation/navigators/root';
-import { useNavigation } from '@react-navigation/native';
+import { IconName } from '@icons';
 import React, { useCallback, useMemo, useState } from 'react';
 import { ListRenderItemInfo, StyleProp, View, ViewStyle } from 'react-native';
 
@@ -22,6 +21,7 @@ export interface SingleSelectProps<T> {
   title: string;
   onKeywordChange: (keyword: string) => void;
   label: string;
+  iconName: IconName;
 }
 
 const SingleSelect = <T,>({
@@ -34,11 +34,11 @@ const SingleSelect = <T,>({
   title,
   onKeywordChange,
   label,
+  iconName,
 }: SingleSelectProps<T>) => {
   const { t } = useCommonTranslations();
   const paddingBottom = useSafeBottomInset();
   const [isOpen, setIsOpen] = useState(false);
-  const navigation = useNavigation<RootNavigation>();
 
   const selectedOption = useMemo<SelectOptionType<T> | undefined>(
     () => options.find((option) => option.value === value),
@@ -64,15 +64,11 @@ const SingleSelect = <T,>({
     [value, handleOnOptionPress],
   );
 
-  const handleOnAddPress = useCallback(() => {
-    navigation.navigate(categoryAddRoute);
-  }, [navigation]);
-
   return (
     <View style={style}>
       <ValueContainer
         isDisabled={isDisabled}
-        iconName="calendar"
+        iconName={iconName}
         label={label}
         onPress={() => setIsOpen(true)}>
         <Text
@@ -83,7 +79,6 @@ const SingleSelect = <T,>({
         </Text>
       </ValueContainer>
       <SelectSheet
-        onAddPress={handleOnAddPress}
         paddingBottom={paddingBottom}
         isLoading={isLoading}
         onKeywordChange={onKeywordChange}

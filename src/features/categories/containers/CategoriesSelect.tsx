@@ -11,7 +11,7 @@ import { useDebounce } from 'use-debounce';
 
 export type CategoriesSelectProps = Omit<
   SingleSelectProps<number>,
-  'options' | 'title' | 'keyword' | 'onKeywordChange'
+  'options' | 'title' | 'keyword' | 'onKeywordChange' | 'iconName'
 >;
 
 const CategoriesSelect = (props: CategoriesSelectProps) => {
@@ -32,6 +32,7 @@ const CategoriesSelect = (props: CategoriesSelectProps) => {
 
   return (
     <SingleSelect
+      iconName="squares"
       isLoading={isLoading}
       onKeywordChange={setKeyword}
       title={t('Select Category')}

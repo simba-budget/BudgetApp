@@ -7,7 +7,6 @@ export interface Goal extends BaseModel {
   description: string | null;
   initialAmount: number;
   targetAmount: number;
-  amount: number;
   currency: Currency;
   startedAt: string;
   endAt: string | null;

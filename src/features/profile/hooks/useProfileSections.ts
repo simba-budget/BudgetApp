@@ -1,6 +1,7 @@
 import { useLogout } from '@features/auth/hooks';
 import { useProfileTranslations } from '@i18n/hooks';
 import {
+  accountDeleteRoute,
   RootNavigation,
   toCategories,
   toExternalAccounts,
@@ -85,8 +86,9 @@ const useProfileSections = () => {
           {
             title: t('Delete account'),
             iconName: 'delete',
-            onPress: console.log,
+            onPress: () => navigation.navigate(accountDeleteRoute),
             hideArrow: true,
+            color: 'error',
           },
           {
             title: t('Sign Out'),
